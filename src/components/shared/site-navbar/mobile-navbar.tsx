@@ -1,14 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 import Logo from "../../ui/logo";
 import SidebarDrawer from "./sidebar-drawer";
+import AuthLinks from "./auth-links";
 
 const MobileNavbar = () => {
-  const navigate = useNavigate();
-  const handleClickSignIn = () => navigate("/auth/sign-in");
-  const handleClickSignUp = () => navigate("/auth/sign-up");
-
   const isAuth = true;
 
   return (
@@ -16,16 +12,7 @@ const MobileNavbar = () => {
       <Link to="/">
         <Logo hasText={true} />
       </Link>
-      {isAuth ? (
-        <SidebarDrawer />
-      ) : (
-        <div className="flex items-center justify-center space-x-2">
-          <Button onClick={handleClickSignIn}>Sign In</Button>
-          <Button onClick={handleClickSignUp} type="primary">
-            Sign Up
-          </Button>
-        </div>
-      )}
+      {isAuth ? <SidebarDrawer /> : <AuthLinks />}
     </div>
   );
 };
