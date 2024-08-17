@@ -19,7 +19,7 @@ const DesktopDashboardSidebar = () => {
             className={({ isActive }) =>
               cn(
                 "border border-gray-300/80 w-full flex items-center space-x-1 text-white hover:bg-white/80 hover:text-primary transition-all p-2 rounded-md",
-                isActive && "text-primary bg-white/80"
+                isActive && "text-primary bg-white"
               )
             }
           >

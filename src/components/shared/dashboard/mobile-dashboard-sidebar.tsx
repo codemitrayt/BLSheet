@@ -19,7 +19,7 @@ const MobilDashboardSidebar = () => {
             className={({ isActive }) =>
               cn(
                 "text-white hover:text-gray-300 transition p-2 rounded-md",
-                isActive && "text-primary bg-white/80 hover:text-primary"
+                isActive && "text-primary bg-white hover:text-primary"
               )
             }
           >
