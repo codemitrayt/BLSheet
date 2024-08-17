@@ -5,4 +5,5 @@ export interface NavLinkType {
   title: string;
   path: string;
   icon: IconType;
+  onyForDesktop?: boolean;
 }
