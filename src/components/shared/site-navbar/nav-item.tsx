@@ -14,9 +14,9 @@ const NavItem = ({ link, onCloseDrawer }: NavItemProps) => {
       key={link.id}
       onClick={onCloseDrawer}
       to={link.path}
-      className={(isActive) =>
+      className={({ isActive }) =>
         cn(
-          "w-full px-3 py-1 rounded-lg group flex items-center space-x-2 hover:bg-gray-100 transition",
+          "w-full px-3 py-2 rounded-lg group flex items-center space-x-2 hover:bg-gray-100 transition border border-gray-300/30",
           isActive && "bg-gray-100 text-primary"
         )
       }
