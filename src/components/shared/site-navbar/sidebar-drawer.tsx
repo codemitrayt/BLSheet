@@ -23,8 +23,8 @@ const SidebarDrawer = () => {
         placement="left"
         open={drawerState}
         onClose={onCloseDrawer}
-        title={<span className="text-blue-500 text-lg">{siteConfig.name}</span>}
-        closeIcon={<LuChevronLeftCircle className="size-6 text-blue-500" />}
+        title={<span className="text-primary text-lg">{siteConfig.name}</span>}
+        closeIcon={<LuChevronLeftCircle className="size-6 text-primary" />}
       >
         <div className="flex items-center flex-col justify-between w-full h-full">
           <div className="space-y-2 w-full">
