@@ -15,6 +15,7 @@ import SignUpPage from "../pages/auth/sign-up-page";
 import SignInPage from "../pages/auth/sign-in-page";
 
 import DashboardHomePage from "../pages/dashboard/dashboard-home-page";
+import DashboardSheetPage from "../pages/dashboard/dashboard-sheet-page";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const Router = createBrowserRouter(
 
       <Route path="dashboard" element={<DashboardLayout />}>
         <Route path="home" element={<DashboardHomePage />} />
+        <Route path="sheet" element={<DashboardSheetPage />} />
       </Route>
 
       <Route path="auth" element={<AuthLayout />}>
