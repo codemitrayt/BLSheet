@@ -14,8 +14,8 @@ import HomePage from "../pages/home-page";
 import SignUpPage from "../pages/auth/sign-up-page";
 import SignInPage from "../pages/auth/sign-in-page";
 
-import DashboardHomePage from "../pages/dashboard/dashboard-home-page";
-import DashboardSheetPage from "../pages/dashboard/dashboard-sheet-page";
+import DashboardHomePage from "../pages/dashboard/home";
+import DashboardSheetPage from "../pages/dashboard/sheet";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
