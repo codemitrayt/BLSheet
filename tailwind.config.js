@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "#2F667F",
         secondary: "#539BBB",
+        turnary: "#EEF5F8",
       },
     },
   },
