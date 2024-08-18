@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Avatar, Input } from "antd";
+import { Avatar } from "antd";
 
 import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
 
@@ -8,8 +8,7 @@ const DashboardLayout = () => {
     <div className="min-h-screen flex">
       <DashboardSidebar />
       <div className="flex flex-col py-3 px-6 w-full">
-        <div className="h-12 flex items-center justify-center w-full space-x-6">
-          <Input.Search placeholder="Search activity" />
+        <div className="h-12 flex items-center justify-end w-full space-x-6">
           <div>
             <Avatar className="bg-primary">R</Avatar>
           </div>
