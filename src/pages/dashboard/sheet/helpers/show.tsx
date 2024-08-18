@@ -3,57 +3,71 @@ import type { TableProps } from "antd";
 
 interface DataType {
   key: string;
-  name: string;
-  age: number;
-  address: string;
+  clientName: string;
+  description: string;
+  money: number;
+  isPaid: boolean;
+  tax: number;
+  date: Date;
 }
 
 const data: DataType[] = [
   {
     key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
+    clientName: "John Brown",
+    description: "some description",
+    money: 100,
+    isPaid: true,
+    tax: 10,
+    date: new Date(),
   },
 ];
 
 const columns: TableProps<DataType>["columns"] = [
   {
-    title: "Name",
-    dataIndex: "name",
+    title: <span className="text-primary">Client Name</span>,
+    dataIndex: "clientName",
     key: "name",
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: <span className="text-primary">Description</span>,
+    dataIndex: "description",
+    key: "description",
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
+    title: <span className="text-primary">Money</span>,
+    dataIndex: "money",
+    key: "money",
+  },
+
+  {
+    title: <span className="text-primary">Tax</span>,
+    dataIndex: "tax",
+    key: "tax",
+    render: (tax) => <span>{tax}%</span>,
+  },
+  {
+    title: <span className="text-primary">Date</span>,
+    dataIndex: "date",
+    key: "date",
+    render: (date) => <span>{date.getMonth()}</span>,
+  },
+  {
+    title: <span className="text-primary">Paid</span>,
+    dataIndex: "paid",
+    key: "paid",
+    render: (isPaid) => <span>{isPaid ? "Yes" : "No"}</span>,
+  },
+  {
+    title: <span className="text-primary">Action</span>,
+    key: "action",
+    render: () => <h1>Actios</h1>,
   },
 ];
 
 const Show = () => {
-  return (
-    <div>
-      <Table columns={columns} dataSource={data} />
-    </div>
-  );
+  return <Table bordered columns={columns} dataSource={data} />;
 };
 
 export default Show;
