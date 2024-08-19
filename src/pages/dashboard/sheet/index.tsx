@@ -10,7 +10,7 @@ const DashboardSheetPage = () => {
         <Input.Search placeholder="search sheet" className="max-w-sm" />
         <CreateSheet />
       </div>
-      <div className="mt-6">
+      <div className="mt-6 overflow-x-auto">
         <Show />
       </div>
     </div>

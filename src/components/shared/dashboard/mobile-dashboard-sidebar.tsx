@@ -6,7 +6,7 @@ import dashboardLinks from "../../../configs/dashboard-links";
 
 const MobilDashboardSidebar = () => {
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <Link to="/">
         <Logo className="text-white" />
       </Link>
@@ -18,12 +18,12 @@ const MobilDashboardSidebar = () => {
             to={link.path}
             className={({ isActive }) =>
               cn(
-                "text-white hover:text-gray-300 transition p-2 rounded-md",
-                isActive && "text-primary bg-white hover:text-primary"
+                "flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg",
+                isActive && "bg-secondary"
               )
             }
           >
-            <link.icon className="size-6" />
+            <link.icon className="size-6 text-white" />
           </NavLink>
         ))}
       </div>

@@ -1,20 +1,19 @@
 import { NavLinkType } from "../types";
 
-import { CgHome } from "react-icons/cg";
-import { CiViewTable } from "react-icons/ci";
+import { HiHome, HiTable } from "react-icons/hi";
 
 const dashboardLinks: NavLinkType[] = [
   {
     id: 1,
     title: "Home",
     path: "/dashboard/home",
-    icon: CgHome,
+    icon: HiHome,
   },
   {
     id: 2,
     title: "Sheet",
     path: "/dashboard/sheet",
-    icon: CiViewTable,
+    icon: HiTable,
   },
 ];
 

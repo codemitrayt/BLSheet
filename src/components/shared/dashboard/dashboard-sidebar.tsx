@@ -3,8 +3,8 @@ import MobilDashboardSidebar from "./mobile-dashboard-sidebar";
 
 const DashboardSidebar = () => {
   return (
-    <div className="w-[100px] md:w-[350px] py-3 pl-3">
-      <div className="bg-primary h-full rounded-2xl py-8">
+    <div className="w-[130px] lg:w-[300px] py-3 pl-3">
+      <div className="bg-primary h-full py-8 rounded-3xl">
         <MobilDashboardSidebar />
         <DesktopDashboardSidebar />
       </div>
