@@ -5,15 +5,15 @@ import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
 
 const DashboardLayout = () => {
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-row">
       <DashboardSidebar />
-      <div className="flex flex-col py-3 px-6 w-full">
-        <div className="h-12 flex items-center justify-end w-full space-x-6">
+      <div className="flex flex-col py-3 px-6 w-[calc(100vw_-100px)] lg:w-[calc(100vw_-300px)]">
+        <div className="h-12 flex items-center justify-end space-x-6">
           <div>
             <Avatar className="bg-primary">R</Avatar>
           </div>
         </div>
-        <div className="h-[calc(100vh_-80px)] bg-white border rounded-lg overflow-auto p-5 shadow-sm">
+        <div className="h-[calc(100vh_-100px)] bg-white border rounded-lg overflow-auto p-5 shadow-sm">
           <Outlet />
         </div>
       </div>

@@ -7,9 +7,11 @@ import dashboardLinks from "../../../configs/dashboard-links";
 const DesktopDashboardSidebar = () => {
   return (
     <div className="hidden lg:block">
-      <Link to="/">
-        <Logo className="text-white" hasText={true} />
-      </Link>
+      <div className="flex items-center justify-start px-6">
+        <Link to="/">
+          <Logo className="text-white text-4xl" hasText={true} />
+        </Link>
+      </div>
 
       <div className="px-4 w-full flex space-y-1 items-center justify-center flex-col mt-8">
         {dashboardLinks.map((link) => (
