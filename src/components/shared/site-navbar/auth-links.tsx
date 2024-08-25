@@ -9,7 +9,7 @@ const AuthLinks = () => {
   return (
     <div className="flex items-center justify-center space-x-2">
       <Button onClick={handleClickSignIn}>Sign In</Button>
-      <Button onClick={handleClickSignUp} type="primary">
+      <Button onClick={handleClickSignUp} type="primary" className="ring-0">
         Sign Up
       </Button>
     </div>
