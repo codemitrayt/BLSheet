@@ -7,3 +7,27 @@ export interface NavLinkType {
   icon: IconType;
   onyForDesktop?: boolean;
 }
+
+export type SendVerificationEmailForRegistrationBody = {
+  fullName: string;
+  email: string;
+};
+
+export interface CreatePasswordBody {
+  password: string;
+  confirmPassword: string;
+  token: string;
+}
+
+export interface LoginUserBody {
+  email: string;
+  password: string;
+}
+
+export interface RequestType {
+  method?: "GET" | "POST" | "PUT" | "DELETE" | "OPTIONS";
+  authToken?: string | null;
+  data?: any;
+  params?: any;
+  url?: string;
+}

@@ -12,7 +12,7 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
 
 const DesktopNavbar = () => {
-  const isAuth = true;
+  const isAuth = false;
   return (
     <div className="hidden sm:flex items-center w-[90%]">
       {isAuth ? <AuthorizedNavbar /> : <UnAuthorizedNavbar />}

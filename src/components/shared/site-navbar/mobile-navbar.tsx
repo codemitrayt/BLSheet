@@ -5,7 +5,7 @@ import SidebarDrawer from "./sidebar-drawer";
 import AuthLinks from "./auth-links";
 
 const MobileNavbar = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <div className="flex items-center justify-between sm:hidden w-[90%]">
