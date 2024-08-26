@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,6 @@ import { LoginUserBody } from "../../types";
 const SignInPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [form] = Form.useForm();
-  const navigate = useNavigate();
   const { handleError } = useErrorHandler();
 
   const { mutate, isLoading } = useMutation({
@@ -29,7 +28,6 @@ const SignInPage = () => {
           authToken: data.message?.authToken,
         })
       );
-      navigate("/dashboard/home");
     },
     onError: (error) => {
       console.log("ERROR :: login ::", error);
