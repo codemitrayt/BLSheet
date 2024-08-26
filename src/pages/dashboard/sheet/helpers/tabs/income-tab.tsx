@@ -28,6 +28,7 @@ const IncomeTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
               type: SheetType.INCOME,
             },
           });
+          form.resetFields();
         }}
       >
         <Form.Item

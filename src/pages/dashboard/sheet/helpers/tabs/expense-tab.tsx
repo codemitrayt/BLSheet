@@ -27,6 +27,7 @@ const ExpenseTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
               type: SheetType.EXPENSE,
             },
           });
+          form.resetFields();
         }}
       >
         <Form.Item

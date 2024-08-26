@@ -27,6 +27,7 @@ const InvestmentTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
               isPaid: false,
             },
           });
+          form.resetFields();
         }}
       >
         <Form.Item
