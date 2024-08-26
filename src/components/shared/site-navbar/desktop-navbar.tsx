@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { Avatar, Dropdown, MenuProps } from "antd";
+import { useSelector } from "react-redux";
 
 import { cn } from "../../../utils";
 import { NavLinkType } from "../../../types";
 import navbarLinks from "../../../configs/navbar-links";
+import { RootState } from "../../../store";
 
 import Logo from "../../ui/logo";
 import AuthLinks from "./auth-links";
@@ -12,7 +14,7 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
 
 const DesktopNavbar = () => {
-  const isAuth = false;
+  const { isAuth } = useSelector((state: RootState) => state.auth);
   return (
     <div className="hidden sm:flex items-center w-[90%]">
       {isAuth ? <AuthorizedNavbar /> : <UnAuthorizedNavbar />}
@@ -73,6 +75,8 @@ const NavItem = ({ link }: { link: NavLinkType }) => {
 };
 
 const UserDropdown = () => {
+  const { user } = useSelector((state: RootState) => state.auth);
+
   const items: MenuProps["items"] = [
     {
       key: "profile",
@@ -99,7 +103,7 @@ const UserDropdown = () => {
       placement="bottomRight"
       className="cursor-pointer"
     >
-      <Avatar className="bg-primary">R</Avatar>
+      <Avatar className="bg-primary">{user?.fullName[0].toUpperCase()}</Avatar>
     </Dropdown>
   );
 };
