@@ -4,6 +4,7 @@ import dateFormat from "dateformat";
 
 import { BLSheet, SheetType } from "../../../../types";
 import { currencyFormate } from "../../../../utils";
+import Delete from "./delete";
 
 const columns: TableProps<BLSheet>["columns"] = [
   {
@@ -66,21 +67,33 @@ const columns: TableProps<BLSheet>["columns"] = [
       </Tag>
     ),
   },
-  {
-    title: <span className="text-primary">Action</span>,
-    key: "action",
-    render: () => <h1>Actions</h1>,
-  },
 ];
 
 interface ShowProps {
   isLoading: boolean;
   data: BLSheet[];
+  refetchBLSheets: () => void;
 }
 
-const Show = ({ isLoading, data }: ShowProps) => {
+const Show = ({ isLoading, data, refetchBLSheets }: ShowProps) => {
   return (
-    <Table bordered columns={columns} dataSource={data} loading={isLoading} />
+    <Table
+      bordered
+      columns={[
+        ...columns,
+        {
+          title: <span className="text-primary">Action</span>,
+          key: "action",
+          render: (_, { _id }) => (
+            <div className="flex items-center space-x-2">
+              <Delete objectId={_id!} refetchBLSheets={refetchBLSheets} />
+            </div>
+          ),
+        },
+      ]}
+      dataSource={data}
+      loading={isLoading}
+    />
   );
 };
 
