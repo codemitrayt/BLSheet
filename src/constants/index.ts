@@ -5,3 +5,8 @@ export const HTTP_METHODS = {
   post: "POST",
   put: "PUT",
 };
+
+export const URLS = {
+  signInPageUrl: "/auth/sign-in",
+  dashboardHomeUrl: "/dashboard/home",
+};
