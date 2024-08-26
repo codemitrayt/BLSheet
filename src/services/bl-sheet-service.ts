@@ -18,6 +18,14 @@ const blSheetService = () => {
         url: urls.blSheet.createBlSheet,
         authToken,
       }),
+
+    deleteBLSheet: ({ data, authToken }: RequestType) =>
+      request({
+        method: "DELETE",
+        data,
+        url: urls.blSheet.deleteBlSheet,
+        authToken,
+      }),
   };
 };
 
