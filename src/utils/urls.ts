@@ -6,8 +6,8 @@ interface URLType {
 
 const urls: URLType = {
   main: {
-    // baseUrl: "https://bl-sheet-server.vercel.app/api/v1",
-    baseUrl: "http://localhost:5500/api/v1",
+    baseUrl: "https://bl-sheet-server.vercel.app/api/v1",
+    developmentBaseUrl: "http://localhost:5500/api/v1",
   },
   auth: {
     sendVerificationEmailForRegistration:
