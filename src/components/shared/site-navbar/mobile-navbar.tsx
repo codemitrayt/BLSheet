@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import Logo from "../../ui/logo";
 import SidebarDrawer from "./sidebar-drawer";
 import AuthLinks from "./auth-links";
-import { RootState } from "../../../store";
+import useUserInfo from "../../../hooks/useUserInfo";
 
 const MobileNavbar = () => {
-  const { isAuth } = useSelector((state: RootState) => state.auth);
+  const { isAuth } = useUserInfo();
 
   return (
     <div className="flex items-center justify-between sm:hidden w-[90%]">

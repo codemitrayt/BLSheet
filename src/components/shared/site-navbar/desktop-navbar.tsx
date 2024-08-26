@@ -1,20 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
 import { Avatar, Dropdown, MenuProps } from "antd";
-import { useSelector } from "react-redux";
 
 import { cn } from "../../../utils";
 import { NavLinkType } from "../../../types";
 import navbarLinks from "../../../configs/navbar-links";
-import { RootState } from "../../../store";
 
 import Logo from "../../ui/logo";
 import AuthLinks from "./auth-links";
 
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
+import useUserInfo from "../../../hooks/useUserInfo";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/slices/auth-slice";
 
 const DesktopNavbar = () => {
-  const { isAuth } = useSelector((state: RootState) => state.auth);
+  const { isAuth } = useUserInfo();
+
   return (
     <div className="hidden sm:flex items-center w-[90%]">
       {isAuth ? <AuthorizedNavbar /> : <UnAuthorizedNavbar />}
@@ -75,7 +77,9 @@ const NavItem = ({ link }: { link: NavLinkType }) => {
 };
 
 const UserDropdown = () => {
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user } = useUserInfo();
+  const dispatch = useDispatch();
+  const handleLogout = () => dispatch(logout());
 
   const items: MenuProps["items"] = [
     {
@@ -90,7 +94,7 @@ const UserDropdown = () => {
     {
       key: "logout",
       label: (
-        <button className="flex items-center space-x-1">
+        <button className="flex items-center space-x-1" onClick={handleLogout}>
           <AiOutlineLogout />
           <span>Logout</span>
         </button>
