@@ -36,7 +36,11 @@ const DashboardSheetPage = () => {
         <CreateSheet refetchBLSheet={refetchBLSheets} />
       </div>
       <div className="mt-6 overflow-x-auto">
-        <Show isLoading={isLoading} data={sheets} />
+        <Show
+          isLoading={isLoading}
+          data={sheets}
+          refetchBLSheets={refetchBLSheets}
+        />
       </div>
     </div>
   );
