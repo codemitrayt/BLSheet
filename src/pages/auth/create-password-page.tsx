@@ -1,13 +1,16 @@
 import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import authService from "../../services/auth-service";
 import useErrorHandler from "../../hooks/useErrorHandler";
 
 import { CreatePasswordBody } from "../../types";
+import { setAuth } from "../../store/slices/auth-slice";
 
 const CreatePasswordPage = () => {
+  const dispatch = useDispatch();
   const { handleError } = useErrorHandler();
   const [search] = useSearchParams();
   const token = search.get("token");
@@ -17,7 +20,12 @@ const CreatePasswordPage = () => {
     mutationFn: ({ data }: { data: CreatePasswordBody }) =>
       authService().createPassword({ data }),
     onSuccess: ({ data }) => {
-      console.log("user data", data);
+      dispatch(
+        setAuth({
+          user: data?.message.user,
+          authToken: data.message?.authToken,
+        })
+      );
     },
     onError: (error) => {
       console.log("ERROR: create password ::", error);
