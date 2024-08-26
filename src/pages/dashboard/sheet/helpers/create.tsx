@@ -1,5 +1,6 @@
 import { Button, Drawer, Tabs, TabsProps } from "antd";
 import { useState } from "react";
+import { useMutation } from "react-query";
 
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
@@ -10,10 +11,38 @@ import IncomeTab from "./tabs/income-tab";
 import InvestmentTab from "./tabs/investment-tab";
 import ExpenseTab from "./tabs/expense-tab";
 
-const CreateSheet = () => {
+import blSheetService from "../../../../services/bl-sheet-service";
+import useUserInfo from "../../../../hooks/useUserInfo";
+import useErrorHandler from "../../../../hooks/useErrorHandler";
+
+import { BLSheet } from "../../../../types";
+
+interface CreateSheetProps {
+  refetchBLSheet: () => void;
+}
+
+const CreateSheet = ({ refetchBLSheet }: CreateSheetProps) => {
+  const { authToken } = useUserInfo();
+  const { handleError } = useErrorHandler();
+
   const [drawerState, setDrawerState] = useState(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
+
+  const { isLoading, mutate: createBlSheet } = useMutation({
+    mutationKey: ["create-bl-sheet"],
+    mutationFn: ({ data }: { data: BLSheet }) =>
+      blSheetService().createBlSheet({ data, authToken }),
+    onSuccess: () => {
+      refetchBLSheet();
+      onCloseDrawer();
+    },
+    onError: (error) => {
+      console.error("ERROR :: create bl sheet ::", error);
+      handleError(error);
+    },
+    retry: false,
+  });
 
   const items: TabsProps["items"] = [
     {
@@ -24,7 +53,9 @@ const CreateSheet = () => {
           <span>Income</span>
         </span>
       ),
-      children: <IncomeTab />,
+      children: (
+        <IncomeTab createBlSheet={createBlSheet} isLoading={isLoading} />
+      ),
     },
     {
       key: "expense",
@@ -34,7 +65,9 @@ const CreateSheet = () => {
           <span>Expense</span>
         </span>
       ),
-      children: <ExpenseTab />,
+      children: (
+        <ExpenseTab createBlSheet={createBlSheet} isLoading={isLoading} />
+      ),
     },
     {
       key: "investment",
@@ -44,7 +77,9 @@ const CreateSheet = () => {
           <span>Investment</span>
         </span>
       ),
-      children: <InvestmentTab />,
+      children: (
+        <InvestmentTab createBlSheet={createBlSheet} isLoading={isLoading} />
+      ),
     },
   ];
 
