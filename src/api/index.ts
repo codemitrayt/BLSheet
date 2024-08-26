@@ -10,7 +10,10 @@ const request = ({
   url,
 }: RequestType) => {
   return axios({
-    baseURL: urls.main.baseUrl,
+    baseURL:
+      import.meta.env.VITE_NODE_ENV === "development"
+        ? urls.main.developmentBaseUrl
+        : urls.main.baseUrl,
     method,
     headers: {
       "Content-Type": "application/json",
