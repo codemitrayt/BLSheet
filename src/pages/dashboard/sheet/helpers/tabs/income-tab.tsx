@@ -20,6 +20,7 @@ const IncomeTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
         initialValues={{ isPaid: false, tax: 0 }}
         layout="vertical"
         onFinish={(values: FormSchema) => {
+          console.log(values);
           createBlSheet({
             data: {
               ...values,
@@ -86,7 +87,9 @@ const IncomeTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
 
           <Form.Item name="isPaid" className="mb-12">
             <span className="text-primary font-medium pr-5">Paid</span>
-            <Checkbox />
+            <Checkbox
+              onChange={(e) => form.setFieldValue("isPaid", e.target.checked)}
+            />
           </Form.Item>
         </div>
         <div className="flex items-center justify-end">
