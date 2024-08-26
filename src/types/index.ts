@@ -46,6 +46,7 @@ export interface User {
 }
 
 export interface BLSheet {
+  _id?: string;
   clientName: string;
   description: string;
   money: number;
