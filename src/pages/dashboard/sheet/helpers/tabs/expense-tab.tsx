@@ -1,4 +1,5 @@
 import { Button, Checkbox, DatePicker, Form, Input, InputNumber } from "antd";
+import { CreateSheetTabProps, SheetType } from "../../../../../types";
 
 interface FormSchema {
   clientName: string;
@@ -9,7 +10,7 @@ interface FormSchema {
   date: Date;
 }
 
-const ExpenseTab = () => {
+const ExpenseTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
   const [form] = Form.useForm();
 
   return (
@@ -18,7 +19,15 @@ const ExpenseTab = () => {
         form={form}
         initialValues={{ isPaid: false, tax: 0 }}
         layout="vertical"
-        onFinish={(values: FormSchema) => console.log(values)}
+        onFinish={(values: FormSchema) => {
+          createBlSheet({
+            data: {
+              ...values,
+              date: values.date.toISOString(),
+              type: SheetType.EXPENSE,
+            },
+          });
+        }}
       >
         <Form.Item
           name="clientName"
@@ -83,7 +92,12 @@ const ExpenseTab = () => {
           </Form.Item>
         </div>
         <div className="flex items-center justify-end">
-          <Button className="px-6 rounded-full ring-0" type="primary">
+          <Button
+            htmlType="submit"
+            className="px-6 rounded-full ring-0"
+            type="primary"
+            loading={isLoading}
+          >
             Save
           </Button>
         </div>

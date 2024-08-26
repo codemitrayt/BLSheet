@@ -1,0 +1,24 @@
+import urls from "../utils/urls";
+import request from "../api";
+import { RequestType } from "./../types";
+
+const blSheetService = () => {
+  return {
+    getBlSheets: ({ authToken }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.blSheet.getBlSheets,
+        authToken,
+      }),
+
+    createBlSheet: ({ data, authToken }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.blSheet.createBlSheet,
+        authToken,
+      }),
+  };
+};
+
+export default blSheetService;

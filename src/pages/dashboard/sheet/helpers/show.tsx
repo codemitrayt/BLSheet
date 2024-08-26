@@ -1,34 +1,15 @@
-import { Table } from "antd";
+import { Table, Tag } from "antd";
 import type { TableProps } from "antd";
+import dateFormat from "dateformat";
 
-interface DataType {
-  key: string;
-  clientName: string;
-  description: string;
-  money: number;
-  isPaid: boolean;
-  tax: number;
-  date: Date;
-}
+import { BLSheet, SheetType } from "../../../../types";
+import { currencyFormate } from "../../../../utils";
 
-const data: DataType[] = [
-  {
-    key: "1",
-    clientName: "John Brown",
-    description: "some description",
-    money: 100,
-    isPaid: true,
-    tax: 10,
-    date: new Date(),
-  },
-];
-
-const columns: TableProps<DataType>["columns"] = [
+const columns: TableProps<BLSheet>["columns"] = [
   {
     title: <span className="text-primary">Client Name</span>,
     dataIndex: "clientName",
     key: "name",
-    render: (text) => <a>{text}</a>,
   },
   {
     title: <span className="text-primary">Description</span>,
@@ -36,11 +17,30 @@ const columns: TableProps<DataType>["columns"] = [
     key: "description",
   },
   {
+    title: <span className="text-primary">Sheet Type</span>,
+    dataIndex: "type",
+    key: "type",
+    render: (type) => (
+      <Tag
+        className="rounded-full w-[90px] flex items-center justify-center"
+        color={
+          type === SheetType.INCOME
+            ? "green"
+            : type === SheetType.EXPENSE
+            ? "red"
+            : "orange"
+        }
+      >
+        {type}
+      </Tag>
+    ),
+  },
+  {
     title: <span className="text-primary">Money</span>,
     dataIndex: "money",
     key: "money",
+    render: (money) => <span>{currencyFormate(money)}</span>,
   },
-
   {
     title: <span className="text-primary">Tax</span>,
     dataIndex: "tax",
@@ -51,23 +51,37 @@ const columns: TableProps<DataType>["columns"] = [
     title: <span className="text-primary">Date</span>,
     dataIndex: "date",
     key: "date",
-    render: (date) => <span>{date.getMonth()}</span>,
+    render: (date) => <span>{dateFormat(date, "dd/mm/yyyy")}</span>,
   },
   {
     title: <span className="text-primary">Paid</span>,
-    dataIndex: "paid",
+    dataIndex: "isPaid",
     key: "paid",
-    render: (isPaid) => <span>{isPaid ? "Yes" : "No"}</span>,
+    render: (isPaid) => (
+      <Tag
+        color={isPaid ? "green" : "red"}
+        className="flex items-center justify-center w-[40px] rounded-full"
+      >
+        {isPaid ? "Yes" : "No"}
+      </Tag>
+    ),
   },
   {
     title: <span className="text-primary">Action</span>,
     key: "action",
-    render: () => <h1>Actios</h1>,
+    render: () => <h1>Actions</h1>,
   },
 ];
 
-const Show = () => {
-  return <Table bordered columns={columns} dataSource={data} />;
+interface ShowProps {
+  isLoading: boolean;
+  data: BLSheet[];
+}
+
+const Show = ({ isLoading, data }: ShowProps) => {
+  return (
+    <Table bordered columns={columns} dataSource={data} loading={isLoading} />
+  );
 };
 
 export default Show;

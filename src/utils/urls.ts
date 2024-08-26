@@ -15,6 +15,10 @@ const urls: URLType = {
     createPassword: "/auth/createPassword",
     login: "/auth/login",
   },
+  blSheet: {
+    createBlSheet: "blSheet/createBLSheet",
+    getBlSheets: "/blSheet/getBLSheets",
+  },
 };
 
 export default urls;

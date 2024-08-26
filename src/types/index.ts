@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
 
+export enum SheetType {
+  INCOME = "income",
+  EXPENSE = "expense",
+  INVESTMENT = "investment",
+}
+
 export interface NavLinkType {
   id: number;
   title: string;
@@ -37,4 +43,19 @@ export interface User {
   fullName: string;
   email: string;
   role: string;
+}
+
+export interface BLSheet {
+  clientName: string;
+  description: string;
+  money: number;
+  isPaid: boolean;
+  tax: number;
+  date: string;
+  type: SheetType;
+}
+
+export interface CreateSheetTabProps {
+  createBlSheet: ({ data }: { data: BLSheet }) => void;
+  isLoading: boolean;
 }
