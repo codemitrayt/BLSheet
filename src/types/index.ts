@@ -31,3 +31,10 @@ export interface RequestType {
   params?: any;
   url?: string;
 }
+
+export interface User {
+  _id: string;
+  fullName: string;
+  email: string;
+  role: string;
+}
