@@ -1,5 +1,6 @@
 import { Button, Drawer } from "antd";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { FiMenu } from "react-icons/fi";
 import { LuChevronLeftCircle } from "react-icons/lu";
@@ -8,8 +9,12 @@ import { AiOutlineLogout } from "react-icons/ai";
 import NavItem from "./nav-item";
 import siteConfig from "../../../configs/site-config";
 import navbarLinks from "../../../configs/navbar-links";
+import { logout } from "../../../store/slices/auth-slice";
 
 const SidebarDrawer = () => {
+  const dispatch = useDispatch();
+  const handleLogout = () => dispatch(logout());
+
   const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
@@ -50,7 +55,10 @@ const SidebarDrawer = () => {
                 />
               ))}
 
-            <button className="w-full px-3 py-2 rounded-lg group flex items-center space-x-2 hover:bg-gray-100 transition border border-gray-300/30">
+            <button
+              className="w-full px-3 py-2 rounded-lg group flex items-center space-x-2 hover:bg-gray-100 transition border border-gray-300/30"
+              onClick={handleLogout}
+            >
               <AiOutlineLogout className="size-5 group-hover:text-primary transition" />
               <span className="text-[16px] group-hover:text-primary transition">
                 Logout
