@@ -18,6 +18,7 @@ const urls: URLType = {
   blSheet: {
     createBlSheet: "blSheet/createBLSheet",
     getBlSheets: "/blSheet/getBLSheets",
+    deleteBlSheet: "/blSheet/deleteBLSheet",
   },
 };
 
