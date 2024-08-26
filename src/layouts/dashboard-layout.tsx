@@ -1,9 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Avatar } from "antd";
 
 import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
+import useUserInfo from "../hooks/useUserInfo";
+import { URLS } from "../constants";
 
 const DashboardLayout = () => {
+  const { isAuth } = useUserInfo();
+  if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
+
   return (
     <div className="min-h-screen flex flex-row">
       <DashboardSidebar />
