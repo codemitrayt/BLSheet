@@ -20,7 +20,6 @@ const IncomeTab = ({ createBlSheet, isLoading }: CreateSheetTabProps) => {
         initialValues={{ isPaid: false, tax: 0 }}
         layout="vertical"
         onFinish={(values: FormSchema) => {
-          console.log(values);
           createBlSheet({
             data: {
               ...values,

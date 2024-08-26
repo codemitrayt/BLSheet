@@ -19,7 +19,6 @@ const DashboardSheetPage = () => {
     queryKey: ["get-bl-sheet"],
     queryFn: () => blSheetService().getBlSheets({ authToken }),
     onSuccess: ({ data }) => {
-      console.log(data);
       setSheets(data?.message?.blSheets || []);
     },
     onError: (error) => {
