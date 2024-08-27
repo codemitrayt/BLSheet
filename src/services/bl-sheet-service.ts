@@ -26,6 +26,15 @@ const blSheetService = () => {
         url: urls.blSheet.deleteBlSheet,
         authToken,
       }),
+
+    editBlSheet: ({ data, authToken, params }: RequestType) =>
+      request({
+        method: "PUT",
+        params,
+        data,
+        url: urls.blSheet.editBlSheet,
+        authToken,
+      }),
   };
 };
 
