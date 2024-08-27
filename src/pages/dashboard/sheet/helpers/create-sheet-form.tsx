@@ -15,7 +15,7 @@ import useErrorHandler from "../../../../hooks/useErrorHandler";
 import blSheetService from "../../../../services/bl-sheet-service";
 
 import { BL_SHEET_TYPES } from "../../../../constants";
-import { BLSheet } from "../../../../types";
+import { BLSheet, SheetType } from "../../../../types";
 
 interface CreateSheetFormProps {
   refetchBLSheet: () => void;
@@ -46,13 +46,21 @@ const CreateSheetForm = ({
     retry: false,
   });
 
+  const handleOnChange = () => {
+    const { money, tax, type } = form.getFieldsValue();
+    const intrest = (money * tax) / 100;
+    const calc = money + (type === SheetType.INCOME ? -intrest : intrest);
+    form.setFieldValue("totalMoney", calc || 0);
+  };
+
   return (
     <div className="bg-turnary p-6 rounded-lg">
       <Form
         form={form}
-        initialValues={{ isPaid: false, tax: 0, type: "income" }}
+        initialValues={{ isPaid: false, tax: 0, type: "income", totalMoney: 0 }}
         layout="vertical"
         onFinish={(data: BLSheet) => createBlSheet({ data })}
+        onChange={handleOnChange}
       >
         <Form.Item
           name="clientName"
@@ -82,7 +90,7 @@ const CreateSheetForm = ({
               min={1}
               className="w-full"
               placeholder="Ex.40"
-              suffix="₹"
+              prefix="₹"
             />
           </Form.Item>
 
@@ -119,12 +127,26 @@ const CreateSheetForm = ({
           </Form.Item>
         </div>
 
-        <Form.Item name="isPaid" className="mb-12">
-          <span className="text-primary font-medium pl-2 pr-5">Paid</span>
-          <Checkbox
-            onChange={(e) => form.setFieldValue("isPaid", e.target.checked)}
-          />
-        </Form.Item>
+        <div className="flex items-center space-x-8">
+          <Form.Item
+            name="totalMoney"
+            label={
+              <span className="text-primary font-medium">Total Money</span>
+            }
+          >
+            <InputNumber prefix="₹" className="w-full" disabled={true} />
+          </Form.Item>
+
+          <Form.Item name="isPaid" className="mb-12">
+            <span className="text-primary font-medium pl-2 pr-5">Paid</span>
+            <Checkbox
+              onChange={(e) => {
+                const checked = e.target.checked;
+                form.setFieldValue("isPaid", checked);
+              }}
+            />
+          </Form.Item>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button
