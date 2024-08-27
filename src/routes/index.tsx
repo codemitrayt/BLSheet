@@ -10,14 +10,15 @@ import ProtectedLayout from "../layouts/protected-layout";
 import DashboardLayout from "../layouts/dashboard-layout";
 
 import HomePage from "../pages/home-page";
+import NotFoundPage from "../pages/not-found-page";
 
 import SignUpPage from "../pages/auth/sign-up-page";
 import SignInPage from "../pages/auth/sign-in-page";
 import CreatePasswordPage from "../pages/auth/create-password-page";
+import EmailVerificationPage from "../pages/auth/email-verification-page";
 
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
-import EmailVerificationPage from "../pages/auth/email-verification-page";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,8 @@ const Router = createBrowserRouter(
         <Route path="create-password" element={<CreatePasswordPage />} />
         <Route path="email-verification" element={<EmailVerificationPage />} />
       </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
 );
