@@ -54,6 +54,7 @@ export interface BLSheet {
   tax: number;
   date: string;
   type: SheetType;
+  totalMoney: number;
 }
 
 export interface CreateSheetTabProps {
