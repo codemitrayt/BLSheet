@@ -61,3 +61,10 @@ export interface CreateSheetTabProps {
   createBlSheet: ({ data }: { data: BLSheet }) => void;
   isLoading: boolean;
 }
+
+export interface BLSheetFilter {
+  type?: SheetType | "all";
+  search?: string;
+  currentPage?: number;
+  perPage?: number;
+}
