@@ -8,6 +8,7 @@ import BaseLayout from "../layouts/base-layout";
 import AuthLayout from "../layouts/auth-layout";
 import ProtectedLayout from "../layouts/protected-layout";
 import DashboardLayout from "../layouts/dashboard-layout";
+import VerifyLayout from "../layouts/verify-layout";
 
 import HomePage from "../pages/home-page";
 import NotFoundPage from "../pages/not-found-page";
@@ -23,13 +24,15 @@ import DashboardSheetPage from "../pages/dashboard/sheet";
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<BaseLayout />}>
-      <Route element={<ProtectedLayout />}>
-        <Route index element={<HomePage />} />
-      </Route>
+      <Route element={<VerifyLayout />}>
+        <Route element={<ProtectedLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
 
-      <Route path="dashboard" element={<DashboardLayout />}>
-        <Route path="home" element={<DashboardHomePage />} />
-        <Route path="sheet" element={<DashboardSheetPage />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="home" element={<DashboardHomePage />} />
+          <Route path="sheet" element={<DashboardSheetPage />} />
+        </Route>
       </Route>
 
       <Route path="auth" element={<AuthLayout />}>
