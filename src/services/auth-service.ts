@@ -1,6 +1,6 @@
+import { RequestType } from "./../types";
 import urls from "../utils/urls";
 import request from "../api";
-import { RequestType } from "./../types";
 
 const authService = () => {
   return {
@@ -23,6 +23,13 @@ const authService = () => {
         method: "POST",
         data,
         url: urls.auth.login,
+      }),
+
+    self: ({ data }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.auth.self,
       }),
   };
 };

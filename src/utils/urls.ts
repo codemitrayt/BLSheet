@@ -14,6 +14,7 @@ const urls: URLType = {
       "/auth/sendVerificationEmailForRegistration",
     createPassword: "/auth/createPassword",
     login: "/auth/login",
+    self: "/auth/self",
   },
   blSheet: {
     createBlSheet: "blSheet/createBLSheet",
