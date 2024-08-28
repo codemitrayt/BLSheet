@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
-import { NavLinkType } from "../../../types";
 import { cn } from "../../../utils";
+import { NavLinkType } from "../../../types";
 
 interface NavItemProps {
   link: NavLinkType;

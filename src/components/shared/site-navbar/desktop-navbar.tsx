@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Avatar, Dropdown, MenuProps } from "antd";
+import { useDispatch } from "react-redux";
 
 import { cn } from "../../../utils";
 import { NavLinkType } from "../../../types";
@@ -10,8 +11,8 @@ import AuthLinks from "./auth-links";
 
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
+
 import useUserInfo from "../../../hooks/useUserInfo";
-import { useDispatch } from "react-redux";
 import { logout } from "../../../store/slices/auth-slice";
 
 const DesktopNavbar = () => {

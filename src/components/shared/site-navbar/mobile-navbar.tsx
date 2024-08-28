@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import Logo from "../../ui/logo";
-import SidebarDrawer from "./sidebar-drawer";
 import AuthLinks from "./auth-links";
+import SidebarDrawer from "./sidebar-drawer";
 import useUserInfo from "../../../hooks/useUserInfo";
 
 const MobileNavbar = () => {
