@@ -63,7 +63,10 @@ const EditSheetForm = ({
     const { money, tax, type } = form.getFieldsValue();
     const intrest = (money * tax) / 100;
     const calc = money + (type === SheetType.INCOME ? -intrest : intrest);
-    form.setFieldValue("totalMoney", calc || 0);
+    form.setFieldValue(
+      "totalMoney",
+      calc * (type === SheetType.EXPENSE ? -1 : 1) || 0
+    );
   };
 
   return (
@@ -135,7 +138,11 @@ const EditSheetForm = ({
             name="type"
             label={<span className="text-primary font-medium">Sheet Type</span>}
           >
-            <Select options={BL_SHEET_TYPES} className="w-full" />
+            <Select
+              onChange={handleOnChange}
+              options={BL_SHEET_TYPES}
+              className="w-full"
+            />
           </Form.Item>
         </div>
 
