@@ -6,6 +6,7 @@ import Delete from "./delete";
 import Edit from "./edit";
 import { BLSheet, SheetType } from "../../../../types";
 import { cn, currencyFormate } from "../../../../utils";
+import useBLSheetFilters from "../../../../hooks/useBLSheetFilters";
 
 const columns: TableProps<BLSheet>["columns"] = [
   {
@@ -66,7 +67,7 @@ const columns: TableProps<BLSheet>["columns"] = [
           type === SheetType.EXPENSE ? "text-red-500" : "text-green-500"
         )}
       >
-        {type === SheetType.EXPENSE ? "-" : "+"}
+        {type !== SheetType.EXPENSE && "+"}
         {currencyFormate(totalMoney)}
       </span>
     ),
@@ -90,15 +91,30 @@ interface ShowProps {
   isLoading: boolean;
   data: BLSheet[];
   refetchBLSheets: () => void;
+  totalCount: number;
+  perPage: number;
 }
 
-const Show = ({ isLoading, data, refetchBLSheets }: ShowProps) => {
+const Show = ({
+  isLoading,
+  data,
+  refetchBLSheets,
+  totalCount,
+  perPage,
+}: ShowProps) => {
+  const { currentPage, setFilters } = useBLSheetFilters();
+
   return (
     <Table
       rowKey="_id"
       bordered
       pagination={{
-        pageSize: 8,
+        total: totalCount,
+        current: currentPage || 1,
+        pageSize: perPage,
+        onChange: (page) => {
+          setFilters({ currentPage: page });
+        },
       }}
       columns={[
         ...columns,

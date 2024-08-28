@@ -4,11 +4,12 @@ import { RequestType } from "./../types";
 
 const blSheetService = () => {
   return {
-    getBlSheets: ({ authToken }: RequestType) =>
+    getBlSheets: ({ authToken, params }: RequestType) =>
       request({
         method: "GET",
         url: urls.blSheet.getBlSheets,
         authToken,
+        params,
       }),
 
     createBlSheet: ({ data, authToken }: RequestType) =>
