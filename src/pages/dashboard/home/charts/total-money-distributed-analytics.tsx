@@ -13,7 +13,6 @@ const TotalMoneyDistributedAnalytics = ({ matrics }: CompProps) => {
     data: matrics?.map((m) => {
       return {
         ...m,
-        total: m.total < 0 ? -1 * m.total : m.total,
         label: currencyFormate(m.total),
       };
     }),

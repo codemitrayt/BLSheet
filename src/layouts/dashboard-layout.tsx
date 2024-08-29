@@ -26,7 +26,7 @@ const DashboardLayout = () => {
             <Avatar className="bg-primary">
               {user?.fullName[0].toUpperCase()}
             </Avatar>
-            <span className="text-primary text-sm font-medium">
+            <span className="text-primary text-sm font-medium hidden md:block">
               {user?.fullName}
             </span>
           </div>

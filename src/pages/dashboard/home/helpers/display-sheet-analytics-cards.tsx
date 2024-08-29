@@ -1,5 +1,6 @@
 import SheetAnalyticsCard from "../cards/sheet-analytics-card";
 import { MatricsType } from "../../../../types";
+import { calculateProfilt } from "../../../../utils";
 
 interface CompProps {
   matrics: MatricsType[];
@@ -15,15 +16,15 @@ const DisplaySheetAnalyticsCards = ({ matrics }: CompProps) => {
 
   return (
     <div className="w-full relative">
-      <div className="grid grid-cols-4 gap-5 justify-items-center">
-        {matrics.map((m) => (
-          <SheetAnalyticsCard matrics={m} />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">
+        {matrics.map((m, index) => (
+          <SheetAnalyticsCard matrics={m} key={index} />
         ))}
 
         <SheetAnalyticsCard
           matrics={{
             type: "profit",
-            total: matrics.reduce((r, b) => r + b.total, 0),
+            total: calculateProfilt(matrics),
           }}
         />
       </div>

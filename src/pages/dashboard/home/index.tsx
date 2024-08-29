@@ -43,7 +43,7 @@ const DashboardHomePage = () => {
   return (
     <div className="h-full overflow-auto">
       <DisplaySheetAnalyticsCards matrics={matrics} />
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-6">
         <TotalMoneyDistributedAnalytics matrics={matrics} />
       </div>
     </div>

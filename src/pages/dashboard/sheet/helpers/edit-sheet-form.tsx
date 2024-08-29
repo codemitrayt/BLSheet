@@ -62,11 +62,8 @@ const EditSheetForm = ({
   const handleOnChange = () => {
     const { money, tax, type } = form.getFieldsValue();
     const intrest = (money * tax) / 100;
-    const calc = money + (type === SheetType.INCOME ? -intrest : intrest);
-    form.setFieldValue(
-      "totalMoney",
-      calc * (type === SheetType.EXPENSE ? -1 : 1) || 0
-    );
+    const calc = money + (type === SheetType.EXPENSE ? intrest : -intrest);
+    form.setFieldValue("totalMoney", calc);
   };
 
   return (

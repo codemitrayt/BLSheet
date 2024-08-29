@@ -64,10 +64,9 @@ const columns: TableProps<BLSheet>["columns"] = [
     render: (totalMoney, { type }) => (
       <span
         className={cn(
-          type === SheetType.EXPENSE ? "text-red-500" : "text-green-500"
+          type === SheetType.INCOME ? "text-green-500" : "text-red-500"
         )}
       >
-        {type !== SheetType.EXPENSE && "+"}
         {currencyFormate(totalMoney)}
       </span>
     ),
