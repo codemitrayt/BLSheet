@@ -7,9 +7,7 @@ import { VscGraphLine } from "react-icons/vsc";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 
 interface CompProps {
-  isLoading: boolean;
   matrics: MatricsType;
-  className?: string;
 }
 
 const style = {
@@ -26,16 +24,8 @@ const Icons = {
   profit: <RiMoneyRupeeCircleLine className="text-blue-500 size-5" />,
 };
 
-const SheetAnalyticsCard = ({ isLoading, matrics }: CompProps) => {
+const SheetAnalyticsCard = ({ matrics }: CompProps) => {
   const { total, type } = matrics;
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center w-full h-[80px]">
-        <Spin />
-      </div>
-    );
-  }
 
   return (
     <div
