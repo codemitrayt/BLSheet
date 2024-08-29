@@ -15,8 +15,6 @@ const VerifyLayout = () => {
   const { isAuth, authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
 
-  if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
-
   const { isLoading } = useQuery({
     queryKey: ["verify-user"],
     queryFn: () => authService().self({ data: { authToken } }),
@@ -27,6 +25,8 @@ const VerifyLayout = () => {
     },
     retry: false,
   });
+
+  if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
 
   if (isLoading)
     return (

@@ -1,4 +1,3 @@
-import { Spin } from "antd";
 import { MatricsType } from "../../../../types";
 import { cn, currencyFormate } from "../../../../utils";
 
