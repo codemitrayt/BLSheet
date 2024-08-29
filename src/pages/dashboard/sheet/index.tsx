@@ -50,9 +50,9 @@ const DashboardSheetPage = () => {
   });
 
   return (
-    <div className="relative">
+    <div className="relative overflow-y-auto h-full">
       <div className="flex items-center justify-between space-x-4">
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center md:justify-center space-y-1 md:space-x-4 flex-col md:flex-row">
           <Input.Search
             value={localSearch}
             placeholder="search sheet"
