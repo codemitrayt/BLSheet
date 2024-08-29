@@ -18,7 +18,7 @@ const MobilDashboardSidebar = () => {
             to={link.path}
             className={({ isActive }) =>
               cn(
-                "flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg",
+                "flex items-center px-2 py-1 hover:bg-secondary transition-all rounded-lg",
                 isActive && "bg-secondary"
               )
             }

@@ -9,7 +9,7 @@ const DesktopDashboardSidebar = () => {
     <div className="hidden lg:block">
       <div className="flex items-center justify-start px-6">
         <Link to="/">
-          <Logo className="text-white text-4xl" hasText={true} />
+          <Logo className="text-white text-2xl" hasText={true} />
         </Link>
       </div>
 

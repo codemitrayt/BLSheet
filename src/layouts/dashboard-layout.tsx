@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { Avatar } from "antd";
+import { Avatar, Input } from "antd";
 
 import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
 import useUserInfo from "../hooks/useUserInfo";
@@ -10,10 +10,18 @@ const DashboardLayout = () => {
   if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
 
   return (
-    <div className="min-h-screen flex flex-row">
+    <div className="h-screen flex flex-row">
       <DashboardSidebar />
-      <div className="flex flex-col py-3 px-6 w-[calc(100vw_-100px)] lg:w-[calc(100vw_-300px)]">
-        <div className="h-12 flex items-center justify-end space-x-6">
+
+      <div className="flex flex-col w-[calc(100vw_-60px)] lg:w-[calc(100vw_-250px)]">
+        {/* Header */}
+        <div className="h-12 flex items-center justify-between px-6 space-x-6 border-b">
+          <div>
+            <Input.Search
+              className="max-w-sm sm:w-[300px]"
+              placeholder="search sheets"
+            />
+          </div>
           <div className="flex items-center justify-center space-x-1">
             <Avatar className="bg-primary">
               {user?.fullName[0].toUpperCase()}
@@ -23,7 +31,9 @@ const DashboardLayout = () => {
             </span>
           </div>
         </div>
-        <div className="h-[calc(100vh_-100px)] bg-white border rounded-lg overflow-auto p-5 shadow-sm">
+
+        {/* content */}
+        <div className="h-[calc(100vh_-48px)] p-5 bg-white">
           <Outlet />
         </div>
       </div>
