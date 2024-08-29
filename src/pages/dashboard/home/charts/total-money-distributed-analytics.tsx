@@ -1,42 +1,23 @@
-import { useQuery } from "react-query";
 import { Spin } from "antd";
-import { useState } from "react";
 import { Pie } from "@ant-design/plots";
 
-import blSheetService from "../../../../services/bl-sheet-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
-import useErrorHandler from "../../../../hooks/useErrorHandler";
-import { SheetType } from "../../../../types";
+import { MatricsType } from "../../../../types";
+import { currencyFormate } from "../../../../utils";
 
-interface MatricsType {
-  type: SheetType;
-  total: number;
+interface CompProps {
+  isLoading: boolean;
+  matrics: MatricsType[];
 }
 
-const TotalMoneyDistributedAnalytics = () => {
-  const { authToken } = useUserInfo();
-  const { handleError } = useErrorHandler();
-  const [matrics, setMatrics] = useState<MatricsType[]>();
-
-  const { isLoading } = useQuery({
-    queryKey: ["totalMoneyDistributed"],
-    queryFn: () =>
-      blSheetService().totalMoneyDistributedAnalytics({ authToken }),
-    onSuccess: ({ data }) => {
-      const matrics = data?.message?.matrics;
-      setMatrics(matrics);
-    },
-    onError: (error) => {
-      console.error("ERROR :: total money distributed analytics ::", error);
-      handleError(error);
-    },
-    retry: false,
-  });
-
+const TotalMoneyDistributedAnalytics = ({ isLoading, matrics }: CompProps) => {
   const config = {
     title: "Money Distribution",
     data: matrics?.map((m) => {
-      return { ...m, total: m.total < 0 ? -1 * m.total : m.total };
+      return {
+        ...m,
+        total: m.total < 0 ? -1 * m.total : m.total,
+        label: currencyFormate(m.total),
+      };
     }),
     angleField: "total",
     colorField: "type",
@@ -44,7 +25,7 @@ const TotalMoneyDistributedAnalytics = () => {
       title: "type",
     },
     label: {
-      text: "total",
+      text: "label",
       style: {
         fontWeight: "bold",
       },
