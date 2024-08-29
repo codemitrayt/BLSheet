@@ -68,3 +68,8 @@ export interface BLSheetFilter {
   currentPage?: number;
   perPage?: number;
 }
+
+export interface MatricsType {
+  type: SheetType | "profit";
+  total: number;
+}
