@@ -21,6 +21,7 @@ const urls: URLType = {
     getBlSheets: "/blSheet/getBLSheets",
     deleteBlSheet: "/blSheet/deleteBLSheet",
     editBlSheet: "/blSheet/editBLSheet",
+    totalMoneyDistributedAnalytics: "/blSheet/totalMoneyDistributedAnalytics",
   },
 };
 
