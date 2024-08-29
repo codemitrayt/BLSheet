@@ -108,7 +108,14 @@ const UserDropdown = () => {
       placement="bottomRight"
       className="cursor-pointer"
     >
-      <Avatar className="bg-primary">{user?.fullName[0].toUpperCase()}</Avatar>
+      <div className="flex items-center justify-center space-x-1">
+        <Avatar className="bg-primary">
+          {user?.fullName[0].toUpperCase()}
+        </Avatar>
+        <span className="text-primary text-sm font-medium">
+          {user?.fullName}
+        </span>
+      </div>
     </Dropdown>
   );
 };
