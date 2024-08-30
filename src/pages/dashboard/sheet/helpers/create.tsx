@@ -4,7 +4,7 @@ import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
 
-import CreateSheetForm from "./create-sheet-form";
+import CreateSheetForm from "../forms/create-sheet-form";
 
 interface CreateSheetProps {
   refetchBLSheet: () => void;

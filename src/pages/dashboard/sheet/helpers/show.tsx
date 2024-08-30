@@ -7,6 +7,7 @@ import Edit from "./edit";
 import { BLSheet, SheetType } from "../../../../types";
 import { cn, currencyFormate } from "../../../../utils";
 import useBLSheetFilters from "../../../../hooks/useBLSheetFilters";
+import SetNotification from "./set-notification";
 
 const columns: TableProps<BLSheet>["columns"] = [
   {
@@ -124,6 +125,7 @@ const Show = ({
             <div className="flex items-center justify-center space-x-2">
               <Edit sheet={sheet} refetchBLSheets={refetchBLSheets} />
               <Delete objectId={sheet._id!} refetchBLSheets={refetchBLSheets} />
+              <SetNotification />
             </div>
           ),
         },

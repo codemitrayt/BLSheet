@@ -4,6 +4,7 @@ import useUserInfo from "../../../../hooks/useUserInfo";
 import { TbTrash } from "react-icons/tb";
 import { RiLoader4Line } from "react-icons/ri";
 import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
+import { Tooltip } from "antd";
 
 interface DeleteProps {
   objectId: string;
@@ -42,9 +43,11 @@ const Delete = ({ objectId, refetchBLSheets }: DeleteProps) => {
       }
       isLoading={isLoading}
     >
-      <button className="text-red-500 hover:text-red-500/80 transition">
-        {isLoading ? <RiLoader4Line className="animate-spin" /> : <TbTrash />}
-      </button>
+      <Tooltip title="Delete sheet">
+        <button className="text-red-500 hover:text-red-500/80 transition">
+          {isLoading ? <RiLoader4Line className="animate-spin" /> : <TbTrash />}
+        </button>
+      </Tooltip>
     </ConfirmationPopUp>
   );
 };

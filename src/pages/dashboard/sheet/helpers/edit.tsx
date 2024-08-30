@@ -1,10 +1,10 @@
 import { TbEdit } from "react-icons/tb";
 import { useState } from "react";
-import { Drawer } from "antd";
+import { Drawer, Tooltip } from "antd";
 
 import { LuChevronRightCircle } from "react-icons/lu";
 
-import EditSheetForm from "./edit-sheet-form";
+import EditSheetForm from "../forms/edit-sheet-form";
 import { BLSheet } from "../../../../types";
 
 interface EditProps {
@@ -19,12 +19,14 @@ const Edit = ({ sheet, refetchBLSheets }: EditProps) => {
 
   return (
     <div>
-      <button
-        onClick={onOpenDrawer}
-        className="text-emerald-500 flex items-center justify-center hover:text-emerald-500/80 transition"
-      >
-        <TbEdit />
-      </button>
+      <Tooltip title="Edit sheet">
+        <button
+          onClick={onOpenDrawer}
+          className="text-emerald-500 flex items-center justify-center hover:text-emerald-500/80 transition"
+        >
+          <TbEdit />
+        </button>
+      </Tooltip>
 
       <Drawer
         width={450}
