@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { Spin } from "antd";
 
 import blSheetService from "../../../services/bl-sheet-service";
 
@@ -10,7 +11,7 @@ import DisplaySheetAnalyticsCards from "./helpers/display-sheet-analytics-cards"
 import TotalMoneyDistributedAnalytics from "./charts/total-money-distributed-analytics";
 
 import { MatricsType } from "../../../types";
-import { Spin } from "antd";
+import { calculateProfilt } from "../../../utils";
 
 const DashboardHomePage = () => {
   const { authToken } = useUserInfo();
@@ -44,7 +45,12 @@ const DashboardHomePage = () => {
     <div className="h-full overflow-auto">
       <DisplaySheetAnalyticsCards matrics={matrics} />
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-6">
-        <TotalMoneyDistributedAnalytics matrics={matrics} />
+        <TotalMoneyDistributedAnalytics
+          matrics={[
+            ...matrics,
+            { type: "profit", total: calculateProfilt(matrics) },
+          ]}
+        />
       </div>
     </div>
   );
