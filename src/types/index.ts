@@ -67,6 +67,8 @@ export interface BLSheetFilter {
   search?: string;
   currentPage?: number;
   perPage?: number;
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface MatricsType {

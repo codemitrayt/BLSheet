@@ -14,24 +14,23 @@ function useBLSheetFilters() {
   const perPage = searchParams.get("perPage")
     ? parseInt(searchParams.get("perPage") as string)
     : undefined;
+  const startDate = searchParams.get("startDate") || undefined;
+  const endDate = searchParams.get("endDate") || undefined;
 
   const setFilters = useCallback((filters: BLSheetFilter) => {
     setSearchParams((params) => {
-      if (filters.search !== undefined) {
-        params.set("search", filters.search);
-      }
+      if (filters.search !== undefined) params.set("search", filters.search);
 
-      if (filters.type) {
-        params.set("type", filters.type);
-      }
+      if (filters.type) params.set("type", filters.type);
 
-      if (filters.perPage) {
-        params.set("perPage", filters.perPage.toString());
-      }
-
-      if (filters.currentPage) {
+      if (filters.currentPage)
         params.set("currentPage", filters.currentPage.toString());
-      }
+
+      if (filters.startDate) params.set("startDate", filters.startDate);
+      else params.delete("startDate");
+
+      if (filters.endDate) params.set("endDate", filters.endDate);
+      else params.delete("endDate");
 
       return params;
     });
@@ -42,6 +41,8 @@ function useBLSheetFilters() {
     type,
     perPage,
     currentPage,
+    startDate,
+    endDate,
     setFilters,
   };
 }

@@ -1,5 +1,4 @@
-import { Input, Select } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 import Show from "./helpers/show";
@@ -11,32 +10,35 @@ import useUserInfo from "../../../hooks/useUserInfo";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 import useBLSheetFilters from "../../../hooks/useBLSheetFilters";
 
-import { BLSheet, SheetType } from "../../../types";
-import { BL_SHEET_TYPES } from "../../../constants";
-import { useDebounce } from "../../../hooks/useDebounce";
+import { BLSheet } from "../../../types";
+import BLSheetFilters from "../../../components/bl-sheet-filters";
 
 const PER_PAGE_SIZE = 9;
 
 const DashboardSheetPage = () => {
-  const { search, type, setFilters, currentPage } = useBLSheetFilters();
+  const { search, type, currentPage, startDate, endDate } = useBLSheetFilters();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
 
   const [totalCount, setTotalCount] = useState<number>(0);
   const [sheets, setSheets] = useState<BLSheet[]>([]);
-  const [localSearch, setLocalSearch] = useState<string | undefined>(search);
-  const debouncedSearch = useDebounce(localSearch);
-
-  useEffect(() => {
-    setFilters({ search: debouncedSearch });
-  }, [debouncedSearch]);
 
   const { isLoading, refetch: refetchBLSheets } = useQuery({
-    queryKey: ["get-bl-sheet", { search, type, currentPage }],
+    queryKey: [
+      "get-bl-sheet",
+      { search, type, currentPage, startDate, endDate },
+    ],
     queryFn: () =>
       blSheetService().getBlSheets({
         authToken,
-        params: { search, type, currentPage, perPage: PER_PAGE_SIZE },
+        params: {
+          search,
+          type,
+          currentPage,
+          perPage: PER_PAGE_SIZE,
+          startDate,
+          endDate,
+        },
       }),
     onSuccess: ({ data }) => {
       setSheets(data?.message?.blSheets || []);
@@ -51,25 +53,11 @@ const DashboardSheetPage = () => {
 
   return (
     <div className="relative overflow-y-auto h-full">
-      <div className="flex items-center justify-between space-x-4">
-        <div className="flex items-center md:justify-center space-y-1 md:space-x-4 flex-col md:flex-row">
-          <Input.Search
-            value={localSearch}
-            placeholder="search sheet"
-            className="max-w-sm"
-            onChange={(e) => setLocalSearch(e.target.value)}
-          />
-          <Select
-            defaultValue={type as SheetType}
-            options={[...BL_SHEET_TYPES, { label: "All", value: "all" }]}
-            placeholder="Filter by type"
-            className="w-[200px]"
-            onChange={(value: SheetType | "all") => setFilters({ type: value })}
-          />
-        </div>
-
+      <div className="flex items-center justify-between space-x-4 lg:space-x-12">
+        <BLSheetFilters />
         <CreateSheet refetchBLSheet={refetchBLSheets} />
       </div>
+
       <div className="mt-6 overflow-x-auto">
         <Show
           totalCount={totalCount}
