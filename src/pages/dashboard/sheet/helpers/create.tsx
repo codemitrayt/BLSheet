@@ -5,15 +5,26 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
 
 import CreateSheetForm from "../forms/create-sheet-form";
+import { useSearchParams } from "react-router-dom";
 
 interface CreateSheetProps {
   refetchBLSheet: () => void;
 }
 
 const CreateSheet = ({ refetchBLSheet }: CreateSheetProps) => {
-  const [drawerState, setDrawerState] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [drawerState, setDrawerState] = useState(
+    searchParams.get("isCreate") ? true : false
+  );
+
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
+  const clearParams = () => {
+    setSearchParams((params) => {
+      params.delete("isCreate");
+      return params;
+    });
+  };
 
   return (
     <div className="relative w-full md:w-fit">
@@ -35,6 +46,7 @@ const CreateSheet = ({ refetchBLSheet }: CreateSheetProps) => {
         <CreateSheetForm
           refetchBLSheet={refetchBLSheet}
           onCloseDrawer={onCloseDrawer}
+          clearParams={clearParams}
         />
       </Drawer>
     </div>

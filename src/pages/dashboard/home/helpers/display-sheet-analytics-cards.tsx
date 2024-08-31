@@ -10,7 +10,9 @@ const DisplaySheetAnalyticsCards = ({ matrics }: CompProps) => {
   if (!matrics.length)
     return (
       <div className="flex items-center justify-center py-4">
-        <p className="text-primary">Matrics not found! Please create sheet.</p>
+        <p className="text-primary text-sm font-medium">
+          Matrics not found! Please create sheet.
+        </p>
       </div>
     );
 

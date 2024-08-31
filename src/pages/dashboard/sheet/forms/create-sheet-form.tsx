@@ -8,6 +8,7 @@ import {
   Select,
 } from "antd";
 import { useMutation } from "react-query";
+import { SetURLSearchParams, URLSearchParamsInit } from "react-router-dom";
 
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
@@ -20,11 +21,13 @@ import { BLSheet, SheetType } from "../../../../types";
 interface CreateSheetFormProps {
   refetchBLSheet: () => void;
   onCloseDrawer: () => void;
+  clearParams: () => void;
 }
 
 const CreateSheetForm = ({
   refetchBLSheet,
   onCloseDrawer,
+  clearParams,
 }: CreateSheetFormProps) => {
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
@@ -38,6 +41,7 @@ const CreateSheetForm = ({
       refetchBLSheet();
       onCloseDrawer();
       form.resetFields();
+      clearParams();
     },
     onError: (error) => {
       console.error("ERROR :: create bl sheet ::", error);
