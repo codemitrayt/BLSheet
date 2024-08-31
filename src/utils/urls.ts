@@ -14,6 +14,7 @@ const urls: URLType = {
     self: "/auth/self",
     createPassword: "/auth/createPassword",
     forgotPassword: "/auth/forgotPassword",
+    resetPassword: "/auth/resetPassword",
     sendVerificationEmailForRegistration:
       "/auth/sendVerificationEmailForRegistration",
   },

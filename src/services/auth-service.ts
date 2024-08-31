@@ -32,11 +32,19 @@ const authService = () => {
         authToken,
         url: urls.auth.self,
       }),
+
     forgotPassword: ({ data }: RequestType) =>
       request({
         method: "POST",
         data,
         url: urls.auth.forgotPassword,
+      }),
+
+    resetPassword: ({ data }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.auth.resetPassword,
       }),
   };
 };
