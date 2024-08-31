@@ -114,6 +114,13 @@ const SignInPage = () => {
             Sign up
           </Link>
         </p>
+
+        <Link
+          to="/auth/forgot-password"
+          className="text-secondary hover:text-primary transition mt-4 text-sm hover:underline"
+        >
+          Forgot password?
+        </Link>
       </div>
     </div>
   );

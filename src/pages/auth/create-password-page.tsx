@@ -10,6 +10,7 @@ import { CreatePasswordBody } from "../../types";
 import { setAuth } from "../../store/slices/auth-slice";
 
 const CreatePasswordPage = () => {
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const { handleError } = useErrorHandler();
   const [search] = useSearchParams();
@@ -39,11 +40,26 @@ const CreatePasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex items-center w-[300px] sm:w-[500px] bg-white p-6 rounded-lg">
+    <div className="flex items-center justify-center lg:justify-end relative min-h-screen">
+      <div className="hidden lg:block">
+        <div className="w-[843px] h-[843px] rounded-full bg-secondary absolute z-10 -top-[206px] -left-[342px]" />
+        <div className="absolute left-[5%] top-[15%] z-10">
+          <h1 className="text-[40px] w-[325px] font-light text-white">
+            Manage Your <br /> Income <br />
+            Expence <br /> Investment
+          </h1>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center md:w-[50%] flex-col bg-white p-6 lg:bg-transparent rounded-lg">
+        <div className="flex items-center justify-center flex-col space-y-2">
+          <h1 className="text-2xl font-medium text-primary">Create Password</h1>
+        </div>
+
         <Form
-          className="w-full"
           layout="vertical"
+          form={form}
+          className="w-[300px] mt-6"
           onFinish={(value: CreatePasswordBody) => handleSubmit(value)}
         >
           <Form.Item
@@ -70,14 +86,16 @@ const CreatePasswordPage = () => {
             <Input.Password placeholder="Enter plassword" />
           </Form.Item>
 
-          <Button
-            className="ring-0 px-6 rounded-full w-full"
-            type="primary"
-            htmlType="submit"
-            loading={isLoading}
-          >
-            Create Password
-          </Button>
+          <div className="flex items-center justify-center w-full">
+            <Button
+              type="primary"
+              className="w-full px-6 ring-0 rounded-full"
+              htmlType="submit"
+              loading={isLoading}
+            >
+              Create Password
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

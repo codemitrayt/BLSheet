@@ -21,7 +21,10 @@ const SignUpPage = () => {
       data: SendVerificationEmailForRegistrationBody;
     }) => authService().sendVerificationEmailForRegistration({ data }),
     onSuccess: () => {
-      navigate("/auth/email-verification");
+      const url = `/auth/email-verification?email=${form.getFieldValue(
+        "email"
+      )}`;
+      navigate(url);
     },
     onError: (error) => {
       console.log(
