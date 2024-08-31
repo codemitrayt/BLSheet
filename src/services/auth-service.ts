@@ -25,10 +25,11 @@ const authService = () => {
         url: urls.auth.login,
       }),
 
-    self: ({ data }: RequestType) =>
+    self: ({ data, authToken }: RequestType) =>
       request({
         method: "POST",
         data,
+        authToken,
         url: urls.auth.self,
       }),
     forgotPassword: ({ data }: RequestType) =>

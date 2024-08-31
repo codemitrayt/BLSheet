@@ -17,7 +17,7 @@ const VerifyLayout = () => {
 
   const { isLoading } = useQuery({
     queryKey: ["verify-user"],
-    queryFn: () => authService().self({ data: { authToken } }),
+    queryFn: () => authService().self({ data: { authToken }, authToken }),
     onError: (error) => {
       handleError(error);
       dispatch(logout());
