@@ -12,6 +12,7 @@ import TotalMoneyDistributedAnalytics from "./charts/total-money-distributed-ana
 
 import { MatricsType } from "../../../types";
 import { calculateProfilt } from "../../../utils";
+import LatestCreatedSheets from "./helpers/latest-created-sheets";
 
 const DashboardHomePage = () => {
   const { authToken } = useUserInfo();
@@ -44,13 +45,14 @@ const DashboardHomePage = () => {
   return (
     <div className="h-full overflow-auto">
       <DisplaySheetAnalyticsCards matrics={matrics} />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-6">
         <TotalMoneyDistributedAnalytics
           matrics={[
             ...matrics,
             { type: "profit", total: calculateProfilt(matrics) },
           ]}
         />
+        <LatestCreatedSheets className="lg:col-span-2" />
       </div>
     </div>
   );
