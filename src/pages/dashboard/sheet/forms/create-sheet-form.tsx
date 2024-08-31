@@ -8,7 +8,6 @@ import {
   Select,
 } from "antd";
 import { useMutation } from "react-query";
-import { SetURLSearchParams, URLSearchParamsInit } from "react-router-dom";
 
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
