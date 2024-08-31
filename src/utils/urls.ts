@@ -10,11 +10,12 @@ const urls: URLType = {
     developmentBaseUrl: "http://localhost:5500/api/v1",
   },
   auth: {
-    sendVerificationEmailForRegistration:
-      "/auth/sendVerificationEmailForRegistration",
-    createPassword: "/auth/createPassword",
     login: "/auth/login",
     self: "/auth/self",
+    createPassword: "/auth/createPassword",
+    forgotPassword: "/auth/forgotPassword",
+    sendVerificationEmailForRegistration:
+      "/auth/sendVerificationEmailForRegistration",
   },
   blSheet: {
     createBlSheet: "blSheet/createBLSheet",
