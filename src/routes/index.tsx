@@ -18,6 +18,7 @@ import SignInPage from "../pages/auth/sign-in-page";
 import CreatePasswordPage from "../pages/auth/create-password-page";
 import EmailVerificationPage from "../pages/auth/email-verification-page";
 import ForgotPasswordPage from "../pages/auth/forgot-password-page";
+import ResetPasswordPage from "../pages/auth/reset-password-page";
 
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
@@ -42,6 +43,7 @@ const Router = createBrowserRouter(
         <Route path="create-password" element={<CreatePasswordPage />} />
         <Route path="email-verification" element={<EmailVerificationPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="reset-password" element={<ResetPasswordPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
