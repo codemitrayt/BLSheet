@@ -16,9 +16,9 @@ const CreateSheet = ({ refetchBLSheet }: CreateSheetProps) => {
   const onOpenDrawer = () => setDrawerState(true);
 
   return (
-    <div className="relative">
+    <div className="relative w-full md:w-fit">
       <Button
-        className="ring-0 px-6 rounded-full"
+        className="ring-0 px-6 rounded-full w-full md:w-fit"
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}

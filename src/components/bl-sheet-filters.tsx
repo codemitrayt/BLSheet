@@ -23,7 +23,7 @@ const BLSheetFilters = () => {
   }, [debouncedSearch]);
 
   return (
-    <div className="flex items-center justify-center w-full space-x-6 p-2">
+    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 items-center justify-center w-full md:space-x-6">
       <Input.Search
         value={localSearch}
         placeholder="search sheet"
@@ -34,7 +34,7 @@ const BLSheetFilters = () => {
         className="w-full"
         defaultValue={type as SheetType}
         options={[...BL_SHEET_TYPES, { label: "All", value: "all" }]}
-        placeholder="Filter by type"
+        placeholder="filter by type"
         onChange={(value: SheetType | "all") =>
           setFilters({ type: value, startDate, endDate })
         }

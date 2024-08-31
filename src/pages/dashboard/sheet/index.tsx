@@ -53,7 +53,7 @@ const DashboardSheetPage = () => {
 
   return (
     <div className="relative overflow-y-auto h-full">
-      <div className="flex items-center justify-between space-x-4 lg:space-x-12">
+      <div className="bg-gray-200/50 border shadow-sm rounded-lg p-3 flex items-center flex-col md:flex-row md:justify-between space-y-2 md:space-x-12 md:space-y-0">
         <BLSheetFilters />
         <CreateSheet refetchBLSheet={refetchBLSheets} />
       </div>
