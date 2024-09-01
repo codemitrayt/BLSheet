@@ -22,6 +22,7 @@ import ResetPasswordPage from "../pages/auth/reset-password-page";
 
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
+import DashboardTodoPage from "../pages/dashboard/todo";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,7 @@ const Router = createBrowserRouter(
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="home" element={<DashboardHomePage />} />
           <Route path="sheet" element={<DashboardSheetPage />} />
+          <Route path="todo" element={<DashboardTodoPage />} />
         </Route>
       </Route>
 
