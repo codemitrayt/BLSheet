@@ -26,7 +26,7 @@ const BLSheetFilters = () => {
     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 items-center justify-center w-full md:space-x-6">
       <Input.Search
         value={localSearch}
-        placeholder="search sheet"
+        placeholder="Search"
         onChange={(e) => setLocalSearch(e.target.value)}
         className="w-full"
       />
@@ -34,7 +34,7 @@ const BLSheetFilters = () => {
         className="w-full"
         defaultValue={type as SheetType}
         options={[...BL_SHEET_TYPES, { label: "All", value: "all" }]}
-        placeholder="filter by type"
+        placeholder="Sheet Type"
         onChange={(value: SheetType | "all") =>
           setFilters({ type: value, startDate, endDate })
         }
@@ -48,7 +48,7 @@ const BLSheetFilters = () => {
           endDate ? dayjs(dateformat(endDate, "dd/mm/yyyy"), dateFormat) : null,
         ]}
         format={dateFormat}
-        placeholder={["start date", "end date"]}
+        placeholder={["Start date", "End date"]}
         onChange={(dates) => {
           if (dates)
             setFilters({
