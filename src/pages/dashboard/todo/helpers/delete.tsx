@@ -1,6 +1,5 @@
 import { useMutation } from "react-query";
 import useUserInfo from "../../../../hooks/useUserInfo";
-import { Todo } from "../../../../types";
 import todoService from "../../../../services/todo-service";
 import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
 import { TbTrash } from "react-icons/tb";
