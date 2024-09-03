@@ -25,6 +25,9 @@ const urls: URLType = {
     editBlSheet: "/blSheet/editBLSheet",
     totalMoneyDistributedAnalytics: "/blSheet/totalMoneyDistributedAnalytics",
   },
+  todo: {
+    getTodoList: "/todo/getTodoList",
+  },
 };
 
 export default urls;
