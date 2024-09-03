@@ -75,3 +75,24 @@ export interface MatricsType {
   type: SheetType | "profit";
   total: number;
 }
+
+export enum TodoStatus {
+  COMPLETED = "completed",
+  IN_PROGRESS = "in_progress",
+  PENDING = "pending",
+}
+
+export enum TodoLevel {
+  EASY = "easy",
+  MEDIUM = "medium",
+  HARD = "hard",
+}
+
+export interface Todo {
+  _id: string;
+  title: string;
+  description: string;
+  status: TodoStatus;
+  userId: string;
+  level: TodoLevel;
+}
