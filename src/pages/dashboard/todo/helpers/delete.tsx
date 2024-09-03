@@ -1,10 +1,10 @@
 import { useMutation } from "react-query";
-import useUserInfo from "../../../../hooks/useUserInfo";
-import todoService from "../../../../services/todo-service";
-import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
 import { TbTrash } from "react-icons/tb";
 import { Tooltip } from "antd";
 import { RiLoader4Line } from "react-icons/ri";
+import useUserInfo from "../../../../hooks/useUserInfo";
+import todoService from "../../../../services/todo-service";
+import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
 
 interface TodoCardProps {
   objectId: string;
