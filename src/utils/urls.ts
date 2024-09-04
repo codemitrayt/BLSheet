@@ -27,6 +27,7 @@ const urls: URLType = {
   },
   todo: {
     getTodoList: "/todo/getTodoList",
+    deleteTodo: "/todo/deleteTodo",
   },
 };
 

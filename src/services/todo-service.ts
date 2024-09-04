@@ -10,6 +10,16 @@ const todoService = () => {
         url: urls.todo.getTodoList,
         authToken,
       }),
+
+    deleteTodo: ({ data, authToken, params }: RequestType) => {
+      return request({
+        method: "DELETE",
+        data,
+        url: urls.todo.deleteTodo,
+        params,
+        authToken,
+      });
+    },
   };
 };
 

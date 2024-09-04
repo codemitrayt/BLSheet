@@ -2,13 +2,15 @@ import { Tag } from "antd";
 import { RiProgress1Line } from "react-icons/ri";
 
 import { Todo } from "../../../../types";
+import DeleteTodo from "../helpers/delete";
 
 interface TodoCardProps {
   todo: Todo;
+
   refetchTodoList: () => {};
 }
 
-const TodoCard = ({ todo }: TodoCardProps) => {
+const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
   return (
     <div className="bg-card p-3 space-y-2 rounded-lg shadow-lg transition-transform transform border hover:bg-gray-100 cursor-pointer">
       <div className="flex items-center space-x-1">
@@ -26,7 +28,9 @@ const TodoCard = ({ todo }: TodoCardProps) => {
         <Tag color="red">{todo.status}</Tag>
       </div>
 
-      <div className="flex items-center justify-end">Delete</div>
+      <div className="flex items-center justify-end">
+        <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
+      </div>
     </div>
   );
 };

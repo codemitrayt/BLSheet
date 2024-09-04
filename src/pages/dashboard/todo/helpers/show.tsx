@@ -1,5 +1,5 @@
-import { Todo } from "../../../../types";
 import TodoCard from "../cards/todo-card";
+import { Todo } from "../../../../types";
 
 interface ShowTodoProps {
   todoList: Todo[];
