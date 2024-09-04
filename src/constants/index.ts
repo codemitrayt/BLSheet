@@ -16,3 +16,15 @@ export const BL_SHEET_TYPES = [
   { label: "Expense", value: "expense" },
   { label: "Investment", value: "investment" },
 ];
+
+export const TODO_LEVEL_COLOR = {
+  easy: "green",
+  medium: "orange",
+  hard: "red",
+};
+
+export const TODO_STATUS_COLOR = {
+  pending: "red",
+  in_progress: "orange",
+  completed: "green",
+};
