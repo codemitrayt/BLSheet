@@ -22,3 +22,9 @@ export const calculateProfilt = (matrics: MatricsType[]) => {
     .reduce((acc, curr) => acc + curr.total, 0);
   return income - expense;
 };
+
+export function strSlice(str: string, num: number = 250): string {
+  let length = str.length;
+  if (length > num) return str.slice(0, num) + "...";
+  return str;
+}

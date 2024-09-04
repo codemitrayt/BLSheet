@@ -95,4 +95,5 @@ export interface Todo {
   status: TodoStatus;
   userId: string;
   level: TodoLevel;
+  createdAt: string;
 }
