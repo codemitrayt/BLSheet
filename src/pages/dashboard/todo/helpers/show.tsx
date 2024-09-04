@@ -8,11 +8,11 @@ interface ShowTodoProps {
 
 const ShowTodoList = ({ todoList, refetchTodoList }: ShowTodoProps) => {
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <>
       {todoList.map((todo) => (
         <TodoCard todo={todo} refetchTodoList={refetchTodoList} />
       ))}
-    </div>
+    </>
   );
 };
 
