@@ -1,32 +1,25 @@
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-} from "antd";
-
+import { Button, Form, Input, Select } from "antd";
 import { useMutation } from "react-query";
-
 import { useEffect } from "react";
 
 import { Todo } from "../../../../types";
-import { TODO_CARD_LEVEL_TYPES } from "../../../../constants"
-import { TODO_CARD_STATUS_TYPES } from "../../../../constants"
+import { TODO_LEVELS, TODO_STATUS } from "../../../../constants";
+
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import todoService from "../../../../services/todo-service";
 
-interface EditTodoFormProps {
-  refetchTodoCard: () => void;
-  onCloseDrawer: () => void;
+interface UpdateTodoFormProps {
   todo: Todo;
+  refetchTodoList: () => void;
+  onCloseDrawer: () => void;
 }
 
-const UpdateTodoCard = ({
-  refetchTodoCard,
+const UpdateTodoForm = ({
+  refetchTodoList,
   onCloseDrawer,
   todo,
-}: EditTodoFormProps) => {
+}: UpdateTodoFormProps) => {
   const [form] = Form.useForm();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
@@ -35,15 +28,16 @@ const UpdateTodoCard = ({
     form.setFieldsValue({ ...todo });
   }, [todo]);
 
-  const { isLoading, mutate: createTodoCard } = useMutation({
-    mutationKey: ["update-todo-card"],
+  const { isLoading, mutate: updateTodo } = useMutation({
+    mutationKey: ["update-todo"],
     mutationFn: ({ data }: { data: Todo }) =>
       todoService().updateTodoList({
         data,
         authToken,
+        params: { objectId: todo._id },
       }),
     onSuccess: () => {
-      refetchTodoCard();
+      refetchTodoList();
       onCloseDrawer();
       form.resetFields();
     },
@@ -59,7 +53,7 @@ const UpdateTodoCard = ({
       <Form
         form={form}
         layout="vertical"
-        onFinish={( data: Todo ) => createTodoCard({ data })}
+        onFinish={(data: Todo) => updateTodo({ data })}
       >
         <Form.Item
           name="title"
@@ -80,28 +74,22 @@ const UpdateTodoCard = ({
         </Form.Item>
 
         <div className="flex items-center space-x-8">
-        <Form.Item
+          <Form.Item
             className="w-full"
             name="level"
             label={<span className="text-primary font-medium">Todo Level</span>}
           >
-            <Select
-              // onChange={handleOnChange}
-              options={TODO_CARD_LEVEL_TYPES}
-              className="w-full"
-            />
+            <Select options={TODO_LEVELS} className="w-full" />
           </Form.Item>
 
           <Form.Item
             className="w-full"
             name="status"
-            label={<span className="text-primary font-medium">Todo Status</span>}
+            label={
+              <span className="text-primary font-medium">Todo Status</span>
+            }
           >
-            <Select
-              // onChange={handleOnChange}
-              options={TODO_CARD_STATUS_TYPES}
-              className="w-full"
-            />
+            <Select options={TODO_STATUS} className="w-full" />
           </Form.Item>
         </div>
 
@@ -112,7 +100,7 @@ const UpdateTodoCard = ({
             type="primary"
             loading={isLoading}
           >
-            Save
+            Update
           </Button>
         </div>
       </Form>
@@ -120,4 +108,4 @@ const UpdateTodoCard = ({
   );
 };
 
-export default UpdateTodoCard;
+export default UpdateTodoForm;
