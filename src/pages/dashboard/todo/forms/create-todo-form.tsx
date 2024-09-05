@@ -44,6 +44,7 @@ const CreateTodoForm = ({
       <Form
         layout="vertical"
         form={form}
+        initialValues={{ level: "easy", status: "pending" }}
         onFinish={(data: Todo) => {
           console.log("Form Data:", data);
           createTodo({ data });
@@ -67,21 +68,23 @@ const CreateTodoForm = ({
           <Input.TextArea placeholder="Todo description" />
         </Form.Item>
 
-        <Form.Item
-          className="w-full"
-          name="status"
-          label={<span className="text-primary font-medium">Status</span>}
-        >
-          <Select options={TODO_STATUS} className="w-full" />
-        </Form.Item>
+        <div className="flex items-center space-x-8">
+          <Form.Item
+            className="w-full"
+            name="status"
+            label={<span className="text-primary font-medium">Status</span>}
+          >
+            <Select options={TODO_STATUS} className="w-full" />
+          </Form.Item>
 
-        <Form.Item
-          className="w-full"
-          name="level"
-          label={<span className="text-primary font-medium">Level</span>}
-        >
-          <Select options={TODO_LEVELS} className="w-full" />
-        </Form.Item>
+          <Form.Item
+            className="w-full"
+            name="level"
+            label={<span className="text-primary font-medium">Level</span>}
+          >
+            <Select options={TODO_LEVELS} className="w-full" />
+          </Form.Item>
+        </div>
 
         <div className="flex items-center justify-end">
           <Button
