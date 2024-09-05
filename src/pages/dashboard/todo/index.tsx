@@ -36,16 +36,10 @@ const DashboardTodoPage = () => {
 
   return (
     <div className="relative h-full border bg-white rounded-lg shadow-sm">
-      <div className="grid grid-cols-3 gap-4 text-primary bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden p-6">
-        <h1 className="border border-primary p-1 w-full text-center">
-          Pending
-        </h1>
-        <h1 className="border border-primary p-1 w-full text-center">
-          In Progress
-        </h1>
-        <h1 className="border border-primary p-1 w-full text-center">
-          Completed
-        </h1>
+      <div className="grid grid-cols-3 gap-4 font-medium text-primary bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden px-6 py-2">
+        <h1 className="p-1 w-full text-center">Todo</h1>
+        <h1 className="p-1 w-full text-center">Doing</h1>
+        <h1 className="p-1 w-full text-center">Completed</h1>
       </div>
 
       <div className="flex justify-between h-[calc(100vh_-200px)] gap-4 m-6">
