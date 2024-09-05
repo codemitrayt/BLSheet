@@ -17,6 +17,7 @@ export const BL_SHEET_TYPES = [
   { label: "Investment", value: "investment" },
 ];
 
+
 export const TODO_LEVELS = [
   { label: "Easy", value: "easy" },
   { label: "Medium", value: "medium" },
@@ -28,3 +29,15 @@ export const TODO_STATUS = [
   { label: "Pending", value: "pending" },
   { label: "Completed", value: "completed" },
 ];
+
+export const TODO_LEVEL_COLOR = {
+  easy: "green",
+  medium: "orange",
+  hard: "red",
+};
+
+export const TODO_STATUS_COLOR = {
+  pending: "red",
+  in_progress: "orange",
+  completed: "green",
+};
