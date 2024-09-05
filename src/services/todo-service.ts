@@ -10,6 +10,14 @@ const todoService = () => {
         url: urls.todo.getTodoList,
         authToken,
       }),
+
+    createTodo: ({ data, authToken}: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.todo.createTodo,
+        authToken
+      })
   };
 };
 
