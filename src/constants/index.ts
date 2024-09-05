@@ -28,3 +28,15 @@ export const TODO_STATUS = [
   { label: "In Progress", value: "in_progress" },
   { label: "Completed", value: "completed" },
 ];
+
+export const TODO_LEVEL_COLOR = {
+  easy: "green",
+  medium: "orange",
+  hard: "red",
+};
+
+export const TODO_STATUS_COLOR = {
+  pending: "red",
+  in_progress: "orange",
+  completed: "green",
+};
