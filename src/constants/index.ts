@@ -16,3 +16,15 @@ export const BL_SHEET_TYPES = [
   { label: "Expense", value: "expense" },
   { label: "Investment", value: "investment" },
 ];
+
+export const TODO_LEVELS = [
+  { label: "Easy", value: "easy" },
+  { label: "Medium", value: "medium" },
+  { label: "Hard", value: "hard" },
+];
+
+export const TODO_STATUS = [
+  { label: "Pending", value: "pending" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Completed", value: "completed" },
+];

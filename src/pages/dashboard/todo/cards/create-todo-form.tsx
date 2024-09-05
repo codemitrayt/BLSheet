@@ -1,13 +1,12 @@
 import { Button, Form, Input, Select } from "antd";
 import { useMutation } from "react-query";
+
 import { Todo } from "../../../../types";
+import { TODO_LEVELS, TODO_STATUS } from "../../../../constants";
+
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import todoService from "../../../../services/todo-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
-import {
-  BL_TODO_LEVEL_TYPES,
-  BL_TODO_STATUS_TYPES,
-} from "../../../../constants";
 
 interface CreateTodoFormProps {
   onCloseDrawer: () => void;
@@ -68,24 +67,21 @@ const CreateTodoForm = ({
           <Input.TextArea placeholder="Todo description" />
         </Form.Item>
 
-        <div className="flex items-center space-x-8">
-          <Form.Item
-            className="w-full"
-            name="status"
-            label={<span className="text-primary font-medium">Status</span>}
-          >
-            <Select options={BL_TODO_STATUS_TYPES} className="w-full" />
-          </Form.Item>
-        </div>
-        <div className="flex items-center space-x-8">
-          <Form.Item
-            className="w-full"
-            name="level"
-            label={<span className="text-primary font-medium">Level</span>}
-          >
-            <Select options={BL_TODO_LEVEL_TYPES} className="w-full" />
-          </Form.Item>
-        </div>
+        <Form.Item
+          className="w-full"
+          name="status"
+          label={<span className="text-primary font-medium">Status</span>}
+        >
+          <Select options={TODO_STATUS} className="w-full" />
+        </Form.Item>
+
+        <Form.Item
+          className="w-full"
+          name="level"
+          label={<span className="text-primary font-medium">Level</span>}
+        >
+          <Select options={TODO_LEVELS} className="w-full" />
+        </Form.Item>
 
         <div className="flex items-center justify-end">
           <Button
