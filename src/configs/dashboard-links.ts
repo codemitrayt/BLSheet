@@ -1,7 +1,7 @@
 import { NavLinkType } from "../types";
 
 import { HiHome, HiTable } from "react-icons/hi";
-import { IoIosCheckmarkCircle } from "react-icons/io";
+import { LuListTodo } from "react-icons/lu";
 
 const dashboardLinks: NavLinkType[] = [
   {
@@ -16,7 +16,7 @@ const dashboardLinks: NavLinkType[] = [
     path: "/dashboard/sheet",
     icon: HiTable,
   },
-  { id: 3, title: "Todo", path: "/dashboard/todo", icon: IoIosCheckmarkCircle },
+  { id: 3, title: "Todo", path: "/dashboard/todo", icon: LuListTodo },
 ];
 
 export default dashboardLinks;
