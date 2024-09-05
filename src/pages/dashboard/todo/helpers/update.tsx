@@ -1,19 +1,19 @@
-import { TbEdit } from "react-icons/tb";
 import { useState } from "react";
 import { Drawer, Tooltip } from "antd";
 
+import { TbEdit } from "react-icons/tb";
 import { LuChevronRightCircle } from "react-icons/lu";
 
-import UpdateTodoCard from "../cards/update-card";
+import UpdateTodoForm from "../forms/update-todo-form";
 import { Todo } from "../../../../types";
 
-interface EditProps {
-  todoList: Todo[];
-  refetchTodoCard: () => void;
+interface UpdateTodoProps {
+  todo: Todo;
+  refetchTodoList: () => void;
 }
 
-const UpdateTodo = ({ todoList, refetchTodoCard }: EditProps) => {
-  const [drawerState, setDrawerState] = useState(false);
+const UpdateTodo = ({ todo, refetchTodoList }: UpdateTodoProps) => {
+  const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
 
@@ -35,9 +35,9 @@ const UpdateTodo = ({ todoList, refetchTodoCard }: EditProps) => {
         onClose={onCloseDrawer}
         title={<span className="text-primary">Update Todo</span>}
       >
-        <UpdateTodoCard
-          todo={todoList}
-          refetchTodoCard={refetchTodoCard}
+        <UpdateTodoForm
+          todo={todo}
+          refetchTodoList={refetchTodoList}
           onCloseDrawer={onCloseDrawer}
         />
       </Drawer>
