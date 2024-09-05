@@ -2,10 +2,11 @@ import { Tag } from "antd";
 import { MdAccessTime } from "react-icons/md";
 import dateFormat from "dateformat";
 
+import UpdateTodo from "../helpers/update";
 import DeleteTodo from "../helpers/delete";
 import { Todo } from "../../../../types";
-import { strSlice } from "../../../../utils";
 
+import { strSlice } from "../../../../utils";
 import { TODO_LEVEL_COLOR, TODO_STATUS_COLOR } from "../../../../constants";
 import { TODO_STATUS_ICON } from "../../../../constants/icon";
 
@@ -36,6 +37,7 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
         </Tag>
       </div>
 
+
       <div className="flex items-center justify-between pt-4">
         <div className="font-light flex items-center space-x-1 text-balck">
           <MdAccessTime />
@@ -43,7 +45,10 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
             {dateFormat(new Date(todo.createdAt), "HH:MM")}
           </span>
         </div>
-        <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
+        <div className="flex item-center justify-center space-x-2">
+           <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
+          <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
+        </div>
       </div>
     </div>
   );

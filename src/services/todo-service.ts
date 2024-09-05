@@ -10,7 +10,15 @@ const todoService = () => {
         url: urls.todo.getTodoList,
         authToken,
       }),
-
+    updateTodoList: ({ data, authToken, params }: RequestType) =>
+      request({
+        method: "PUT",
+        params,
+        data,
+        url: urls.todo.updateTodoList,
+        authToken,
+      }),
+        
     deleteTodo: ({ data, authToken, params }: RequestType) => {
       return request({
         method: "DELETE",
