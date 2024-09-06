@@ -48,7 +48,7 @@ const DashboardTodoPage = () => {
           <h1 className="p-1 w-full text-center">Completed</h1>
         </div>
 
-        <div className="flex justify-between h-[calc(100vh_-200px)] gap-4 m-6">
+        <div className="flex justify-between h-[calc(100vh_-220px)] gap-4 m-6">
           <div className="flex flex-col space-y-3 w-full overflow-y-auto h-full">
             <ShowTodoList
               todoList={todoList.filter((todo) => todo.status === "pending")}

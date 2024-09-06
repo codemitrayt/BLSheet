@@ -39,7 +39,7 @@ const UnAuthorizedNavbar = () => {
 const AuthorizedNavbar = () => {
   return (
     <div className="flex items-center justify-between w-full">
-      <div className="flex items-center justify-center space-x-6">
+      <div className="flex items-center justify-center space-x-12">
         <Link to="/">
           <Logo hasText={true} />
         </Link>
@@ -72,7 +72,7 @@ const NavItem = ({ link }: { link: NavLinkType }) => {
         )
       }
     >
-      <span>{link.title}</span>
+      <span className="text-sm">{link.title}</span>
     </NavLink>
   );
 };

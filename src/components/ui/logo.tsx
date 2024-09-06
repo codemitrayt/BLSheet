@@ -18,7 +18,7 @@ const Logo = ({ hasText = false, className }: LogoProps) => {
     >
       <BiSpreadsheet className="p-1 rounded-full size-12" />
       {hasText && (
-        <span className="text-pretty font-semibold">{siteConfig.name}</span>
+        <span className="text-pretty text-xl font-bold">{siteConfig.name}</span>
       )}
     </div>
   );
