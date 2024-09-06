@@ -12,7 +12,7 @@ import { TODO_STATUS_ICON } from "../../../../constants/icon";
 
 interface TodoCardProps {
   todo: Todo;
-  refetchTodoList: () => {};
+  refetchTodoList: () => void;
 }
 
 const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
@@ -37,7 +37,6 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
         </Tag>
       </div>
 
-
       <div className="flex items-center justify-between pt-4">
         <div className="font-light flex items-center space-x-1 text-balck">
           <MdAccessTime />
@@ -46,7 +45,7 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
           </span>
         </div>
         <div className="flex item-center justify-center space-x-2">
-           <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
+          <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
           <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
         </div>
       </div>

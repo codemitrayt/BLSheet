@@ -24,7 +24,7 @@ export const calculateProfilt = (matrics: MatricsType[]) => {
 };
 
 export function strSlice(str: string, num: number = 250): string {
-  let length = str.length;
+  const length = str.length;
   if (length > num) return str.slice(0, num) + "...";
   return str;
 }

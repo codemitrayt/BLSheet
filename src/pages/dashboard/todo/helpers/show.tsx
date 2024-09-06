@@ -3,7 +3,7 @@ import { Todo } from "../../../../types";
 
 interface ShowTodoProps {
   todoList: Todo[];
-  refetchTodoList: () => {};
+  refetchTodoList: () => void;
 }
 
 const ShowTodoList = ({ todoList, refetchTodoList }: ShowTodoProps) => {

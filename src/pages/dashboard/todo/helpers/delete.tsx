@@ -10,7 +10,7 @@ import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
 
 interface DeleteTodoProps {
   objectId: string;
-  refetchTodoList: () => {};
+  refetchTodoList: () => void;
 }
 
 const DeleteTodo = ({ objectId, refetchTodoList }: DeleteTodoProps) => {
