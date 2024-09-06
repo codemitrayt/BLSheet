@@ -13,7 +13,7 @@ import useBLSheetFilters from "../../../hooks/useBLSheetFilters";
 import { BLSheet } from "../../../types";
 import BLSheetFilters from "../../../components/bl-sheet-filters";
 
-const PER_PAGE_SIZE = 9;
+const PER_PAGE_SIZE = 8;
 
 const DashboardSheetPage = () => {
   const { search, type, currentPage, startDate, endDate } = useBLSheetFilters();
