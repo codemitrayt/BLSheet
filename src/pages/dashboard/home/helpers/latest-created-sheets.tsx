@@ -81,14 +81,14 @@ const LatestCreatedSheets = ({ className }: LatestCreatedSheetsProps) => {
   return (
     <div className={cn("border p-3 shadow-sm rounded-lg", className)}>
       <div className="flex items-center justify-between">
-        <h1 className="text-primary text-lg font-medium">
+        <h1 className="text-primary text-sm lg:text-lg font-medium">
           Latest Created Sheet
         </h1>
         <button
           onClick={() => redirectSheetPage("/dashboard/sheet")}
           className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-1"
         >
-          <span className="text-sm"> View All</span>
+          <span className="text-xs lg:text-sm"> View All</span>
           <MdOutlineArrowRightAlt />
         </button>
       </div>
