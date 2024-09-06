@@ -23,6 +23,7 @@ import ResetPasswordPage from "../pages/auth/reset-password-page";
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
 import DashboardTodoPage from "../pages/dashboard/todo";
+import ProfilePage from "../pages/profile";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const Router = createBrowserRouter(
       <Route element={<VerifyLayout />}>
         <Route element={<ProtectedLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />}>
