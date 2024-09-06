@@ -52,10 +52,10 @@ const CreateTodoForm = ({
       >
         <Form.Item
           name="title"
-          label={<span className="text-primary font-medium">Title</span>}
+          label={<span className="text-primary font-medium">Todo Title</span>}
           rules={[{ required: true, message: "Title must be required" }]}
         >
-          <Input placeholder="Title" />
+          <Input placeholder="Title" showCount count={{ max: 50 }} />
         </Form.Item>
 
         <Form.Item
@@ -65,24 +65,30 @@ const CreateTodoForm = ({
           }
           rules={[{ required: true, message: "Description must be required" }]}
         >
-          <Input.TextArea placeholder="Todo description" />
+          <Input.TextArea
+            placeholder="Todo description"
+            showCount
+            count={{ max: 100 }}
+          />
         </Form.Item>
 
         <div className="flex items-center space-x-8">
           <Form.Item
             className="w-full"
-            name="status"
-            label={<span className="text-primary font-medium">Status</span>}
+            name="level"
+            label={<span className="text-primary font-medium">Todo Level</span>}
           >
-            <Select options={TODO_STATUS} className="w-full" />
+            <Select options={TODO_LEVELS} className="w-full" />
           </Form.Item>
 
           <Form.Item
             className="w-full"
-            name="level"
-            label={<span className="text-primary font-medium">Level</span>}
+            name="status"
+            label={
+              <span className="text-primary font-medium">Todo Status</span>
+            }
           >
-            <Select options={TODO_LEVELS} className="w-full" />
+            <Select options={TODO_STATUS} className="w-full" />
           </Form.Item>
         </div>
 

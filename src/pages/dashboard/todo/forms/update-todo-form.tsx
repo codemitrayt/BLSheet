@@ -60,7 +60,7 @@ const UpdateTodoForm = ({
           label={<span className="text-primary font-medium">Todo Title</span>}
           rules={[{ required: true, message: "Todo Title be required" }]}
         >
-          <Input placeholder="Todo Title" />
+          <Input placeholder="Todo Title" showCount count={{ max: 50 }} />
         </Form.Item>
 
         <Form.Item
@@ -70,7 +70,11 @@ const UpdateTodoForm = ({
           }
           rules={[{ required: true, message: "Description must be required" }]}
         >
-          <Input.TextArea placeholder="Todo description" />
+          <Input.TextArea
+            placeholder="Todo description"
+            showCount
+            count={{ max: 100 }}
+          />
         </Form.Item>
 
         <div className="flex items-center space-x-8">

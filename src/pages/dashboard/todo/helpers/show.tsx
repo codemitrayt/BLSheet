@@ -10,7 +10,11 @@ const ShowTodoList = ({ todoList, refetchTodoList }: ShowTodoProps) => {
   return (
     <>
       {todoList.map((todo) => (
-        <TodoCard todo={todo} refetchTodoList={refetchTodoList} />
+        <TodoCard
+          todo={todo}
+          key={todo._id}
+          refetchTodoList={refetchTodoList}
+        />
       ))}
     </>
   );
