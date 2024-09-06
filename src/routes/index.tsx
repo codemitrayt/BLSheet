@@ -10,7 +10,7 @@ import ProtectedLayout from "../layouts/protected-layout";
 import DashboardLayout from "../layouts/dashboard-layout";
 import VerifyLayout from "../layouts/verify-layout";
 
-import HomePage from "../pages/home-page";
+import HomePage from "../pages/home";
 import NotFoundPage from "../pages/not-found-page";
 
 import SignUpPage from "../pages/auth/sign-up-page";
