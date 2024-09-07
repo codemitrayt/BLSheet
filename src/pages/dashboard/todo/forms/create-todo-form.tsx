@@ -46,7 +46,6 @@ const CreateTodoForm = ({
         form={form}
         initialValues={{ level: "easy", status: "pending" }}
         onFinish={(data: Todo) => {
-          console.log("Form Data:", data);
           createTodo({ data });
         }}
       >
