@@ -14,6 +14,7 @@ const TodoFilters = () => {
   return (
     <div className="flex items-center">
       <DatePicker
+        className="md:w-[300px]"
         defaultValue={
           date ? dayjs(dateformat(date, "dd/mm/yyyy"), dateFormat) : null
         }
