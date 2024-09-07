@@ -55,7 +55,7 @@ const TodoDetailsDrawer = ({ todo }: TodoDetailsDrawerProps) => {
           <div className="flex space-x-2">
             <span className="font-medium">Todo Status:</span>
             <Tag
-              className="!text-xs w-[80px] flex items-center justify-center rounded-full"
+              className="!text-xs w-[100px] flex items-center justify-center rounded-full"
               color={TODO_STATUS_COLOR[todo.status]}
             >
               {todo.status.toUpperCase()}
