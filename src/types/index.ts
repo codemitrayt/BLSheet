@@ -97,3 +97,7 @@ export interface Todo {
   level: TodoLevel;
   createdAt: string;
 }
+
+export interface TodoFilter {
+  date?: string;
+}

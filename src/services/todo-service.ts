@@ -4,18 +4,19 @@ import { RequestType } from "./../types";
 
 const todoService = () => {
   return {
-    getTodoList: ({ authToken }: RequestType) =>
+    getTodoList: ({ authToken, params }: RequestType) =>
       request({
         method: "GET",
         url: urls.todo.getTodoList,
         authToken,
+        params,
       }),
-    createTodo: ({ data, authToken}: RequestType) =>
+    createTodo: ({ data, authToken }: RequestType) =>
       request({
         method: "POST",
         data,
         url: urls.todo.createTodo,
-        authToken
+        authToken,
       }),
     updateTodoList: ({ data, authToken, params }: RequestType) =>
       request({

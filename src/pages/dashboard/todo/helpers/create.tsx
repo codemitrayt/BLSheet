@@ -1,9 +1,10 @@
 import { Button, Drawer } from "antd";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
+
 import CreateTodoForm from "../forms/create-todo-form";
-import { useSearchParams } from "react-router-dom";
 
 interface CreateTodoProps {
   refetchTodoList: () => void;
@@ -23,9 +24,9 @@ const CreateTodo = ({ refetchTodoList }: CreateTodoProps) => {
     });
   };
   return (
-    <div className="relative w-full md:w-fit">
+    <div className="relative">
       <Button
-        className="ring-0 px-6 rounded-full w-full md:w-fit"
+        className="ring-0 px-6 rounded-full"
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}
