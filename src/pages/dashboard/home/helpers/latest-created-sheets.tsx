@@ -13,7 +13,7 @@ import BLSheetDetailsCard from "../cards/bl-sheet-details-card";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const PER_PAGE_SIZE = 6;
+const PER_PAGE_SIZE = 8;
 
 interface LatestCreatedSheetsProps {
   className: string;
