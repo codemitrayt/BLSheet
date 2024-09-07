@@ -18,8 +18,8 @@ const UpdateTodo = ({ todo, refetchTodoList }: UpdateTodoProps) => {
   const onOpenDrawer = () => setDrawerState(true);
 
   return (
-    <div>
-      <Tooltip title="Update todo">
+    <div className="relative">
+      <Tooltip title="Update Todo">
         <button
           onClick={onOpenDrawer}
           className="text-emerald-500 flex items-center justify-center hover:text-emerald-500/80 transition"

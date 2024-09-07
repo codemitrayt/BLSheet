@@ -8,6 +8,7 @@ import { Todo } from "../../../../types";
 
 import { strSlice } from "../../../../utils";
 import { TODO_LEVEL_COLOR, TODO_STATUS_COLOR } from "../../../../constants";
+import TodoDetailsDrawer from "./todo-details-drawer";
 
 interface TodoCardProps {
   todo: Todo;
@@ -40,7 +41,8 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
             {dateFormat(new Date(todo.createdAt), "HH:MM")}
           </span>
         </div>
-        <div className="flex item-center justify-center space-x-2">
+        <div className="flex item-center justify-center space-x-3">
+          <TodoDetailsDrawer todo={todo} />
           <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
           <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
         </div>

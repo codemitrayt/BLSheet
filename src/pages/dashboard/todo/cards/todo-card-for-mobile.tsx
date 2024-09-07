@@ -5,6 +5,7 @@ import DeleteTodo from "../helpers/delete";
 import { Todo } from "../../../../types";
 
 import { TODO_LEVEL_COLOR, TODO_STATUS_COLOR } from "../../../../constants";
+import TodoDetailsDrawer from "./todo-details-drawer";
 
 interface TodoCardForMobileProps {
   todo: Todo;
@@ -33,11 +34,10 @@ const TodoCardForMobile = ({
           {todo.status.toLocaleUpperCase()}
         </Tag>
 
-        <div className="flex items-center justify-center space-x-2">
-          <div className="flex items-center justify-center space-x-2">
-            <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
-            <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
-          </div>
+        <div className="flex items-center justify-center space-x-3">
+          <TodoDetailsDrawer todo={todo} />
+          <UpdateTodo todo={todo} refetchTodoList={refetchTodoList} />
+          <DeleteTodo objectId={todo._id} refetchTodoList={refetchTodoList} />
         </div>
       </div>
     </div>
