@@ -24,10 +24,11 @@ const urls: URLType = {
     deleteBlSheet: "/blSheet/deleteBLSheet",
     editBlSheet: "/blSheet/editBLSheet",
     totalMoneyDistributedAnalytics: "/blSheet/totalMoneyDistributedAnalytics",
+    dailyAnalytics: "/blSheet/dailyAnalytics",
   },
   todo: {
     getTodoList: "/todo/getTodoList",
-    createTodo: '/todo/createTodo',
+    createTodo: "/todo/createTodo",
     updateTodoList: "/todo/updateTodo",
     deleteTodo: "/todo/deleteTodo",
   },

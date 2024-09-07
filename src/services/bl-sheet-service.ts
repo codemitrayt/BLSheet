@@ -43,6 +43,13 @@ const blSheetService = () => {
         url: urls.blSheet.totalMoneyDistributedAnalytics,
         authToken,
       }),
+
+    dailyAnalytics: ({ authToken }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.blSheet.dailyAnalytics,
+        authToken,
+      }),
   };
 };
 
