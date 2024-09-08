@@ -18,12 +18,12 @@ const todoService = () => {
         url: urls.todo.createTodo,
         authToken,
       }),
-    updateTodoList: ({ data, authToken, params }: RequestType) =>
+    updateTodo: ({ data, authToken, params }: RequestType) =>
       request({
         method: "PUT",
         params,
         data,
-        url: urls.todo.updateTodoList,
+        url: urls.todo.updateTodo,
         authToken,
       }),
     deleteTodo: ({ data, authToken, params }: RequestType) => {

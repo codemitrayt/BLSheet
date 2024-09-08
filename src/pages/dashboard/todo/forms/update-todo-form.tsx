@@ -31,7 +31,7 @@ const UpdateTodoForm = ({
   const { isLoading, mutate: updateTodo } = useMutation({
     mutationKey: ["update-todo"],
     mutationFn: ({ data }: { data: Todo }) =>
-      todoService().updateTodoList({
+      todoService().updateTodo({
         data,
         authToken,
         params: { objectId: todo._id },
