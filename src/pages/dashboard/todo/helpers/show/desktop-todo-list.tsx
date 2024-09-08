@@ -1,5 +1,5 @@
-import { Todo } from "../../../../types";
-import ShowTodoList from "../helpers/show";
+import { Todo } from "../../../../../types";
+import TodoCardForDesktop from "../../cards/todo-card-for-desktop";
 
 interface DesktopTodoListProps {
   todoList: Todo[];
@@ -19,22 +19,37 @@ const DesktopTodoList = ({
 
       <div className="flex justify-between h-[calc(100vh_-220px)] gap-4 m-6">
         <div className="flex flex-col space-y-3 w-full overflow-y-auto h-full">
-          <ShowTodoList
-            todoList={todoList.filter((todo) => todo.status === "pending")}
-            refetchTodoList={refetchTodoList}
-          />
+          {todoList
+            .filter((todo) => todo.status === "pending")
+            .map((todo) => (
+              <TodoCardForDesktop
+                todo={todo}
+                key={todo._id}
+                refetchTodoList={refetchTodoList}
+              />
+            ))}
         </div>
         <div className="flex flex-col space-y-3 w-full overflow-y-auto h-full">
-          <ShowTodoList
-            todoList={todoList.filter((todo) => todo.status === "in_progress")}
-            refetchTodoList={refetchTodoList}
-          />
+          {todoList
+            .filter((todo) => todo.status === "in_progress")
+            .map((todo) => (
+              <TodoCardForDesktop
+                todo={todo}
+                key={todo._id}
+                refetchTodoList={refetchTodoList}
+              />
+            ))}
         </div>
         <div className="flex flex-col space-y-3 w-full overflow-y-auto h-full">
-          <ShowTodoList
-            todoList={todoList.filter((todo) => todo.status === "completed")}
-            refetchTodoList={refetchTodoList}
-          />
+          {todoList
+            .filter((todo) => todo.status === "completed")
+            .map((todo) => (
+              <TodoCardForDesktop
+                todo={todo}
+                key={todo._id}
+                refetchTodoList={refetchTodoList}
+              />
+            ))}
         </div>
       </div>
     </div>

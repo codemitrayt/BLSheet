@@ -1,5 +1,5 @@
-import { Todo } from "../../../../types";
-import TodoCardForMobile from "../cards/todo-card-for-mobile";
+import { Todo } from "../../../../../types";
+import TodoCardForMobile from "../../cards/todo-card-for-mobile";
 
 interface MobileTodoListProps {
   todoList: Todo[];

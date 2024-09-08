@@ -9,8 +9,8 @@ import useErrorHandler from "../../../hooks/useErrorHandler";
 
 import todoService from "../../../services/todo-service";
 
-import DesktopTodoList from "./components/desktop-todo-list";
-import MobileTodoList from "./components/mobile-todo-list";
+import DesktopTodoList from "./helpers/show/desktop-todo-list";
+import MobileTodoList from "./helpers/show/mobile-todo-list";
 
 import { Todo } from "../../../types";
 import TodoFilters from "../../../components/todo-filters";

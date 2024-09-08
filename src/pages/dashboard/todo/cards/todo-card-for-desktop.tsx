@@ -18,7 +18,7 @@ interface TodoCardProps {
   refetchTodoList: () => void;
 }
 
-const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
+const TodoCardForDesktop = ({ todo, refetchTodoList }: TodoCardProps) => {
   return (
     <div
       className={cn(
@@ -59,4 +59,4 @@ const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
   );
 };
 
-export default TodoCard;
+export default TodoCardForDesktop;
