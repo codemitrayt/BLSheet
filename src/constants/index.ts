@@ -31,12 +31,18 @@ export const TODO_STATUS = [
 
 export const TODO_LEVEL_COLOR = {
   easy: "green",
-  medium: "orange",
+  medium: "yellow",
   hard: "red",
 };
 
 export const TODO_STATUS_COLOR = {
   pending: "red",
-  in_progress: "orange",
+  in_progress: "yellow",
   completed: "green",
+};
+
+export const TODO_CARD_BORDER_COLOR = {
+  hard: "border-l-red-500",
+  medium: "border-l-yellow-500",
+  easy: "border-l-green-500",
 };

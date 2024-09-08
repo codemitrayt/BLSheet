@@ -4,11 +4,14 @@ import dateFormat from "dateformat";
 
 import UpdateTodo from "../helpers/update";
 import DeleteTodo from "../helpers/delete";
-import { Todo } from "../../../../types";
-
-import { strSlice } from "../../../../utils";
-import { TODO_LEVEL_COLOR, TODO_STATUS_COLOR } from "../../../../constants";
 import TodoDetailsDrawer from "./todo-details-drawer";
+import { Todo } from "../../../../types";
+import { cn, strSlice } from "../../../../utils";
+import {
+  TODO_CARD_BORDER_COLOR,
+  TODO_LEVEL_COLOR,
+  TODO_STATUS_COLOR,
+} from "../../../../constants";
 
 interface TodoCardProps {
   todo: Todo;
@@ -17,7 +20,12 @@ interface TodoCardProps {
 
 const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
   return (
-    <div className="bg-card p-3 space-y-2 rounded-lg shadow-lg transition-transform transform border">
+    <div
+      className={cn(
+        "bg-card p-3 space-y-2 rounded-lg shadow-lg transition-transform transform border-t border-r border-b border-l-2",
+        TODO_CARD_BORDER_COLOR[todo.level]
+      )}
+    >
       <div className="flex items-center space-x-1">
         <h3 className="text-black font-medium">{strSlice(todo.title, 30)}</h3>
       </div>

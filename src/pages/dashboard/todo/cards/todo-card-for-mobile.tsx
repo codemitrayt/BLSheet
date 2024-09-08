@@ -4,8 +4,13 @@ import UpdateTodo from "../helpers/update";
 import DeleteTodo from "../helpers/delete";
 import { Todo } from "../../../../types";
 
-import { TODO_LEVEL_COLOR, TODO_STATUS_COLOR } from "../../../../constants";
+import {
+  TODO_CARD_BORDER_COLOR,
+  TODO_LEVEL_COLOR,
+  TODO_STATUS_COLOR,
+} from "../../../../constants";
 import TodoDetailsDrawer from "./todo-details-drawer";
+import { cn } from "../../../../utils";
 
 interface TodoCardForMobileProps {
   todo: Todo;
@@ -16,7 +21,12 @@ const TodoCardForMobile = ({
   refetchTodoList,
 }: TodoCardForMobileProps) => {
   return (
-    <div className="flex flex-col border p-3 rounded-md">
+    <div
+      className={cn(
+        "flex flex-col border-t border-l-2 border-b border-r p-3 rounded-md",
+        TODO_CARD_BORDER_COLOR[todo.level]
+      )}
+    >
       <div className="flex items-center justify-between">
         <div className="flex space-x-2 h-[30px] md:h-[40px]">
           <Badge color={TODO_LEVEL_COLOR[todo.level]} />
