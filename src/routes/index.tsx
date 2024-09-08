@@ -12,6 +12,7 @@ import VerifyLayout from "../layouts/verify-layout";
 
 import HomePage from "../pages/home";
 import NotFoundPage from "../pages/not-found-page";
+import ProfilePage from "../pages/profile";
 
 import SignUpPage from "../pages/auth/sign-up-page";
 import SignInPage from "../pages/auth/sign-in-page";
@@ -23,7 +24,8 @@ import ResetPasswordPage from "../pages/auth/reset-password-page";
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
 import DashboardTodoPage from "../pages/dashboard/todo";
-import ProfilePage from "../pages/profile";
+import DashboardTaskPage from "../pages/dashboard/task";
+import DashboardProjectPage from "../pages/dashboard/project";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +40,8 @@ const Router = createBrowserRouter(
           <Route path="home" element={<DashboardHomePage />} />
           <Route path="sheet" element={<DashboardSheetPage />} />
           <Route path="todo" element={<DashboardTodoPage />} />
+          <Route path="tasks" element={<DashboardTaskPage />} />
+          <Route path="projects" element={<DashboardProjectPage />} />
         </Route>
       </Route>
 

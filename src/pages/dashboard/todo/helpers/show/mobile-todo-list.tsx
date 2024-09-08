@@ -8,7 +8,7 @@ interface MobileTodoListProps {
 
 const MobileTodoList = ({ todoList, refetchTodoList }: MobileTodoListProps) => {
   return (
-    <div className="sm:border rounded-lg xl:hidden relative h-[calc(100vh_-130px)] p-2 sm:p-6 overflow-y-auto">
+    <div className="sm:border rounded-lg xl:hidden relative h-[calc(100vh_-140px)] p-2 sm:p-6 overflow-y-auto">
       <div className="space-y-2 pb-4 border-b border-primary">
         <h1 className="underline p-1 w-full text-primary font-medium">Todo</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

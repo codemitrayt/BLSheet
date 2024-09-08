@@ -38,7 +38,7 @@ const DashboardTodoPage = () => {
 
   return (
     <div className="relative">
-      <div className="flex items-center justify-between p-2 bg-gray-100 rounded-lg mb-2 border shadow-sm">
+      <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-2 border shadow-sm">
         <TodoFilters />
         <CreateTodo refetchTodoList={refetchTodoList} />
       </div>
