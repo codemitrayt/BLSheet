@@ -2,15 +2,16 @@ import { Badge, Tag } from "antd";
 
 import UpdateTodo from "../helpers/update";
 import DeleteTodo from "../helpers/delete";
-import { Todo } from "../../../../types";
 
+import TodoDetailsDrawer from "../components/todo-details-drawer";
+
+import { cn } from "../../../../utils";
+import { Todo } from "../../../../types";
 import {
   TODO_CARD_BORDER_COLOR,
   TODO_LEVEL_COLOR,
   TODO_STATUS_COLOR,
 } from "../../../../constants";
-import TodoDetailsDrawer from "./todo-details-drawer";
-import { cn } from "../../../../utils";
 
 interface TodoCardForMobileProps {
   todo: Todo;

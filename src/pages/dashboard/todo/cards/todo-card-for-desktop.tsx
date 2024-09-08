@@ -4,7 +4,10 @@ import dateFormat from "dateformat";
 
 import UpdateTodo from "../helpers/update";
 import DeleteTodo from "../helpers/delete";
-import TodoDetailsDrawer from "./todo-details-drawer";
+
+import TodoStatusDropdown from "../components/todo-status-dropdown";
+import TodoDetailsDrawer from "../components/todo-details-drawer";
+
 import { Todo } from "../../../../types";
 import { cn, strSlice } from "../../../../utils";
 import {
@@ -33,13 +36,17 @@ const TodoCardForDesktop = ({ todo, refetchTodoList }: TodoCardProps) => {
         {strSlice(todo.description, 65)}
       </p>
 
-      <div className="flex">
-        <Tag color={TODO_LEVEL_COLOR[todo.level]}>
-          {todo.level.toUpperCase()}
-        </Tag>
-        <Tag color={TODO_STATUS_COLOR[todo.status]}>
-          {todo.status.toLocaleUpperCase()}
-        </Tag>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <Tag color={TODO_LEVEL_COLOR[todo.level]}>
+            {todo.level.toUpperCase()}
+          </Tag>
+          <Tag color={TODO_STATUS_COLOR[todo.status]}>
+            {todo.status.toLocaleUpperCase()}
+          </Tag>
+        </div>
+
+        <TodoStatusDropdown todo={todo} refetchTodoList={refetchTodoList} />
       </div>
 
       <div className="flex items-center justify-between pt-4">
