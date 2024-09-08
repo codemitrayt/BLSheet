@@ -17,7 +17,7 @@ interface TodoCardProps {
 
 const TodoCard = ({ todo, refetchTodoList }: TodoCardProps) => {
   return (
-    <div className="bg-card p-3 space-y-2 rounded-lg shadow-lg transition-transform transform border hover:bg-gray-100 cursor-pointer">
+    <div className="bg-card p-3 space-y-2 rounded-lg shadow-lg transition-transform transform border">
       <div className="flex items-center space-x-1">
         <h3 className="text-black font-medium">{strSlice(todo.title, 30)}</h3>
       </div>
