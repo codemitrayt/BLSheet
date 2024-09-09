@@ -4,9 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#2F667F",
-        secondary: "#539BBB",
-        turnary: "#EEF5F8",
+        // primary: "#2F667F",
+        // secondary: "#539BBB",
+        // turnary: "#EEF5F8",
+
+        primary: "#2f7f73",
+        secondary: "#54bbab",
+        turnary: "#edf8f6",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

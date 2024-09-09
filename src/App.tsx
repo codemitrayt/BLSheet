@@ -13,7 +13,7 @@ const App = () => {
   return (
     <ConfigProvider
       theme={{
-        token: { colorPrimary: "#2F667F" },
+        token: { colorPrimary: "#2f7f73" },
       }}
     >
       <QueryClientProvider client={queryClient}>

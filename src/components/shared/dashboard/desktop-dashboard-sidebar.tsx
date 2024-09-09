@@ -29,7 +29,7 @@ const DesktopDashboardSidebar = () => {
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  "flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full",
+                  "flex text-white items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full",
                   isActive && "bg-secondary"
                 )
               }
