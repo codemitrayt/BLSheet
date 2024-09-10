@@ -32,6 +32,12 @@ const urls: URLType = {
     updateTodo: "/todo/updateTodo",
     deleteTodo: "/todo/deleteTodo",
   },
+  project: {
+    getProjectList: "/project/getProjectList",
+    createProject: "/project/createProject",
+    updateProject: "/project/updateProject",
+    deleteProject: "/project/deleteProject",
+  },
 };
 
 export default urls;
