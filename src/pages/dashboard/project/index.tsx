@@ -1,5 +1,5 @@
 const DashboardProjectPage = () => {
-  return <div>DashboardProjectPage</div>;
+  return <div>Comming soon this feature...</div>;
 };
 
 export default DashboardProjectPage;

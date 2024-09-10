@@ -1,5 +1,5 @@
 const DashboardTaskPage = () => {
-  return <div>Task</div>;
+  return <div> Comming soon this feature...</div>;
 };
 
 export default DashboardTaskPage;
