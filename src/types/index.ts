@@ -101,3 +101,14 @@ export interface Todo {
 export interface TodoFilter {
   date?: string;
 }
+
+// Project Types //
+
+export interface Project {
+  _id: string;
+  name: string;
+  description: string;
+  userId: string;
+  tags: string[];
+  img: string;
+}
