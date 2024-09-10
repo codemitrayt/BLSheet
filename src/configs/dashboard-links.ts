@@ -19,8 +19,8 @@ const dashboardLinks: NavLinkType[] = [
     icon: HiTable,
   },
   { id: 3, title: "Todos", path: "/dashboard/todo", icon: LuListTodo },
-  { id: 3, title: "Projects", path: "/dashboard/projects", icon: GoProject },
-  { id: 3, title: "Tasks", path: "/dashboard/tasks", icon: MdOutlineTaskAlt },
+  { id: 4, title: "Projects", path: "/dashboard/projects", icon: GoProject },
+  { id: 5, title: "Tasks", path: "/dashboard/tasks", icon: MdOutlineTaskAlt },
 ];
 
 export default dashboardLinks;
