@@ -39,7 +39,7 @@ const Hero = () => {
 
         <Link
           to={getStartedUrl}
-          className="mt-4 inline-flex text-white animate-shimmer items-center justify-center rounded-full border  bg-[linear-gradient(110deg,#2f7f73,45%,#9ca3af,55%,#2f7f73)] bg-[length:200%_100%] px-5 py-2 text-sm font-light transition-colors focus:outline-none"
+          className="mt-4 inline-flex text-white animate-shimmer items-center justify-center rounded-full border  bg-[linear-gradient(110deg,#2F667F,45%,#9ca3af,55%,#2F667F)] bg-[length:200%_100%] px-5 py-2 text-sm font-light transition-colors focus:outline-none"
         >
           Get Started
         </Link>
