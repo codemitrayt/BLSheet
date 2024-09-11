@@ -1,11 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 import useUserInfo from "../hooks/useUserInfo";
-import { URLS } from "../constants";
 
 const AuthLayout = () => {
   const { isAuth } = useUserInfo();
-  if (isAuth) return <Navigate to={URLS.dashboardHomeUrl} />;
+  if (isAuth) return <Navigate to="/" />;
 
   return (
     <div className="min-h-screen relative">
