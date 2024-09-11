@@ -1,13 +1,14 @@
 import { Badge, Tag } from "antd";
 
 import { Project } from "../../../../types";
+import DeleteProject from "../helpers/delete";
 
 interface ProjectCardProps {
   project: Project;
   refetchProjectList: () => void;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
   return (
     <div className="border h-full rounded-lg overflow-hidden">
       <img
@@ -33,6 +34,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
         <div className="flex items-center justify-end space-x-3 mt-3">
           {/* add actions heare  */}
+          <DeleteProject
+            objectId={project._id}
+            refetchProjectList={refetchProjectList}
+          />
         </div>
       </div>
     </div>
