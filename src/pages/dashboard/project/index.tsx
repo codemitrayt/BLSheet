@@ -37,7 +37,7 @@ const DashboardProjectPage = () => {
   }
 
   return (
-    <div className="p-6 bg-white border rounded-xl shadow-sm h-[calc(100vh_-80px)] overflow-y-auto">
+    <div className="p-6 h-[calc(100vh_-80px)] overflow-y-auto">
       <ShowProjects
         projects={projectList}
         refetchProjectList={refetchProjectList}
