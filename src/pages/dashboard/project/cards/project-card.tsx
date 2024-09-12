@@ -1,4 +1,5 @@
 import { Badge, Tag } from "antd";
+import { useNavigate } from "react-router-dom";
 
 import { Project } from "../../../../types";
 
@@ -8,8 +9,17 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    const url = `/dashboard/projects/${project._id}/details`;
+    navigate(url);
+  };
+
   return (
-    <div className="border h-full rounded-lg overflow-hidden">
+    <div
+      className="border h-full shadow-sm rounded-lg overflow-hidden cursor-pointer hover:bg-gray-100 transition-all"
+      onClick={handleRedirect}
+    >
       <img
         src={project.img}
         alt={project.name}
