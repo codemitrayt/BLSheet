@@ -1,4 +1,4 @@
-import { Badge, Tag } from "antd";
+import { Badge, Tag, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { Project } from "../../../../types";
@@ -41,12 +41,15 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
         <p className="text-sm text-gray-600 h-[50px]">{project.description}</p>
 
         <div className="flex items-center justify-end space-x-3 mt-3">
-          <button
-            onClick={handleRedirect}
-            className="text-orange-500 hover:text-orange-500/80"
-          >
-            <CgEye />
-          </button>
+          <Tooltip title="View Project">
+            <button
+              onClick={handleRedirect}
+              className="text-orange-500 hover:text-orange-500/80"
+            >
+              <CgEye />
+            </button>
+          </Tooltip>
+
           <DeleteProject
             objectId={project._id}
             refetchProjectList={refetchProjectList}
