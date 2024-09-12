@@ -7,6 +7,7 @@ import useUserInfo from "../../../hooks/useUserInfo";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 import { Project } from "../../../types";
 import ShowProjects from "./helpers/show";
+import CreateProject from "./helpers/create";
 
 const DashboardProjectPage = () => {
   const { authToken } = useUserInfo();
@@ -38,6 +39,9 @@ const DashboardProjectPage = () => {
 
   return (
     <div className="p-6 h-[calc(100vh_-80px)] overflow-y-auto">
+      <div className="flex items-center justify-end mb-2">
+        <CreateProject refetchProjectList={refetchProjectList} />
+      </div>
       <ShowProjects
         projects={projectList}
         refetchProjectList={refetchProjectList}
