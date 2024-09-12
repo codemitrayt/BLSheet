@@ -4,6 +4,14 @@ import { RequestType } from "./../types";
 
 const projectService = () => {
   return {
+    getProject: ({ authToken, params }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.project.getProject,
+        authToken,
+        params,
+      }),
+
     getProjectList: ({ authToken, params }: RequestType) =>
       request({
         method: "GET",
