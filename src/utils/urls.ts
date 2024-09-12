@@ -37,6 +37,7 @@ const urls: URLType = {
     createProject: "/project/createProject",
     updateProject: "/project/updateProject",
     deleteProject: "/project/deleteProject",
+    getProject: "/project/getProject",
   },
 };
 
