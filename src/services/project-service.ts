@@ -28,7 +28,7 @@ const projectService = () => {
         authToken,
       }),
 
-    deleteBLSheet: ({ data, authToken }: RequestType) =>
+    deleteProject: ({ data, authToken }: RequestType) =>
       request({
         method: "DELETE",
         data,
