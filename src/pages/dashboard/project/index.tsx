@@ -39,7 +39,7 @@ const DashboardProjectPage = () => {
 
   return (
     <div className="p-6 h-[calc(100vh_-80px)] overflow-y-auto">
-      <div className="flex items-center justify-end mb-2">
+      <div className="flex items-center justify-end p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
         <CreateProject refetchProjectList={refetchProjectList} />
       </div>
       <ShowProjects
