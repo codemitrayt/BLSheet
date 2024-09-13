@@ -38,6 +38,7 @@ const urls: URLType = {
     updateProject: "/project/updateProject",
     deleteProject: "/project/deleteProject",
     getProject: "/project/getProject",
+    inviteTeamMember: "/project/inviteTeamMember",
   },
 };
 
