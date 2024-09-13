@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import ProjectNavbar from "../components/project-navbar";
-import ProjectHeader from "../components/project-header";
+// import ProjectHeader from "../components/project-header";
 import projectService from "../services/project-service";
 
 import useErrorHandler from "../hooks/useErrorHandler";
@@ -51,7 +51,7 @@ const ProjectLayout = () => {
 
   return (
     <div>
-      <ProjectHeader project={project} />
+      {/* <ProjectHeader project={project} /> */}
       <ProjectNavbar projectId={projectId} />
       <Outlet />
     </div>

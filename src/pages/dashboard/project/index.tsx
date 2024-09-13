@@ -20,7 +20,6 @@ const DashboardProjectPage = () => {
     onSuccess: ({ data }) => {
       const projects = data?.message?.projects || [];
       setProjectList(projects);
-      console.log(projectList);
     },
     onError: (error) => {
       console.error("ERROR :: get project list ::", error);
@@ -38,14 +37,16 @@ const DashboardProjectPage = () => {
   }
 
   return (
-    <div className="p-6 h-[calc(100vh_-80px)] overflow-y-auto">
+    <div className="p-6">
       <div className="flex items-center justify-end p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
         <CreateProject refetchProjectList={refetchProjectList} />
       </div>
-      <ShowProjects
-        projects={projectList}
-        refetchProjectList={refetchProjectList}
-      />
+      <div className="h-[calc(100vh_-170px)] overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth">
+        <ShowProjects
+          projects={projectList}
+          refetchProjectList={refetchProjectList}
+        />
+      </div>
     </div>
   );
 };
