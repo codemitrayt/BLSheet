@@ -4,6 +4,7 @@ import useErrorHandler from "../../../../hooks/useErrorHandler";
 import { useMutation } from "react-query";
 import projectService from "../../../../services/project-service";
 import { Project } from "../../../../types";
+import { useEffect } from "react";
 
 interface UpdateProjectFormProps {
   project: Project;
@@ -19,6 +20,9 @@ const UpdateProjectForm = ({
   const [form] = Form.useForm();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
+  useEffect(() => {
+    form.setFieldsValue({ ...project });
+  }, [project]);
 
   const { isLoading, mutate: updateProject } = useMutation({
     mutationKey: ["update-project"],
@@ -81,9 +85,9 @@ const UpdateProjectForm = ({
               label={<span className="text-primary font-medium">Tags</span>}
             >
               <Select className="w-full">
-                {project.tags.map((tag) => (
-                  <Select.Option key={tag} value={tag}>
-                    {tag}
+                {project?.tags.map((level) => (
+                  <Select.Option key={level} value={level}>
+                    {level}
                   </Select.Option>
                 ))}
               </Select>
