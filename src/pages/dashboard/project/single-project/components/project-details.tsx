@@ -30,7 +30,10 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
             <Avatar style={{ background: "#2F667F" }}>J</Avatar>
           </Avatar.Group>
 
-          <InviteMemberPopup projectName={project.name} />
+          <InviteMemberPopup
+            projectName={project.name}
+            projectId={project._id}
+          />
         </div>
       </div>
 
