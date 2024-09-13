@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
+
 import { cn } from "../utils";
+
 import { TbListDetails } from "react-icons/tb";
 import { RiTaskLine, RiTimeLine } from "react-icons/ri";
 import { PiChatsLight } from "react-icons/pi";
@@ -10,7 +12,7 @@ interface ProjectNavbarProps {
 
 const ProjectNavbar = ({ projectId }: ProjectNavbarProps) => {
   return (
-    <div className="my-3 border-b space-x-4 flex items-center">
+    <div className="border-b space-x-4 flex items-center">
       <NavLink
         to={`/dashboard/projects/${projectId}/details`}
         className={({ isActive }) =>
