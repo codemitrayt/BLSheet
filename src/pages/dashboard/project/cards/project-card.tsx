@@ -38,7 +38,11 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
           ))}
         </div>
 
-        <p className="text-sm text-gray-600 h-[50px]">{project.description}</p>
+        <p className="text-sm text-gray-600 h-[50px] hidden md:block">
+          {project.description}
+        </p>
+
+        <p className="text-sm text-gray-600 md:hidden">{project.description}</p>
 
         <div className="flex items-center justify-end space-x-3 mt-3">
           <Tooltip title="View Project">
