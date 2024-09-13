@@ -9,6 +9,7 @@ import projectService from "../../../../services/project-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import { Project } from "../../../../types";
+import TeamMembersTable from "./components/team-members-table";
 
 const SingleProjectPage = () => {
   const { authToken } = useUserInfo();
@@ -51,6 +52,9 @@ const SingleProjectPage = () => {
   return (
     <div className="relative">
       <ProjectDetails project={project} />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-3">
+        <TeamMembersTable />
+      </div>
     </div>
   );
 };
