@@ -84,13 +84,11 @@ const UpdateProjectForm = ({
               name="tags"
               label={<span className="text-primary font-medium">Tags</span>}
             >
-              <Select className="w-full">
-                {project?.tags.map((level) => (
-                  <Select.Option key={level} value={level}>
-                    {level}
-                  </Select.Option>
-                ))}
-              </Select>
+              <Select
+                className="w-full"
+                mode="tags"
+                placeholder="Project tags"
+              />
             </Form.Item>
           </div>
 
