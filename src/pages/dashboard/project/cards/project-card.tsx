@@ -2,7 +2,9 @@ import { Badge, Tag, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { Project } from "../../../../types";
+import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
+
 import { CgEye } from "react-icons/cg";
 
 interface ProjectCardProps {
@@ -11,6 +13,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
+
   const navigate = useNavigate();
   const handleRedirect = () => {
     const url = `/dashboard/projects/${project._id}/details`;
@@ -49,6 +52,11 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
               <CgEye />
             </button>
           </Tooltip>
+          
+           <UpdateProject
+            project={project}
+            refetchProjectList={refetchProjectList}
+           />
 
           <DeleteProject
             objectId={project._id}
