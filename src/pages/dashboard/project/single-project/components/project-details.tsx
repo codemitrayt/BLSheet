@@ -1,6 +1,8 @@
-import { Avatar, Button } from "antd";
+import { Avatar } from "antd";
+
 import { Project } from "../../../../../types";
-import { VscAdd } from "react-icons/vsc";
+import GridEffect from "../../../../../components/effects/grid-effect";
+import InviteMemberPopup from "./invite-member-popup";
 
 interface ProjectDetailsProps {
   project: Project;
@@ -8,9 +10,13 @@ interface ProjectDetailsProps {
 
 const ProjectDetails = ({ project }: ProjectDetailsProps) => {
   return (
-    <div className="py-3">
+    <div className="relative bg-primary my-3 rounded-lg p-6">
+      <GridEffect />
       <div className="flex items-center justify-between w-full">
-        <h1 className="text-xl font-medium text-primary"> {project.name}</h1>
+        <h1 className="text-xl font-medium bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          {project.name}
+        </h1>
+
         <div className="flex items-center space-x-3">
           <Avatar.Group
             max={{
@@ -24,11 +30,11 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
             <Avatar style={{ background: "#2F667F" }}>J</Avatar>
           </Avatar.Group>
 
-          <Button icon={<VscAdd />}>Invite</Button>
+          <InviteMemberPopup projectName={project.name} />
         </div>
       </div>
 
-      <p className="text-gray-600 text-sm">{project.description}</p>
+      <p className="text-gray-100 text-sm">{project.description}</p>
     </div>
   );
 };
