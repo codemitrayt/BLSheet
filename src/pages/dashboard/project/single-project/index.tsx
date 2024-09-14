@@ -4,18 +4,36 @@ import { useQuery } from "react-query";
 import { Spin } from "antd";
 
 import ProjectDetails from "./components/project-details";
-
 import projectService from "../../../../services/project-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import { Project } from "../../../../types";
 import TeamMembersTable from "./components/team-members-table";
+import { Project, ProjectMember } from "../../../../types";
 
 const SingleProjectPage = () => {
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
   const [project, setProject] = useState<Project | null>(null);
+  const [members, setMembers] = useState<ProjectMember[]>([]);
+
+  const { isLoading: loader, refetch: refetchProjectMembers } = useQuery({
+    queryKey: ["project-members"],
+    queryFn: () =>
+      projectService().getProjectMembers({
+        data: { objectId: projectId },
+        authToken,
+      }),
+    onSuccess: ({ data }) => {
+      const members = data?.message?.projectMembers || [];
+      setMembers(members);
+    },
+    onError: (error) => {
+      console.error("ERROR :: project members ::", error);
+      handleError(error);
+    },
+    retry: false,
+  });
 
   const { isLoading } = useQuery({
     queryKey: ["get-product", projectId],
@@ -51,9 +69,18 @@ const SingleProjectPage = () => {
 
   return (
     <div className="relative">
-      <ProjectDetails project={project} />
+      <ProjectDetails
+        project={project}
+        members={members}
+        isLoading={loader}
+        refetchProjectMembers={refetchProjectMembers}
+      />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-3">
-        <TeamMembersTable />
+        <TeamMembersTable
+          members={members}
+          isLoading={loader}
+          refetchProjectMembers={refetchProjectMembers}
+        />
       </div>
     </div>
   );
