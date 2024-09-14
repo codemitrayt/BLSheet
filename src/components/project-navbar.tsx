@@ -16,12 +16,7 @@ const ProjectNavbar = ({ projectId }: ProjectNavbarProps) => {
     <div className="border-b space-x-4 flex items-center">
       <NavLink
         to={`/dashboard/projects`}
-        className={({ isActive }) =>
-          cn(
-            "text-sm pb-2 px-1 hover:text-primary transition-all",
-            isActive && "text-primary border-b-2 border-primary font-medium"
-          )
-        }
+        className={cn("text-sm pb-2 px-1 hover:text-primary transition-all")}
       >
         <div className="space-x-1 flex items-center">
           <GoProject />
