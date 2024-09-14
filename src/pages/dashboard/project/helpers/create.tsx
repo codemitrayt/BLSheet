@@ -3,7 +3,8 @@ import { useState } from "react";
 
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
-import CreateProjectForm from "../components/create-project-form";
+
+import CreateProjectForm from "../forms/create-project-form";
 
 interface CreateProjectProps {
   refetchProjectList: () => void;
@@ -29,7 +30,7 @@ const CreateProject = ({ refetchProjectList }: CreateProjectProps) => {
         closeIcon={<LuChevronRightCircle className="text-primary size-5" />}
         open={drawerState}
         onClose={onCloseDrawer}
-        title={<span className="text-primary">Create Todo</span>}
+        title={<span className="text-primary">Create Project</span>}
       >
         <CreateProjectForm
           refetchProjectList={refetchProjectList}

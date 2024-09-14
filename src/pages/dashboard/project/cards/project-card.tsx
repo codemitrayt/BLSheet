@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Project } from "../../../../types";
 import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
-import useUserInfo from "../../../../hooks/useUserInfo";
 
 import { CgEye } from "react-icons/cg";
 
@@ -14,9 +13,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
-  const { user } = useUserInfo();
   const navigate = useNavigate();
-  const isAdmin = user?._id === project.userId;
   const handleRedirect = () => {
     const url = `/dashboard/projects/${project._id}/details`;
     navigate(url);
@@ -51,8 +48,8 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
 
         <div className="flex items-center justify-between mt-3">
           <div>
-            <Tag color={isAdmin ? "orange" : "blue"}>
-              {isAdmin ? "Admin" : "Member"}
+            <Tag color={project.isAdmin ? "orange" : "blue"}>
+              {project.isAdmin ? "Admin" : "Member"}
             </Tag>
           </div>
           <div className="flex items-center justify-center space-x-3">
@@ -65,7 +62,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
               </button>
             </Tooltip>
 
-            {isAdmin && (
+            {project.isAdmin && (
               <>
                 <UpdateProject
                   project={project}

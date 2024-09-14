@@ -111,6 +111,8 @@ export interface Project {
   userId: string;
   tags: string[];
   img: string;
+  user: User;
+  isAdmin: boolean;
 }
 
 export enum ProjectMemberStatus {

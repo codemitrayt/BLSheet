@@ -10,11 +10,13 @@ import useErrorHandler from "../../../../../hooks/useErrorHandler";
 interface InviteMemberPopupProps {
   projectName: string;
   projectId: string;
+  refetchProjectMembers: () => void;
 }
 
 const InviteMemberPopup = ({
   projectName,
   projectId,
+  refetchProjectMembers,
 }: InviteMemberPopupProps) => {
   const [form] = Form.useForm();
   const { authToken } = useUserInfo();
@@ -34,6 +36,7 @@ const InviteMemberPopup = ({
     onSuccess: () => {
       closeModal();
       form.resetFields();
+      refetchProjectMembers();
     },
     onError: (error) => {
       console.log("ERROR :: invite members ::", error);
