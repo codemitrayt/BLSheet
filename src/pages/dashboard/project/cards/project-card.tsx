@@ -52,7 +52,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
         <div className="flex items-center justify-between mt-3">
           <div>
             <Tag color={isAdmin ? "orange" : "blue"}>
-              {isAdmin ? "Admin" : "User"}
+              {isAdmin ? "Admin" : "Member"}
             </Tag>
           </div>
           <div className="flex items-center justify-center space-x-3">
