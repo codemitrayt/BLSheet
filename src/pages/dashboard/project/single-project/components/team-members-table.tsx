@@ -21,7 +21,7 @@ const columns: TableProps<ProjectMember>["columns"] = [
             : "orange"
         }
       >
-        {status}
+        {status.toUpperCase()}
       </Tag>
     ),
   },
