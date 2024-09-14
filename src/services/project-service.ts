@@ -52,6 +52,22 @@ const projectService = () => {
         url: urls.project.inviteTeamMember,
         authToken,
       }),
+
+    updateProjectMember: ({ data, authToken }: RequestType) =>
+      request({
+        method: "PUT",
+        data,
+        url: urls.project.updateProjectMember,
+        authToken,
+      }),
+
+    getProjectMembers: ({ data, authToken }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.project.getProjectMembers,
+        authToken,
+      }),
   };
 };
 
