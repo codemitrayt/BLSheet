@@ -5,6 +5,7 @@ import { cn } from "../utils";
 import { TbListDetails } from "react-icons/tb";
 import { RiTaskLine, RiTimeLine } from "react-icons/ri";
 import { PiChatsLight } from "react-icons/pi";
+import { GoProject } from "react-icons/go";
 
 interface ProjectNavbarProps {
   projectId: string | undefined;
@@ -13,6 +14,21 @@ interface ProjectNavbarProps {
 const ProjectNavbar = ({ projectId }: ProjectNavbarProps) => {
   return (
     <div className="border-b space-x-4 flex items-center">
+      <NavLink
+        to={`/dashboard/projects`}
+        className={({ isActive }) =>
+          cn(
+            "text-sm pb-2 px-1 hover:text-primary transition-all",
+            isActive && "text-primary border-b-2 border-primary font-medium"
+          )
+        }
+      >
+        <div className="space-x-1 flex items-center">
+          <GoProject />
+          <span>Projects</span>
+        </div>
+      </NavLink>
+
       <NavLink
         to={`/dashboard/projects/${projectId}/details`}
         className={({ isActive }) =>
