@@ -14,6 +14,7 @@ import ProjectLayout from "../layouts/project-layout";
 import HomePage from "../pages/home";
 import NotFoundPage from "../pages/not-found-page";
 import ProfilePage from "../pages/profile";
+import ProjectInvitationPage from "../pages/project-invitation";
 
 import SignUpPage from "../pages/auth/sign-up-page";
 import SignInPage from "../pages/auth/sign-in-page";
@@ -37,6 +38,8 @@ import ProjectChats from "../pages/dashboard/project/chats";
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<BaseLayout />}>
+      <Route path="project-invitation" element={<ProjectInvitationPage />} />
+
       <Route element={<VerifyLayout />}>
         <Route element={<ProtectedLayout />}>
           <Route index element={<HomePage />} />
