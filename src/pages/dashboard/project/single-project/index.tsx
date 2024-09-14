@@ -36,7 +36,7 @@ const SingleProjectPage = () => {
   });
 
   const { isLoading } = useQuery({
-    queryKey: ["get-product", projectId],
+    queryKey: ["get-project", projectId],
     queryFn: () =>
       projectService().getProject({
         params: { objectId: projectId },
