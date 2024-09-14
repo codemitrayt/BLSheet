@@ -75,7 +75,7 @@ const SingleProjectPage = () => {
         isLoading={loader}
         refetchProjectMembers={refetchProjectMembers}
       />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-3">
+      <div className="grid lg:grid-cols-3 mt-3">
         <TeamMembersTable
           members={members}
           isLoading={loader}
