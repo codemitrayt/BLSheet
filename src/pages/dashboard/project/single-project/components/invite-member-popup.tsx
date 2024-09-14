@@ -16,11 +16,15 @@ const InviteMemberPopup = ({
   projectName,
   projectId,
 }: InviteMemberPopupProps) => {
+  const [form] = Form.useForm();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
 
   const [modalState, setModalState] = useState(false);
-  const closeModal = () => setModalState(false);
+  const closeModal = () => {
+    setModalState(false);
+    form.resetFields();
+  };
   const openModal = () => setModalState(true);
 
   const { mutate, isLoading } = useMutation({
@@ -29,6 +33,7 @@ const InviteMemberPopup = ({
       projectService().inviteTeamMember({ data, authToken }),
     onSuccess: () => {
       closeModal();
+      form.resetFields();
     },
     onError: (error) => {
       console.log("ERROR :: invite members ::", error);
@@ -55,6 +60,7 @@ const InviteMemberPopup = ({
       >
         <p>Enter the email address of the member you want to invite.</p>
         <Form
+          form={form}
           layout="vertical"
           className="mt-4"
           onFinish={(values) =>
