@@ -1,14 +1,25 @@
-import { Avatar } from "antd";
+import { Avatar, Spin } from "antd";
 
-import { Project } from "../../../../../types";
-import GridEffect from "../../../../../components/effects/grid-effect";
 import InviteMemberPopup from "./invite-member-popup";
+import GridEffect from "../../../../../components/effects/grid-effect";
+import useUserInfo from "../../../../../hooks/useUserInfo";
+import { Project, ProjectMember } from "../../../../../types";
 
 interface ProjectDetailsProps {
   project: Project;
+  isLoading: boolean;
+  members: ProjectMember[];
+  refetchProjectMembers: () => void;
 }
 
-const ProjectDetails = ({ project }: ProjectDetailsProps) => {
+const ProjectDetails = ({
+  project,
+  members,
+  isLoading,
+}: ProjectDetailsProps) => {
+  const { user } = useUserInfo();
+  const isAdmin = user?._id === project.userId;
+
   return (
     <div className="relative bg-primary my-3 rounded-lg p-6">
       <GridEffect />
@@ -18,22 +29,29 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         </h1>
 
         <div className="flex items-center space-x-3">
-          <Avatar.Group
-            max={{
-              count: 3,
-              style: { background: "#2F667F" },
-            }}
-          >
-            <Avatar style={{ background: "#2F667F" }}>R</Avatar>
-            <Avatar style={{ background: "#2F667F" }}>P</Avatar>
-            <Avatar style={{ background: "#2F667F" }}>T</Avatar>
-            <Avatar style={{ background: "#2F667F" }}>J</Avatar>
-          </Avatar.Group>
+          {isLoading ? (
+            <Spin size="small" />
+          ) : (
+            <Avatar.Group
+              max={{
+                count: 3,
+                style: { background: "#2F667F" },
+              }}
+            >
+              {members.map((member) => (
+                <Avatar style={{ background: "#2F667F" }} key={member._id}>
+                  {member.memberEmailId[0].toUpperCase()}
+                </Avatar>
+              ))}
+            </Avatar.Group>
+          )}
 
-          <InviteMemberPopup
-            projectName={project.name}
-            projectId={project._id}
-          />
+          {isAdmin && (
+            <InviteMemberPopup
+              projectName={project.name}
+              projectId={project._id}
+            />
+          )}
         </div>
       </div>
 
