@@ -1,43 +1,29 @@
-import React from "react";
-import { Input, Table, TableProps } from "antd";
+import { Input, Table, TableProps, Tag } from "antd";
+import { ProjectMember, ProjectMemberStatus } from "../../../../../types";
 
-interface DataType {
-  key: React.Key;
-  email: string;
-}
-
-const data: DataType[] = [
-  {
-    key: "1",
-    email: "codemitrayt@gmail.com",
-  },
-  {
-    key: "2",
-    email: "mungse.rushi@gmail.com",
-  },
-  {
-    key: "3",
-    email: "example@example.com",
-  },
-  {
-    key: "4",
-    email: "example@example.com",
-  },
-  {
-    key: "5",
-    email: "example@example.com",
-  },
-  {
-    key: "6",
-    email: "example@example.com",
-  },
-];
-
-const columns: TableProps<DataType>["columns"] = [
+const columns: TableProps<ProjectMember>["columns"] = [
   {
     title: <span className="text-primary">Email</span>,
-    dataIndex: "email",
-    key: "email",
+    dataIndex: "memberEmailId",
+    key: "memberEmailId",
+  },
+  {
+    title: <span className="text-primary">Status</span>,
+    dataIndex: "status",
+    key: "status",
+    render: (status) => (
+      <Tag
+        color={
+          status === ProjectMemberStatus.ACCEPTED
+            ? "green"
+            : status === ProjectMemberStatus.PENDING
+            ? "red"
+            : "orange"
+        }
+      >
+        {status}
+      </Tag>
+    ),
   },
   {
     title: <span className="text-primary">Actions</span>,
@@ -49,7 +35,13 @@ const columns: TableProps<DataType>["columns"] = [
   },
 ];
 
-const TeamMembersTable = () => {
+interface TeamMembersTableProps {
+  members: ProjectMember[];
+  isLoading: boolean;
+  refetchProjectMembers: () => {};
+}
+
+const TeamMembersTable = ({ members, isLoading }: TeamMembersTableProps) => {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between bg-gray-100 p-3 rounded-lg">
@@ -62,9 +54,11 @@ const TeamMembersTable = () => {
       </div>
       <Table
         bordered
-        dataSource={data}
+        dataSource={members}
         columns={columns}
         pagination={{ pageSize: 5 }}
+        rowKey="_id"
+        loading={isLoading}
       />
     </div>
   );
