@@ -112,3 +112,23 @@ export interface Project {
   tags: string[];
   img: string;
 }
+
+export enum ProjectMemberStatus {
+  PENDING = "pending",
+  ACCEPTED = "accepted",
+  REJECTED = "rejected",
+}
+
+export interface UpdateTeamMember {
+  status: ProjectMemberStatus;
+  memberEmailId: string;
+  invitationToken: string | null;
+}
+
+export interface ProjectMember {
+  userId: string;
+  projectId: string;
+  memberEmailId: string;
+  status: ProjectMemberStatus;
+  _id: string;
+}
