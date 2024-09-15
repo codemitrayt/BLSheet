@@ -7,6 +7,7 @@ import ShowProjectTask from "./helpers/show";
 import projectTaskService from "../../../../services/project-task-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
+import CreateProjectTask from "./helpers/create";
 
 const ProjectTasks = () => {
   const { projectId } = useParams();
@@ -16,9 +17,12 @@ const ProjectTasks = () => {
   const [projectTasks, setProjectTasks] = useState([]);
 
   const { isLoading, refetch } = useQuery({
-    queryKey: ["get-project-tasks", projectId],
+    queryKey: ["create-project-tasks", projectId],
     queryFn: () =>
-      projectTaskService().getProjectTasks({ data: { projectId }, authToken }),
+      projectTaskService().getProjectTasks({
+        data: { projectId },
+        authToken,
+      }),
     onSuccess: ({ data }) => {
       const tasks = data?.message?.projectTasks || [];
       setProjectTasks(tasks);
@@ -42,6 +46,7 @@ const ProjectTasks = () => {
     <div className="relative mt-3">
       <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
         <h1 className="text-primary font-bold">Tasks</h1>
+        <CreateProjectTask refetchProjectTaskList={refetch} />
       </div>
 
       <div className="w-[calc(100vw_-100px)] lg:w-[calc(100vw_-290px)] border p-6 rounded-xl shadow-sm">

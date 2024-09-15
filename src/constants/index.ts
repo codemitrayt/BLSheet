@@ -40,6 +40,18 @@ export const TODO_STATUS_COLOR = {
   in_progress: "yellow",
   completed: "green",
 };
+export const TASK_STATUS = [
+  { label: "Todo", value: "todo" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Under Review", value: "under_review" },
+  { label: "Completed", value: "completed" },
+];
+
+export const TASK_PRIORITY = [
+  { label: "Low", value: "low" },
+  { label: "Medium", value: "medium" },
+  { label: "Hard", value: "hard" },
+];
 
 export const TODO_CARD_BORDER_COLOR = {
   hard: "border-l-red-500",
