@@ -18,7 +18,10 @@ const ProjectTasks = () => {
   const { isLoading, refetch } = useQuery({
     queryKey: ["get-project-tasks", projectId],
     queryFn: () =>
-      projectTaskService().getProjectTasks({ data: { projectId }, authToken }),
+      projectTaskService().getProjectTasks({
+        data: { objectId: projectId },
+        authToken,
+      }),
     onSuccess: ({ data }) => {
       const tasks = data?.message?.projectTasks || [];
       setProjectTasks(tasks);
