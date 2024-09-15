@@ -134,3 +134,32 @@ export interface ProjectMember {
   status: ProjectMemberStatus;
   _id: string;
 }
+
+export enum ProjectTaskStatus {
+  TODO = "todo",
+  IN_PROGRESS = "in_progress",
+  UNDER_REVIEW = "under_review",
+  COMPLETED = "completed",
+}
+
+export enum ProjectTaskPriority {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+}
+
+export interface ProjectTask {
+  _id: string;
+  title: string;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+  tags: string[];
+  status: ProjectTaskStatus;
+  priority: ProjectTaskPriority;
+  assignedTo?: string[];
+  userId: string;
+  projectId: string;
+  completedDate?: Date;
+  attachments?: string[];
+}
