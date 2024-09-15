@@ -66,20 +66,27 @@ const DashboardProjectPage = () => {
 
         <div className="flex items-center justify-center space-x-4">
           <div className="space-x-1 flex items-center justify-center">
-            <IoMdGrid
+            <button
               className={cn(
-                "text-black size-5 cursor-pointer h-6 w-6 p-1",
-                view === "board" && "text-white bg-primary rounded-sm"
+                "px-3 py-1 flex items-center space-x-1 rounded-md border shadow-sm",
+                view === "board" && "text-white bg-primary"
               )}
               onClick={() => handleView("board")}
-            />
-            <MdOutlineListAlt
+            >
+              <IoMdGrid className="size-5" />
+              <span className="text-sm">board</span>
+            </button>
+
+            <button
               className={cn(
-                "text-black size-5 cursor-pointer h-6 w-6 p-1",
-                view === "table" && "text-white bg-primary rounded-sm"
+                "px-3 py-1 flex items-center space-x-1 rounded-md border shadow-sm",
+                view === "table" && "text-white bg-primary"
               )}
               onClick={() => handleView("table")}
-            />
+            >
+              <MdOutlineListAlt className="size-5" />
+              <span className="text-sm">Table</span>
+            </button>
           </div>
           <CreateProject refetchProjectList={refetchProjectList} />
         </div>
