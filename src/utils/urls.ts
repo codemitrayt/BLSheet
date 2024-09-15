@@ -42,6 +42,10 @@ const urls: URLType = {
     updateProjectMember: "/project/updateProjectMember",
     getProjectMembers: "/project/getProjectMembers",
   },
+  projectTask: {
+    createProjectTask: "/projectTask/createProjectTask",
+    getProjectTasks: "/projectTask/getProjectTasks",
+  },
 };
 
 export default urls;
