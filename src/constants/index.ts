@@ -50,7 +50,7 @@ export const TASK_STATUS = [
 export const TASK_PRIORITY = [
   { label: "Low", value: "low" },
   { label: "Medium", value: "medium" },
-  { label: "Hard", value: "hard" },
+  { label: "High", value: "high" },
 ];
 
 export const TODO_CARD_BORDER_COLOR = {
