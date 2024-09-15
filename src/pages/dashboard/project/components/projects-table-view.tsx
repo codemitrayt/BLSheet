@@ -7,6 +7,7 @@ import DeleteProject from "../helpers/delete";
 
 import useUserInfo from "../../../../hooks/useUserInfo";
 import { Project } from "../../../../types";
+import { capitalizeFirstLetter } from "../../../../utils";
 
 interface ProjectsTableViewProps {
   projects: Project[];
@@ -32,7 +33,7 @@ const columns: TableProps<Project>["columns"] = [
       <div className="flex items-center">
         {tags.map((tag: string) => (
           <Tag color="#539BBB" key={tag} className="rounded-full px-3">
-            {tag}
+            {capitalizeFirstLetter(tag)}
           </Tag>
         ))}
       </div>
