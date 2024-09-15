@@ -5,7 +5,7 @@ import { IoAttachOutline } from "react-icons/io5";
 import { LiaComment } from "react-icons/lia";
 
 import { ProjectTask } from "../../../../../types";
-import { cn } from "../../../../../utils";
+import { capitalizeFirstLetter, cn } from "../../../../../utils";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
@@ -40,7 +40,7 @@ const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
           <div>
             {projectTask.tags.map((tag, ind) => (
               <Tag key={ind} color="#2F667F" className="rounded-full px-3">
-                {tag}
+                {capitalizeFirstLetter(tag)}
               </Tag>
             ))}
           </div>

@@ -20,7 +20,7 @@ const ProjectTasks = () => {
     queryKey: ["create-project-tasks", projectId],
     queryFn: () =>
       projectTaskService().getProjectTasks({
-        data: { projectId },
+        data: { objectId: projectId },
         authToken,
       }),
     onSuccess: ({ data }) => {

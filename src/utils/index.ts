@@ -28,3 +28,7 @@ export function strSlice(str: string, num: number = 250): string {
   if (length > num) return str.slice(0, num) + "...";
   return str;
 }
+
+export function capitalizeFirstLetter(str: string) {
+  return str.replace(/^./, str[0].toUpperCase());
+}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Project } from "../../../../types";
 import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
+import { capitalizeFirstLetter } from "../../../../utils";
 
 import { CgEye } from "react-icons/cg";
 
@@ -35,7 +36,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
         <div className="py-2">
           {project.tags.map((tag) => (
             <Tag color="#539BBB" key={tag} className="rounded-full px-3">
-              {tag}
+              {capitalizeFirstLetter(tag)}
             </Tag>
           ))}
         </div>
