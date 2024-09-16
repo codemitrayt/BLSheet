@@ -60,7 +60,12 @@ const CreateProjectTaskForm = ({
           label={<span className="text-primary font-medium">Title</span>}
           rules={[{ required: true, message: "Title must be required" }]}
         >
-          <Input placeholder="Title" showCount count={{ max: 100 }} />
+          <Input.TextArea
+            rows={2}
+            placeholder="Title"
+            showCount
+            count={{ max: 100 }}
+          />
         </Form.Item>
 
         <Form.Item
@@ -72,6 +77,7 @@ const CreateProjectTaskForm = ({
             placeholder="Description"
             showCount
             count={{ max: 150 }}
+            rows={3}
           />
         </Form.Item>
         <div className="flex items-center space-x-8">
