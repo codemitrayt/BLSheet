@@ -45,6 +45,8 @@ const urls: URLType = {
   projectTask: {
     createProjectTask: "/projectTask/createProjectTask",
     getProjectTasks: "/projectTask/getProjectTasks",
+    deleteProjectTask: "/projectTask/deleteProjectTask",
+    updateProjectTask: "/projectTask/updateProjectTask",
   },
 };
 
