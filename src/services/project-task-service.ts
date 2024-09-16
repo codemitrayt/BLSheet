@@ -19,6 +19,23 @@ const projectTaskService = () => {
         url: urls.projectTask.getProjectTasks,
         authToken,
       }),
+
+    updateProjectTask: ({ data, authToken, params }: RequestType) =>
+      request({
+        method: "PUT",
+        data,
+        url: urls.projectTask.updateProjectTask,
+        authToken,
+        params,
+      }),
+
+    deleteProjectTask: ({ authToken, params }: RequestType) =>
+      request({
+        method: "DELETE",
+        url: urls.projectTask.deleteProjectTask,
+        authToken,
+        params,
+      }),
   };
 };
 
