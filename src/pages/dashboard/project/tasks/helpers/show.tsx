@@ -12,13 +12,16 @@ const ShowProjectTask = ({
 }: ShowProjectTaskProps) => {
   return (
     <div className="w-full h-[calc(100vh_-240px)] overflow-x-auto flex space-x-3">
-      <div className="space-y-3 w-[330px]">
-        <h1 className="text-primary font-medium border-b p-2">📋 TO DO</h1>
+      <div className="space-y-3">
+        <h1 className="text-primary font-medium w-[330px] border-b p-2">
+          📋 TO DO
+        </h1>
         <div className="overflow-y-auto h-[calc(100vh_-300px)] flex flex-col space-y-3">
           {projectTasks
             .filter((task) => task.status === ProjectTaskStatus.TODO)
             .map((task) => (
               <ProjectTaskCard
+                key={task._id}
                 projectTask={task}
                 refetchProjectTask={refetchProjectTask}
               />
@@ -26,8 +29,8 @@ const ShowProjectTask = ({
         </div>
       </div>
 
-      <div className="space-y-3 w-[330px]">
-        <h1 className="text-primary font-medium border-b p-2">
+      <div className="space-y-3">
+        <h1 className="text-primary font-medium border-b p-2 w-[330px]">
           🧑🏻‍💻 Working In Progress
         </h1>
         <div className="overflow-y-auto h-[calc(100vh_-300px)] flex flex-col space-y-3">
@@ -35,6 +38,7 @@ const ShowProjectTask = ({
             .filter((task) => task.status === ProjectTaskStatus.IN_PROGRESS)
             .map((task) => (
               <ProjectTaskCard
+                key={task._id}
                 projectTask={task}
                 refetchProjectTask={refetchProjectTask}
               />
@@ -42,8 +46,8 @@ const ShowProjectTask = ({
         </div>
       </div>
 
-      <div className="space-y-3 w-[330px]">
-        <h1 className="text-primary font-medium border-b p-2">
+      <div className="space-y-3">
+        <h1 className="text-primary font-medium border-b p-2 w-[330px]">
           👀 Under Review
         </h1>
         <div className="overflow-y-auto h-[calc(100vh_-300px)] flex flex-col space-y-3">
@@ -51,6 +55,7 @@ const ShowProjectTask = ({
             .filter((task) => task.status === ProjectTaskStatus.UNDER_REVIEW)
             .map((task) => (
               <ProjectTaskCard
+                key={task._id}
                 projectTask={task}
                 refetchProjectTask={refetchProjectTask}
               />
@@ -58,13 +63,16 @@ const ShowProjectTask = ({
         </div>
       </div>
 
-      <div className="space-y-3 w-[330px]">
-        <h1 className="text-primary font-medium border-b p-2">✅ Completed</h1>
+      <div className="space-y-3">
+        <h1 className="text-primary w-[330px] font-medium border-b p-2">
+          ✅ Completed
+        </h1>
         <div className="overflow-y-auto h-[calc(100vh_-300px)] flex flex-col space-y-3">
           {projectTasks
             .filter((task) => task.status === ProjectTaskStatus.COMPLETED)
             .map((task) => (
               <ProjectTaskCard
+                key={task._id}
                 projectTask={task}
                 refetchProjectTask={refetchProjectTask}
               />
