@@ -21,6 +21,8 @@ const PROJECT_TASK_PRIORITY_BG_COLOR = {
 };
 
 const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
+  // const dayDiff = getDaysDiff(projectTask.startDate, projectTask.endDate);
+
   return (
     <div className={cn("border w-[330px] rounded-lg h-fit shadow-sm bg-white")}>
       <div className="p-3 border-b">
@@ -46,9 +48,11 @@ const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
           </div>
           <div className="space-x-1">
             <Avatar className="bg-primary !text-sm" size={25}>
-              R
+              {projectTask?.user?.fullName[0].toUpperCase()}
             </Avatar>
-            <span className="text-sm text-primary">Rushikesh Mungse</span>
+            <span className="text-sm text-primary">
+              {projectTask?.user?.fullName}
+            </span>
           </div>
         </div>
       </div>
@@ -69,7 +73,7 @@ const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
         </Avatar.Group>
 
         <div className="flex items-center justify-center space-x-3">
-          <div className="text-gray-800 flex items-center space-x-0.5 text-xs">
+          <div className="text-zinc-800 flex items-center space-x-0.5 text-xs">
             <IoMdTime />
             <span className="text-xs">
               {dateformat(projectTask.startDate, "dd/mm/yyyy")}

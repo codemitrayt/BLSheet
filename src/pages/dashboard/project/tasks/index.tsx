@@ -8,6 +8,7 @@ import projectTaskService from "../../../../services/project-task-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import CreateProjectTask from "./helpers/create";
+import { Project } from "../../../../types";
 
 const ProjectTasks = () => {
   const { projectId } = useParams();
@@ -15,6 +16,7 @@ const ProjectTasks = () => {
   const { handleError } = useErrorHandler();
 
   const [projectTasks, setProjectTasks] = useState([]);
+  const [project, setProject] = useState<Project>();
 
   const { isLoading, refetch } = useQuery({
     queryKey: ["create-project-tasks", projectId],
@@ -25,7 +27,9 @@ const ProjectTasks = () => {
       }),
     onSuccess: ({ data }) => {
       const tasks = data?.message?.projectTasks || [];
+      const project = data?.message?.project || null;
       setProjectTasks(tasks);
+      setProject(project);
     },
     onError: (error) => {
       console.log("Error :: get project tasks ::", error);
@@ -45,7 +49,9 @@ const ProjectTasks = () => {
   return (
     <div className="relative mt-3">
       <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
-        <h1 className="text-primary font-bold">Tasks</h1>
+        <h1 className="text-primary font-bold">
+          {project?.name} Project Tasks
+        </h1>
         <CreateProjectTask refetchProjectTaskList={refetch} />
       </div>
 

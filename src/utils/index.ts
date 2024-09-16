@@ -32,3 +32,11 @@ export function strSlice(str: string, num: number = 250): string {
 export function capitalizeFirstLetter(str: string) {
   return str.replace(/^./, str[0].toUpperCase());
 }
+
+export const getDaysDiff = (startDate: Date, endDate: Date) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  let differenceInTime = end.getTime() - start.getTime();
+  let differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
+  return differenceInDays;
+};

@@ -162,4 +162,5 @@ export interface ProjectTask {
   projectId: string;
   completedDate?: Date;
   attachments?: string[];
+  user?: User;
 }
