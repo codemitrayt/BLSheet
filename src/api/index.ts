@@ -5,7 +5,7 @@ import { RequestType } from "../types";
 const request = ({
   method = "GET",
   authToken = null,
-  data = null,
+  data = {},
   params = null,
   url,
 }: RequestType) => {
