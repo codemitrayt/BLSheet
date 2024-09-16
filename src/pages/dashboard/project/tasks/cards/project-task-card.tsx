@@ -1,13 +1,16 @@
 import { Avatar, Tag } from "antd";
 import dateformat from "dateformat";
 
-import { PiDotsThreeCircleLight } from "react-icons/pi";
-import { IoAttachOutline } from "react-icons/io5";
-import { LiaComment } from "react-icons/lia";
-import { IoMdTime } from "react-icons/io";
-
 import { ProjectTask } from "../../../../../types";
+import useUserInfo from "../../../../../hooks/useUserInfo";
 import { capitalizeFirstLetter, cn } from "../../../../../utils";
+
+import DeleteProjectTask from "../helpers/delete";
+import UpdateProjectTask from "../helpers/update";
+
+import { RiAttachment2 } from "react-icons/ri";
+import { BiCommentDots } from "react-icons/bi";
+import { IoMdTime } from "react-icons/io";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
@@ -20,8 +23,11 @@ const PROJECT_TASK_PRIORITY_BG_COLOR = {
   high: "red",
 };
 
-const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
-  // const dayDiff = getDaysDiff(projectTask.startDate, projectTask.endDate);
+const ProjectTaskCard = ({
+  projectTask,
+  refetchProjectTask,
+}: ProjectTaskCardProps) => {
+  const { user } = useUserInfo();
 
   return (
     <div className={cn("border w-[330px] rounded-lg h-fit shadow-sm bg-white")}>
@@ -34,9 +40,22 @@ const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
               </Tag>
             ))}
           </div>
-          <button>
-            <PiDotsThreeCircleLight />
-          </button>
+
+          {projectTask.userId === user?._id ? (
+            <div className="flex items-center space-x-2">
+              <UpdateProjectTask
+                projectTask={projectTask}
+                refetchProjectTask={refetchProjectTask}
+              />
+
+              <DeleteProjectTask
+                objectId={projectTask._id}
+                refetchProjectTask={refetchProjectTask}
+              />
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
         <h1 className="text-sm font-medium py-2">{projectTask.title}</h1>
         <p className="text-xs">{projectTask.description}</p>
@@ -79,14 +98,15 @@ const ProjectTaskCard = ({ projectTask }: ProjectTaskCardProps) => {
               {dateformat(projectTask.startDate, "dd/mm/yyyy")}
             </span>
           </div>
-          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-0.4">
-            <IoAttachOutline className="size-4" />
-            <span className="text-sm">12</span>
+
+          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[1px]">
+            <RiAttachment2 className="size-4" />
+            <span className="text-sm">0</span>
           </button>
 
-          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-0.4">
-            <LiaComment className="size-4" />
-            <span className="text-sm">5</span>
+          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[2px]">
+            <BiCommentDots className="size-4" />
+            <span className="text-sm">0</span>
           </button>
         </div>
       </div>
