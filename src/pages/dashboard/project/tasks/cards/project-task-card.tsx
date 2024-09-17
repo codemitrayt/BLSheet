@@ -61,6 +61,10 @@ const ProjectTaskCard = ({
         </div>
         <h1 className="text-sm font-medium py-2">{projectTask.title}</h1>
         <p className="text-xs">{projectTask.description}</p>
+        {/* <div
+          className="text-sm"
+          dangerouslySetInnerHTML={{ __html: projectTask.description }}
+        /> */}
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center">
             <Tag color={PROJECT_TASK_PRIORITY_BG_COLOR[projectTask.priority]}>

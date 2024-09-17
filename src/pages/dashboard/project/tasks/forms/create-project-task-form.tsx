@@ -1,6 +1,7 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
+// import ReactQuill from "react-quill";
 
 import useUserInfo from "../../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
@@ -73,6 +74,7 @@ const CreateProjectTaskForm = ({
           label={<span className="text-primary font-medium">Description</span>}
           rules={[{ required: true, message: "Description must be required" }]}
         >
+          {/* <ReactQuill theme="snow" /> */}
           <Input.TextArea
             placeholder="Description"
             showCount
