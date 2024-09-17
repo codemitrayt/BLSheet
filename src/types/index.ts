@@ -128,11 +128,10 @@ export interface UpdateTeamMember {
 }
 
 export interface ProjectMember {
-  userId: string;
-  projectId: string;
+  _id: string;
   memberEmailId: string;
   status: ProjectMemberStatus;
-  _id: string;
+  isAdmin?: string;
 }
 
 export enum ProjectTaskStatus {

@@ -77,6 +77,7 @@ const SingleProjectPage = () => {
       />
       <div className="grid lg:grid-cols-3 mt-3">
         <TeamMembersTable
+          isAdmin={project.isAdmin}
           members={members}
           isLoading={loader}
           refetchProjectMembers={refetchProjectMembers}

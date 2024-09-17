@@ -41,6 +41,7 @@ const urls: URLType = {
     inviteTeamMember: "/project/inviteTeamMember",
     updateProjectMember: "/project/updateProjectMember",
     getProjectMembers: "/project/getProjectMembers",
+    removeProjectMember: "/project/removeProjectMember",
   },
   projectTask: {
     createProjectTask: "/projectTask/createProjectTask",
