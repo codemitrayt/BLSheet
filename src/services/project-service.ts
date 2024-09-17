@@ -68,6 +68,14 @@ const projectService = () => {
         url: urls.project.getProjectMembers,
         authToken,
       }),
+
+    removeProjectMember: ({ params, authToken }: RequestType) =>
+      request({
+        method: "DELETE",
+        params,
+        url: urls.project.removeProjectMember,
+        authToken,
+      }),
   };
 };
 
