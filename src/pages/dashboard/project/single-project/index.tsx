@@ -1,20 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { Spin } from "antd";
 
+import TeamMembersTable from "./components/team-members-table";
 import ProjectDetails from "./components/project-details";
+
 import projectService from "../../../../services/project-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import TeamMembersTable from "./components/team-members-table";
-import { Project, ProjectMember } from "../../../../types";
+import { ProjectMember } from "../../../../types";
+import { useProjectContext } from "../../../../providers/project-provider";
 
 const SingleProjectPage = () => {
   const { authToken } = useUserInfo();
+  const { project } = useProjectContext();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
-  const [project, setProject] = useState<Project | null>(null);
   const [members, setMembers] = useState<ProjectMember[]>([]);
 
   const { isLoading: loader, refetch: refetchProjectMembers } = useQuery({
@@ -35,49 +36,17 @@ const SingleProjectPage = () => {
     retry: false,
   });
 
-  const { isLoading } = useQuery({
-    queryKey: ["get-project", projectId],
-    queryFn: () =>
-      projectService().getProject({
-        params: { objectId: projectId },
-        authToken,
-      }),
-    onSuccess: ({ data }) => {
-      setProject(data?.message?.project);
-    },
-    onError: (error) => {
-      console.log("Error :: get product ::", error);
-      handleError(error);
-    },
-    retry: false,
-  });
-
-  if (isLoading)
-    return (
-      <div className="py-16 flex items-center justify-center">
-        <Spin />
-      </div>
-    );
-
-  if (!project) {
-    return (
-      <div className="py-16 flex items-center justify-center">
-        Project not found!
-      </div>
-    );
-  }
-
   return (
     <div className="relative">
       <ProjectDetails
-        project={project}
+        project={project!}
         members={members}
         isLoading={loader}
         refetchProjectMembers={refetchProjectMembers}
       />
       <div className="grid lg:grid-cols-3 mt-3">
         <TeamMembersTable
-          isAdmin={project.isAdmin}
+          isAdmin={project!.isAdmin}
           members={members}
           isLoading={loader}
           refetchProjectMembers={refetchProjectMembers}

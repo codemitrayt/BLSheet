@@ -2,8 +2,9 @@ import { Avatar, Tag } from "antd";
 import dateformat from "dateformat";
 
 import { ProjectTask } from "../../../../../types";
-import useUserInfo from "../../../../../hooks/useUserInfo";
 import { capitalizeFirstLetter, cn } from "../../../../../utils";
+import { useProjectContext } from "../../../../../providers/project-provider";
+import useUserInfo from "../../../../../hooks/useUserInfo";
 
 import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
@@ -27,6 +28,7 @@ const ProjectTaskCard = ({
   projectTask,
   refetchProjectTask,
 }: ProjectTaskCardProps) => {
+  const { isAdmin } = useProjectContext();
   const { user } = useUserInfo();
 
   return (
@@ -41,7 +43,7 @@ const ProjectTaskCard = ({
             ))}
           </div>
 
-          {projectTask.userId === user?._id ? (
+          {projectTask.userId === user?._id || isAdmin ? (
             <div className="flex items-center space-x-2">
               <UpdateProjectTask
                 projectTask={projectTask}

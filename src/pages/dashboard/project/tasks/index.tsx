@@ -19,7 +19,7 @@ const ProjectTasks = () => {
   const [project, setProject] = useState<Project>();
 
   const { isLoading, refetch } = useQuery({
-    queryKey: ["create-project-tasks", projectId],
+    queryKey: ["get-project-tasks", projectId],
     queryFn: () =>
       projectTaskService().getProjectTasks({
         data: { objectId: projectId },
