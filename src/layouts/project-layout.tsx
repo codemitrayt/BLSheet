@@ -4,21 +4,21 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import ProjectNavbar from "../components/project-navbar";
-// import ProjectHeader from "../components/project-header";
 import projectService from "../services/project-service";
 
 import useErrorHandler from "../hooks/useErrorHandler";
 import useUserInfo from "../hooks/useUserInfo";
 
 import { Project } from "../types";
+import ProjectContext from "../providers/project-provider";
 
 const ProjectLayout = () => {
   const { projectId } = useParams();
-  const { authToken } = useUserInfo();
+  const { authToken, user } = useUserInfo();
   const { handleError } = useErrorHandler();
   const [project, setProject] = useState<Project | null>(null);
 
-  const { isLoading } = useQuery({
+  const { isLoading, refetch: refetchProject } = useQuery({
     queryKey: ["get-product", projectId],
     queryFn: () =>
       projectService().getProject({
@@ -50,11 +50,12 @@ const ProjectLayout = () => {
     );
 
   return (
-    <div>
-      {/* <ProjectHeader project={project} /> */}
+    <ProjectContext.Provider
+      value={{ project, isAdmin: project.userId === user?._id, refetchProject }}
+    >
       <ProjectNavbar projectId={projectId} />
       <Outlet />
-    </div>
+    </ProjectContext.Provider>
   );
 };
 
