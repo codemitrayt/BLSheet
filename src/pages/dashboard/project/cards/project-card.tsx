@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Project } from "../../../../types";
 import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
-import { capitalizeFirstLetter } from "../../../../utils";
+import { capitalizeFirstLetter, strSlice } from "../../../../utils";
 
 import { CgEye } from "react-icons/cg";
 
@@ -42,7 +42,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
         </div>
 
         <p className="text-sm text-gray-600 h-[50px] hidden md:block">
-          {project.description}
+          {strSlice(project.description, 100)}
         </p>
 
         <p className="text-sm text-gray-600 md:hidden">{project.description}</p>
