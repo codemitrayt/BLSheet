@@ -1,13 +1,13 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
+import { Spin } from "antd";
 
 import { URLS } from "../constants";
 import authService from "../services/auth-service";
 import useUserInfo from "../hooks/useUserInfo";
 import useErrorHandler from "../hooks/useErrorHandler";
 import { logout } from "../store/slices/auth-slice";
-import { Spin } from "antd";
 
 const VerifyLayout = () => {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ const VerifyLayout = () => {
       dispatch(logout());
       navigate(URLS.signInPageUrl);
     },
+    staleTime: 20 * 60 * 60 * 1000,
     retry: false,
   });
 
