@@ -49,7 +49,12 @@ const CreateProjectForm = ({
           label={<span className="text-primary font-medium">Project Name</span>}
           rules={[{ required: true, message: "Name must be required" }]}
         >
-          <Input placeholder="Title" showCount count={{ max: 70 }} />
+          <Input.TextArea
+            rows={2}
+            placeholder="Title"
+            showCount
+            count={{ max: 70 }}
+          />
         </Form.Item>
 
         <Form.Item
@@ -64,7 +69,7 @@ const CreateProjectForm = ({
           <Input.TextArea
             placeholder="Todo description"
             showCount
-            count={{ max: 120 }}
+            count={{ max: 150 }}
           />
         </Form.Item>
 
@@ -72,6 +77,7 @@ const CreateProjectForm = ({
           className="w-full"
           name="tags"
           label={<span className="text-primary font-medium">Project Tags</span>}
+          required
         >
           <Select className="w-full" mode="tags" placeholder="Project tags" />
         </Form.Item>

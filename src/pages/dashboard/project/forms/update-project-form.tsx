@@ -1,10 +1,11 @@
 import { Button, Form, Input, Select } from "antd";
+import { useMutation } from "react-query";
+import { useEffect } from "react";
+
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import { useMutation } from "react-query";
 import projectService from "../../../../services/project-service";
 import { Project } from "../../../../types";
-import { useEffect } from "react";
 
 interface UpdateProjectFormProps {
   project: Project;
@@ -54,17 +55,24 @@ const UpdateProjectForm = ({
         >
           <Form.Item
             name="name"
-            label={<span className="text-primary font-medium">Todo Title</span>}
+            label={
+              <span className="text-primary font-medium">Project Name</span>
+            }
             rules={[{ required: true, message: "project name be required" }]}
           >
-            <Input placeholder="project name" showCount count={{ max: 50 }} />
+            <Input.TextArea
+              rows={2}
+              placeholder="project name"
+              showCount
+              count={{ max: 50 }}
+            />
           </Form.Item>
 
           <Form.Item
             name="description"
             label={
               <span className="text-primary font-medium">
-                project Description
+                Project Description
               </span>
             }
             rules={[
@@ -72,9 +80,10 @@ const UpdateProjectForm = ({
             ]}
           >
             <Input.TextArea
+              rows={3}
               placeholder="project description"
               showCount
-              count={{ max: 100 }}
+              count={{ max: 150 }}
             />
           </Form.Item>
 
@@ -82,7 +91,10 @@ const UpdateProjectForm = ({
             <Form.Item
               className="w-full"
               name="tags"
-              label={<span className="text-primary font-medium">Tags</span>}
+              label={
+                <span className="text-primary font-medium">Project Tags</span>
+              }
+              required
             >
               <Select
                 className="w-full"
