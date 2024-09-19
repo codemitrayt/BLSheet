@@ -39,8 +39,8 @@ const DeleteProjectTask = ({
 
   return (
     <ConfirmationPopUp
-      title="Delete Project"
-      description="Are you sure to delete this project?"
+      title="Delete Project Task"
+      description="Are you sure to delete this project task?"
       fn={handleOnDelete}
       icon={
         <div className="flex items-center justify-center h-5 mr-2">
@@ -49,7 +49,7 @@ const DeleteProjectTask = ({
       }
       isLoading={isLoading}
     >
-      <Tooltip title="Delete Project">
+      <Tooltip title="Delete Project Task">
         <button className="text-red-500 hover:text-red-500/80 transition">
           {isLoading ? <RiLoader4Line className="animate-spin" /> : <TbTrash />}
         </button>

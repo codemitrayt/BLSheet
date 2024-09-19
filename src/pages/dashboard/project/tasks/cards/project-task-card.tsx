@@ -10,6 +10,7 @@ import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
 import ProjectTaskComment from "../helpers/comment";
 import PorjectTaskAttachment from "../helpers/attachment";
+import AssignUserToProjectTask from "../helpers/assign-user";
 
 import { IoMdTime } from "react-icons/io";
 
@@ -61,10 +62,6 @@ const ProjectTaskCard = ({
         </div>
         <h1 className="text-sm font-medium py-2">{projectTask.title}</h1>
         <p className="text-xs">{projectTask.description}</p>
-        {/* <div
-          className="text-sm"
-          dangerouslySetInnerHTML={{ __html: projectTask.description }}
-        /> */}
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center">
             <Tag color={PROJECT_TASK_PRIORITY_BG_COLOR[projectTask.priority]}>
@@ -83,19 +80,23 @@ const ProjectTaskCard = ({
       </div>
 
       <div className="flex items-center justify-between p-3">
-        <Avatar.Group
-          className="!text-xs !border-primary"
-          max={{
-            count: 2,
-            style: { background: "#2F667F", border: "#2F667F" },
-          }}
-          size={25}
-        >
-          <Avatar className="bg-primary !text-xs !border-primary">R</Avatar>
-          <Avatar className="bg-primary !text-xs !border-primary">S</Avatar>
-          <Avatar className="bg-primary !text-xs !border-primary">T</Avatar>
-          <Avatar className="bg-primary !text-xs !border-primary">U</Avatar>
-        </Avatar.Group>
+        <div className="flex items-center">
+          <Avatar.Group
+            className="!text-xs !border-primary"
+            max={{
+              count: 2,
+              style: { background: "#2F667F", border: "#2F667F" },
+            }}
+            size={25}
+          >
+            <Avatar className="bg-primary !text-xs !border-primary">R</Avatar>
+            <Avatar className="bg-primary !text-xs !border-primary">S</Avatar>
+            <Avatar className="bg-primary !text-xs !border-primary">T</Avatar>
+            <Avatar className="bg-primary !text-xs !border-primary">U</Avatar>
+          </Avatar.Group>
+
+          <AssignUserToProjectTask />
+        </div>
 
         <div className="flex items-center justify-center space-x-3">
           <div className="text-zinc-800 flex items-center space-x-0.5 text-xs">

@@ -1,4 +1,4 @@
-import { Drawer } from "antd";
+import { Drawer, Tooltip } from "antd";
 import { useState } from "react";
 
 import { LuChevronRightCircle } from "react-icons/lu";
@@ -11,13 +11,15 @@ const PorjectTaskAttachment = () => {
 
   return (
     <div className="relative">
-      <button
-        onClick={openDrawer}
-        className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[1px]"
-      >
-        <RiAttachment2 className="size-4" />
-        <span className="text-sm">0</span>
-      </button>
+      <Tooltip title="Attachments">
+        <button
+          onClick={openDrawer}
+          className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[1px]"
+        >
+          <RiAttachment2 className="size-4" />
+          <span className="text-sm">0</span>
+        </button>
+      </Tooltip>
 
       <Drawer
         width={450}

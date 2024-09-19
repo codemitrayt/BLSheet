@@ -22,7 +22,7 @@ const UpdateProjectTask = ({
 
   return (
     <div className="relative">
-      <Tooltip title="Update Todo">
+      <Tooltip title="Update Project Task">
         <button
           onClick={onOpenDrawer}
           className="text-emerald-500 flex items-center justify-center hover:text-emerald-500/80 transition"
