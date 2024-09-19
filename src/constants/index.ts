@@ -58,3 +58,10 @@ export const TODO_CARD_BORDER_COLOR = {
   medium: "border-l-yellow-500",
   easy: "border-l-green-500",
 };
+
+export const PROJECT_MEMBER_STATUS = [
+  { value: "all", label: "ALL" },
+  { value: "accepted", label: "ACCEPTED" },
+  { value: "pending", label: "PENDING" },
+  { value: "rejected", label: "REJECTED" },
+];
