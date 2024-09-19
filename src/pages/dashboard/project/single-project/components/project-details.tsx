@@ -3,17 +3,14 @@ import { Avatar, Spin } from "antd";
 import InviteMemberPopup from "./invite-member-popup";
 import GridEffect from "../../../../../components/effects/grid-effect";
 
-import {
-  Project,
-  ProjectMember,
-  ProjectMemberStatus,
-} from "../../../../../types";
+import { Project, ProjectMember } from "../../../../../types";
 
 interface ProjectDetailsProps {
   project: Project;
   isLoading: boolean;
   members: ProjectMember[];
   refetchProjectMembers: () => void;
+  totalMembers: number;
 }
 
 const ProjectDetails = ({
@@ -21,6 +18,7 @@ const ProjectDetails = ({
   members,
   isLoading,
   refetchProjectMembers,
+  totalMembers,
 }: ProjectDetailsProps) => {
   return (
     <div className="relative bg-primary my-3 rounded-lg p-6">
@@ -34,21 +32,15 @@ const ProjectDetails = ({
           {isLoading ? (
             <Spin size="small" />
           ) : (
-            <Avatar.Group
-              max={{
-                count: 3,
-                style: { background: "#2F667F" },
-              }}
-            >
-              {members
-                .filter(
-                  (member) => member.status === ProjectMemberStatus.ACCEPTED
-                )
-                .map((member) => (
-                  <Avatar style={{ background: "#2F667F" }} key={member._id}>
-                    {member.memberEmailId[0].toUpperCase()}
-                  </Avatar>
-                ))}
+            <Avatar.Group>
+              {members.map((member) => (
+                <Avatar style={{ background: "#2F667F" }} key={member._id}>
+                  {member.memberEmailId[0].toUpperCase()}
+                </Avatar>
+              ))}
+              {totalMembers > 0 && (
+                <Avatar className="bg-primary">+{totalMembers}</Avatar>
+              )}
             </Avatar.Group>
           )}
 
