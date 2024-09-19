@@ -8,9 +8,9 @@ import useUserInfo from "../../../../../hooks/useUserInfo";
 
 import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
+import ProjectTaskComment from "../helpers/comment";
+import PorjectTaskAttachment from "../helpers/attachment";
 
-import { RiAttachment2 } from "react-icons/ri";
-import { BiCommentDots } from "react-icons/bi";
 import { IoMdTime } from "react-icons/io";
 
 interface ProjectTaskCardProps {
@@ -101,19 +101,12 @@ const ProjectTaskCard = ({
           <div className="text-zinc-800 flex items-center space-x-0.5 text-xs">
             <IoMdTime />
             <span className="text-xs">
-              {dateformat(projectTask.startDate, "dd/mm/yyyy")}
+              {dateformat(projectTask.endDate, "dd/mm/yyyy")}
             </span>
           </div>
 
-          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[1px]">
-            <RiAttachment2 className="size-4" />
-            <span className="text-sm">0</span>
-          </button>
-
-          <button className="text-primary hover:text-primary/80 transition-all flex items-center justify-center space-x-[2px]">
-            <BiCommentDots className="size-4" />
-            <span className="text-sm">0</span>
-          </button>
+          <PorjectTaskAttachment />
+          <ProjectTaskComment />
         </div>
       </div>
     </div>
