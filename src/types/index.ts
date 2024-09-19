@@ -163,3 +163,9 @@ export interface ProjectTask {
   attachments?: string[];
   user?: User;
 }
+
+export interface ProjectMemberFilters {
+  memberEmail?: string;
+  currentPage?: number;
+  status?: ProjectMemberStatus | "all";
+}
