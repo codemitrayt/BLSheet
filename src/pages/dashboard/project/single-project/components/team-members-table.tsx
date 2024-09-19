@@ -1,6 +1,19 @@
-import { Input, Table, TableProps, Tag } from "antd";
-import { ProjectMember, ProjectMemberStatus } from "../../../../../types";
+import { useState } from "react";
+import { Table, TableProps, Tag } from "antd";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+
 import RemoveMember from "./remove-member";
+import projectService from "../../../../../services/project-service";
+import ProjectMemberFilters from "../../../../../components/project-member-filters";
+
+import useUserInfo from "../../../../../hooks/useUserInfo";
+import useErrorHandler from "../../../../../hooks/useErrorHandler";
+import useProjectMemberFilters from "../../../../../hooks/useProjectMemberFilters";
+
+import { ProjectMember, ProjectMemberStatus } from "../../../../../types";
+
+const perPage = 6;
 
 const columns: TableProps<ProjectMember>["columns"] = [
   {
@@ -38,17 +51,41 @@ interface TeamMembersTableProps {
   refetchProjectMembers: () => {};
 }
 
-const TeamMembersTable = ({
-  isAdmin,
-  members,
-  isLoading,
-  refetchProjectMembers,
-}: TeamMembersTableProps) => {
+const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
+  const { authToken } = useUserInfo();
+  const { projectId } = useParams();
+  const { handleError } = useErrorHandler();
+  const [members, setMembers] = useState<ProjectMember[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const { memberEmail, setFilters, currentPage, memberStatus } =
+    useProjectMemberFilters();
+
+  const { isLoading, refetch: refetchProjectMembers } = useQuery({
+    queryKey: ["project-members", memberEmail, memberStatus],
+    queryFn: () =>
+      projectService().getProjectMembers({
+        data: { objectId: projectId },
+        authToken,
+        params: { memberEmail, status: memberStatus },
+      }),
+    onSuccess: ({ data }) => {
+      const members = data?.message?.projectMembers || [];
+      const count = data?.message?.totalCount;
+      setMembers(members);
+      setTotalCount(count);
+    },
+    onError: (error) => {
+      console.error("ERROR :: project members ::", error);
+      handleError(error);
+    },
+    retry: false,
+  });
+
   return (
     <div className="space-y-2 col-span-2">
       <div className="flex items-center justify-between bg-gray-100 p-3 rounded-lg w-full">
         <h1 className="text-primary text-lg font-medium">Team Members</h1>
-        <Input.Search placeholder="Search user" className="max-w-[300px]" />
+        <ProjectMemberFilters />
       </div>
       <Table
         bordered
@@ -74,7 +111,14 @@ const TeamMembersTable = ({
               ]
             : []),
         ]}
-        pagination={{ pageSize: 5 }}
+        pagination={{
+          total: totalCount,
+          current: (currentPage as number) || 1,
+          pageSize: perPage,
+          onChange: (page) => {
+            setFilters({ currentPage: page });
+          },
+        }}
         rowKey="_id"
         loading={isLoading}
       />
