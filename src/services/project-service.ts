@@ -61,12 +61,13 @@ const projectService = () => {
         authToken,
       }),
 
-    getProjectMembers: ({ data, authToken }: RequestType) =>
+    getProjectMembers: ({ data, authToken, params }: RequestType) =>
       request({
         method: "POST",
         data,
         url: urls.project.getProjectMembers,
         authToken,
+        params,
       }),
 
     removeProjectMember: ({ params, authToken }: RequestType) =>
