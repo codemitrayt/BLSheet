@@ -14,8 +14,9 @@ import { useProjectContext } from "../../../../providers/project-provider";
 const SingleProjectPage = () => {
   const { authToken } = useUserInfo();
   const { project } = useProjectContext();
-  const { handleError } = useErrorHandler();
   const { projectId } = useParams();
+  const { handleError } = useErrorHandler();
+  const [totalMembers, setTotalMembers] = useState(0);
   const [members, setMembers] = useState<ProjectMember[]>([]);
 
   const { isLoading: loader, refetch: refetchProjectMembers } = useQuery({
@@ -24,9 +25,12 @@ const SingleProjectPage = () => {
       projectService().getProjectMembers({
         data: { objectId: projectId },
         authToken,
+        params: { perPage: 2, status: "accepted" },
       }),
     onSuccess: ({ data }) => {
       const members = data?.message?.projectMembers || [];
+      const count = data?.message?.totalCount - 2;
+      setTotalMembers(count);
       setMembers(members);
     },
     onError: (error) => {
@@ -39,6 +43,7 @@ const SingleProjectPage = () => {
   return (
     <div className="relative">
       <ProjectDetails
+        totalMembers={totalMembers}
         project={project!}
         members={members}
         isLoading={loader}
