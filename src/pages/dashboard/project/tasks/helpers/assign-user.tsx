@@ -1,10 +1,17 @@
 import { Drawer, Tooltip } from "antd";
 import { useState } from "react";
 
+import { ProjectTask } from "../../../../../types";
+
 import { LuChevronRightCircle } from "react-icons/lu";
 import { RiAddFill } from "react-icons/ri";
+import AssignUserForm from "../forms/assign-user-form";
 
-const AssignUserToProjectTask = () => {
+interface AssignUserToProjectTask {
+  projectTask: ProjectTask;
+}
+
+const AssignUserToProjectTask = ({ projectTask }: AssignUserToProjectTask) => {
   const [drawerState, setDrawerState] = useState(false);
   const openDrawer = () => setDrawerState(true);
   const closeDrawer = () => setDrawerState(false);
@@ -29,7 +36,7 @@ const AssignUserToProjectTask = () => {
           <span className="text-primary">Assign User to Project Task</span>
         }
       >
-        <h1>Project task assign user</h1>
+        <AssignUserForm projectTask={projectTask} />
       </Drawer>
     </div>
   );
