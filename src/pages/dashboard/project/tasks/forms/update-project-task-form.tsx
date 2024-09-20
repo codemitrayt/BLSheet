@@ -38,8 +38,7 @@ const UpdateProjectTaskForm = ({
         authToken,
         params: { objectId: projectTask._id },
       }),
-    onSuccess: ({ data }) => {
-      console.log("Updated project :: ", data);
+    onSuccess: () => {
       refetchProjectTaskList();
       onCloseDrawer();
     },
