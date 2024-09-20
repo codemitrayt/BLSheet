@@ -99,6 +99,8 @@ const UpdateProjectForm = ({
               <Select
                 className="w-full"
                 mode="tags"
+                maxCount={3}
+                suffixIcon={null}
                 placeholder="Project tags"
               />
             </Form.Item>

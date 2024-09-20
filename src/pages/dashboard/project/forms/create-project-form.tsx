@@ -79,7 +79,13 @@ const CreateProjectForm = ({
           label={<span className="text-primary font-medium">Project Tags</span>}
           required
         >
-          <Select className="w-full" mode="tags" placeholder="Project tags" />
+          <Select
+            className="w-full"
+            mode="tags"
+            suffixIcon={null}
+            placeholder="Project tags"
+            maxCount={3}
+          />
         </Form.Item>
 
         <div className="flex items-center justify-end">
