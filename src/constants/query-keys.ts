@@ -11,6 +11,9 @@ const queryKeys = {
   projectMember: {
     getProjectMembers: "GET_PROJECT_MEMBERS",
   },
+  projectTask: {
+    assignUserToProjectTask: "ASSIGN_USER_TO_PROJECT_TASK",
+  },
   todo: {},
 };
 
