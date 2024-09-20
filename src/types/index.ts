@@ -169,3 +169,8 @@ export interface ProjectMemberFilters {
   currentPage?: number;
   status?: ProjectMemberStatus | "all";
 }
+
+export interface AssignUser {
+  userId: string;
+  memberEmailId: string;
+}
