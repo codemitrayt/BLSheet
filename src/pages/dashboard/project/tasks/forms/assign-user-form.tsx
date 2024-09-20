@@ -110,6 +110,10 @@ const AssignUserForm = ({
     retry: false,
   });
 
+  const removeMember = (memberEmailId: string) => {
+    setValues((prev) => prev.filter((v) => v.memberEmailId !== memberEmailId));
+  };
+
   useEffect(() => {
     setValues(projectTask.assignedMembers || []);
   }, []);
@@ -136,7 +140,13 @@ const AssignUserForm = ({
 
       <div className="mt-3 space-y-2">
         {values.map((value) => (
-          <MemberCard key={value._id} member={value} />
+          <MemberCard
+            projectTaskId={projectTask._id}
+            key={value._id}
+            removeMember={removeMember}
+            member={value}
+            refetchProjectTasks={refetchProjectTasks}
+          />
         ))}
       </div>
     </div>
