@@ -12,19 +12,28 @@ import useUserInfo from "../../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectService from "../../../../../services/project-service";
 import MemberCard from "../cards/member-card";
+import projectTaskService from "../../../../../services/project-task-service";
 
 interface AssignUserForm {
   projectTask: ProjectTask;
+  refetchProjectTasks: () => void;
 }
 
-const AssignUserForm = ({}: AssignUserForm) => {
+export interface AssignUserToProjectTask {
+  memberEmailId: string;
+  projectId: string;
+  projectTaskId: string;
+}
+
+const AssignUserForm = ({
+  projectTask,
+  refetchProjectTasks,
+}: AssignUserForm) => {
   const { projectId } = useParams();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
   const [values, setValues] = useState<AssignUser[]>([]);
-
   const [options, setOptions] = useState([]);
-
   const [localSearch, setLocalSearch] = useState<string>();
   const debounceSearch = useDebounce(localSearch);
 
@@ -40,8 +49,16 @@ const AssignUserForm = ({}: AssignUserForm) => {
 
     setValues((prev) => [
       ...prev,
-      { userId: info.value, memberEmailId: info.label },
+      { _id: info.value, memberEmailId: info.label },
     ]);
+
+    assignUser({
+      data: {
+        projectId: projectId as string,
+        memberEmailId: info.label,
+        projectTaskId: projectTask._id,
+      },
+    });
   };
 
   useEffect(() => {
@@ -79,6 +96,24 @@ const AssignUserForm = ({}: AssignUserForm) => {
     retry: false,
   });
 
+  const { mutate: assignUser } = useMutation({
+    mutationKey: [queryKeys.projectTask.assignUserToProjectTask],
+    mutationFn: ({ data }: { data: AssignUserToProjectTask }) =>
+      projectTaskService().assignUserToProjectTask({ data, authToken }),
+    onSuccess: () => {
+      refetchProjectTasks();
+    },
+    onError: (error) => {
+      console.error("ERROR :: assign user to project task ::", error);
+      handleError(error);
+    },
+    retry: false,
+  });
+
+  useEffect(() => {
+    setValues(projectTask.assignedMembers || []);
+  }, []);
+
   return (
     <div className="p-6 rounded-lg bg-turnary border">
       <div className="text-primary font-medium pl-1 pb-1">
@@ -101,7 +136,7 @@ const AssignUserForm = ({}: AssignUserForm) => {
 
       <div className="mt-3 space-y-2">
         {values.map((value) => (
-          <MemberCard key={value.userId} member={value} />
+          <MemberCard key={value._id} member={value} />
         ))}
       </div>
     </div>
