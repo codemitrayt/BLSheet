@@ -44,6 +44,14 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    removeAssignedUserFormProjectTask: ({ authToken, data }: RequestType) =>
+      request({
+        method: "DELETE",
+        url: urls.projectTask.removeAssignedUserFormProjectTask,
+        authToken,
+        data,
+      }),
   };
 };
 
