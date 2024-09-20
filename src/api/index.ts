@@ -11,9 +11,9 @@ const request = ({
 }: RequestType) => {
   return axios({
     baseURL:
-      import.meta.env.VITE_NODE_ENV === "development"
-        ? urls.main.developmentBaseUrl
-        : urls.main.baseUrl,
+      import.meta.env.VITE_NODE_ENV === "production"
+        ? urls.main.baseUrl
+        : urls.main.developmentBaseUrl,
     method,
     headers: {
       "Content-Type": "application/json",
