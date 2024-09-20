@@ -9,9 +9,13 @@ import AssignUserForm from "../forms/assign-user-form";
 
 interface AssignUserToProjectTask {
   projectTask: ProjectTask;
+  refetchProjectTasks: () => void;
 }
 
-const AssignUserToProjectTask = ({ projectTask }: AssignUserToProjectTask) => {
+const AssignUserToProjectTask = ({
+  projectTask,
+  refetchProjectTasks,
+}: AssignUserToProjectTask) => {
   const [drawerState, setDrawerState] = useState(false);
   const openDrawer = () => setDrawerState(true);
   const closeDrawer = () => setDrawerState(false);
@@ -36,7 +40,10 @@ const AssignUserToProjectTask = ({ projectTask }: AssignUserToProjectTask) => {
           <span className="text-primary">Assign User to Project Task</span>
         }
       >
-        <AssignUserForm projectTask={projectTask} />
+        <AssignUserForm
+          projectTask={projectTask}
+          refetchProjectTasks={refetchProjectTasks}
+        />
       </Drawer>
     </div>
   );
