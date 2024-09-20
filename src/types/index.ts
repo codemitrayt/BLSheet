@@ -156,7 +156,7 @@ export interface ProjectTask {
   tags: string[];
   status: ProjectTaskStatus;
   priority: ProjectTaskPriority;
-  assignedTo?: string[];
+  assignedMembers: ProjectMember[];
   userId: string;
   projectId: string;
   completedDate?: Date;
@@ -171,6 +171,6 @@ export interface ProjectMemberFilters {
 }
 
 export interface AssignUser {
-  userId: string;
+  _id: string;
   memberEmailId: string;
 }
