@@ -95,7 +95,7 @@ const ProjectTaskCard = ({
             <Avatar className="bg-primary !text-xs !border-primary">U</Avatar>
           </Avatar.Group>
 
-          <AssignUserToProjectTask />
+          <AssignUserToProjectTask projectTask={projectTask} />
         </div>
 
         <div className="flex items-center justify-center space-x-3">
