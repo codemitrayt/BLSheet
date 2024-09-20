@@ -89,13 +89,22 @@ const ProjectTaskCard = ({
             }}
             size={25}
           >
-            <Avatar className="bg-primary !text-xs !border-primary">R</Avatar>
-            <Avatar className="bg-primary !text-xs !border-primary">S</Avatar>
-            <Avatar className="bg-primary !text-xs !border-primary">T</Avatar>
-            <Avatar className="bg-primary !text-xs !border-primary">U</Avatar>
+            {projectTask.assignedMembers.map((member) => (
+              <Avatar
+                className="bg-primary !text-xs !border-primary"
+                key={member._id}
+              >
+                {member.memberEmailId[0].toUpperCase()}
+              </Avatar>
+            ))}
           </Avatar.Group>
 
-          <AssignUserToProjectTask projectTask={projectTask} />
+          {(projectTask.userId === user?._id || isAdmin) && (
+            <AssignUserToProjectTask
+              projectTask={projectTask}
+              refetchProjectTasks={refetchProjectTask}
+            />
+          )}
         </div>
 
         <div className="flex items-center justify-center space-x-3">
