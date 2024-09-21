@@ -29,7 +29,7 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
   const closeDrawer = () => setDrawerState(false);
 
   const { refetch } = useQuery({
-    queryKey: [queryKeys.projectTask.getProjectTaskComments],
+    queryKey: [queryKeys.projectTask.getProjectTaskComments, projectTaskId],
     queryFn: () =>
       projectTaskService().getProjectTaskComments({
         authToken,
