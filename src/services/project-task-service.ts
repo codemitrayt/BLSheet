@@ -52,6 +52,22 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    createProjectTaskComment: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        url: urls.projectTask.createProjectTaskComment,
+        authToken,
+        data,
+      }),
+
+    getProjectTaskComments: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        url: urls.projectTask.getProjectTaskComments,
+        authToken,
+        data,
+      }),
   };
 };
 
