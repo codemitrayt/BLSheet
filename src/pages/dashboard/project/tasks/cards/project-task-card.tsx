@@ -116,7 +116,10 @@ const ProjectTaskCard = ({
           </div>
 
           <PorjectTaskAttachment />
-          <ProjectTaskComment />
+          <ProjectTaskComment
+            projectTaskId={projectTask._id}
+            count={projectTask.commentCount}
+          />
         </div>
       </div>
     </div>
