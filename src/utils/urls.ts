@@ -51,6 +51,9 @@ const urls: URLType = {
     assignUserToProjectTask: "/projectTask/assignUserToProjectTask",
     removeAssignedUserFormProjectTask:
       "/projectTask/removeAssignedUserFormProjectTask",
+
+    createProjectTaskComment: "/projectTask/createProjectTaskComment",
+    getProjectTaskComments: "/projectTask/getProjectTaskComments",
   },
 };
 
