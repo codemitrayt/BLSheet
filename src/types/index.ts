@@ -162,6 +162,7 @@ export interface ProjectTask {
   completedDate?: Date;
   attachments?: string[];
   user?: User;
+  commentCount: number;
 }
 
 export interface ProjectMemberFilters {
@@ -173,4 +174,19 @@ export interface ProjectMemberFilters {
 export interface AssignUser {
   _id: string;
   memberEmailId: string;
+}
+
+export interface Comment {
+  _id: string;
+  content: string;
+  likes: number;
+  replies: Comment[];
+  createdAt: string;
+  updatedAt: string;
+  author: {
+    _id: string;
+    fullName: string;
+    email: string;
+  };
+  isCreator: boolean;
 }
