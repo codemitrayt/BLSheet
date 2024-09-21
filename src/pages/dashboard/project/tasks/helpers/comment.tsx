@@ -1,4 +1,4 @@
-import { Drawer, Spin, Tooltip } from "antd";
+import { Drawer, Tooltip } from "antd";
 import { useState } from "react";
 import { useQuery } from "react-query";
 
@@ -28,7 +28,7 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
   const openDrawer = () => setDrawerState(true);
   const closeDrawer = () => setDrawerState(false);
 
-  const { isLoading, refetch } = useQuery({
+  const { refetch } = useQuery({
     queryKey: [queryKeys.projectTask.getProjectTaskComments],
     queryFn: () =>
       projectTaskService().getProjectTaskComments({
@@ -45,14 +45,6 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
     },
     retry: false,
   });
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center py-16">
-        <Spin />
-      </div>
-    );
-  }
 
   return (
     <div className="relative">
