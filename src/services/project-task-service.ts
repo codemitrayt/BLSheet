@@ -68,6 +68,14 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    deleteProjectTaskComment: ({ authToken, data }: RequestType) =>
+      request({
+        method: "DELETE",
+        url: urls.projectTask.deleteProjectTaskComment,
+        authToken,
+        data,
+      }),
   };
 };
 
