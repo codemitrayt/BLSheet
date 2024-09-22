@@ -54,6 +54,7 @@ const urls: URLType = {
 
     createProjectTaskComment: "/projectTask/createProjectTaskComment",
     getProjectTaskComments: "/projectTask/getProjectTaskComments",
+    deleteProjectTaskComment: "/projectTask/deleteProjectTaskComment",
   },
 };
 
