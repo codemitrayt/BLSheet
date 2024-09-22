@@ -1,18 +1,21 @@
 import { Drawer, Tooltip } from "antd";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 
 import { BiCommentDots } from "react-icons/bi";
 import { LuChevronRightCircle } from "react-icons/lu";
 
+import { Comment } from "../../../../../types";
 import CommentForm from "../forms/comment-form";
-import CommentCard from "../../../../../components/cards/comment-card";
+
+import CommentCard from "../cards/comment-card";
 import useUserInfo from "../../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
-import { Comment } from "../../../../../types";
+import { useProjectContext } from "../../../../../providers/project-provider";
 
 interface ProjectTaskComment {
   projectTaskId: string;
@@ -22,6 +25,8 @@ interface ProjectTaskComment {
 const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
+  const { projectId } = useParams();
+  const { isAdmin } = useProjectContext();
 
   const [comments, setComments] = useState<Comment[]>([]);
   const [drawerState, setDrawerState] = useState(false);
@@ -67,7 +72,14 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
       >
         <div className="space-y-4 h-[calc(100vh_-240px)] overflow-auto border rounded-lg p-4 bg-turnary">
           {comments.map((comment) => (
-            <CommentCard comment={comment} key={comment._id} />
+            <CommentCard
+              isAdmin={isAdmin}
+              comment={comment}
+              key={comment._id}
+              projectId={projectId!}
+              projectTaskId={projectTaskId}
+              refetchComments={refetch}
+            />
           ))}
         </div>
 
