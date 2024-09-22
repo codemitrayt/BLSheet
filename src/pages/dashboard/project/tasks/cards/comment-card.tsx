@@ -2,20 +2,28 @@ import { Avatar } from "antd";
 
 import { AiOutlineComment } from "react-icons/ai";
 import { RiReplyLine } from "react-icons/ri";
-import { TbEdit, TbTrash } from "react-icons/tb";
+import { TbEdit } from "react-icons/tb";
 
-import { Comment } from "../../types";
-import { useProjectContext } from "../../providers/project-provider";
+import { Comment } from "../../../../../types";
+import DeleteComment from "../helpers/delete-comment";
 
 interface CommentCard {
   comment: Comment;
+  isAdmin: boolean;
+  projectId: string;
+  projectTaskId: string;
+  refetchComments: () => void;
 }
 
-const CommentCard = ({ comment }: CommentCard) => {
-  const { isAdmin } = useProjectContext();
-
+const CommentCard = ({
+  comment,
+  isAdmin,
+  projectId,
+  projectTaskId,
+  refetchComments,
+}: CommentCard) => {
   return (
-    <div className="relative w-full flex gap-1 border-b pb-5">
+    <div className="relative w-full flex gap-1 border-b border-primary pb-5">
       <div className="w-[50px]">
         <Avatar className="bg-primary">
           {comment.author.fullName[0].toUpperCase()}
@@ -48,9 +56,12 @@ const CommentCard = ({ comment }: CommentCard) => {
                 <span className="text-xs">Edit</span>
               </button>
               <div className="h-[15px] w-[1px] bg-gray-500" />
-              <button className="text-red-500 hover:text-red-500/80">
-                <TbTrash />
-              </button>
+              <DeleteComment
+                projectId={projectId}
+                commentId={comment._id}
+                projectTaskId={projectTaskId}
+                refetchComments={refetchComments}
+              />
             </>
           )}
         </div>
