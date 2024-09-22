@@ -16,6 +16,7 @@ const queryKeys = {
     removeAssignUserFromProjectTask: "REMOVE_ASSIGN_USER_TO_PROJECT_TASK",
     createProjectTaskComment: "CREATE_PROJECT_TASK_COMMENT",
     getProjectTaskComments: "GET_PROJECT_TASK_COMMENT",
+    deleteProjectTaskComment: "DELETE_PROJECT_TASK_COMMENT",
   },
   todo: {},
 };
