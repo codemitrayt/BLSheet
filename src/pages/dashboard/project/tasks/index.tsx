@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ShowProjectTask from "./helpers/show";
 import projectTaskService from "../../../../services/project-task-service";
@@ -9,6 +9,7 @@ import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import CreateProjectTask from "./helpers/create";
 import { Project } from "../../../../types";
+import socket from "../../../../socket";
 
 const ProjectTasks = () => {
   const { projectId } = useParams();
@@ -37,6 +38,12 @@ const ProjectTasks = () => {
     },
     retry: false,
   });
+
+  useEffect(() => {
+    socket.on("CREATED_TASK", (data) => {
+      console.log("Create task in room", data);
+    });
+  }, []);
 
   if (isLoading) {
     return (
