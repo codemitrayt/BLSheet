@@ -1,6 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 import { Spin } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import ProjectNavbar from "../components/project-navbar";
@@ -11,6 +11,7 @@ import useUserInfo from "../hooks/useUserInfo";
 
 import { Project } from "../types";
 import ProjectContext from "../providers/project-provider";
+import socket from "../socket";
 
 const ProjectLayout = () => {
   const { projectId } = useParams();
@@ -34,6 +35,17 @@ const ProjectLayout = () => {
     },
     retry: false,
   });
+
+  useEffect(() => {
+    socket.on("join", (data) => {
+      console.log("User joined in", data.roomId);
+    });
+    socket.emit("join", { projectId });
+
+    return () => {
+      socket.off("join");
+    };
+  }, []);
 
   if (isLoading)
     return (
