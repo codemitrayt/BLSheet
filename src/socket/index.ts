@@ -1,12 +1,8 @@
-import { io } from "socket.io-client";
-const socket = io(import.meta.env.VITE_BACKEND_URL);
+import { io, Socket } from "socket.io-client";
 
-socket.on("connect", () => {
-  console.log("Connected to the server", socket.id);
-});
-
-socket.on("disconnect", () => {
-  console.log("Disconnected from the server", socket.id);
+const socket: Socket = io(import.meta.env.VITE_BACKEND_URL!, {
+  transports: ["websocket"],
+  secure: true,
 });
 
 export default socket;
