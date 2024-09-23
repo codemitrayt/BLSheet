@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ShowProjectTask from "./helpers/show";
 import projectTaskService from "../../../../services/project-task-service";
@@ -9,7 +9,7 @@ import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import CreateProjectTask from "./helpers/create";
 import { Project, ProjectTask } from "../../../../types";
-import socket from "../../../../socket";
+// import socket from "../../../../socket";
 
 const ProjectTasks = () => {
   const { projectId } = useParams();
@@ -39,13 +39,13 @@ const ProjectTasks = () => {
     retry: false,
   });
 
-  useEffect(() => {
-    socket.on("CREATED_TASK", (data) => {
-      setProjectTasks((prev: ProjectTask[]) => {
-        return [...prev, data];
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.on("CREATED_TASK", (data) => {
+  //     setProjectTasks((prev: ProjectTask[]) => {
+  //       return [...prev, data];
+  //     });
+  //   });
+  // }, []);
 
   if (isLoading) {
     return (
