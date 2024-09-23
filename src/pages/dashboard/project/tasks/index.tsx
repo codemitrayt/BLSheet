@@ -8,7 +8,7 @@ import projectTaskService from "../../../../services/project-task-service";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import CreateProjectTask from "./helpers/create";
-import { Project } from "../../../../types";
+import { Project, ProjectTask } from "../../../../types";
 import socket from "../../../../socket";
 
 const ProjectTasks = () => {
@@ -16,11 +16,11 @@ const ProjectTasks = () => {
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
 
-  const [projectTasks, setProjectTasks] = useState([]);
+  const [projectTasks, setProjectTasks] = useState<ProjectTask[]>([]);
   const [project, setProject] = useState<Project>();
 
   const { isLoading, refetch } = useQuery({
-    queryKey: ["get-project-tasks", projectId],
+    queryKey: ["GET_PROJECT_TASK", projectId],
     queryFn: () =>
       projectTaskService().getProjectTasks({
         data: { objectId: projectId },
@@ -41,7 +41,9 @@ const ProjectTasks = () => {
 
   useEffect(() => {
     socket.on("CREATED_TASK", (data) => {
-      console.log("Create task in room", data);
+      setProjectTasks((prev: ProjectTask[]) => {
+        return [...prev, data];
+      });
     });
   }, []);
 
