@@ -2,10 +2,10 @@ import { Avatar } from "antd";
 
 import { AiOutlineComment } from "react-icons/ai";
 import { RiReplyLine } from "react-icons/ri";
-import { TbEdit } from "react-icons/tb";
 
 import { Comment } from "../../../../../types";
 import DeleteComment from "../helpers/delete-comment";
+import UpdateComment from "../helpers/update-comment";
 
 interface CommentCard {
   comment: Comment;
@@ -23,7 +23,7 @@ const CommentCard = ({
   refetchComments,
 }: CommentCard) => {
   return (
-    <div className="relative w-full flex gap-1 border-b border-primary pb-5">
+    <div className="relative w-full flex gap-1 border-b border-primary pb-7">
       <div className="w-[50px]">
         <Avatar className="bg-primary">
           {comment.author.fullName[0].toUpperCase()}
@@ -51,10 +51,11 @@ const CommentCard = ({
           {(comment.isCreator || isAdmin) && (
             <>
               <div className="h-[15px] w-[1px] bg-gray-500" />
-              <button className="text-emerald-500 hover:text-emerald-500/80 flex items-center justify-center space-x-1">
-                <TbEdit />
-                <span className="text-xs">Edit</span>
-              </button>
+              <UpdateComment
+                comment={comment}
+                projectTaskId={projectTaskId}
+                refetchProjectComment={refetchComments}
+              />
               <div className="h-[15px] w-[1px] bg-gray-500" />
               <DeleteComment
                 projectId={projectId}
