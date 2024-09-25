@@ -17,6 +17,7 @@ const queryKeys = {
     createProjectTaskComment: "CREATE_PROJECT_TASK_COMMENT",
     getProjectTaskComments: "GET_PROJECT_TASK_COMMENT",
     deleteProjectTaskComment: "DELETE_PROJECT_TASK_COMMENT",
+    updateProjectTaskComment: "UPDATE_PROJECT_TASK_COMMENT",
   },
   todo: {},
 };
