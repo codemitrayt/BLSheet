@@ -84,6 +84,14 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    getProjectTaskForUser: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        url: urls.projectTask.getProjectTaskForUser,
+        authToken,
+        data,
+      }),
   };
 };
 
