@@ -1,7 +1,7 @@
 import { Tag } from "antd";
 
 import { ProjectTask } from "../../../../../types";
-import { capitalizeFirstLetter, cn, strSlice } from "../../../../../utils";
+import { capitalizeFirstLetter, strSlice } from "../../../../../utils";
 
 const PROJECT_TASK_PRIORITY_BG_COLOR = {
   low: "green",
