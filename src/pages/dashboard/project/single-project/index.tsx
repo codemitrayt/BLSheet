@@ -10,6 +10,7 @@ import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import { ProjectMember } from "../../../../types";
 import { useProjectContext } from "../../../../providers/project-provider";
+import RecentProjectTask from "./components/recent-project-task";
 
 const SingleProjectPage = () => {
   const { authToken } = useUserInfo();
@@ -41,7 +42,7 @@ const SingleProjectPage = () => {
   });
 
   return (
-    <div className="relative">
+    <div className="relative h-full overflow-y-auto pb-8">
       <ProjectDetails
         totalMembers={totalMembers}
         project={project!}
@@ -49,13 +50,14 @@ const SingleProjectPage = () => {
         isLoading={loader}
         refetchProjectMembers={refetchProjectMembers}
       />
-      <div className="grid lg:grid-cols-3 mt-3">
+      <div className="grid xl:grid-cols-3 mt-3 gap-4">
         <TeamMembersTable
           isAdmin={project!.isAdmin}
           members={members}
           isLoading={loader}
           refetchProjectMembers={refetchProjectMembers}
         />
+        <RecentProjectTask />
       </div>
     </div>
   );
