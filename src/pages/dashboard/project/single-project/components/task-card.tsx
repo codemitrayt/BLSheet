@@ -50,7 +50,7 @@ const TaskCard = ({ task }: { task: ProjectTask }) => {
           color={PROJECT_TASK_PRIORITY_BG_COLOR[task.priority]}
           className="w-[110px] flex items-center justify-center rounded-full"
         >
-          {task.priority}
+          {task.priority.toUpperCase()}
         </Tag>
       </div>
     </div>
