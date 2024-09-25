@@ -76,6 +76,14 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    updateProjectTaskComment: ({ authToken, data }: RequestType) =>
+      request({
+        method: "PUT",
+        url: urls.projectTask.updateProjectTaskComment,
+        authToken,
+        data,
+      }),
   };
 };
 
