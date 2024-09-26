@@ -40,6 +40,7 @@ export const TODO_STATUS_COLOR = {
   in_progress: "yellow",
   completed: "green",
 };
+
 export const TASK_STATUS = [
   { label: "Todo", value: "todo" },
   { label: "In Progress", value: "in_progress" },

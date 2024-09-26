@@ -7,14 +7,19 @@ function useBLSheetFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get("search") || undefined;
+
   const type = searchParams.get("type") || undefined;
+
   const currentPage = searchParams.get("currentPage")
     ? parseInt(searchParams.get("currentPage") as string)
     : undefined;
+
   const perPage = searchParams.get("perPage")
     ? parseInt(searchParams.get("perPage") as string)
     : undefined;
+
   const startDate = searchParams.get("startDate") || undefined;
+
   const endDate = searchParams.get("endDate") || undefined;
 
   const setFilters = useCallback((filters: BLSheetFilter) => {

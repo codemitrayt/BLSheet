@@ -13,13 +13,10 @@ function useProjectMemberFilters() {
     setSearchParams((params) => {
       if (filters.memberEmail) params.set("memberEmail", filters.memberEmail);
       else params.delete("memberEmail");
-
       if (filters.currentPage)
         params.set("currentPage", filters.currentPage.toString());
-
       if (filters.status) params.set("memberStatus", filters.status);
       else params.delete("memberStatus");
-
       return params;
     });
   }, []);
