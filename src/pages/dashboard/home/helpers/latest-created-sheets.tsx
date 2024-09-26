@@ -60,7 +60,7 @@ const LatestCreatedSheets = ({ className }: LatestCreatedSheetsProps) => {
     return (
       <div
         className={cn(
-          "flex items-center flex-col space-y-4 justify-center rounded-lg border",
+          "p-3 flex items-center flex-col space-y-4 justify-center rounded-lg border",
           className
         )}
       >
