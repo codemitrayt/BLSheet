@@ -40,7 +40,7 @@
   <pre><code>npm install</code></pre>
 
   <li>Start the development server:</li>
-  <pre><code>npm start</code></pre>
+  <pre><code>npm run dev</code></pre>
 
   <p>The application will be running at <code>http://localhost:5501</code>.</p>
 </ol>
