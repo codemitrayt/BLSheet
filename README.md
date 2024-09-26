@@ -14,13 +14,13 @@
 
 <h2>Website</h2>
 
-<p>Check out the live version of BL Sheet at <a href="https://blsheet.codemitrayt.com/">https://blsheet.codemitrayt.com/</a> for more details and features.</p>
+<p>Check out the live version of BL Sheet at <a target="__blank" href="https://blsheet.codemitrayt.com/">https://blsheet.codemitrayt.com/</a> for more details and features.</p>
 
 <h2>GitHub Repositories</h2>
 
 <ul>
-  <li><strong>Frontend</strong> (React.js): <a href="https://github.com/codemitrayt/BLSheet">BL Sheet Frontend GitHub Repository</a></li>
-  <li><strong>Backend</strong> (Node.js): <a href="https://github.com/codemitrayt/BLSheetServer">BL Sheet Backend GitHub Repository</a></li>
+  <li><strong>Frontend</strong> (React.js): <a target="__blank" href="https://github.com/codemitrayt/BLSheet">BL Sheet Frontend GitHub Repository</a></li>
+  <li><strong>Backend</strong> (Node.js): <a target="__blank" href="https://github.com/codemitrayt/BLSheetServer">BL Sheet Backend GitHub Repository</a></li>
 </ul>
 
 <h2>Installation and Setup</h2>
@@ -47,7 +47,7 @@
 
 <h3>Backend (Node.js)</h3>
 
-<p>Please refer to the backend repository’s README for detailed setup instructions: <a href="https://github.com/codemitrayt/BLSheetServer">BL Sheet Backend Repository</a></p>
+<p>Please refer to the backend repository’s README for detailed setup instructions: <a target="__blank" href="https://github.com/codemitrayt/BLSheetServer">BL Sheet Backend Repository</a></p>
 
 <h2>How to Contribute</h2>
 
