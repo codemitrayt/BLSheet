@@ -1,7 +1,7 @@
 import CommingSoon from "../../../../components/comming-soon";
 
-const ProjectChats = () => {
+const ProjectIssues = () => {
   return <CommingSoon />;
 };
 
-export default ProjectChats;
+export default ProjectIssues;

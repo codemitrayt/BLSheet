@@ -26,14 +26,14 @@ import ResetPasswordPage from "../pages/auth/reset-password-page";
 import DashboardHomePage from "../pages/dashboard/home";
 import DashboardSheetPage from "../pages/dashboard/sheet";
 import DashboardTodoPage from "../pages/dashboard/todo";
-import DashboardTaskPage from "../pages/dashboard/task";
-import DashboardIdeaPage from "../pages/dashboard/idea";
 
 import DashboardProjectPage from "../pages/dashboard/project";
 import SingleProjectPage from "../pages/dashboard/project/single-project";
 import ProjectTasks from "../pages/dashboard/project/tasks";
 import ProjectTimeline from "../pages/dashboard/project/timeline";
 import ProjectChats from "../pages/dashboard/project/chats";
+import ProjectIssues from "../pages/dashboard/project/issues";
+import ProjectIdeas from "../pages/dashboard/project/ideas";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,7 +50,6 @@ const Router = createBrowserRouter(
           <Route path="home" element={<DashboardHomePage />} />
           <Route path="sheet" element={<DashboardSheetPage />} />
           <Route path="todo" element={<DashboardTodoPage />} />
-          <Route path="tasks" element={<DashboardTaskPage />} />
           <Route path="projects">
             <Route index element={<DashboardProjectPage />} />
             <Route path=":projectId" element={<ProjectLayout />}>
@@ -58,9 +57,10 @@ const Router = createBrowserRouter(
               <Route path="tasks" element={<ProjectTasks />} />
               <Route path="timeline" element={<ProjectTimeline />} />
               <Route path="chats" element={<ProjectChats />} />
+              <Route path="issues" element={<ProjectIssues />} />
+              <Route path="ideas" element={<ProjectIdeas />} />
             </Route>
           </Route>
-          <Route path="ideas" element={<DashboardIdeaPage />} />
         </Route>
       </Route>
 

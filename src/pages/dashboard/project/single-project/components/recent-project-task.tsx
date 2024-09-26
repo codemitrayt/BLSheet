@@ -35,6 +35,8 @@ const RecentProjectTask = () => {
     retry: false,
   });
 
+  return null;
+
   if (isLoading)
     return (
       <div className="py-8 flex items-center justify-center">
