@@ -1,4 +1,4 @@
-import CommingSoon from "../../../../components/comming-soon";
+import CommingSoon from "../../../../components/shared/comming-soon";
 
 const ProjectIdeas = () => {
   return <CommingSoon />;

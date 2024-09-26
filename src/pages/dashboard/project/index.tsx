@@ -91,17 +91,27 @@ const DashboardProjectPage = () => {
           <CreateProject refetchProjectList={refetchProjectList} />
         </div>
       </div>
-      <div className="h-[calc(100vh_-170px)] overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth">
-        {view === "table" ? (
-          <ProjectsTableView
-            projects={projectList}
-            refetchProjectList={refetchProjectList}
-          />
+
+      <div className="h-[calc(100vh_-180px)] overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth">
+        {projectList?.length === 0 ? (
+          <div className="flex items-center justify-center text-primary font-semibold">
+            No Projects Yet? Get Started by Creating Your First One and Invite
+            Your Team!
+          </div>
         ) : (
-          <ShowProjects
-            projects={projectList}
-            refetchProjectList={refetchProjectList}
-          />
+          <>
+            {view === "table" ? (
+              <ProjectsTableView
+                projects={projectList}
+                refetchProjectList={refetchProjectList}
+              />
+            ) : (
+              <ShowProjects
+                projects={projectList}
+                refetchProjectList={refetchProjectList}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

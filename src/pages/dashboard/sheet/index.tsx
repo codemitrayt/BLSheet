@@ -11,7 +11,7 @@ import useErrorHandler from "../../../hooks/useErrorHandler";
 import useBLSheetFilters from "../../../hooks/useBLSheetFilters";
 
 import { BLSheet } from "../../../types";
-import BLSheetFilters from "../../../components/bl-sheet-filters";
+import BLSheetFilters from "../../../components/filters/bl-sheet-filters";
 
 const PER_PAGE_SIZE = 7;
 

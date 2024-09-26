@@ -13,7 +13,7 @@ import DesktopTodoList from "./helpers/show/desktop-todo-list";
 import MobileTodoList from "./helpers/show/mobile-todo-list";
 
 import { Todo } from "../../../types";
-import TodoFilters from "../../../components/todo-filters";
+import TodoFilters from "../../../components/filters/todo-filters";
 import useTodoFilters from "../../../hooks/userTodoFilters";
 
 const DashboardTodoPage = () => {
@@ -46,6 +46,10 @@ const DashboardTodoPage = () => {
       {isLoading ? (
         <div className="py-16 flex items-center justify-center">
           <Spin />
+        </div>
+      ) : todoList?.length === 0 ? (
+        <div className="py-16 flex items-center justify-center text-primary font-semibold">
+          No Todo Yet? Get Started by Creating Your First One!
         </div>
       ) : (
         <>

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 import RemoveMember from "./remove-member";
 import projectService from "../../../../../services/project-service";
-import ProjectMemberFilters from "../../../../../components/project-member-filters";
+import ProjectMemberFilters from "../../../../../components/filters/project-member-filters";
 
 import useUserInfo from "../../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
