@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useMutation } from "react-query";
 import { Button } from "antd";
 
@@ -73,6 +73,15 @@ const ProjectInvitationPage = () => {
             If you don't have an account associated with this email, please sign
             up for one.
           </p>
+
+          <div className="flex items-center justify-center mt-2">
+            <Link
+              to="/auth/sign-up"
+              className="text-primary hover:text-primary/80"
+            >
+              <span className="text-sm">Sign Up</span>
+            </Link>
+          </div>
         </div>
       </div>
     );
