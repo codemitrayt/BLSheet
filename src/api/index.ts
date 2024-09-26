@@ -1,5 +1,4 @@
 import axios from "axios";
-import urls from "../utils/urls";
 import { RequestType } from "../types";
 
 const request = ({
@@ -10,10 +9,7 @@ const request = ({
   url,
 }: RequestType) => {
   return axios({
-    baseURL:
-      import.meta.env.VITE_NODE_ENV === "production"
-        ? urls.main.baseUrl
-        : urls.main.developmentBaseUrl,
+    baseURL: import.meta.env.VITE_BASE_URL,
     method,
     headers: {
       "Content-Type": "application/json",
