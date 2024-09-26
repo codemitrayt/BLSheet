@@ -14,7 +14,6 @@ import { AiOutlineLogout } from "react-icons/ai";
 
 import useUserInfo from "../../../hooks/useUserInfo";
 import { logout } from "../../../store/slices/auth-slice";
-import LogoutButton from "../logout-button";
 import GithubStar from "../github-star";
 
 const DesktopNavbar = () => {
