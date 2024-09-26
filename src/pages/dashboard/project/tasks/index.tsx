@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Project, ProjectTask } from "../../../../types";
 import ShowProjectTask from "./helpers/show";
@@ -9,10 +9,10 @@ import CreateProjectTask from "./helpers/create";
 import useUserInfo from "../../../../hooks/useUserInfo";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../services/project-task-service";
-import { useSocketProvider } from "../../../../providers/socket-provider";
+// import { useSocketProvider } from "../../../../providers/socket-provider";
 
 const ProjectTasks = () => {
-  const socket = useSocketProvider();
+  // const socket = useSocketProvider();
   const { projectId } = useParams();
   const { authToken } = useUserInfo();
   const { handleError } = useErrorHandler();
@@ -40,17 +40,17 @@ const ProjectTasks = () => {
     retry: false,
   });
 
-  useEffect(() => {
-    socket.on("CREATED_TASK", (data) => {
-      setProjectTasks((prev: ProjectTask[]) => {
-        return [...prev, data];
-      });
-    });
+  // useEffect(() => {
+  //   socket.on("CREATED_TASK", (data) => {
+  //     setProjectTasks((prev: ProjectTask[]) => {
+  //       return [...prev, data];
+  //     });
+  //   });
 
-    return () => {
-      socket.off("CREATED_TASK");
-    };
-  }, [socket]);
+  //   return () => {
+  //     socket.off("CREATED_TASK");
+  //   };
+  // }, [socket]);
 
   if (isLoading) {
     return (
