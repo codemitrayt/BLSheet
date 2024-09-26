@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
 
+export interface URLType {
+  [key: string]: {
+    [key: string]: string;
+  };
+}
+
 export enum SheetType {
   INCOME = "income",
   EXPENSE = "expense",
