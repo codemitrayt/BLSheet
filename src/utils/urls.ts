@@ -1,14 +1,6 @@
-interface URLType {
-  [key: string]: {
-    [key: string]: string;
-  };
-}
+import { URLType } from "../types";
 
 const urls: URLType = {
-  main: {
-    baseUrl: "https://bl-sheet-server.vercel.app/api/v1",
-    developmentBaseUrl: "http://localhost:5500/api/v1",
-  },
   auth: {
     login: "/auth/login",
     self: "/auth/self",
@@ -48,6 +40,8 @@ const urls: URLType = {
     getProjectTasks: "/projectTask/getProjectTasks",
     deleteProjectTask: "/projectTask/deleteProjectTask",
     updateProjectTask: "/projectTask/updateProjectTask",
+    getProjectTaskForUser: "/projectTask/getProjectTaskForUser",
+
     assignUserToProjectTask: "/projectTask/assignUserToProjectTask",
     removeAssignedUserFormProjectTask:
       "/projectTask/removeAssignedUserFormProjectTask",
@@ -56,7 +50,6 @@ const urls: URLType = {
     getProjectTaskComments: "/projectTask/getProjectTaskComments",
     deleteProjectTaskComment: "/projectTask/deleteProjectTaskComment",
     updateProjectTaskComment: "/projectTask/updateProjectTaskComment",
-    getProjectTaskForUser: "/projectTask/getProjectTaskForUser",
   },
 };
 
