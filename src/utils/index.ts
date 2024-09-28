@@ -40,3 +40,24 @@ export const getDaysDiff = (startDate: Date, endDate: Date) => {
   let differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
   return differenceInDays;
 };
+
+export function getDueDateColor(dueDate: Date, isCompleted: boolean = false) {
+  const today = new Date();
+  const due = new Date(dueDate);
+
+  if (isCompleted) {
+    return "text-gray-500";
+  }
+
+  const timeDiff = (due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
+
+  if (timeDiff > 7) {
+    return "text-green-500";
+  } else if (timeDiff > 0 && timeDiff <= 7) {
+    return "text-orange-500";
+  } else if (timeDiff === 0) {
+    return "text-blue-500";
+  } else {
+    return "text-red-500";
+  }
+}
