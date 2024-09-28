@@ -169,6 +169,8 @@ export interface ProjectTask {
   attachments?: string[];
   user?: User;
   commentCount: number;
+  isCreator: boolean;
+  isMember: boolean;
 }
 
 export interface ProjectMemberFilters {
