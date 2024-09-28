@@ -47,7 +47,7 @@ const ProjectTaskCard = ({
             ))}
           </div>
 
-          {projectTask.userId === user?._id || isAdmin ? (
+          {projectTask.isCreator || isAdmin ? (
             <div className="flex items-center space-x-2">
               <UpdateProjectTask
                 projectTask={projectTask}
@@ -81,12 +81,14 @@ const ProjectTaskCard = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between mt-4">
-          <UpdateStatus
-            projectTask={projectTask}
-            refetchProjectTask={refetchProjectTask}
-          />
-        </div>
+        {(projectTask.isCreator || projectTask.isMember || isAdmin) && (
+          <div className="flex items-center justify-between mt-4">
+            <UpdateStatus
+              projectTask={projectTask}
+              refetchProjectTask={refetchProjectTask}
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex items-center justify-between p-3">
