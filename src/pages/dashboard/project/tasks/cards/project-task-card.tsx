@@ -2,7 +2,11 @@ import { Avatar, Tag } from "antd";
 import dateformat from "dateformat";
 
 import { ProjectTask } from "../../../../../types";
-import { capitalizeFirstLetter, cn } from "../../../../../utils";
+import {
+  capitalizeFirstLetter,
+  cn,
+  getDueDateColor,
+} from "../../../../../utils";
 import { useProjectContext } from "../../../../../providers/project-provider";
 import useUserInfo from "../../../../../hooks/useUserInfo";
 
@@ -11,8 +15,7 @@ import UpdateProjectTask from "../helpers/update";
 import ProjectTaskComment from "../helpers/comment";
 import PorjectTaskAttachment from "../helpers/attachment";
 import AssignUserToProjectTask from "../helpers/assign-user";
-
-import { IoMdTime } from "react-icons/io";
+import UpdateStatus from "../helpers/update-status";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
@@ -77,6 +80,13 @@ const ProjectTaskCard = ({
             </span>
           </div>
         </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <UpdateStatus
+            projectTask={projectTask}
+            refetchProjectTask={refetchProjectTask}
+          />
+        </div>
       </div>
 
       <div className="flex items-center justify-between p-3">
@@ -108,13 +118,17 @@ const ProjectTaskCard = ({
         </div>
 
         <div className="flex items-center justify-center space-x-3">
-          <div className="text-zinc-800 flex items-center space-x-0.5 text-xs">
-            <IoMdTime />
+          <div
+            className={
+              (cn("flex items-center space-x-1 text-xs"),
+              getDueDateColor(projectTask.endDate))
+            }
+          >
+            <span className="text-xs">Due date:</span>
             <span className="text-xs">
               {dateformat(projectTask.endDate, "dd/mm/yyyy")}
             </span>
           </div>
-
           <PorjectTaskAttachment />
           <ProjectTaskComment
             projectTaskId={projectTask._id}
