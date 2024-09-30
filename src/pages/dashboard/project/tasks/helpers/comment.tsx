@@ -1,7 +1,7 @@
-import { Drawer, Tooltip } from "antd";
+import { Drawer, Spin, Tooltip } from "antd";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 import { BiCommentDots } from "react-icons/bi";
 import { LuChevronRightCircle } from "react-icons/lu";
@@ -30,12 +30,15 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
 
   const [comments, setComments] = useState<Comment[]>([]);
   const [drawerState, setDrawerState] = useState(false);
-  const openDrawer = () => setDrawerState(true);
+  const openDrawer = () => {
+    mutate();
+    setDrawerState(true);
+  };
   const closeDrawer = () => setDrawerState(false);
 
-  const { refetch } = useQuery({
-    queryKey: [queryKeys.projectTask.getProjectTaskComments, projectTaskId],
-    queryFn: () =>
+  const { mutate, isLoading } = useMutation({
+    mutationKey: [queryKeys.projectTask.getProjectTaskComments, projectTaskId],
+    mutationFn: () =>
       projectTaskService().getProjectTaskComments({
         authToken,
         data: { projectTaskId },
@@ -70,22 +73,30 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
         onClose={closeDrawer}
         title={<span className="text-primary">Comment</span>}
       >
-        <div className="space-y-4 h-[calc(100vh_-240px)] overflow-auto border rounded-lg p-4 bg-turnary">
-          {comments.map((comment) => (
-            <CommentCard
-              isAdmin={isAdmin}
-              comment={comment}
-              key={comment._id}
-              projectId={projectId!}
-              projectTaskId={projectTaskId}
-              refetchComments={refetch}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="py-8 flex items-center justify-center">
+            <Spin />
+          </div>
+        ) : (
+          <>
+            <div className="space-y-4 h-[calc(100vh_-240px)] overflow-auto border rounded-lg p-4 bg-turnary">
+              {comments.map((comment) => (
+                <CommentCard
+                  isAdmin={isAdmin}
+                  comment={comment}
+                  key={comment._id}
+                  projectId={projectId!}
+                  projectTaskId={projectTaskId}
+                  refetchComments={mutate}
+                />
+              ))}
+            </div>
 
-        <div className="mt-4">
-          <CommentForm projectTaskId={projectTaskId} refetch={refetch} />
-        </div>
+            <div className="mt-4">
+              <CommentForm projectTaskId={projectTaskId} refetch={mutate} />
+            </div>
+          </>
+        )}
       </Drawer>
     </div>
   );
