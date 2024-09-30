@@ -1,7 +1,7 @@
 import { Drawer, Spin, Tooltip } from "antd";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 
 import { BiCommentDots } from "react-icons/bi";
 import { LuChevronRightCircle } from "react-icons/lu";
