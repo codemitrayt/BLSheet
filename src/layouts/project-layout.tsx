@@ -1,6 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 import { Spin } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import ProjectNavbar from "../components/shared/project-navbar";
@@ -11,12 +11,13 @@ import useUserInfo from "../hooks/useUserInfo";
 
 import { Project } from "../types";
 import ProjectContext from "../providers/project-provider";
-// import socket from "../socket";
+import { useSocketProvider } from "../providers/socket-provider";
 
 const ProjectLayout = () => {
   const { projectId } = useParams();
   const { authToken, user } = useUserInfo();
   const { handleError } = useErrorHandler();
+  const socket = useSocketProvider();
   const [project, setProject] = useState<Project | null>(null);
 
   const { isLoading, refetch: refetchProject } = useQuery({
@@ -36,16 +37,16 @@ const ProjectLayout = () => {
     retry: false,
   });
 
-  // useEffect(() => {
-  //   socket.on("join", (data) => {
-  //     console.log("User joined in", data.roomId);
-  //   });
-  //   socket.emit("join", { projectId });
+  useEffect(() => {
+    socket.on("join", (data) => {
+      console.log("User joined in", data.roomId);
+    });
+    socket.emit("join", { projectId });
 
-  //   return () => {
-  //     socket.off("join");
-  //   };
-  // }, []);
+    return () => {
+      socket.off("join");
+    };
+  }, []);
 
   if (isLoading)
     return (
