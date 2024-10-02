@@ -8,7 +8,7 @@ import queryKeys from "../../../../../constants/query-keys";
 import { AssignUser, ProjectMember, ProjectTask } from "../../../../../types";
 
 import { useDebounce } from "../../../../../hooks/useDebounce";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectService from "../../../../../services/project-service";
 import MemberCard from "../cards/member-card";
@@ -30,7 +30,7 @@ const AssignUserForm = ({
   refetchProjectTasks,
 }: AssignUserForm) => {
   const { projectId } = useParams();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [values, setValues] = useState<AssignUser[]>([]);
   const [options, setOptions] = useState([]);

@@ -2,11 +2,11 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import SiteNavbar from "../components/shared/site-navbar";
 import SiteFooter from "../components/shared/site-footer";
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 import { URLS } from "../constants";
 
 const ProtectedLayout = () => {
-  const { isAuth } = useUserInfo();
+  const { isAuth } = useAuth();
   if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
 
   return (

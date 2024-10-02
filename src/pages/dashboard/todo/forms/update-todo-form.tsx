@@ -6,7 +6,7 @@ import { Todo } from "../../../../types";
 import { TODO_LEVELS, TODO_STATUS } from "../../../../constants";
 
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import todoService from "../../../../services/todo-service";
 
 interface UpdateTodoFormProps {
@@ -21,7 +21,7 @@ const UpdateTodoForm = ({
   todo,
 }: UpdateTodoFormProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   useEffect(() => {

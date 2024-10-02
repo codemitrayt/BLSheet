@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useMutation } from "react-query";
 import { Button } from "antd";
 
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 import projectService from "../services/project-service";
 import useErrorHandler from "../hooks/useErrorHandler";
 import { ProjectMemberStatus, UpdateTeamMember } from "../types";
@@ -12,7 +12,7 @@ import { MdKeyboardBackspace } from "react-icons/md";
 
 const ProjectInvitationPage = () => {
   const navigate = useNavigate();
-  const { isAuth, user, authToken } = useUserInfo();
+  const { isAuth, user, authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState("");

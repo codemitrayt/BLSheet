@@ -5,14 +5,14 @@ import { Spin } from "antd";
 
 import { URLS } from "../constants";
 import authService from "../services/auth-service";
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 import useErrorHandler from "../hooks/useErrorHandler";
 import { logout } from "../store/slices/auth-slice";
 
 const VerifyLayout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuth, authToken } = useUserInfo();
+  const { isAuth, authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading } = useQuery({

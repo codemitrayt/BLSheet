@@ -3,7 +3,7 @@ import { Tooltip } from "antd";
 import { TbTrash } from "react-icons/tb";
 import { RiLoader4Line } from "react-icons/ri";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import projectService from "../../../../services/project-service";
 import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
@@ -13,8 +13,11 @@ interface DeleteProjectProps {
   refetchProjectList: () => void;
 }
 
-const DeleteProject = ({ objectId, refetchProjectList }: DeleteProjectProps) => {
-  const { authToken } = useUserInfo();
+const DeleteProject = ({
+  objectId,
+  refetchProjectList,
+}: DeleteProjectProps) => {
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading, mutate } = useMutation({

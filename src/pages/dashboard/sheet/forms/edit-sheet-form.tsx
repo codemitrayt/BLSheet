@@ -11,7 +11,7 @@ import { useMutation } from "react-query";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 
 import blSheetService from "../../../../services/bl-sheet-service";
@@ -30,7 +30,7 @@ const EditSheetForm = ({
   onCloseDrawer,
   sheet,
 }: EditSheetFormProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [form] = Form.useForm();
   const [isPaid, setIsPaid] = useState<boolean>(sheet.isPaid);

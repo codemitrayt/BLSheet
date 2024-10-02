@@ -2,7 +2,7 @@ import { TbTrash } from "react-icons/tb";
 import { useMutation } from "react-query";
 import { RiLoader4Line } from "react-icons/ri";
 
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import ConfirmationPopUp from "../../../../../components/ui/confirmation-popup";
 import projectTaskService from "../../../../../services/project-task-service";
@@ -21,7 +21,7 @@ const DeleteComment = ({
   commentId,
   refetchComments,
 }: DeleteProjectTaskCommentProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading, mutate } = useMutation({

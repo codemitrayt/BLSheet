@@ -2,12 +2,12 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Avatar } from "antd";
 
 import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 import LogoutButton from "../components/shared/logout-button";
 import { URLS } from "../constants";
 
 const DashboardLayout = () => {
-  const { isAuth, user } = useUserInfo();
+  const { isAuth, user } = useAuth();
   if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
 
   return (

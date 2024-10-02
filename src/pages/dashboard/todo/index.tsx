@@ -4,7 +4,7 @@ import { Spin } from "antd";
 
 import CreateTodo from "./helpers/create";
 
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 
 import todoService from "../../../services/todo-service";
@@ -17,7 +17,7 @@ import TodoFilters from "../../../components/filters/todo-filters";
 import useTodoFilters from "../../../hooks/userTodoFilters";
 
 const DashboardTodoPage = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const { date } = useTodoFilters();

@@ -8,7 +8,7 @@ import {
   getDueDateColor,
 } from "../../../../../utils";
 import { useProjectContext } from "../../../../../providers/project-provider";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 
 import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
@@ -33,7 +33,7 @@ const ProjectTaskCard = ({
   refetchProjectTask,
 }: ProjectTaskCardProps) => {
   const { isAdmin } = useProjectContext();
-  const { user } = useUserInfo();
+  const { user } = useAuth();
 
   return (
     <div className={cn("border w-[330px] rounded-lg h-fit shadow-sm bg-white")}>

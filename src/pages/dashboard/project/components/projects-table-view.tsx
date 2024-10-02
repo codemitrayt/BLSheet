@@ -5,7 +5,7 @@ import { CgEye } from "react-icons/cg";
 import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import { Project } from "../../../../types";
 import { capitalizeFirstLetter } from "../../../../utils";
 
@@ -61,7 +61,7 @@ const ProjectsTableView = ({
   projects,
   refetchProjectList,
 }: ProjectsTableViewProps) => {
-  const { user } = useUserInfo();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const handleRedirect = (projectId: string) => {
     const url = `/dashboard/projects/${projectId}/details`;

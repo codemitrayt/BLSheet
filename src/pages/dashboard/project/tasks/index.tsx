@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Project, ProjectTask } from "../../../../types";
 import ShowProjectTask from "./helpers/show";
 import CreateProjectTask from "./helpers/create";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../services/project-task-service";
 import { useSocketProvider } from "../../../../providers/socket-provider";
@@ -14,7 +14,7 @@ import { useSocketProvider } from "../../../../providers/socket-provider";
 const ProjectTasks = () => {
   const socket = useSocketProvider();
   const { projectId } = useParams();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const [projectTasks, setProjectTasks] = useState<ProjectTask[]>([]);

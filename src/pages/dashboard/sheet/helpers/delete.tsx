@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import blSheetService from "../../../../services/bl-sheet-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import { TbTrash } from "react-icons/tb";
 import { RiLoader4Line } from "react-icons/ri";
 import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
@@ -12,7 +12,7 @@ interface DeleteProps {
 }
 
 const Delete = ({ objectId, refetchBLSheets }: DeleteProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ["delete"],

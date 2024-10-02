@@ -6,11 +6,11 @@ import { Line } from "@ant-design/plots";
 
 import blSheetService from "../../../../services/bl-sheet-service";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import { BLSheet } from "../../../../types";
 
 const DailyAnalytics = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const [data, setData] = useState<BLSheet[]>([]);

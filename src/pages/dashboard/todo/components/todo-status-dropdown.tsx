@@ -3,7 +3,7 @@ import { Todo, TodoStatus } from "../../../../types";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useMutation } from "react-query";
 import todoService from "../../../../services/todo-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 
 interface TodoStatusDropdownProps {
@@ -15,7 +15,7 @@ const TodoStatusDropdown = ({
   todo,
   refetchTodoList,
 }: TodoStatusDropdownProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { mutate: updateTodo, isLoading } = useMutation({

@@ -6,14 +6,14 @@ import TeamMembersTable from "./components/team-members-table";
 import ProjectDetails from "./components/project-details";
 
 import projectService from "../../../../services/project-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import { ProjectMember } from "../../../../types";
 import { useProjectContext } from "../../../../providers/project-provider";
 import RecentProjectTask from "./components/recent-project-task";
 
 const SingleProjectPage = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { project } = useProjectContext();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();

@@ -4,7 +4,7 @@ import { AiOutlineEllipsis } from "react-icons/ai";
 import { ProjectTask, ProjectTaskStatus } from "../../../../../types";
 import { useMutation } from "react-query";
 import projectTaskService from "../../../../../services/project-task-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 interface UpdateStatus {
@@ -20,7 +20,7 @@ const StatusMap = {
 };
 
 const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading, mutate } = useMutation({

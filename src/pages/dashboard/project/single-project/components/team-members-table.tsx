@@ -7,7 +7,7 @@ import RemoveMember from "./remove-member";
 import projectService from "../../../../../services/project-service";
 import ProjectMemberFilters from "../../../../../components/filters/project-member-filters";
 
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import useProjectMemberFilters from "../../../../../hooks/useProjectMemberFilters";
 
@@ -52,7 +52,7 @@ interface TeamMembersTableProps {
 }
 
 const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [members, setMembers] = useState<ProjectMember[]>([]);

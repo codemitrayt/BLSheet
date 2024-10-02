@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 
 import { Project } from "../../../../types";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import projectService from "../../../../services/project-service";
 
 interface CreateProjectFormProps {
@@ -15,7 +15,7 @@ const CreateProjectForm = ({
   refetchProjectList,
   onCloseDrawer,
 }: CreateProjectFormProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
 

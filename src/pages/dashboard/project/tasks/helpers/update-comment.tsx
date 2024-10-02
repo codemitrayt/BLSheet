@@ -7,7 +7,7 @@ import { TbEdit } from "react-icons/tb";
 
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import { Comment } from "../../../../../types";
 
@@ -32,7 +32,7 @@ const UpdateComment = ({
   refetchProjectComment,
 }: UpdateComment) => {
   const { projectId } = useParams();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [value, setValue] = useState<string>();
   const [isEdit, setIsEdit] = useState<boolean>(false);

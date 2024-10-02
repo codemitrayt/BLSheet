@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 
 const AuthLayout = () => {
-  const { isAuth } = useUserInfo();
+  const { isAuth } = useAuth();
   if (isAuth) return <Navigate to="/" />;
 
   return (

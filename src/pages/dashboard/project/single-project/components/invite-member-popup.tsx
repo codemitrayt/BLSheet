@@ -4,7 +4,7 @@ import { useState } from "react";
 import { VscAdd } from "react-icons/vsc";
 import { useMutation } from "react-query";
 import projectService from "../../../../../services/project-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 interface InviteMemberPopupProps {
@@ -19,7 +19,7 @@ const InviteMemberPopup = ({
   refetchProjectMembers,
 }: InviteMemberPopupProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const [modalState, setModalState] = useState(false);

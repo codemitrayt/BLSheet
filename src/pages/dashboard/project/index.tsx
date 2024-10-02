@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Spin } from "antd";
 
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 
 import ShowProjects from "./helpers/show";
@@ -19,7 +19,7 @@ import { IoMdGrid } from "react-icons/io";
 import { MdOutlineListAlt } from "react-icons/md";
 
 const DashboardProjectPage = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [searchParams, setSearchParams] = useSearchParams();
   const [projectList, setProjectList] = useState<Project[]>([]);

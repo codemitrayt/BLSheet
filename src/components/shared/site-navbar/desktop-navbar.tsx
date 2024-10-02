@@ -12,12 +12,12 @@ import AuthLinks from "./auth-links";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
 
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 import { logout } from "../../../store/slices/auth-slice";
 import GithubStar from "../github-star";
 
 const DesktopNavbar = () => {
-  const { isAuth } = useUserInfo();
+  const { isAuth } = useAuth();
 
   return (
     <div className="hidden sm:flex items-center w-[90%]">
@@ -81,7 +81,7 @@ const NavItem = ({ link }: { link: NavLinkType }) => {
 };
 
 const UserDropdown = () => {
-  const { user } = useUserInfo();
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const handleLogout = () => dispatch(logout());
 

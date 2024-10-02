@@ -6,7 +6,7 @@ import CreateSheet from "./helpers/create";
 
 import blSheetService from "../../../services/bl-sheet-service";
 
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 import useBLSheetFilters from "../../../hooks/useBLSheetFilters";
 
@@ -17,7 +17,7 @@ const PER_PAGE_SIZE = 7;
 
 const DashboardSheetPage = () => {
   const { search, type, currentPage, startDate, endDate } = useBLSheetFilters();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const [totalCount, setTotalCount] = useState<number>(0);

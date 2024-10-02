@@ -6,7 +6,7 @@ import { TODO_LEVELS, TODO_STATUS } from "../../../../constants";
 
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import todoService from "../../../../services/todo-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 
 interface CreateTodoFormProps {
   onCloseDrawer: () => void;
@@ -19,7 +19,7 @@ const CreateTodoForm = ({
   onCloseDrawer,
   clearParams,
 }: CreateTodoFormProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
   const { isLoading, mutate: createTodo } = useMutation({

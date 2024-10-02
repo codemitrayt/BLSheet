@@ -4,7 +4,7 @@ import { useMutation } from "react-query";
 
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import { useParams } from "react-router-dom";
 
@@ -22,7 +22,7 @@ interface CreateProjectTaskComment {
 const CommentForm = ({ projectTaskId, refetch }: CommentForm) => {
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const [value, setValue] = useState<string>();
 
   const { mutate, isLoading } = useMutation({

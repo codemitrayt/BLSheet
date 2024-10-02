@@ -10,7 +10,7 @@ import { Comment } from "../../../../../types";
 import CommentForm from "../forms/comment-form";
 
 import CommentCard from "../cards/comment-card";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 import queryKeys from "../../../../../constants/query-keys";
@@ -23,7 +23,7 @@ interface ProjectTaskComment {
 }
 
 const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
   const { isAdmin } = useProjectContext();

@@ -5,7 +5,7 @@ import dateformat from "dateformat";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
 
@@ -26,7 +26,7 @@ const UpdateProjectTaskForm = ({
   onCloseDrawer,
   projectTask,
 }: UpdateProjectTaskFormProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
 

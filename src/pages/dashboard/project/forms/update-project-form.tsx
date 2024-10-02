@@ -2,7 +2,7 @@ import { Button, Form, Input, Select } from "antd";
 import { useMutation } from "react-query";
 import { useEffect } from "react";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import projectService from "../../../../services/project-service";
 import { Project } from "../../../../types";
@@ -19,7 +19,7 @@ const UpdateProjectForm = ({
   onCloseDrawer,
 }: UpdateProjectFormProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   useEffect(() => {
     form.setFieldsValue({ ...project });

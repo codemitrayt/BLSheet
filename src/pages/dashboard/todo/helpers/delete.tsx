@@ -3,7 +3,7 @@ import { Tooltip } from "antd";
 import { TbTrash } from "react-icons/tb";
 import { RiLoader4Line } from "react-icons/ri";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import todoService from "../../../../services/todo-service";
 import ConfirmationPopUp from "../../../../components/ui/confirmation-popup";
@@ -14,7 +14,7 @@ interface DeleteTodoProps {
 }
 
 const DeleteTodo = ({ objectId, refetchTodoList }: DeleteTodoProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading, mutate } = useMutation({

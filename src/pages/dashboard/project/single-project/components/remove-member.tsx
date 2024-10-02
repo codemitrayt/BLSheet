@@ -4,7 +4,7 @@ import { IoRemoveCircleOutline } from "react-icons/io5";
 
 import { ProjectMember } from "../../../../../types";
 import projectService from "../../../../../services/project-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import ConfirmationPopUp from "../../../../../components/ui/confirmation-popup";
 
@@ -17,7 +17,7 @@ const RemoveMember = ({
   projectMember,
   refetchProjectMembers,
 }: RemoveMember) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
 
   const { isLoading, mutate } = useMutation({

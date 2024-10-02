@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 import { LuListTodo } from "react-icons/lu";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 
 const Hero = () => {
-  const { isAuth } = useUserInfo();
+  const { isAuth } = useAuth();
   const getStartedUrl = isAuth ? "/dashboard/home" : "/auth/login";
 
   return (

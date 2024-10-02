@@ -9,7 +9,7 @@ import {
 } from "antd";
 import { useMutation } from "react-query";
 
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 
 import blSheetService from "../../../../services/bl-sheet-service";
@@ -28,7 +28,7 @@ const CreateSheetForm = ({
   onCloseDrawer,
   clearParams,
 }: CreateSheetFormProps) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [form] = Form.useForm();
 

@@ -6,12 +6,12 @@ import { MdOutlineArrowRightAlt } from "react-icons/md";
 
 import TaskCard from "./task-card";
 import { ProjectTask } from "../../../../../types";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
 
 const RecentProjectTask = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
 

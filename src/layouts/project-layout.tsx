@@ -7,7 +7,7 @@ import ProjectNavbar from "../components/shared/project-navbar";
 import projectService from "../services/project-service";
 
 import useErrorHandler from "../hooks/useErrorHandler";
-import useUserInfo from "../hooks/useUserInfo";
+import useAuth from "../hooks/useAuth";
 
 import { Project } from "../types";
 import ProjectContext from "../providers/project-provider";
@@ -15,7 +15,7 @@ import { useSocketProvider } from "../providers/socket-provider";
 
 const ProjectLayout = () => {
   const { projectId } = useParams();
-  const { authToken, user } = useUserInfo();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const socket = useSocketProvider();
   const [project, setProject] = useState<Project | null>(null);

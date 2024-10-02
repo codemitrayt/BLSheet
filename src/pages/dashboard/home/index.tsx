@@ -4,7 +4,7 @@ import { Spin } from "antd";
 
 import blSheetService from "../../../services/bl-sheet-service";
 
-import useUserInfo from "../../../hooks/useUserInfo";
+import useAuth from "../../../hooks/useAuth";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 
 import DisplaySheetAnalyticsCards from "./helpers/display-sheet-analytics-cards";
@@ -16,7 +16,7 @@ import LatestCreatedSheets from "./helpers/latest-created-sheets";
 import DailyAnalytics from "./charts/daily-analytics";
 
 const DashboardHomePage = () => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const [matrics, setMatrics] = useState<MatricsType[]>([]);
 

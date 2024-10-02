@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
 // import ReactQuill from "react-quill";
 
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
 
@@ -20,7 +20,7 @@ const CreateProjectTaskForm = ({
   onCloseDrawer,
 }: CreateProjectTaskFormProps) => {
   const { projectId } = useParams();
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
 

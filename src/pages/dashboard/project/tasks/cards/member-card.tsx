@@ -8,7 +8,7 @@ import { AssignUser } from "../../../../../types";
 import queryKeys from "../../../../../constants/query-keys";
 
 import projectTaskService from "../../../../../services/project-task-service";
-import useUserInfo from "../../../../../hooks/useUserInfo";
+import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 interface MemberCard {
@@ -30,7 +30,7 @@ const MemberCard = ({
   removeMember,
   projectTaskId,
 }: MemberCard) => {
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
 

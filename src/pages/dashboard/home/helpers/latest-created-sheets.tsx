@@ -6,7 +6,7 @@ import { BLSheet } from "../../../../types";
 import { cn } from "../../../../utils";
 
 import blSheetService from "../../../../services/bl-sheet-service";
-import useUserInfo from "../../../../hooks/useUserInfo";
+import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import BLSheetDetailsCard from "../cards/bl-sheet-details-card";
 
@@ -21,7 +21,7 @@ interface LatestCreatedSheetsProps {
 
 const LatestCreatedSheets = ({ className }: LatestCreatedSheetsProps) => {
   const [sheets, setSheets] = useState<BLSheet[]>([]);
-  const { authToken } = useUserInfo();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const navigate = useNavigate();
 
