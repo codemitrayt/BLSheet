@@ -63,9 +63,7 @@ const ProjectTasks = () => {
   return (
     <div className="relative mt-3">
       <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
-        <h1 className="text-primary font-bold">
-          {project?.name} Project Tasks
-        </h1>
+        <h1 className="text-primary font-bold">{project?.name}</h1>
         <CreateProjectTask refetchProjectTaskList={refetch} />
       </div>
 
