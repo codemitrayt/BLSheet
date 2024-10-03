@@ -4,7 +4,7 @@ import Hero from "./helpers/hero";
 
 const HomePage = () => {
   return (
-    <div className="relative py-4">
+    <div className="relative">
       <Hero />
       <DemoImg />
       <FeatureCards />

@@ -1,11 +1,11 @@
 import { LuListTodo } from "react-icons/lu";
 import { TbReport } from "react-icons/tb";
 import { MdInsertChartOutlined } from "react-icons/md";
-
-import FeatureCard from "../cards/feature-card";
 import { BiCommentDots } from "react-icons/bi";
 import { RiTeamLine } from "react-icons/ri";
 import { VscIssues } from "react-icons/vsc";
+
+import FeatureCard from "../cards/feature-card";
 
 const features = [
   {
@@ -48,19 +48,21 @@ const features = [
 
 const FeatureCards = () => {
   return (
-    <div className="w-[90%] mx-auto">
-      <h1 className="text-primary text-lg font-medium mb-3 md:text-3xl">
-        Features:
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {features.map((feature, i) => (
-          <FeatureCard
-            key={i}
-            title={feature.title}
-            description={feature.description}
-            Icon={feature.Icon}
-          />
-        ))}
+    <div className="py-6 relative">
+      <div className="w-[90%] mx-auto">
+        <h1 className="text-primary text-lg font-medium mb-3 md:text-3xl">
+          Features:
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, i) => (
+            <FeatureCard
+              key={i}
+              title={feature.title}
+              description={feature.description}
+              Icon={feature.Icon}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
