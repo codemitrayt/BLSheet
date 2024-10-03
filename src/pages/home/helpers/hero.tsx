@@ -17,7 +17,7 @@ const Hero = () => {
         </p>
 
         <h1 className="text-center sm:text-start text-xl sm:text-2xl md:text-4xl xl:text-5xl font-bold mt-8 text-primary">
-          Boost Your Productivity with BL Sheet
+          Manage Your Projects with BL Sheet
         </h1>
 
         <p className="text-sm mt-2 text-gray-600 text-center sm:text-start">
