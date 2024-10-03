@@ -70,20 +70,20 @@ const UpdateComment = ({
   };
 
   return (
-    <div>
+    <>
       <button
         onClick={() => setIsEdit(true)}
-        className="text-emerald-500 hover:text-emerald-500/80 flex items-center justify-center space-x-1"
+        className="text-emerald-500 top-0 hover:text-emerald-500/80 flex items-center justify-center space-x-1 absolute right-[28px]"
       >
         <TbEdit />
         <span className="text-xs">Edit</span>
       </button>
 
       {isEdit && (
-        <div className="w-full space-y-1 absolute inset-0 h-full bg-turnary">
+        <div className="w-full space-y-2 pt-8">
           <Input.TextArea
-            placeholder="Add comment here"
-            rows={3}
+            placeholder="Update comment"
+            rows={2}
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
@@ -108,7 +108,7 @@ const UpdateComment = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
