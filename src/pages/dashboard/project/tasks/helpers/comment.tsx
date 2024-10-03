@@ -79,7 +79,7 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
           </div>
         ) : (
           <>
-            <div className="space-y-4 h-[calc(100vh_-240px)] overflow-auto border rounded-lg p-4 bg-turnary">
+            <div className="space-y-4 h-[calc(100vh_-270px)] overflow-auto border rounded-lg p-4 bg-turnary">
               {comments.map((comment) => (
                 <CommentCard
                   isAdmin={isAdmin}
