@@ -61,3 +61,19 @@ export function getDueDateColor(dueDate: Date, isCompleted: boolean = false) {
     return "text-red-500";
   }
 }
+
+export const getTimeDifference = (date: string) => {
+  var date1 = new Date();
+  var date2 = new Date(date);
+  var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  var timeDiffInSecond = Math.ceil(timeDiff / 1000);
+
+  if (timeDiffInSecond < 60) return `${timeDiffInSecond} sec ago`;
+  else if (timeDiffInSecond >= 60 && timeDiffInSecond < 3600)
+    return `${Math.ceil(timeDiffInSecond / 60)} min ago`;
+  else if (timeDiffInSecond >= 3600 && timeDiffInSecond < 86400)
+    return `${Math.ceil(timeDiffInSecond / 3600)} hour ago`;
+  else if (timeDiffInSecond >= 86400)
+    return `${Math.ceil(timeDiffInSecond / 86400)} day ago`;
+  return "";
+};
