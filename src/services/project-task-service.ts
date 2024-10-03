@@ -92,6 +92,22 @@ const projectTaskService = () => {
         authToken,
         data,
       }),
+
+    replyToProjectTaskComment: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        url: urls.projectTask.replyToProjectTaskComment,
+        authToken,
+        data,
+      }),
+
+    getProjectTaskCommentReplies: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        url: urls.projectTask.getProjectTaskCommentReplies,
+        authToken,
+        data,
+      }),
   };
 };
 
