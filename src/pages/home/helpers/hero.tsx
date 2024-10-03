@@ -16,7 +16,7 @@ const Hero = () => {
           Welcome to <span className="text-primary">BL Sheet</span>{" "}
         </p>
 
-        <h1 className="text-center sm:text-start text-3xl sm:text-2xl md:text-4xl xl:text-5xl font-bold mt-8 text-primary">
+        <h1 className="text-center sm:text-start text-xl sm:text-2xl md:text-4xl xl:text-5xl font-bold mt-8 text-primary">
           Boost Your Productivity with BL Sheet
         </h1>
 
