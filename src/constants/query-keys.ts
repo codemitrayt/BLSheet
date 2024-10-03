@@ -18,6 +18,8 @@ const queryKeys = {
     getProjectTaskComments: "GET_PROJECT_TASK_COMMENT",
     deleteProjectTaskComment: "DELETE_PROJECT_TASK_COMMENT",
     updateProjectTaskComment: "UPDATE_PROJECT_TASK_COMMENT",
+    replyProjectTaskComment: "REPLY_PROJECT_TASK_COMMENT",
+    getProjectTaskCommentReplies: "GET_PROJECT_TASK_COMMENT_REPLIES",
   },
   todo: {},
 };
