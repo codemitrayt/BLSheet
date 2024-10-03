@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { LuListTodo } from "react-icons/lu";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import useAuth from "../../../hooks/useAuth";
+import { GoProject } from "react-icons/go";
 
 const Hero = () => {
   const { isAuth } = useAuth();
@@ -20,18 +21,26 @@ const Hero = () => {
         </h1>
 
         <p className="text-sm mt-2 text-gray-600 text-center sm:text-start">
-          Welcome to Your All-in-One Financial Management and Productivity Tool
+          Welcome to Your All-in-One Project Management, Financial Management
+          and Productivity Tool
         </p>
 
         <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 mt-4">
-          <div className="flex items-center space-x-2 text-blue-500 text-sm">
+          <div className="flex items-center space-x-2 text-primary text-sm">
+            <GoProject />
+            <span>Project Management</span>
+          </div>
+
+          <div className="border-l border-black h-[10px] hidden sm:block" />
+
+          <div className="flex items-center space-x-2 text-primary text-sm">
             <LuListTodo />
             <span>Productivity Tools</span>
           </div>
 
           <div className="border-l border-black h-[10px] hidden sm:block" />
 
-          <div className="flex items-center space-x-2 text-blue-500 text-sm">
+          <div className="flex items-center space-x-2 text-primary text-sm">
             <RiMoneyRupeeCircleLine />
             <span>Personal Finance Manager</span>
           </div>
