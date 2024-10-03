@@ -27,29 +27,30 @@ const CommentCard = ({
   return (
     <div
       className={cn(
-        "relative w-full flex gap-1 border-b border-primary pb-8",
-        isReply &&
-          "border-primary/20 border px-3 pb-8 pt-3 shadow-sm rounded-md"
+        "relative w-full gap-1 flex border-b border-primary pb-8",
+        isReply && "px-3 py-3 border-none"
       )}
     >
-      <div className="w-[50px]">
+      <div className="pt-1">
         <Avatar className="bg-primary">
           {comment.author.fullName[0].toUpperCase()}
         </Avatar>
       </div>
 
       <div className="w-full">
-        <div className="flex items-center justify-between w-full">
-          <h1 className="text-primary font-semibold">
-            {comment.author.fullName}
-          </h1>
-          <div className="text-xs text-gray-500 font-light">
-            {getTimeDifference(comment.createdAt)}
+        <div className="bg-white border shadow-sm rounded-md px-3 py-1">
+          <div className="flex items-center justify-between w-full">
+            <h1 className="text-primary font-semibold">
+              {comment.author.fullName}
+            </h1>
+            <div className="text-xs text-gray-500 font-light">
+              {getTimeDifference(comment.createdAt)}
+            </div>
           </div>
+          <p className="text-xs w-full py-1">{comment.content}</p>
         </div>
-        <p className="text-xs w-full py-2">{comment.content}</p>
 
-        <div className="w-full relative">
+        <div className="w-full relative mt-2">
           <ShowReplies
             projectTaskId={projectTaskId}
             commentId={comment._id}

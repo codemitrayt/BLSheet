@@ -48,7 +48,7 @@ const ShowReplies = ({ commentId, replyCount, projectTaskId }: ShowReplies) => {
       {!!replyCount && (
         <button
           onClick={() => {
-            mutate({ data: { commentId } });
+            if (!isShow) mutate({ data: { commentId } });
             setIsShow((prev) => !prev);
           }}
           className="text-primary top-0 hover:text-primary/80 flex items-center justify-center space-x-1 absolute right-[160px]"
