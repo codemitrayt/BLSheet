@@ -42,21 +42,23 @@ const DeleteComment = ({
   const handleOnDelete = () => mutate();
 
   return (
-    <ConfirmationPopUp
-      title="Delete Comment"
-      description="Are you sure to delete comment?"
-      fn={handleOnDelete}
-      icon={
-        <div className="flex items-center justify-center h-5 mr-2">
-          <TbTrash className="text-red-500" />
-        </div>
-      }
-      isLoading={isLoading}
-    >
-      <button className="text-red-500 hover:text-red-500/80 transition">
-        {isLoading ? <RiLoader4Line className="animate-spin" /> : <TbTrash />}
-      </button>
-    </ConfirmationPopUp>
+    <div className="absolute right-[0] top-0">
+      <ConfirmationPopUp
+        title="Delete Comment"
+        description="Are you sure to delete comment?"
+        fn={handleOnDelete}
+        icon={
+          <div className="flex items-center justify-center h-5 mr-2">
+            <TbTrash className="text-red-500" />
+          </div>
+        }
+        isLoading={isLoading}
+      >
+        <button className="text-red-500 hover:text-red-500/80 transition">
+          {isLoading ? <RiLoader4Line className="animate-spin" /> : <TbTrash />}
+        </button>
+      </ConfirmationPopUp>
+    </div>
   );
 };
 
