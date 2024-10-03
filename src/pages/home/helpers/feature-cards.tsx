@@ -49,6 +49,9 @@ const features = [
 const FeatureCards = () => {
   return (
     <div className="w-[90%] mx-auto">
+      <h1 className="text-primary text-lg font-medium mb-3 md:text-3xl">
+        Features:
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature, i) => (
           <FeatureCard
