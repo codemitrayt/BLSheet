@@ -197,4 +197,5 @@ export interface Comment {
     email: string;
   };
   isCreator: boolean;
+  replyCount: number;
 }
