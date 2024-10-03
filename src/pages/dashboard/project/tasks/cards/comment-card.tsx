@@ -6,6 +6,9 @@ import { RiReplyLine } from "react-icons/ri";
 import { Comment } from "../../../../../types";
 import DeleteComment from "../helpers/delete-comment";
 import UpdateComment from "../helpers/update-comment";
+import { cn, getTimeDifference } from "../../../../../utils";
+import ReplyComment from "../helpers/reply-comment";
+import ShowReplies from "../helpers/show-replies";
 
 interface CommentCard {
   comment: Comment;
@@ -13,6 +16,7 @@ interface CommentCard {
   projectId: string;
   projectTaskId: string;
   refetchComments: () => void;
+  isReply?: boolean;
 }
 
 const CommentCard = ({
@@ -21,42 +25,55 @@ const CommentCard = ({
   projectId,
   projectTaskId,
   refetchComments,
+  isReply = false,
 }: CommentCard) => {
   return (
-    <div className="relative w-full flex gap-1 border-b border-primary pb-7">
+    <div
+      className={cn(
+        "relative w-full flex gap-1 border-b border-primary pb-8",
+        isReply &&
+          "border-primary/20 border px-3 pb-8 pt-3 shadow-sm rounded-md"
+      )}
+    >
       <div className="w-[50px]">
         <Avatar className="bg-primary">
           {comment.author.fullName[0].toUpperCase()}
         </Avatar>
       </div>
+
       <div className="w-full">
         <div className="flex items-center justify-between w-full">
           <h1 className="text-primary font-semibold">
             {comment.author.fullName}
           </h1>
-          <div className="text-xs text-gray-500 font-light">1 day ago</div>
+          <div className="text-xs text-gray-500 font-light">
+            {getTimeDifference(comment.createdAt)}
+          </div>
         </div>
         <p className="text-xs w-full py-2">{comment.content}</p>
-        <div className="flex items-center justify-end space-x-2 mt-3">
-          <button className="text-primary hover:text-primary/80 flex items-center justify-center space-x-1">
-            <AiOutlineComment />
-            <span className="text-xs">Show 5 Replies</span>
-          </button>
-          <div className="h-[15px] w-[1px] bg-gray-500" />
-          <button className="text-primary hover:text-primary/80 flex items-center justify-center space-x-1">
-            <RiReplyLine />
-            <span className="text-xs">Reply</span>
-          </button>
+
+        <div className="w-full relative">
+          <ShowReplies
+            projectTaskId={projectTaskId}
+            commentId={comment._id}
+            replyCount={comment.replyCount}
+          />
+          {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
+
+          <ReplyComment
+            commentId={comment._id}
+            refecthComments={refetchComments}
+          />
 
           {(comment.isCreator || isAdmin) && (
             <>
-              <div className="h-[15px] w-[1px] bg-gray-500" />
+              {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
               <UpdateComment
                 comment={comment}
                 projectTaskId={projectTaskId}
                 refetchProjectComment={refetchComments}
               />
-              <div className="h-[15px] w-[1px] bg-gray-500" />
+              {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
               <DeleteComment
                 projectId={projectId}
                 commentId={comment._id}
