@@ -1,8 +1,5 @@
 import { Avatar } from "antd";
 
-import { AiOutlineComment } from "react-icons/ai";
-import { RiReplyLine } from "react-icons/ri";
-
 import { Comment } from "../../../../../types";
 import DeleteComment from "../helpers/delete-comment";
 import UpdateComment from "../helpers/update-comment";
