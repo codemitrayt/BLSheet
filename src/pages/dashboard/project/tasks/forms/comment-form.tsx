@@ -58,7 +58,7 @@ const CommentForm = ({ projectTaskId, refetch }: CommentForm) => {
   };
 
   return (
-    <div className="w-full space-y-2">
+    <div className="w-full space-y-2 bg-turnary p-3 rounded-lg border shadow-sm">
       <Input.TextArea
         placeholder="Add comment here"
         rows={3}
