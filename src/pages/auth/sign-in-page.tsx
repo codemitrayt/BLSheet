@@ -65,6 +65,10 @@ const SignInPage = () => {
 
         <Form
           layout="vertical"
+          initialValues={{
+            email: "demo@blsheet.com",
+            password: "demo@blsheet.com",
+          }}
           form={form}
           className="w-[300px] mt-6"
           onFinish={(values: LoginUserBody) => handleOnSubmit(values)}
