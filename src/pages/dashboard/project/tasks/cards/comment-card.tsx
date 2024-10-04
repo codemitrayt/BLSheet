@@ -14,6 +14,7 @@ interface CommentCard {
   projectTaskId: string;
   refetchComments: () => void;
   isReply?: boolean;
+  parentCommentId?: string;
 }
 
 const CommentCard = ({
@@ -23,6 +24,7 @@ const CommentCard = ({
   projectTaskId,
   refetchComments,
   isReply = false,
+  parentCommentId,
 }: CommentCard) => {
   return (
     <div
@@ -77,6 +79,7 @@ const CommentCard = ({
                 commentId={comment._id}
                 projectTaskId={projectTaskId}
                 refetchComments={refetchComments}
+                parentCommentId={parentCommentId}
               />
             </>
           )}
