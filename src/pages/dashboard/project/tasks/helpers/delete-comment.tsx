@@ -13,6 +13,7 @@ interface DeleteProjectTaskCommentProps {
   projectTaskId: string;
   commentId: string;
   refetchComments: () => void;
+  parentCommentId?: string;
 }
 
 const DeleteComment = ({
@@ -20,6 +21,7 @@ const DeleteComment = ({
   projectTaskId,
   commentId,
   refetchComments,
+  parentCommentId,
 }: DeleteProjectTaskCommentProps) => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
@@ -29,7 +31,12 @@ const DeleteComment = ({
     mutationFn: () =>
       projectTaskService().deleteProjectTaskComment({
         authToken,
-        data: { projectTaskId, projectId, commentId },
+        data: {
+          projectTaskId,
+          projectId,
+          commentId,
+          ...(parentCommentId && { parentCommentId }),
+        },
       }),
     onSuccess: () => refetchComments(),
     onError: (error) => {

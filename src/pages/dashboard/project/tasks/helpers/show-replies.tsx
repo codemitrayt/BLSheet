@@ -72,6 +72,7 @@ const ShowReplies = ({ commentId, replyCount, projectTaskId }: ShowReplies) => {
               isAdmin={isAdmin}
               comment={reply}
               refetchComments={() => mutate({ data: { commentId } })}
+              parentCommentId={commentId}
             />
           ))}
         </div>
