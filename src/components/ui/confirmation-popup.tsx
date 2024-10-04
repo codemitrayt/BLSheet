@@ -1,4 +1,7 @@
 import { Popconfirm } from "antd";
+import useAuth from "../../hooks/useAuth";
+import { UserRole } from "../../types";
+import useErrorHandler from "../../hooks/useErrorHandler";
 
 interface ConfirmationPopUpProps {
   children: React.ReactNode;
@@ -17,13 +20,27 @@ const ConfirmationPopUp = ({
   description,
   icon,
 }: ConfirmationPopUpProps) => {
+  const { user } = useAuth();
+  const { handleError } = useErrorHandler();
+
+  const handleOnDelete = () => {
+    if (user?.role === UserRole.GUEST) {
+      handleError(
+        null,
+        "This is a Guest Account - You Do Not Have Access to Delete"
+      );
+      return;
+    }
+    fn();
+  };
+
   return (
     <Popconfirm
       title={title}
       description={description}
       icon={icon}
       okButtonProps={{ loading: isLoading, style: { boxShadow: "none" } }}
-      onConfirm={fn}
+      onConfirm={handleOnDelete}
     >
       {children}
     </Popconfirm>

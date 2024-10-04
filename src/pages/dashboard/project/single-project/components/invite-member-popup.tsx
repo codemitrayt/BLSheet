@@ -6,6 +6,7 @@ import { useMutation } from "react-query";
 import projectService from "../../../../../services/project-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
+import { UserRole } from "../../../../../types";
 
 interface InviteMemberPopupProps {
   projectName: string;
@@ -19,7 +20,7 @@ const InviteMemberPopup = ({
   refetchProjectMembers,
 }: InviteMemberPopupProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
 
   const [modalState, setModalState] = useState(false);
@@ -66,9 +67,17 @@ const InviteMemberPopup = ({
           form={form}
           layout="vertical"
           className="mt-4"
-          onFinish={(values) =>
-            mutate({ data: { email: values.email, projectId } })
-          }
+          onFinish={(values) => {
+            if (user?.role === UserRole.GUEST) {
+              handleError(
+                null,
+                "This is a Guest Account - You Do Not Have Access to Invite Members"
+              );
+              return;
+            }
+
+            mutate({ data: { email: values.email, projectId } });
+          }}
         >
           <Form.Item
             name="email"

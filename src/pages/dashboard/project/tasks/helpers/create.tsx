@@ -5,6 +5,8 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
 
 import CreateProjectTaskForm from "../forms/create-project-task-form";
+import { UserRole } from "../../../../../types";
+import useAuth from "../../../../../hooks/useAuth";
 
 interface CreateProjectTasksProps {
   refetchProjectTaskList: () => void;
@@ -13,6 +15,7 @@ interface CreateProjectTasksProps {
 const CreateProjectTask = ({
   refetchProjectTaskList,
 }: CreateProjectTasksProps) => {
+  const { user } = useAuth();
   const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
@@ -24,6 +27,7 @@ const CreateProjectTask = ({
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}
+        disabled={user?.role === UserRole.GUEST}
       >
         Task
       </Button>

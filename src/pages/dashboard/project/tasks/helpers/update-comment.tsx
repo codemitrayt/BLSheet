@@ -9,7 +9,7 @@ import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
-import { Comment } from "../../../../../types";
+import { Comment, UserRole } from "../../../../../types";
 
 interface RequestData {
   data: {
@@ -32,7 +32,7 @@ const UpdateComment = ({
   refetchProjectComment,
 }: UpdateComment) => {
   const { projectId } = useParams();
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const [value, setValue] = useState<string>();
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -65,6 +65,14 @@ const UpdateComment = ({
       content: value,
       commentId: comment._id,
     };
+
+    if (user?.role === UserRole.GUEST) {
+      handleError(
+        null,
+        "This is a Guest Account - You Do Not Have Access to Update Comment"
+      );
+      return;
+    }
 
     mutate({ data });
   };

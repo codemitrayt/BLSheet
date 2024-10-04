@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import projectService from "../../../../services/project-service";
-import { Project } from "../../../../types";
+import { Project, UserRole } from "../../../../types";
 
 interface UpdateProjectFormProps {
   project: Project;
@@ -19,7 +19,7 @@ const UpdateProjectForm = ({
   onCloseDrawer,
 }: UpdateProjectFormProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   useEffect(() => {
     form.setFieldsValue({ ...project });
@@ -51,7 +51,16 @@ const UpdateProjectForm = ({
         <Form
           form={form}
           layout="vertical"
-          onFinish={(data: Project) => updateProject({ data })}
+          onFinish={(data: Project) => {
+            if (user?.role == UserRole.GUEST) {
+              handleError(
+                null,
+                "This is a Guest Account – You Do Not Have Access to Update"
+              );
+              return;
+            }
+            updateProject({ data });
+          }}
         >
           <Form.Item
             name="name"

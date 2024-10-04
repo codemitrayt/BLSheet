@@ -2,7 +2,7 @@ import { Button, Form, Input, Select } from "antd";
 import { useMutation } from "react-query";
 import { useEffect } from "react";
 
-import { Todo } from "../../../../types";
+import { Todo, UserRole } from "../../../../types";
 import { TODO_LEVELS, TODO_STATUS } from "../../../../constants";
 
 import useErrorHandler from "../../../../hooks/useErrorHandler";
@@ -21,7 +21,7 @@ const UpdateTodoForm = ({
   todo,
 }: UpdateTodoFormProps) => {
   const [form] = Form.useForm();
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
 
   useEffect(() => {
@@ -53,7 +53,16 @@ const UpdateTodoForm = ({
       <Form
         form={form}
         layout="vertical"
-        onFinish={(data: Todo) => updateTodo({ data })}
+        onFinish={(data: Todo) => {
+          if (user?.role === UserRole.GUEST) {
+            handleError(
+              null,
+              "This is a Guest Account - You Do Not Have Access to Update"
+            );
+            return;
+          }
+          updateTodo({ data });
+        }}
       >
         <Form.Item
           name="title"

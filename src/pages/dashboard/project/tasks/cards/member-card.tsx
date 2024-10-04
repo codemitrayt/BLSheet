@@ -4,7 +4,7 @@ import { useMutation } from "react-query";
 import { LuLoader } from "react-icons/lu";
 import { useParams } from "react-router-dom";
 
-import { AssignUser } from "../../../../../types";
+import { AssignUser, UserRole } from "../../../../../types";
 import queryKeys from "../../../../../constants/query-keys";
 
 import projectTaskService from "../../../../../services/project-task-service";
@@ -30,7 +30,7 @@ const MemberCard = ({
   removeMember,
   projectTaskId,
 }: MemberCard) => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
 
@@ -56,6 +56,14 @@ const MemberCard = ({
   });
 
   const handleRemoveMember = () => {
+    if (user?.role === UserRole.GUEST) {
+      handleError(
+        null,
+        "This is a Guest Account - You Do Not Have Access to Delete"
+      );
+      return;
+    }
+
     mutate({
       data: {
         memberEmailId: member.memberEmailId,

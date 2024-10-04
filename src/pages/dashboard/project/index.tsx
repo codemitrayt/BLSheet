@@ -10,7 +10,7 @@ import ShowProjects from "./helpers/show";
 import CreateProject from "./helpers/create";
 
 import { cn } from "../../../utils";
-import { Project } from "../../../types";
+import { Project, UserRole } from "../../../types";
 
 import ProjectsTableView from "./components/projects-table-view";
 import projectService from "../../../services/project-service";
@@ -19,7 +19,7 @@ import { IoMdGrid } from "react-icons/io";
 import { MdOutlineListAlt } from "react-icons/md";
 
 const DashboardProjectPage = () => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const [searchParams, setSearchParams] = useSearchParams();
   const [projectList, setProjectList] = useState<Project[]>([]);
@@ -58,7 +58,7 @@ const DashboardProjectPage = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="relative">
       <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
         <div className="flex items-center justify-center space-x-4">
           <h1 className="text-primary font-bold">Your Projects</h1>
@@ -92,7 +92,14 @@ const DashboardProjectPage = () => {
         </div>
       </div>
 
-      <div className="h-[calc(100vh_-180px)] overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth">
+      <div
+        className={cn(
+          "overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth",
+          user?.role === UserRole.GUEST
+            ? "h-[calc(100vh_-260px)]"
+            : "h-[calc(100vh_-160px)]"
+        )}
+      >
         {projectList?.length === 0 ? (
           <div className="flex items-center justify-center text-primary font-semibold">
             No Projects Yet? Get Started by Creating Your First One and Invite

@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
 
+export enum UserRole {
+  ADMIN = "admin",
+  CUSTOMER = "customer",
+  GUEST = "guest",
+}
+
 export interface URLType {
   [key: string]: {
     [key: string]: string;

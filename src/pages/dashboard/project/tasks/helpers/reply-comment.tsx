@@ -7,6 +7,7 @@ import useAuth from "../../../../../hooks/useAuth";
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
+import { UserRole } from "../../../../../types";
 
 interface ReplyComment {
   commentId: string;
@@ -21,7 +22,7 @@ interface RequestData {
 }
 
 const ReplyComment = ({ refecthComments, commentId }: ReplyComment) => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const [value, setValue] = useState<string>();
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -48,6 +49,14 @@ const ReplyComment = ({ refecthComments, commentId }: ReplyComment) => {
       content: value,
       commentId: commentId,
     };
+
+    if (user?.role === UserRole.GUEST) {
+      handleError(
+        null,
+        "This is a Guest Account - You Do Not Have Access to Reply Comment"
+      );
+      return;
+    }
 
     mutate({ data });
   };

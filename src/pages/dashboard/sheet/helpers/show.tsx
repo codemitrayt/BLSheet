@@ -4,10 +4,12 @@ import dateFormat from "dateformat";
 
 import Delete from "./delete";
 import Edit from "./edit";
-import { BLSheet, SheetType } from "../../../../types";
-import { cn, currencyFormate } from "../../../../utils";
-import useBLSheetFilters from "../../../../hooks/useBLSheetFilters";
 import SetNotification from "./set-notification";
+
+import { BLSheet, SheetType, UserRole } from "../../../../types";
+import { cn, currencyFormate } from "../../../../utils";
+import useAuth from "../../../../hooks/useAuth";
+import useBLSheetFilters from "../../../../hooks/useBLSheetFilters";
 
 const columns: TableProps<BLSheet>["columns"] = [
   {
@@ -102,6 +104,7 @@ const Show = ({
   totalCount,
   perPage,
 }: ShowProps) => {
+  const { user } = useAuth();
   const { currentPage, setFilters } = useBLSheetFilters();
 
   return (
@@ -118,17 +121,25 @@ const Show = ({
       }}
       columns={[
         ...columns,
-        {
-          title: <span className="text-primary">Action</span>,
-          key: "_id",
-          render: (_, sheet) => (
-            <div className="flex items-center justify-center space-x-2">
-              <Edit sheet={sheet} refetchBLSheets={refetchBLSheets} />
-              <Delete objectId={sheet._id!} refetchBLSheets={refetchBLSheets} />
-              <SetNotification />
-            </div>
-          ),
-        },
+
+        ...(user?.role !== UserRole.GUEST
+          ? [
+              {
+                title: <span className="text-primary">Action</span>,
+                key: "_id",
+                render: (_: any, sheet: BLSheet) => (
+                  <div className="flex items-center justify-center space-x-2">
+                    <Edit sheet={sheet} refetchBLSheets={refetchBLSheets} />
+                    <Delete
+                      objectId={sheet._id!}
+                      refetchBLSheets={refetchBLSheets}
+                    />
+                    <SetNotification />
+                  </div>
+                ),
+              },
+            ]
+          : []),
       ]}
       dataSource={data}
       loading={isLoading}
