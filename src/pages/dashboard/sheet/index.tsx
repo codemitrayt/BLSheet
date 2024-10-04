@@ -58,7 +58,7 @@ const DashboardSheetPage = () => {
         <CreateSheet refetchBLSheet={refetchBLSheets} />
       </div>
 
-      <div className="mt-6 overflow-x-auto">
+      <div className="mt-6 overflow-auto">
         <Show
           totalCount={totalCount}
           isLoading={isLoading}
