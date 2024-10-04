@@ -10,13 +10,13 @@ import useErrorHandler from "../../../hooks/useErrorHandler";
 import DisplaySheetAnalyticsCards from "./helpers/display-sheet-analytics-cards";
 import TotalMoneyDistributedAnalytics from "./charts/total-money-distributed-analytics";
 
-import { MatricsType } from "../../../types";
-import { calculateProfilt } from "../../../utils";
+import { MatricsType, UserRole } from "../../../types";
+import { calculateProfilt, cn } from "../../../utils";
 import LatestCreatedSheets from "./helpers/latest-created-sheets";
 import DailyAnalytics from "./charts/daily-analytics";
 
 const DashboardHomePage = () => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const [matrics, setMatrics] = useState<MatricsType[]>([]);
 
@@ -44,7 +44,14 @@ const DashboardHomePage = () => {
   }
 
   return (
-    <div className="h-full overflow-auto">
+    <div
+      className={cn(
+        "overflow-auto",
+        user?.role === UserRole.GUEST
+          ? "h-[calc(100vh_-180px)]"
+          : "h-[calc(100vh_-75px)]"
+      )}
+    >
       <DisplaySheetAnalyticsCards matrics={matrics} />
       <DailyAnalytics />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-6">

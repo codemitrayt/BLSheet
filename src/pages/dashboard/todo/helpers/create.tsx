@@ -5,12 +5,15 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
 
 import CreateTodoForm from "../forms/create-todo-form";
+import useAuth from "../../../../hooks/useAuth";
+import { UserRole } from "../../../../types";
 
 interface CreateTodoProps {
   refetchTodoList: () => void;
 }
 
 const CreateTodo = ({ refetchTodoList }: CreateTodoProps) => {
+  const { user } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [drawerState, setDrawerState] = useState(
     searchParams.get("isCreate") ? true : false
@@ -23,6 +26,7 @@ const CreateTodo = ({ refetchTodoList }: CreateTodoProps) => {
       return params;
     });
   };
+
   return (
     <div className="relative">
       <Button
@@ -30,6 +34,7 @@ const CreateTodo = ({ refetchTodoList }: CreateTodoProps) => {
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}
+        disabled={user?.role === UserRole.GUEST}
       >
         Todo
       </Button>

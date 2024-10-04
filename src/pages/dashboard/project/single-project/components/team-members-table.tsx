@@ -11,7 +11,11 @@ import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import useProjectMemberFilters from "../../../../../hooks/useProjectMemberFilters";
 
-import { ProjectMember, ProjectMemberStatus } from "../../../../../types";
+import {
+  ProjectMember,
+  ProjectMemberStatus,
+  UserRole,
+} from "../../../../../types";
 
 const perPage = 6;
 
@@ -52,7 +56,7 @@ interface TeamMembersTableProps {
 }
 
 const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [members, setMembers] = useState<ProjectMember[]>([]);
@@ -92,7 +96,7 @@ const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
         dataSource={members}
         columns={[
           ...columns,
-          ...(isAdmin
+          ...(isAdmin && user?.role !== UserRole.GUEST
             ? [
                 {
                   title: <span className="text-primary">Actions</span>,

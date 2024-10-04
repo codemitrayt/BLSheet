@@ -9,7 +9,7 @@ import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
 
-import { ProjectTask } from "../../../../../types";
+import { ProjectTask, UserRole } from "../../../../../types";
 import { TASK_PRIORITY, TASK_STATUS } from "../../../../../constants";
 
 dayjs.extend(customParseFormat);
@@ -26,7 +26,7 @@ const UpdateProjectTaskForm = ({
   onCloseDrawer,
   projectTask,
 }: UpdateProjectTaskFormProps) => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
 
@@ -60,6 +60,14 @@ const UpdateProjectTaskForm = ({
         form={form}
         initialValues={{ priority: "low", status: "todo" }}
         onFinish={(data) => {
+          if (user?.role === UserRole.GUEST) {
+            handleError(
+              null,
+              "This is a Guest Account - You Do Not Have Access to Update"
+            );
+            return;
+          }
+
           const values = {
             ...projectTask,
             ...data,

@@ -5,6 +5,7 @@ import DashboardSidebar from "../components/shared/dashboard/dashboard-sidebar";
 import useAuth from "../hooks/useAuth";
 import LogoutButton from "../components/shared/logout-button";
 import { URLS } from "../constants";
+import GuestAlert from "../components/shared/guest-alert";
 
 const DashboardLayout = () => {
   const { isAuth, user } = useAuth();
@@ -37,6 +38,7 @@ const DashboardLayout = () => {
 
         {/* content */}
         <div className="h-[calc(100vh_-48px)] p-5 bg-white">
+          <GuestAlert />
           <Outlet />
         </div>
       </div>
