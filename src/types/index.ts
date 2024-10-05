@@ -210,4 +210,6 @@ export interface ProjectTaskFilters {
   search?: string;
   priority?: string;
   currentPage?: number;
+  sortByCreatedAt?: boolean;
+  assignedToMe?: boolean;
 }
