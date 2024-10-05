@@ -205,3 +205,9 @@ export interface Comment {
   isCreator: boolean;
   replyCount: number;
 }
+
+export interface ProjectTaskFilters {
+  search?: string;
+  priority?: string;
+  currentPage?: number;
+}
