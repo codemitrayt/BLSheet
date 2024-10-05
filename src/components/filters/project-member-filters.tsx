@@ -15,7 +15,7 @@ const ProjectMemberFilters = () => {
   const debouncedSearch = useDebounce(localSearch);
 
   useEffect(() => {
-    setFilters({ memberEmail: debouncedSearch });
+    setFilters({ memberEmail: debouncedSearch, status: memberStatus as "all" });
   }, [debouncedSearch]);
 
   return (
@@ -26,11 +26,12 @@ const ProjectMemberFilters = () => {
         options={PROJECT_MEMBER_STATUS}
         placeholder="Status"
         onChange={(value: ProjectMemberStatus | "all") =>
-          setFilters({ status: value })
+          setFilters({ status: value, memberEmail })
         }
       />
 
       <Input.Search
+        allowClear
         value={localSearch}
         placeholder="Search member"
         onChange={(e) => setLocalSearch(e.target.value)}
