@@ -12,12 +12,13 @@ const projectTaskService = () => {
         authToken,
       }),
 
-    getProjectTasks: ({ data, authToken }: RequestType) =>
+    getProjectTasks: ({ data, authToken, params }: RequestType) =>
       request({
         method: "POST",
         data,
         url: urls.projectTask.getProjectTasks,
         authToken,
+        params,
       }),
 
     updateProjectTask: ({ data, authToken, params }: RequestType) =>
