@@ -24,17 +24,29 @@ const ProjectTasks = () => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { project } = useProjectContext();
-  const { search, priority } = useProjectTaskFilters();
+  const { search, priority, assignedToMe, sortByCreatedAt } =
+    useProjectTaskFilters();
 
   const [projectTasks, setProjectTasks] = useState<ProjectTask[]>([]);
 
   const { isLoading, refetch } = useQuery({
-    queryKey: ["GET_PROJECT_TASK", projectId, search, priority],
+    queryKey: [
+      "GET_PROJECT_TASK",
+      projectId,
+      search,
+      priority,
+      { sortByCreatedAt, assignedToMe },
+    ],
     queryFn: () =>
       projectTaskService().getProjectTasks({
         data: { objectId: projectId },
         authToken,
-        params: { search, priority },
+        params: {
+          search,
+          priority,
+          isSort: sortByCreatedAt,
+          isAssignedToMe: assignedToMe,
+        },
       }),
     onSuccess: ({ data }) => {
       const tasks = data?.message?.projectTasks || [];
