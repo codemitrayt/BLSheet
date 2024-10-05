@@ -1,5 +1,6 @@
-import { Input, Select } from "antd";
+import { Button, Checkbox, Dropdown, Input, Menu, Select } from "antd";
 import { useEffect, useState } from "react";
+import { DownOutlined } from "@ant-design/icons";
 
 import { useDebounce } from "../../hooks/useDebounce";
 import { TASK_PRIORITY } from "../../constants";
@@ -13,13 +14,57 @@ enum TaskPriority {
 }
 
 const ProjectTaskFilters = () => {
-  const { search, priority, setFilters } = useProjectTaskFilters();
+  const { search, priority, setFilters, assignedToMe, sortByCreatedAt } =
+    useProjectTaskFilters();
   const [localSearch, setLocalSearch] = useState<string | undefined>(search);
   const debouncedSearch = useDebounce(localSearch);
 
   useEffect(() => {
-    setFilters({ search: debouncedSearch, priority });
+    setFilters({
+      search: debouncedSearch,
+      priority,
+      sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+      assignedToMe: assignedToMe === "true" ? true : false,
+    });
   }, [debouncedSearch]);
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="1">
+        <Checkbox
+          name="assignedToMe"
+          checked={assignedToMe === "true" ? true : false}
+          onChange={(value) =>
+            setFilters({
+              assignedToMe: value.target.checked,
+              sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              search,
+              priority,
+            })
+          }
+        >
+          Assigned to Me
+        </Checkbox>
+      </Menu.Item>
+
+      <Menu.Item key="2">
+        <Checkbox
+          name="sortByCreatedAt"
+          checked={sortByCreatedAt === "true" ? true : false}
+          onChange={(value) =>
+            setFilters({
+              sortByCreatedAt: value.target.checked,
+              assignedToMe: assignedToMe === "true" ? true : false,
+              search,
+              priority,
+            })
+          }
+        >
+          Sort by Created At
+        </Checkbox>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className="flex items-center space-x-2">
@@ -40,6 +85,11 @@ const ProjectTaskFilters = () => {
           setFilters({ priority: value, search })
         }
       />
+      <Dropdown overlay={menu} trigger={["click"]}>
+        <Button>
+          Filter <DownOutlined />
+        </Button>
+      </Dropdown>
     </div>
   );
 };
