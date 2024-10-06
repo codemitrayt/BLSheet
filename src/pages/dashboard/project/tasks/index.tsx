@@ -13,7 +13,7 @@ import useProjectTaskFilters from "../../../../hooks/useProjectTaskFilters";
 import { useSocketProvider } from "../../../../providers/socket-provider";
 import { useProjectContext } from "../../../../providers/project-provider";
 
-import { ProjectTask } from "../../../../types";
+import { ProjectTask, ProjectTaskList } from "../../../../types";
 import ProjectTaskFilters from "../../../../components/filters/project-task-filters";
 
 import projectTaskService from "../../../../services/project-task-service";
@@ -24,10 +24,10 @@ const ProjectTasks = () => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { project } = useProjectContext();
-  const { search, priority, assignedToMe, sortByCreatedAt } =
+  const { search, priority, assignedToMe, sortByCreatedAt, createdByMe } =
     useProjectTaskFilters();
 
-  const [projectTasks, setProjectTasks] = useState<ProjectTask[]>([]);
+  const [projectTasks, setProjectTasks] = useState<ProjectTaskList>();
 
   const { isLoading, refetch } = useQuery({
     queryKey: [
@@ -35,7 +35,7 @@ const ProjectTasks = () => {
       projectId,
       search,
       priority,
-      { sortByCreatedAt, assignedToMe },
+      { sortByCreatedAt, assignedToMe, createdByMe },
     ],
     queryFn: () =>
       projectTaskService().getProjectTasks({
@@ -46,6 +46,7 @@ const ProjectTasks = () => {
           priority,
           isSort: sortByCreatedAt,
           isAssignedToMe: assignedToMe,
+          isCreatedByMe: createdByMe,
         },
       }),
     onSuccess: ({ data }) => {
@@ -60,9 +61,19 @@ const ProjectTasks = () => {
   });
 
   useEffect(() => {
-    socket.on("CREATED_TASK", (data) => {
-      setProjectTasks((prev: ProjectTask[]) => {
-        return [...prev, data];
+    socket.on("CREATED_TASK", (data: ProjectTask) => {
+      setProjectTasks((prev: any) => {
+        if (!prev[data?.status]) {
+          return { ...prev, [data?.status]: { count: 1, tasks: [data] } };
+        }
+
+        return {
+          ...prev,
+          [data?.status]: {
+            count: prev[data?.status]?.count + 1,
+            tasks: [...prev[data?.status]?.tasks, data],
+          },
+        };
       });
     });
 
@@ -81,7 +92,11 @@ const ProjectTasks = () => {
         </div>
       </div>
 
-      {isLoading && !projectTasks.length ? (
+      {!projectTasks || Object.keys(projectTasks!).length === 0 ? (
+        <div className="py-16 flex items-center justify-center">
+          <p>No tasks found.</p>
+        </div>
+      ) : isLoading && !Object.keys(projectTasks!).length ? (
         <div className="py-16 flex items-center justify-center">
           <Spin />
         </div>

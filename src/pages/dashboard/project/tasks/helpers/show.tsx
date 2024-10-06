@@ -1,10 +1,10 @@
 import { cn } from "../../../../../utils";
 import useAuth from "../../../../../hooks/useAuth";
 import ProjectTaskCard from "../cards/project-task-card";
-import { ProjectTask, ProjectTaskStatus, UserRole } from "../../../../../types";
+import { ProjectTaskList, UserRole } from "../../../../../types";
 
 interface ShowProjectTaskProps {
-  projectTasks: ProjectTask[];
+  projectTasks: ProjectTaskList;
   refetchProjectTask: () => void;
 }
 
@@ -25,7 +25,10 @@ const ShowProjectTask = ({
     >
       <div className="space-y-3">
         <h1 className="text-primary font-medium w-[330px] border-b p-2">
-          📋 TO DO
+          📋 TO DO{" "}
+          <span className="bg-primary rounded-full px-3 text-white">
+            {projectTasks?.todo ? projectTasks.todo.count : 0}
+          </span>
         </h1>
         <div
           className={cn(
@@ -35,21 +38,22 @@ const ShowProjectTask = ({
               : "h-[calc(100vh_-300px)]"
           )}
         >
-          {projectTasks
-            .filter((task) => task.status === ProjectTaskStatus.TODO)
-            .map((task) => (
-              <ProjectTaskCard
-                key={task._id}
-                projectTask={task}
-                refetchProjectTask={refetchProjectTask}
-              />
-            ))}
+          {(projectTasks?.todo?.tasks || []).map((task) => (
+            <ProjectTaskCard
+              key={task._id}
+              projectTask={task}
+              refetchProjectTask={refetchProjectTask}
+            />
+          ))}
         </div>
       </div>
 
       <div className="space-y-3">
         <h1 className="text-primary font-medium border-b p-2 w-[330px]">
-          🧑🏻‍💻 Working In Progress
+          🧑🏻‍💻 Working In Progress{" "}
+          <span className="bg-primary rounded-full px-3 text-white">
+            {projectTasks?.in_progress ? projectTasks.in_progress.count : 0}
+          </span>
         </h1>
         <div
           className={cn(
@@ -59,21 +63,22 @@ const ShowProjectTask = ({
               : "h-[calc(100vh_-300px)]"
           )}
         >
-          {projectTasks
-            .filter((task) => task.status === ProjectTaskStatus.IN_PROGRESS)
-            .map((task) => (
-              <ProjectTaskCard
-                key={task._id}
-                projectTask={task}
-                refetchProjectTask={refetchProjectTask}
-              />
-            ))}
+          {(projectTasks?.in_progress?.tasks || []).map((task) => (
+            <ProjectTaskCard
+              key={task._id}
+              projectTask={task}
+              refetchProjectTask={refetchProjectTask}
+            />
+          ))}
         </div>
       </div>
 
       <div className="space-y-3">
         <h1 className="text-primary font-medium border-b p-2 w-[330px]">
-          👀 Under Review
+          👀 Under Review{" "}
+          <span className="bg-primary rounded-full px-3 text-white">
+            {projectTasks?.under_review ? projectTasks?.under_review?.count : 0}
+          </span>
         </h1>
         <div
           className={cn(
@@ -83,21 +88,22 @@ const ShowProjectTask = ({
               : "h-[calc(100vh_-300px)]"
           )}
         >
-          {projectTasks
-            .filter((task) => task.status === ProjectTaskStatus.UNDER_REVIEW)
-            .map((task) => (
-              <ProjectTaskCard
-                key={task._id}
-                projectTask={task}
-                refetchProjectTask={refetchProjectTask}
-              />
-            ))}
+          {(projectTasks?.under_review?.tasks || []).map((task) => (
+            <ProjectTaskCard
+              key={task._id}
+              projectTask={task}
+              refetchProjectTask={refetchProjectTask}
+            />
+          ))}
         </div>
       </div>
 
       <div className="space-y-3">
         <h1 className="text-primary w-[330px] font-medium border-b p-2">
-          ✅ Completed
+          ✅ Completed{" "}
+          <span className="bg-primary rounded-full px-3 text-white">
+            {projectTasks?.completed ? projectTasks.completed.count : 0}
+          </span>
         </h1>
         <div
           className={cn(
@@ -107,15 +113,13 @@ const ShowProjectTask = ({
               : "h-[calc(100vh_-300px)]"
           )}
         >
-          {projectTasks
-            .filter((task) => task.status === ProjectTaskStatus.COMPLETED)
-            .map((task) => (
-              <ProjectTaskCard
-                key={task._id}
-                projectTask={task}
-                refetchProjectTask={refetchProjectTask}
-              />
-            ))}
+          {(projectTasks?.completed?.tasks || []).map((task) => (
+            <ProjectTaskCard
+              key={task._id}
+              projectTask={task}
+              refetchProjectTask={refetchProjectTask}
+            />
+          ))}
         </div>
       </div>
     </div>
