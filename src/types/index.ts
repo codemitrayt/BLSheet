@@ -212,4 +212,24 @@ export interface ProjectTaskFilters {
   currentPage?: number;
   sortByCreatedAt?: boolean;
   assignedToMe?: boolean;
+  createdByMe?: boolean;
+}
+
+export interface ProjectTaskList {
+  todo: {
+    count: number;
+    tasks: ProjectTask[];
+  };
+  in_progress: {
+    count: number;
+    tasks: ProjectTask[];
+  };
+  under_review: {
+    count: number;
+    tasks: ProjectTask[];
+  };
+  completed: {
+    count: number;
+    tasks: ProjectTask[];
+  };
 }
