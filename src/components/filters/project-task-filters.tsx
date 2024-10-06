@@ -14,8 +14,14 @@ enum TaskPriority {
 }
 
 const ProjectTaskFilters = () => {
-  const { search, priority, setFilters, assignedToMe, sortByCreatedAt } =
-    useProjectTaskFilters();
+  const {
+    search,
+    priority,
+    setFilters,
+    assignedToMe,
+    sortByCreatedAt,
+    createdByMe,
+  } = useProjectTaskFilters();
   const [localSearch, setLocalSearch] = useState<string | undefined>(search);
   const debouncedSearch = useDebounce(localSearch);
 
@@ -38,6 +44,7 @@ const ProjectTaskFilters = () => {
             setFilters({
               assignedToMe: value.target.checked,
               sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              createdByMe: createdByMe === "true" ? true : false,
               search,
               priority,
             })
@@ -55,12 +62,31 @@ const ProjectTaskFilters = () => {
             setFilters({
               sortByCreatedAt: value.target.checked,
               assignedToMe: assignedToMe === "true" ? true : false,
+              createdByMe: createdByMe === "true" ? true : false,
               search,
               priority,
             })
           }
         >
           Sort by Created At
+        </Checkbox>
+      </Menu.Item>
+
+      <Menu.Item key="3">
+        <Checkbox
+          name="createdByMe"
+          checked={createdByMe === "true" ? true : false}
+          onChange={(value) =>
+            setFilters({
+              createdByMe: value.target.checked,
+              sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              assignedToMe: assignedToMe === "true" ? true : false,
+              search,
+              priority,
+            })
+          }
+        >
+          Created By Me
         </Checkbox>
       </Menu.Item>
     </Menu>

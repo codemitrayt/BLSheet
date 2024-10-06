@@ -10,6 +10,7 @@ function useProjectTaskFilters() {
   const priority = searchParams.get("priority") || undefined;
   const sortByCreatedAt = searchParams.get("sortByCreatedAt") || undefined;
   const assignedToMe = searchParams.get("assignedToMe") || undefined;
+  const createdByMe = searchParams.get("createdByMe") || undefined;
 
   const setFilters = useCallback((filters: ProjectTaskFilters) => {
     setSearchParams((params) => {
@@ -28,6 +29,9 @@ function useProjectTaskFilters() {
       if (filters.assignedToMe)
         params.set("assignedToMe", filters.assignedToMe ? "true" : "false");
       else params.delete("assignedToMe");
+      if (filters.createdByMe)
+        params.set("createdByMe", filters.createdByMe ? "true" : "false");
+      else params.delete("createdByMe");
       return params;
     });
   }, []);
@@ -39,6 +43,7 @@ function useProjectTaskFilters() {
     priority,
     sortByCreatedAt,
     assignedToMe,
+    createdByMe,
   };
 }
 
