@@ -53,6 +53,12 @@ const urls: URLType = {
     replyToProjectTaskComment: "/projectTask/replyToProjectTaskComment",
     getProjectTaskCommentReplies: "/projectTask/getProjectTaskCommentReplies",
   },
+
+  issue: {
+    getIssue: "/issue/getIssue",
+    getIssues: "/issue/getIssues",
+    createIssue: "/issue/createIssue",
+  },
 };
 
 export default urls;
