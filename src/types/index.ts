@@ -233,3 +233,30 @@ export interface ProjectTaskList {
     tasks: ProjectTask[];
   };
 }
+
+// ISSUE
+
+export enum IssueStatus {
+  OPEN = "open",
+  CLOSED = "closed",
+}
+
+export enum IssuePriority {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+}
+
+export interface Issue {
+  _id: string;
+  title: string;
+  description: string;
+  status: IssueStatus;
+  priority: IssuePriority;
+  userId: string;
+  projectId: string;
+  closedIssueDate: Date;
+  labels: string[];
+  assignees: string[];
+  createdAt: string;
+}
