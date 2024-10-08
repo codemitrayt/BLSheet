@@ -34,6 +34,7 @@ import ProjectTimeline from "../pages/dashboard/project/timeline";
 import ProjectChats from "../pages/dashboard/project/chats";
 import ProjectIssues from "../pages/dashboard/project/issues";
 import ProjectIdeas from "../pages/dashboard/project/ideas";
+import SingleIssue from "../pages/dashboard/project/issues/single-issue";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,7 +58,12 @@ const Router = createBrowserRouter(
               <Route path="tasks" element={<ProjectTasks />} />
               <Route path="timeline" element={<ProjectTimeline />} />
               <Route path="chats" element={<ProjectChats />} />
-              <Route path="issues" element={<ProjectIssues />} />
+              <Route path="issues">
+                <Route index element={<ProjectIssues />} />
+                <Route path=":issueId">
+                  <Route index element={<SingleIssue />} />
+                </Route>
+              </Route>
               <Route path="ideas" element={<ProjectIdeas />} />
             </Route>
           </Route>
