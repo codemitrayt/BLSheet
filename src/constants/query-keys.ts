@@ -22,6 +22,11 @@ const queryKeys = {
     getProjectTaskCommentReplies: "GET_PROJECT_TASK_COMMENT_REPLIES",
   },
   todo: {},
+  issue: {
+    getIssue: "GET_ISSUE",
+    getIssues: "GET_ISSUES",
+    createIssue: "CREATE_ISSUE",
+  },
 };
 
 export default queryKeys;
