@@ -14,11 +14,11 @@ import IssueHeader from "./components/header";
 
 import IssueInfoCard from "./cards/issue-info-card";
 import IssueDataCard from "./cards/issue-data-card";
-import BackButton from "./components/back-button";
+import BackButton from "../../../../../components/shared/back-button";
 
 const SingleIssue = () => {
   const { authToken } = useAuth();
-  const { issueId } = useParams();
+  const { issueId, projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [issue, setIssue] = useState<Issue>();
 
@@ -49,7 +49,7 @@ const SingleIssue = () => {
     <div className="relative">
       <div className="h-[calc(100vh_-100px)] overflow-y-auto pb-20 scroll-smooth pt-3">
         <div className="absolute top-4 left-4">
-          <BackButton />
+          <BackButton redirectUrl={`/dashboard/projects/${projectId}/issues`} />
         </div>
 
         <div className="px-6 w-[90%] mx-auto">
