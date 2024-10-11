@@ -1,9 +1,9 @@
 import { Avatar, Tag } from "antd";
 import { VscIssues } from "react-icons/vsc";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Issue } from "../../../../../types";
 import { getTimeDifference } from "../../../../../utils";
-import { useNavigate, useParams } from "react-router-dom";
 
 interface IssueCardProps {
   issue: Issue;
@@ -27,7 +27,7 @@ const IssueCard = ({ issue }: IssueCardProps) => {
         </div>
         <h1
           onClick={handleOnClick}
-          className="font-semibold text-primary text-md hover:text-secondary transition-all cursor-pointer"
+          className="font-semibold text-primary text-md hover:text-primary/80 transition-all cursor-pointer"
         >
           {issue.title}
         </h1>
