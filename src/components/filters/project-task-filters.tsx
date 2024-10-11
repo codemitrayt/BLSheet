@@ -31,6 +31,7 @@ const ProjectTaskFilters = () => {
       priority,
       sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
       assignedToMe: assignedToMe === "true" ? true : false,
+      createdByMe: createdByMe === "true" ? true : false,
     });
   }, [debouncedSearch]);
 
