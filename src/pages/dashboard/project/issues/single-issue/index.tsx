@@ -35,15 +35,13 @@ const SingleIssue = () => {
     retry: false,
   });
 
-  if (isLoading) {
+  if (isLoading || !issue) {
     return (
       <div className="flex items-center justify-center py-8">
         <Spin />
       </div>
     );
   }
-
-  if (!issue) return <div>Issue Not Found!</div>;
 
   return (
     <div className="relative">
