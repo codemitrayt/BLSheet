@@ -1,5 +1,5 @@
 import { Table, TableProps, Tag, Tooltip } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CgEye } from "react-icons/cg";
 
 import UpdateProject from "../helpers/update";
@@ -19,6 +19,14 @@ const columns: TableProps<Project>["columns"] = [
     title: <span className="text-primary font-medium">Project Name</span>,
     key: "projectName",
     dataIndex: "name",
+    render: (name, { _id }) => (
+      <Link
+        to={`/dashboard/projects/${_id}/details`}
+        className="hover:text-primary/80 text-primary font-medium"
+      >
+        {name}
+      </Link>
+    ),
   },
   {
     title: <span className="text-primary font-medium">Description</span>,
