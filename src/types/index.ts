@@ -257,7 +257,7 @@ export interface Issue {
   projectId: string;
   closedIssueDate: Date;
   labels: string[];
-  assignees: string[];
+  assignedMembers: AssignUser[];
   createdAt: string;
   author: {
     _id: string;
@@ -265,5 +265,18 @@ export interface Issue {
     email: string;
   };
   isAuthor: boolean;
+  isAssignee: boolean;
   commentCount: number;
+}
+
+export interface IssueFilters {
+  search?: string;
+  priority?: string;
+  currentPage?: number;
+  sortByCreatedAt?: boolean;
+  assignedToMe?: boolean;
+  createdByMe?: boolean;
+  status?: string;
+  labels?: string[];
+  perPage?: number;
 }
