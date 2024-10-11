@@ -1,6 +1,8 @@
+import { useNavigate, useParams } from "react-router-dom";
+
+import ProjectTaskCard from "../cards/project-task-card";
 import { cn } from "../../../../../utils";
 import useAuth from "../../../../../hooks/useAuth";
-import ProjectTaskCard from "../cards/project-task-card";
 import { ProjectTaskList, UserRole } from "../../../../../types";
 
 interface ShowProjectTaskProps {
@@ -12,7 +14,14 @@ const ShowProjectTask = ({
   projectTasks,
   refetchProjectTask,
 }: ShowProjectTaskProps) => {
+  const navigate = useNavigate();
+  const { projectId } = useParams();
   const { user } = useAuth();
+
+  const handleRedirect = () => {
+    const url = `/dashboard/projects/${projectId}/tasks/completed`;
+    navigate(url);
+  };
 
   return (
     <div
@@ -100,10 +109,16 @@ const ShowProjectTask = ({
 
       <div className="space-y-3">
         <h1 className="text-primary w-[330px] font-medium border-b p-2">
-          ✅ Completed{" "}
+          ✅ Today's Completed{" "}
           <span className="bg-primary rounded-full px-3 text-white">
             {projectTasks?.completed ? projectTasks.completed.count : 0}
           </span>
+          <button
+            className="text-xs text-blue-500 hover:text-blue-500/80 pl-2"
+            onClick={handleRedirect}
+          >
+            View all
+          </button>
         </h1>
         <div
           className={cn(
