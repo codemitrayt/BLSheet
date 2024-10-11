@@ -46,12 +46,14 @@ const IssueCard = ({ issue }: IssueCardProps) => {
       <div className="flex items-center justify-between mt-3">
         <div className="flex items-center justify-center space-x-2">
           <Avatar className="bg-primary !text-[10px]" size={20}>
-            R
+            {issue.author.fullName[0].toUpperCase()}
           </Avatar>
-          <span className="text-primary text-[13px]">Rushikesh Mungse</span>
+          <span className="text-primary text-[13px]">
+            {issue.author.fullName}
+          </span>
         </div>
 
-        <span className="text-sm text-primary">
+        <span className="text-xs text-primary">
           Opened {getTimeDifference(issue.createdAt)}
         </span>
       </div>
