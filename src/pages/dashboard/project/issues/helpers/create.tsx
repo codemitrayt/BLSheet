@@ -4,7 +4,11 @@ import { useState } from "react";
 import { LuChevronRightCircle } from "react-icons/lu";
 import CreateIssueForm from "../forms/create-issue-form";
 
-const CreateIssue = () => {
+interface CreateIssue {
+  refetch: () => void;
+}
+
+const CreateIssue = ({ refetch }: CreateIssue) => {
   const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
@@ -16,13 +20,13 @@ const CreateIssue = () => {
       </Button>
 
       <Drawer
-        width={450}
+        width={600}
         closeIcon={<LuChevronRightCircle className="text-primary size-5" />}
         open={drawerState}
         onClose={onCloseDrawer}
-        title={<span className="text-primary">Create Project</span>}
+        title={<span className="text-primary">Create Issue</span>}
       >
-        <CreateIssueForm onCloseDrawer={onCloseDrawer} />
+        <CreateIssueForm onCloseDrawer={onCloseDrawer} refetch={refetch} />
       </Drawer>
     </div>
   );

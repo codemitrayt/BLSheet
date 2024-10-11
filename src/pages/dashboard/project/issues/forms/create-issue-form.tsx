@@ -10,10 +10,11 @@ import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 interface CreateIssueForm {
+  refetch: () => void;
   onCloseDrawer: () => void;
 }
 
-const CreateIssueForm = ({ onCloseDrawer }: CreateIssueForm) => {
+const CreateIssueForm = ({ onCloseDrawer, refetch }: CreateIssueForm) => {
   const [form] = Form.useForm();
   const { projectId } = useParams();
   const { authToken } = useAuth();
@@ -23,9 +24,9 @@ const CreateIssueForm = ({ onCloseDrawer }: CreateIssueForm) => {
     mutationKey: [queryKeys.issue.createIssue],
     mutationFn: ({ data }: { data: { title: string; description: string } }) =>
       issueService.createIssue({ data, authToken, params: { projectId } }),
-    onSuccess: ({ data }) => {
-      console.log("Issue created", data);
+    onSuccess: () => {
       form.resetFields();
+      refetch();
       onCloseDrawer();
     },
     onError: (error) => {

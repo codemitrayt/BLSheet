@@ -38,7 +38,7 @@ const ProjectIssues = () => {
         <div className="relative space-y-4 sm:col-span-4">
           <div className="mt-3 space-x-4 flex items-center justify-between">
             <Input.Search placeholder="Search all issues" />
-            <CreateIssue />
+            <CreateIssue refetch={refetch} />
           </div>
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
