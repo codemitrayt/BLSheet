@@ -10,6 +10,14 @@ interface ShowIssues {
 }
 
 const ShowIssues = ({ issueList, refetch }: ShowIssues) => {
+  if (issueList.length === 0) {
+    return (
+      <div className="flex items-center justify-center text-primary">
+        No Issue Created Yet. Please Create New Issue.
+      </div>
+    );
+  }
+
   return (
     <div className="h-[calc(100vh_-170px)] overflow-y-auto">
       <div className="rounded-lg border mb-2">
