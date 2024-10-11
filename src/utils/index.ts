@@ -72,8 +72,8 @@ export const getTimeDifference = (date: string) => {
   else if (timeDiffInSecond >= 60 && timeDiffInSecond < 3600)
     return `${Math.ceil(timeDiffInSecond / 60)} min ago`;
   else if (timeDiffInSecond >= 3600 && timeDiffInSecond < 86400)
-    return `${Math.ceil(timeDiffInSecond / 3600)} hour ago`;
+    return `${Math.ceil(timeDiffInSecond / 3600)} hours ago`;
   else if (timeDiffInSecond >= 86400)
-    return `${Math.ceil(timeDiffInSecond / 86400)} day ago`;
+    return `${Math.ceil(timeDiffInSecond / 86400)} days ago`;
   return "";
 };
