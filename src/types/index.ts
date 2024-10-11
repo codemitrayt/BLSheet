@@ -259,4 +259,11 @@ export interface Issue {
   labels: string[];
   assignees: string[];
   createdAt: string;
+  author: {
+    _id: string;
+    fullName: string;
+    email: string;
+  };
+  isAuthor: boolean;
+  commentCount: number;
 }
