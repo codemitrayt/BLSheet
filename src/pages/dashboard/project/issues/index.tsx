@@ -1,4 +1,4 @@
-import { Input, Spin } from "antd";
+import { Spin } from "antd";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useState } from "react";
@@ -7,23 +7,59 @@ import CreateIssue from "./helpers/create";
 
 import queryKeys from "../../../../constants/query-keys";
 import issueService from "../../../../services/issue-service";
+import IssueFilters from "../../../../components/filters/issue-filters";
 
 import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import ShowIssues from "./helpers/show";
 import { Issue } from "../../../../types";
+import useIssueFilters from "../../../../hooks/useIssueFilters";
 
 const ProjectIssues = () => {
   const { authToken } = useAuth();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [issueList, setIssueList] = useState<Issue[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const {
+    status,
+    search,
+    assignedToMe,
+    sortByCreatedAt,
+    createdByMe,
+    currentPage,
+  } = useIssueFilters();
 
   const { isLoading, refetch } = useQuery({
-    queryKey: [queryKeys.issue.getIssues],
-    queryFn: () => issueService.getIssues({ authToken, params: { projectId } }),
+    queryKey: [
+      queryKeys.issue.getIssues,
+      {
+        search,
+        assignedToMe,
+        sortByCreatedAt,
+        createdByMe,
+        currentPage,
+        status,
+      },
+    ],
+    queryFn: () =>
+      issueService.getIssues({
+        authToken,
+        params: {
+          projectId,
+          search,
+          currentPage,
+          isSort: sortByCreatedAt,
+          isAssignedToMe: assignedToMe,
+          isCreatedByMe: createdByMe,
+          status: status ? status : "open",
+          perPage: 15,
+        },
+      }),
     onSuccess: ({ data }) => {
+      const count = data?.message?.metadata?.totalCount;
       setIssueList(data?.message?.issues || []);
+      setTotalCount(count);
     },
     onError: (error) => {
       console.error("ERROR :: getIssues ::", error);
@@ -37,7 +73,7 @@ const ProjectIssues = () => {
       <div className="grid sm:grid-cols-6">
         <div className="relative space-y-4 sm:col-span-4">
           <div className="mt-3 space-x-4 flex items-center justify-between">
-            <Input.Search placeholder="Search all issues" />
+            <IssueFilters onlySearch={true} />
             <CreateIssue refetch={refetch} />
           </div>
           {isLoading ? (
@@ -45,7 +81,11 @@ const ProjectIssues = () => {
               <Spin />
             </div>
           ) : (
-            <ShowIssues refetch={refetch} issueList={issueList} />
+            <ShowIssues
+              refetch={refetch}
+              issueList={issueList}
+              totalCount={totalCount}
+            />
           )}
         </div>
 
