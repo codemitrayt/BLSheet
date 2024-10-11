@@ -47,7 +47,7 @@ const SingleIssue = () => {
 
   return (
     <div className="relative">
-      <div className="h-[calc(100vh_-100px)] overflow-y-auto pb-12 scroll-smooth pt-3">
+      <div className="h-[calc(100vh_-100px)] overflow-y-auto pb-20 scroll-smooth pt-3">
         <div className="absolute top-4 left-4">
           <BackButton />
         </div>

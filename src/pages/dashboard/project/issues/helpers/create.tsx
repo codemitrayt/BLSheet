@@ -3,19 +3,27 @@ import { useState } from "react";
 
 import { LuChevronRightCircle } from "react-icons/lu";
 import CreateIssueForm from "../forms/create-issue-form";
+import useAuth from "../../../../../hooks/useAuth";
+import { UserRole } from "../../../../../types";
 
 interface CreateIssue {
   refetch: () => void;
 }
 
 const CreateIssue = ({ refetch }: CreateIssue) => {
+  const { user } = useAuth();
   const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
 
   return (
     <div className="relative">
-      <Button type="primary" className="ring-0" onClick={onOpenDrawer}>
+      <Button
+        type="primary"
+        className="ring-0"
+        onClick={onOpenDrawer}
+        disabled={user?.role === UserRole.GUEST}
+      >
         New issue
       </Button>
 

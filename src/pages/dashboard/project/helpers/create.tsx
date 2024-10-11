@@ -5,12 +5,15 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { LuChevronRightCircle } from "react-icons/lu";
 
 import CreateProjectForm from "../forms/create-project-form";
+import useAuth from "../../../../hooks/useAuth";
+import { UserRole } from "../../../../types";
 
 interface CreateProjectProps {
   refetchProjectList: () => void;
 }
 
 const CreateProject = ({ refetchProjectList }: CreateProjectProps) => {
+  const { user } = useAuth();
   const [drawerState, setDrawerState] = useState<boolean>(false);
   const onCloseDrawer = () => setDrawerState(false);
   const onOpenDrawer = () => setDrawerState(true);
@@ -22,6 +25,7 @@ const CreateProject = ({ refetchProjectList }: CreateProjectProps) => {
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}
+        disabled={user?.role === UserRole.GUEST}
       >
         Project
       </Button>
