@@ -113,7 +113,7 @@ const ProjectTaskFilters = () => {
         }
       />
       <Dropdown overlay={menu} trigger={["click"]}>
-        <Button>
+        <Button className="text-gray-500">
           Filter <DownOutlined />
         </Button>
       </Dropdown>

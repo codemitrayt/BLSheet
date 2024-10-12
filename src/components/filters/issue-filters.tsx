@@ -105,7 +105,7 @@ const IssueFilters = ({ onlySearch = false }: { onlySearch?: boolean }) => {
   return (
     <div className="flex items-center space-x-2">
       <Dropdown overlay={menu} trigger={["click"]}>
-        <Button>
+        <Button className="text-gray-500">
           Filter <DownOutlined />
         </Button>
       </Dropdown>
