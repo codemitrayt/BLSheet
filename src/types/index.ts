@@ -177,6 +177,7 @@ export interface ProjectTask {
   commentCount: number;
   isCreator: boolean;
   isMember: boolean;
+  subtasks: { title: string; weightage: number }[];
 }
 
 export interface ProjectMemberFilters {
