@@ -11,6 +11,7 @@ import projectTaskService from "../../../../../services/project-task-service";
 
 import { ProjectTask, UserRole } from "../../../../../types";
 import { TASK_PRIORITY, TASK_STATUS } from "../../../../../constants";
+import SubtaskForm from "./subtask-form";
 
 dayjs.extend(customParseFormat);
 const dateFormat = "DD/MM/YYYY";
@@ -157,6 +158,7 @@ const UpdateProjectTaskForm = ({
             maxCount={3}
           />
         </Form.Item>
+        <SubtaskForm />
 
         <div className="flex items-center justify-end">
           <Button

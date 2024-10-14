@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
 // import ReactQuill from "react-quill";
 
+import SubtaskForm from "./subtask-form";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
@@ -125,6 +126,8 @@ const CreateProjectTaskForm = ({
             maxCount={3}
           />
         </Form.Item>
+
+        <SubtaskForm />
 
         <div className="flex items-center justify-end">
           <Button
