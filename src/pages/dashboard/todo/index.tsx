@@ -15,6 +15,7 @@ import MobileTodoList from "./helpers/show/mobile-todo-list";
 import { Todo } from "../../../types";
 import TodoFilters from "../../../components/filters/todo-filters";
 import useTodoFilters from "../../../hooks/userTodoFilters";
+import DottedSeparator from "../../../components/ui/dotted-separator";
 
 const DashboardTodoPage = () => {
   const { authToken } = useAuth();
@@ -38,10 +39,12 @@ const DashboardTodoPage = () => {
 
   return (
     <div className="relative">
-      <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-2 border shadow-sm">
+      {/* bg-gray-100 rounded-lg mb-2 border shadow-sm p-3 */}
+      <div className="flex items-center justify-between">
         <TodoFilters />
         <CreateTodo refetchTodoList={refetchTodoList} />
       </div>
+      <DottedSeparator className="mt-4" />
 
       {isLoading ? (
         <div className="py-16 flex items-center justify-center">

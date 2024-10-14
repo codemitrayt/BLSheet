@@ -17,6 +17,7 @@ import projectService from "../../../services/project-service";
 
 import { IoMdGrid } from "react-icons/io";
 import { MdOutlineListAlt } from "react-icons/md";
+import DottedSeparator from "../../../components/ui/dotted-separator";
 
 const DashboardProjectPage = () => {
   const { authToken, user } = useAuth();
@@ -24,7 +25,7 @@ const DashboardProjectPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [projectList, setProjectList] = useState<Project[]>([]);
 
-  const _view = searchParams.get("view") || "board";
+  const _view = searchParams.get("view") || "table";
   const [view, setView] = useState(_view);
 
   const handleView = (view: string) => {
@@ -59,7 +60,8 @@ const DashboardProjectPage = () => {
 
   return (
     <div className="relative">
-      <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm">
+      {/* p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm */}
+      <div className="flex items-center justify-between">
         <div className="flex items-center justify-center space-x-4">
           <h1 className="text-primary font-bold">Your Projects</h1>
         </div>
@@ -92,9 +94,12 @@ const DashboardProjectPage = () => {
         </div>
       </div>
 
+      <DottedSeparator className="my-4" />
+
+      {/* md:border md:rounded-lg md:shadow-sm md:p-6 */}
       <div
         className={cn(
-          "overflow-y-auto md:p-6 md:border md:rounded-lg md:shadow-sm scroll-smooth",
+          "overflow-y-auto scroll-smooth",
           user?.role === UserRole.GUEST
             ? "h-[calc(100vh_-260px)]"
             : "h-[calc(100vh_-160px)]"

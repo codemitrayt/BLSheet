@@ -12,6 +12,7 @@ import useBLSheetFilters from "../../../hooks/useBLSheetFilters";
 
 import { BLSheet } from "../../../types";
 import BLSheetFilters from "../../../components/filters/bl-sheet-filters";
+import DottedSeparator from "../../../components/ui/dotted-separator";
 
 const PER_PAGE_SIZE = 6;
 
@@ -53,10 +54,12 @@ const DashboardSheetPage = () => {
 
   return (
     <div className="relative overflow-y-auto h-full">
-      <div className="bg-gray-200/50 border shadow-sm rounded-lg p-3 flex items-center flex-col md:flex-row md:justify-between space-y-2 md:space-x-12 md:space-y-0">
+      {/* bg-gray-200/50 border shadow-sm rounded-lg p-3 */}
+      <div className="flex items-center flex-col md:flex-row md:justify-between space-y-2 md:space-x-12 md:space-y-0">
         <BLSheetFilters />
         <CreateSheet refetchBLSheet={refetchBLSheets} />
       </div>
+      <DottedSeparator className="mt-4" />
 
       <div className="mt-6 overflow-auto">
         <Show
