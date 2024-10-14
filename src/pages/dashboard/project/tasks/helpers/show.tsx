@@ -29,7 +29,7 @@ const ShowProjectTask = ({
         "w-full overflow-x-auto flex space-x-3",
         user?.role === UserRole.GUEST
           ? "h-[calc(100vh_-350px)]"
-          : "h-[calc(100vh_-240px)]"
+          : "h-[calc(100vh_-190px)]"
       )}
     >
       <div className="space-y-3">
@@ -44,7 +44,7 @@ const ShowProjectTask = ({
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-300px)]"
+              : "h-[calc(100vh_-250px)]"
           )}
         >
           {(projectTasks?.todo?.tasks || []).map((task) => (
@@ -69,7 +69,7 @@ const ShowProjectTask = ({
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-300px)]"
+              : "h-[calc(100vh_-250px)]"
           )}
         >
           {(projectTasks?.in_progress?.tasks || []).map((task) => (
@@ -94,7 +94,7 @@ const ShowProjectTask = ({
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-300px)]"
+              : "h-[calc(100vh_-250px)]"
           )}
         >
           {(projectTasks?.under_review?.tasks || []).map((task) => (
@@ -125,7 +125,7 @@ const ShowProjectTask = ({
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-300px)]"
+              : "h-[calc(100vh_-250px)]"
           )}
         >
           {(projectTasks?.completed?.tasks || []).map((task) => (
