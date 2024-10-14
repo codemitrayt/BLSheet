@@ -101,7 +101,7 @@ const ProjectTasks = () => {
           <Spin />
         </div>
       ) : (
-        <div className="w-[calc(100vw_-100px)] lg:w-[calc(100vw_-290px)] border p-6 rounded-xl shadow-sm">
+        <div className="w-[calc(100vw_-100px)] lg:w-[calc(100vw_-290px)]">
           <ShowProjectTask
             projectTasks={projectTasks}
             refetchProjectTask={refetch}
