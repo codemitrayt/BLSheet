@@ -63,8 +63,17 @@ const ProjectTaskCard = ({
             <div></div>
           )}
         </div>
-        <h1 className="text-sm font-medium py-2">{projectTask.title}</h1>
+        <h1 className="text-sm font-medium py-1">{projectTask.title}</h1>
         <p className="text-xs">{projectTask.description}</p>
+        {!!projectTask.subtasks?.length && (
+          <div className="mt-1">
+            <div className="text-xs pl-2 prose list-disc">
+              {projectTask.subtasks.map((subtask, i) => (
+                <li key={i}>{subtask.title}</li>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center">
             <Tag color={PROJECT_TASK_PRIORITY_BG_COLOR[projectTask.priority]}>
