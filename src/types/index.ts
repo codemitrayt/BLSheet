@@ -214,6 +214,7 @@ export interface ProjectTaskFilters {
   sortByCreatedAt?: boolean;
   assignedToMe?: boolean;
   createdByMe?: boolean;
+  view?: string;
 }
 
 export interface ProjectTaskList {
