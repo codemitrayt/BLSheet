@@ -16,11 +16,11 @@ const SocketProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   useEffect(() => {
     socket.on("connect", () => {
-      console.log("Connected to the server", socket.id);
+      // console.log("Connected to the server", socket.id);
     });
 
     socket.on("disconnect", () => {
-      console.log("Disconnected from the server", socket.id);
+      // console.log("Disconnected from the server", socket.id);
     });
 
     return () => {
