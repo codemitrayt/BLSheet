@@ -19,7 +19,7 @@ const EventCard = ({ task }: EventCard) => {
 
   const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    const url = `/dashboard/${projectId}/tasks/${task._id}`;
+    const url = `/dashboard/projects/${projectId}/tasks/${task._id}`;
     navigate(url);
   };
 
