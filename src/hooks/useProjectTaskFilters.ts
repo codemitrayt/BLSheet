@@ -11,9 +11,11 @@ function useProjectTaskFilters() {
   const sortByCreatedAt = searchParams.get("sortByCreatedAt") || undefined;
   const assignedToMe = searchParams.get("assignedToMe") || undefined;
   const createdByMe = searchParams.get("createdByMe") || undefined;
+  const view = searchParams.get("view") || "board";
 
   const setFilters = useCallback((filters: ProjectTaskFilters) => {
     setSearchParams((params) => {
+      if (filters.view) params.set("view", filters.view);
       if (filters.search) params.set("search", filters.search);
       else params.delete("search");
       if (filters.currentPage)
@@ -44,6 +46,7 @@ function useProjectTaskFilters() {
     sortByCreatedAt,
     assignedToMe,
     createdByMe,
+    view,
   };
 }
 
