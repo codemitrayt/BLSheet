@@ -60,9 +60,28 @@ export const TODO_CARD_BORDER_COLOR = {
   easy: "border-l-green-500",
 };
 
+export const TASK_CARD_BORDER_COLOR = {
+  high: "border-l-red-500",
+  medium: "border-l-yellow-500",
+  low: "border-l-green-500",
+};
+
+export const TASK_CARD_BG_COLOR = {
+  high: "red",
+  medium: "yellow",
+  low: "green",
+};
+
 export const PROJECT_MEMBER_STATUS = [
   { value: "all", label: "ALL" },
   { value: "accepted", label: "ACCEPTED" },
   { value: "pending", label: "PENDING" },
   { value: "rejected", label: "REJECTED" },
 ];
+
+export const TASK_STATUS_DOT_COLOR = {
+  todo: "red",
+  in_progress: "orange",
+  under_review: "blue",
+  completed: "green",
+};
