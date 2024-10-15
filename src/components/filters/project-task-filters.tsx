@@ -1,9 +1,13 @@
 import { Button, Checkbox, Dropdown, Input, Menu, Select } from "antd";
 import { useEffect, useState } from "react";
-import { DownOutlined } from "@ant-design/icons";
 
-import { useDebounce } from "../../hooks/useDebounce";
+import { DownOutlined, TableOutlined } from "@ant-design/icons";
+import { CgBoard } from "react-icons/cg";
+import { BiCalendar } from "react-icons/bi";
+
 import { TASK_PRIORITY } from "../../constants";
+import { capitalizeFirstLetter } from "../../utils";
+import { useDebounce } from "../../hooks/useDebounce";
 import useProjectTaskFilters from "../../hooks/useProjectTaskFilters";
 
 enum TaskPriority {
@@ -21,6 +25,7 @@ const ProjectTaskFilters = () => {
     assignedToMe,
     sortByCreatedAt,
     createdByMe,
+    view,
   } = useProjectTaskFilters();
   const [localSearch, setLocalSearch] = useState<string | undefined>(search);
   const debouncedSearch = useDebounce(localSearch);
@@ -93,8 +98,86 @@ const ProjectTaskFilters = () => {
     </Menu>
   );
 
+  const viewMenu = (
+    <Menu>
+      <Menu.Item key="1">
+        <Button
+          className="w-full flex items-center justify-start border-none bg-transparent hover:!bg-transparent"
+          icon={<CgBoard />}
+          onClick={() =>
+            setFilters({
+              assignedToMe: assignedToMe === "true" ? true : false,
+              sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              createdByMe: createdByMe === "true" ? true : false,
+              search,
+              priority,
+              view: "board",
+            })
+          }
+        >
+          Board
+        </Button>
+      </Menu.Item>
+
+      <Menu.Item key="2">
+        <Button
+          className="w-full flex items-center justify-start border-none bg-transparent hover:!bg-transparent"
+          icon={<TableOutlined />}
+          onClick={() =>
+            setFilters({
+              assignedToMe: assignedToMe === "true" ? true : false,
+              sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              createdByMe: createdByMe === "true" ? true : false,
+              search,
+              priority,
+              view: "table",
+            })
+          }
+        >
+          Table
+        </Button>
+      </Menu.Item>
+
+      <Menu.Item key="3">
+        <Button
+          className="w-full flex items-center justify-start border-none bg-transparent hover:!bg-transparent"
+          icon={<BiCalendar />}
+          onClick={() =>
+            setFilters({
+              assignedToMe: assignedToMe === "true" ? true : false,
+              sortByCreatedAt: sortByCreatedAt === "true" ? true : false,
+              createdByMe: createdByMe === "true" ? true : false,
+              search,
+              priority,
+              view: "calendar",
+            })
+          }
+        >
+          Calendar
+        </Button>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className="flex items-center space-x-2">
+      <Dropdown overlay={viewMenu} trigger={["click"]}>
+        <Button
+          className="text-primary"
+          icon={
+            view === "board" ? (
+              <CgBoard />
+            ) : view === "table" ? (
+              <TableOutlined />
+            ) : (
+              <BiCalendar />
+            )
+          }
+        >
+          {capitalizeFirstLetter(view)} <DownOutlined />
+        </Button>
+      </Dropdown>
+
       <Input.Search
         allowClear
         value={localSearch}
