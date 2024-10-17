@@ -75,7 +75,7 @@ const CompletedTaks = () => {
           </h1>
         </div>
         <div className="flex items-center justify-center space-x-4">
-          <ProjectTaskFilters />
+          <ProjectTaskFilters isViewButton={false} />
         </div>
       </div>
 

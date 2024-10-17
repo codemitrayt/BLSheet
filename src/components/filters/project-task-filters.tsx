@@ -17,7 +17,11 @@ enum TaskPriority {
   High = "high",
 }
 
-const ProjectTaskFilters = () => {
+const ProjectTaskFilters = ({
+  isViewButton = true,
+}: {
+  isViewButton?: boolean;
+}) => {
   const {
     search,
     priority,
@@ -161,22 +165,24 @@ const ProjectTaskFilters = () => {
 
   return (
     <div className="flex items-center space-x-2">
-      <Dropdown overlay={viewMenu} trigger={["click"]}>
-        <Button
-          className="text-primary"
-          icon={
-            view === "board" ? (
-              <CgBoard />
-            ) : view === "table" ? (
-              <TableOutlined />
-            ) : (
-              <BiCalendar />
-            )
-          }
-        >
-          {capitalizeFirstLetter(view)} <DownOutlined />
-        </Button>
-      </Dropdown>
+      {isViewButton && (
+        <Dropdown overlay={viewMenu} trigger={["click"]}>
+          <Button
+            className="text-primary"
+            icon={
+              view === "board" ? (
+                <CgBoard />
+              ) : view === "table" ? (
+                <TableOutlined />
+              ) : (
+                <BiCalendar />
+              )
+            }
+          >
+            {capitalizeFirstLetter(view)} <DownOutlined />
+          </Button>
+        </Dropdown>
+      )}
 
       <Input.Search
         allowClear
