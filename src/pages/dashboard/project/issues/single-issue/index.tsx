@@ -46,13 +46,13 @@ const SingleIssue = () => {
   return (
     <div className="relative">
       <div className="h-[calc(100vh_-100px)] overflow-y-auto pb-20 scroll-smooth pt-3">
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 hidden sm:block">
           <BackButton redirectUrl={`/dashboard/projects/${projectId}/issues`} />
         </div>
 
-        <div className="px-6 w-[90%] mx-auto">
+        <div className="sm:px-6 sm:w-[90%] mx-auto">
           <IssueHeader issue={issue} />
-          <div className="space-y-5 grid grid-cols-6 space-x-8">
+          <div className="space-y-5 md:grid grid-cols-6 md:space-x-8">
             <IssueInfoCard issue={issue} />
             <IssueDataCard issue={issue} />
           </div>
