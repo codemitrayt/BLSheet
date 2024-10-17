@@ -37,6 +37,7 @@ import ProjectIdeas from "../pages/dashboard/project/ideas";
 import SingleIssue from "../pages/dashboard/project/issues/single-issue";
 import CompletedTaks from "../pages/dashboard/project/tasks/completed";
 import SingleTask from "../pages/dashboard/project/tasks/single-task";
+import Members from "../pages/dashboard/project/members";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,6 +58,7 @@ const Router = createBrowserRouter(
             <Route index element={<DashboardProjectPage />} />
             <Route path=":projectId" element={<ProjectLayout />}>
               <Route path="details" element={<SingleProjectPage />} />
+              <Route path="members" element={<Members />} />
               <Route path="tasks">
                 <Route index element={<ProjectTasks />} />
                 <Route path="completed" element={<CompletedTaks />} />
