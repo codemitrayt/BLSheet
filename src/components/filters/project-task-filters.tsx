@@ -164,9 +164,13 @@ const ProjectTaskFilters = ({
   );
 
   return (
-    <div className="flex items-center space-x-2">
+    <>
       {isViewButton && (
-        <Dropdown overlay={viewMenu} trigger={["click"]}>
+        <Dropdown
+          overlay={viewMenu}
+          trigger={["click"]}
+          className="w-full xl:w-fit"
+        >
           <Button
             className="text-primary"
             icon={
@@ -189,11 +193,11 @@ const ProjectTaskFilters = ({
         value={localSearch}
         placeholder="Search all tasks"
         onChange={(e) => setLocalSearch(e.target.value)}
-        className="w-[300px]"
+        className="w-full xl:w-[300px]"
       />
 
       <Select
-        className="w-[120px]"
+        className="w-full xl:w-[120px]"
         defaultValue={priority as TaskPriority}
         options={[{ label: "All", value: "all" }, ...TASK_PRIORITY]}
         placeholder="Priority"
@@ -201,12 +205,13 @@ const ProjectTaskFilters = ({
           setFilters({ priority: value, search })
         }
       />
-      <Dropdown overlay={menu} trigger={["click"]}>
-        <Button className="text-gray-500">
-          Filter <DownOutlined />
+
+      <Dropdown overlay={menu} trigger={["click"]} className="w-full xl:w-fit">
+        <Button className="text-gray-500 flex items-center justify-between">
+          <span>Filter</span> <DownOutlined />
         </Button>
       </Dropdown>
-    </div>
+    </>
   );
 };
 

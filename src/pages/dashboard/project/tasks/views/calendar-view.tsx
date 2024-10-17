@@ -17,6 +17,7 @@ import { ProjectTask } from "../../../../../types";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./calendar.css";
+import { cn } from "../../../../../utils";
 
 const locales = {
   enIn: enIN,
@@ -32,9 +33,10 @@ const localizer = dateFnsLocalizer({
 interface CalendarView {
   tasks: ProjectTask[];
   refetch: () => void;
+  isHideFilters: boolean;
 }
 
-const CalendarView = ({ tasks }: CalendarView) => {
+const CalendarView = ({ tasks, isHideFilters }: CalendarView) => {
   const [value, setValue] = useState(
     tasks.length > 0 ? new Date(tasks[0].startDate) : new Date()
   );
@@ -53,7 +55,12 @@ const CalendarView = ({ tasks }: CalendarView) => {
   };
 
   return (
-    <div className="p-2 h-[calc(100vh_-220px)] overflow-y-auto">
+    <div
+      className={cn(
+        "p-2 h-[calc(100vh_-300px)] xl:h-[calc(100vh_-220px)] overflow-y-auto",
+        isHideFilters && "h-[calc(100vh_-125px)]"
+      )}
+    >
       <Calendar
         localizer={localizer}
         date={value}

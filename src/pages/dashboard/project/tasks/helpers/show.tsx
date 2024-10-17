@@ -8,11 +8,13 @@ import { ProjectTaskList, UserRole } from "../../../../../types";
 interface ShowProjectTaskProps {
   projectTasks: ProjectTaskList;
   refetchProjectTask: () => void;
+  isHideFilters: boolean;
 }
 
 const ShowProjectTask = ({
   projectTasks,
   refetchProjectTask,
+  isHideFilters,
 }: ShowProjectTaskProps) => {
   const navigate = useNavigate();
   const { projectId } = useParams();
@@ -28,8 +30,9 @@ const ShowProjectTask = ({
       className={cn(
         "w-full overflow-x-auto flex space-x-3",
         user?.role === UserRole.GUEST
-          ? "h-[calc(100vh_-350px)]"
-          : "h-[calc(100vh_-190px)]"
+          ? "h-[calc(100vh_-510px)] xl:h-[calc(100vh_-350px)]"
+          : "h-[calc(100vh_-310px)] xl:h-[calc(100vh_-190px)]",
+        isHideFilters && "h-[calc(100vh_-120px)]"
       )}
     >
       <div className="space-y-3">
@@ -43,8 +46,9 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-250px)]"
+              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
+            isHideFilters && "h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.todo?.tasks || []).map((task) => (
@@ -68,8 +72,9 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-250px)]"
+              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
+            isHideFilters && "h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.in_progress?.tasks || []).map((task) => (
@@ -93,8 +98,9 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-250px)]"
+              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
+            isHideFilters && "h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.under_review?.tasks || []).map((task) => (
@@ -124,8 +130,9 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-400px)]"
-              : "h-[calc(100vh_-250px)]"
+              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
+            isHideFilters && "h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.completed?.tasks || []).map((task) => (

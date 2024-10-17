@@ -19,9 +19,17 @@ const ProjectMemberFilters = () => {
   }, [debouncedSearch]);
 
   return (
-    <div className="flex items-center space-x-2">
+    <>
+      <Input.Search
+        allowClear
+        value={localSearch}
+        placeholder="Search member"
+        onChange={(e) => setLocalSearch(e.target.value)}
+        className="w-full sm:w-[300px]"
+      />
+
       <Select
-        className="w-[120px]"
+        className="w-full sm:w-[120px]"
         defaultValue={memberStatus as ProjectMemberStatus}
         options={PROJECT_MEMBER_STATUS}
         placeholder="Status"
@@ -29,15 +37,7 @@ const ProjectMemberFilters = () => {
           setFilters({ status: value, memberEmail })
         }
       />
-
-      <Input.Search
-        allowClear
-        value={localSearch}
-        placeholder="Search member"
-        onChange={(e) => setLocalSearch(e.target.value)}
-        className="w-[300px]"
-      />
-    </div>
+    </>
   );
 };
 

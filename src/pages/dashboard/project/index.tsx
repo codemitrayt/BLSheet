@@ -61,12 +61,12 @@ const DashboardProjectPage = () => {
   return (
     <div className="relative">
       {/* p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center justify-center space-x-4">
+      <div className="flex md:items-center flex-col space-y-2 md:space-y-0 md:flex-col md:justify-between">
+        <div className="flex md:items-center md:justify-center space-x-4">
           <h1 className="text-primary font-bold">Your Projects</h1>
         </div>
 
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-between md:justify-center space-x-4">
           <div className="space-x-1 flex items-center justify-center">
             <button
               className={cn(
@@ -76,7 +76,7 @@ const DashboardProjectPage = () => {
               onClick={() => handleView("board")}
             >
               <IoMdGrid className="size-5" />
-              <span className="text-sm">board</span>
+              <span className="text-sm hidden md:block">board</span>
             </button>
 
             <button
@@ -87,7 +87,7 @@ const DashboardProjectPage = () => {
               onClick={() => handleView("table")}
             >
               <MdOutlineListAlt className="size-5" />
-              <span className="text-sm">Table</span>
+              <span className="text-sm hidden md:block">Table</span>
             </button>
           </div>
           <CreateProject refetchProjectList={refetchProjectList} />

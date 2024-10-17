@@ -23,7 +23,7 @@ const CreateProjectTask = ({
   return (
     <div className="relative">
       <Button
-        className="ring-0 px-6 rounded-full"
+        className="ring-0 px-6 rounded-full w-full lg:w-fit"
         type="primary"
         onClick={onOpenDrawer}
         icon={<IoMdAddCircleOutline />}

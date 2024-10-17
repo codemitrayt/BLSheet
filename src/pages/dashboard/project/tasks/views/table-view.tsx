@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { Avatar, Table, TableProps, Tag } from "antd";
 import dateFormat from "dateformat";
 
-import { capitalizeFirstLetter } from "../../../../../utils";
+import { capitalizeFirstLetter, cn } from "../../../../../utils";
 import {
   ProjectTask,
   ProjectTaskPriority,
@@ -11,10 +12,10 @@ import {
   TASK_CARD_BG_COLOR,
   TASK_STATUS_DOT_COLOR,
 } from "../../../../../constants";
-import { Link } from "react-router-dom";
 
 interface TableView {
   tasks: ProjectTask[];
+  isHideFilters: boolean;
   refetch: () => void;
 }
 
@@ -103,9 +104,14 @@ const columns: TableProps<ProjectTask>["columns"] = [
   },
 ];
 
-const TableView = ({ tasks }: TableView) => {
+const TableView = ({ tasks, isHideFilters }: TableView) => {
   return (
-    <div className="p-2 h-[calc(100vh_-220px)] overflow-y-auto">
+    <div
+      className={cn(
+        "p-2 h-[calc(100vh_-300px)] xl:h-[calc(100vh_-220px)] overflow-y-auto",
+        isHideFilters && "h-[calc(100vh_-125px)]"
+      )}
+    >
       <Table
         rowKey="_id"
         bordered

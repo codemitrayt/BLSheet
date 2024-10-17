@@ -20,18 +20,23 @@ const columns: TableProps<Project>["columns"] = [
     key: "projectName",
     dataIndex: "name",
     render: (name, { _id }) => (
-      <Link
-        to={`/dashboard/projects/${_id}/details`}
-        className="hover:text-primary/80 text-primary font-medium"
-      >
-        {name}
-      </Link>
+      <div className="w-[200px] text-xs lg:text-sm">
+        <Link
+          to={`/dashboard/projects/${_id}/details`}
+          className="hover:text-primary/80 text-primary font-medium"
+        >
+          {name}
+        </Link>
+      </div>
     ),
   },
   {
     title: <span className="text-primary font-medium">Description</span>,
     key: "description",
     dataIndex: "description",
+    render: (description) => (
+      <p className="w-[250px] text-xs lg:text-sm">{description}</p>
+    ),
   },
   {
     title: <span className="text-primary font-medium">Tags</span>,
@@ -51,7 +56,9 @@ const columns: TableProps<Project>["columns"] = [
     title: <span className="text-primary font-medium">Owner</span>,
     key: "owner",
     dataIndex: "user.fullName",
-    render: (_, { user }) => <span>{user.fullName}</span>,
+    render: (_, { user }) => (
+      <div className="w-[200px] text-xs lg:text-sm">{user.fullName}</div>
+    ),
   },
   {
     title: <span className="text-primary font-medium">Role</span>,

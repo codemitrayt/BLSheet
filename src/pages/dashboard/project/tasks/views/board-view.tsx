@@ -13,7 +13,7 @@ import projectTaskService from "../../../../../services/project-task-service";
 import { useSocketProvider } from "../../../../../providers/socket-provider";
 import { ProjectTask, ProjectTaskList } from "../../../../../types";
 
-const BoardView = () => {
+const BoardView = ({ isHideFilters }: { isHideFilters: boolean }) => {
   const socket = useSocketProvider();
   const { projectId } = useParams();
   const { authToken } = useAuth();
@@ -105,6 +105,7 @@ const BoardView = () => {
       <ShowProjectTask
         projectTasks={projectTasks}
         refetchProjectTask={refetch}
+        isHideFilters={isHideFilters}
       />
     </div>
   );

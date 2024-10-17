@@ -46,7 +46,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
             {strSlice(project.description, 100)}
           </p>
 
-          <p className="text-sm text-gray-600 md:hidden">
+          <p className="text-xs text-gray-600 md:hidden">
             {project.description}
           </p>
         </div>

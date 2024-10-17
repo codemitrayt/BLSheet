@@ -22,12 +22,12 @@ const IssueCard = ({ issue }: IssueCardProps) => {
   return (
     <div className="border-b p-3 last:border-b-0">
       <div className="flex items-center space-x-2">
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <VscIssues className="text-primary size-5" />
         </div>
         <h1
           onClick={handleOnClick}
-          className="font-semibold text-primary text-md hover:text-primary/80 transition-all cursor-pointer"
+          className="font-semibold text-sm text-primary md:text-md hover:text-primary/80 transition-all cursor-pointer"
         >
           {issue.title}
         </h1>
@@ -43,8 +43,8 @@ const IssueCard = ({ issue }: IssueCardProps) => {
         </div>
       )}
 
-      <div className="flex items-center justify-between mt-3">
-        <div className="flex items-center justify-center space-x-2">
+      <div className="flex space-y-2 sm:space-y-0 sm:items-center flex-col sm:flex-row sm:justify-between mt-3">
+        <div className="flex items-center sm:justify-center space-x-2">
           <Avatar className="bg-primary !text-[10px]" size={20}>
             {issue.author.fullName[0].toUpperCase()}
           </Avatar>

@@ -15,7 +15,7 @@ import projectTaskService from "../../../../../services/project-task-service";
 import { ProjectTask } from "../../../../../types";
 import { useSocketProvider } from "../../../../../providers/socket-provider";
 
-const Views = () => {
+const Views = ({ isHideFilters }: { isHideFilters: boolean }) => {
   const socket = useSocketProvider();
   const { projectId } = useParams();
   const { authToken } = useAuth();
@@ -84,11 +84,19 @@ const Views = () => {
   return (
     <>
       {view === "board" ? (
-        <BoardView />
+        <BoardView isHideFilters={isHideFilters} />
       ) : view === "table" ? (
-        <TableView refetch={refetch} tasks={projectTasks ?? []} />
+        <TableView
+          refetch={refetch}
+          tasks={projectTasks ?? []}
+          isHideFilters={isHideFilters}
+        />
       ) : (
-        <CalendarView refetch={refetch} tasks={projectTasks ?? []} />
+        <CalendarView
+          refetch={refetch}
+          tasks={projectTasks ?? []}
+          isHideFilters={isHideFilters}
+        />
       )}
     </>
   );
