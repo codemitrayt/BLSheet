@@ -15,7 +15,7 @@ import { useProjectContext } from "../../../../../providers/project-provider";
 
 import projectTaskService from "../../../../../services/project-task-service";
 
-import { ProjectTaskList } from "../../../../../types";
+import { ProjectTask } from "../../../../../types";
 
 const CompletedTaks = () => {
   const { project } = useProjectContext();
@@ -25,7 +25,7 @@ const CompletedTaks = () => {
   const { search, priority, assignedToMe, sortByCreatedAt, createdByMe } =
     useProjectTaskFilters();
 
-  const [projectTasks, setProjectTasks] = useState<ProjectTaskList>();
+  const [projectTasks, setProjectTasks] = useState<ProjectTask[]>();
 
   const { isLoading, refetch } = useQuery({
     queryKey: [
@@ -70,7 +70,7 @@ const CompletedTaks = () => {
           <h1 className="text-primary font-bold">
             {project?.name} Completed Tasks
             <div className="bg-primary text-white px-3 py-[1px] text-sm ml-1 inline-block rounded-full">
-              {projectTasks?.completed?.count || 0}
+              {projectTasks?.length || 0}
             </div>
           </h1>
         </div>
@@ -79,18 +79,18 @@ const CompletedTaks = () => {
         </div>
       </div>
 
-      {!projectTasks || Object.keys(projectTasks!).length === 0 ? (
+      {!projectTasks || !projectTasks.length ? (
         <div className="py-16 flex items-center justify-center">
           <p>No tasks found.</p>
         </div>
-      ) : isLoading && !Object.keys(projectTasks!).length ? (
+      ) : isLoading && !projectTasks.length ? (
         <div className="py-16 flex items-center justify-center">
           <Spin />
         </div>
       ) : (
         <div className="h-[calc(100vh_-150px)] pb-20 scroll-smooth overflow-y-auto p-6">
           <div className="grid grid-cols-3 gap-4">
-            {(projectTasks?.completed?.tasks || []).map((task) => (
+            {(projectTasks || []).map((task) => (
               <ProjectTaskCard
                 key={task._id}
                 projectTask={task}
