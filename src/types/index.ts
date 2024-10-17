@@ -144,6 +144,9 @@ export interface ProjectMember {
   memberEmailId: string;
   status: ProjectMemberStatus;
   isAdmin?: string;
+  user: {
+    fullName: string;
+  };
 }
 
 export enum ProjectTaskStatus {
