@@ -29,7 +29,7 @@ const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
     <div className="h-[calc(100vh_-170px)] overflow-y-auto">
       <div className="rounded-lg border mb-2">
         <div className="border-b p-3 justify-between flex items-center">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
             <button
               onClick={() => {
                 setFilters({
@@ -45,7 +45,7 @@ const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
                 (!status || status === "open") && "text-primary"
               )}
             >
-              <div>
+              <div className="hidden sm:block">
                 <VscIssues />
               </div>
               <span>{totalCount} Open</span>
@@ -66,7 +66,7 @@ const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
                 status === "closed" && "text-primary"
               )}
             >
-              <div>
+              <div className="hidden sm:block">
                 <IoCheckmark />
               </div>
               <span>0 Closed</span>
