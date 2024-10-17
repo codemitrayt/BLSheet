@@ -1,21 +1,26 @@
 import { Spin } from "antd";
-import { useQuery } from "react-query";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 
-import TaskCard from "./task-card";
-import { ProjectTask } from "../../../../../types";
+import AnalyticsCard from "../cards/analytics-card";
+import RecentAssignedTasks from "./recent-assigned-tasks";
+
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
+import { ProjectTaskList, ProjectTaskStatus } from "../../../../../types";
+import {
+  ScrollArea,
+  ScrollBar,
+} from "../../../../../components/ui/scroll-area";
 
 const RecentProjectTask = () => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
 
-  const [projectTaskList, setProjectTaskList] = useState<ProjectTask[]>([]);
+  const [projectTaskList, setProjectTaskList] = useState<ProjectTaskList>();
 
   const { isLoading } = useQuery({
     queryKey: ["GET_PROJECT_TASKS"],
@@ -35,8 +40,6 @@ const RecentProjectTask = () => {
     retry: false,
   });
 
-  return null;
-
   if (isLoading)
     return (
       <div className="py-8 flex items-center justify-center">
@@ -45,22 +48,43 @@ const RecentProjectTask = () => {
     );
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border p-3">
-      <div className="flex items-center justify-between mb-4 border-b border-primary/50 pb-3">
-        <h1 className="text-primary text-lg font-semibold">
-          Recent tasks assigned to you
-        </h1>
-        <Link
-          to={`/dashboard/projects/${projectId}/tasks`}
-          className="text-primary hover:text-primary/80"
-        >
-          <MdOutlineArrowRightAlt />
-        </Link>
+    <div className="space-y-3">
+      <div className="rounded-lg overflow-hidden overflow-x-auto">
+        <ScrollArea>
+          <div className="w-full h-full grid grid-cols-4 min-w-[1000px] px-1 gap-3">
+            <AnalyticsCard
+              status={ProjectTaskStatus.TODO}
+              title="To Do Tasks"
+              count={projectTaskList?.todo?.count}
+            />
+            <AnalyticsCard
+              status={ProjectTaskStatus.IN_PROGRESS}
+              title="In Progress Tasks"
+              count={projectTaskList?.in_progress?.count}
+            />
+            <AnalyticsCard
+              status={ProjectTaskStatus.UNDER_REVIEW}
+              title="Under Review Tasks"
+              count={projectTaskList?.under_review?.count}
+            />
+            <AnalyticsCard
+              status={ProjectTaskStatus.COMPLETED}
+              isLast={true}
+              title="Completed Tasks"
+              count={projectTaskList?.completed?.count}
+            />
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
-      <div className="overflow-auto space-y-2">
-        {projectTaskList.map((task) => (
-          <TaskCard key={task._id} task={task} />
-        ))}
+
+      <div className="grid lg:grid-cols-2">
+        <RecentAssignedTasks
+          tasks={[
+            ...(projectTaskList?.todo?.tasks || []),
+            ...(projectTaskList?.in_progress?.tasks || []),
+          ].slice(0, 6)}
+        />
       </div>
     </div>
   );
