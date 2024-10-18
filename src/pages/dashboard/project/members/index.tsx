@@ -53,11 +53,13 @@ const Members = () => {
         </h1>
         <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap lg:justify-center lg:flex-row">
           <ProjectMemberFilters />
-          <InviteMemberPopup
-            projectName={project?.name}
-            projectId={project?._id}
-            refetchProjectMembers={refetchProjectMembers}
-          />
+          {project.isAdmin && (
+            <InviteMemberPopup
+              projectName={project?.name}
+              projectId={project?._id}
+              refetchProjectMembers={refetchProjectMembers}
+            />
+          )}
         </div>
       </div>
 
