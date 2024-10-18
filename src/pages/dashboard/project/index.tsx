@@ -61,7 +61,7 @@ const DashboardProjectPage = () => {
   return (
     <div className="relative">
       {/* p-3 bg-gray-100 rounded-lg mb-4 border shadow-sm */}
-      <div className="flex md:items-center flex-col space-y-2 md:space-y-0 md:flex-col md:justify-between">
+      <div className="flex md:items-center flex-col space-y-2 md:space-y-0 md:flex-row md:justify-between">
         <div className="flex md:items-center md:justify-center space-x-4">
           <h1 className="text-primary font-bold">Your Projects</h1>
         </div>
