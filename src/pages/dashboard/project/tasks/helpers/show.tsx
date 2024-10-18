@@ -29,10 +29,11 @@ const ShowProjectTask = ({
     <div
       className={cn(
         "w-full overflow-x-auto flex space-x-3",
-        user?.role === UserRole.GUEST
-          ? "h-[calc(100vh_-510px)] xl:h-[calc(100vh_-350px)]"
-          : "h-[calc(100vh_-310px)] xl:h-[calc(100vh_-190px)]",
-        isHideFilters && "h-[calc(100vh_-120px)]"
+        user?.role === UserRole.GUEST &&
+          "h-[calc(100vh_-510px)] xl:h-[calc(100vh_-350px)]",
+        isHideFilters
+          ? "h-[calc(100vh_-120px)] xl:h-[calc(100vh_-120px)]"
+          : "h-[calc(100vh_-310px)] xl:h-[calc(100vh_-190px)]"
       )}
     >
       <div className="space-y-3">
@@ -48,7 +49,7 @@ const ShowProjectTask = ({
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
-            isHideFilters && "h-[calc(100vh_-180px)]"
+            isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.todo?.tasks || []).map((task) => (
@@ -74,7 +75,7 @@ const ShowProjectTask = ({
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
-            isHideFilters && "h-[calc(100vh_-180px)]"
+            isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.in_progress?.tasks || []).map((task) => (
@@ -100,7 +101,7 @@ const ShowProjectTask = ({
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
-            isHideFilters && "h-[calc(100vh_-180px)]"
+            isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.under_review?.tasks || []).map((task) => (
@@ -132,7 +133,7 @@ const ShowProjectTask = ({
             user?.role === UserRole.GUEST
               ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
-            isHideFilters && "h-[calc(100vh_-180px)]"
+            isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
         >
           {(projectTasks?.completed?.tasks || []).map((task) => (

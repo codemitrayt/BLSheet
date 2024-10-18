@@ -101,7 +101,7 @@ const BoardView = ({ isHideFilters }: { isHideFilters: boolean }) => {
   }
 
   return (
-    <div className="w-[calc(100vw_-100px)] lg:w-[calc(100vw_-290px)] p-2">
+    <div className="w-full p-2">
       <ShowProjectTask
         projectTasks={projectTasks}
         refetchProjectTask={refetch}
