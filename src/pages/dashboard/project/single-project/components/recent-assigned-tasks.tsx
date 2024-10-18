@@ -20,6 +20,12 @@ const RecentAssignedTasks = ({ tasks }: { tasks: ProjectTask[] }) => {
         </Link>
       </div>
 
+      {tasks.length === 0 && (
+        <div className="bg-turnary flex items-center justify-center p-2 text-sm">
+          No tasks
+        </div>
+      )}
+
       {tasks.map((task) => (
         <TaskCard task={task} key={task._id} />
       ))}
