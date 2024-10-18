@@ -1,5 +1,5 @@
 import { VscIssues } from "react-icons/vsc";
-import dateFormat from "dateformat";
+import { formatDistance } from "date-fns";
 
 import { Issue } from "../../../../../../types";
 import { capitalizeFirstLetter } from "../../../../../../utils";
@@ -29,7 +29,8 @@ const IssueHeader = ({ issue }: IssueHeader) => {
 
           <div className="sm:flex items-center justify-center">
             <div className="text-sm">
-              opened this issue on {dateFormat(issue.createdAt, "dd/mm/yyyy")}
+              opened this issue {formatDistance(issue.createdAt, new Date())}{" "}
+              ago
             </div>
             {!!issue.commentCount && (
               <div className="text-primary text-sm">

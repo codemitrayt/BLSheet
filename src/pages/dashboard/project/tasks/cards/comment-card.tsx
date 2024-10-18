@@ -1,9 +1,10 @@
 import { Avatar } from "antd";
 
 import { Comment } from "../../../../../types";
+import { cn, getTimeDifference } from "../../../../../utils";
+
 import DeleteComment from "../helpers/delete-comment";
 import UpdateComment from "../helpers/update-comment";
-import { cn, getTimeDifference } from "../../../../../utils";
 import ReplyComment from "../helpers/reply-comment";
 import ShowReplies from "../helpers/show-replies";
 

@@ -3,7 +3,7 @@ import { VscIssues } from "react-icons/vsc";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Issue } from "../../../../../types";
-import { getTimeDifference } from "../../../../../utils";
+import { formatDistance } from "date-fns";
 
 interface IssueCardProps {
   issue: Issue;
@@ -54,7 +54,7 @@ const IssueCard = ({ issue }: IssueCardProps) => {
         </div>
 
         <span className="text-xs text-primary">
-          Opened {getTimeDifference(issue.createdAt)}
+          Opened {formatDistance(issue.createdAt, new Date())} ago
         </span>
       </div>
     </div>
