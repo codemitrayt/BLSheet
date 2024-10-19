@@ -21,6 +21,11 @@ const ProjectIssues = () => {
   const { handleError } = useErrorHandler();
   const [issueList, setIssueList] = useState<Issue[]>([]);
   const [totalCount, setTotalCount] = useState(0);
+  const [issueCounts, setIssueCounts] = useState<{
+    closed: number;
+    open: number;
+  }>({ closed: 0, open: 0 });
+
   const {
     status,
     search,
@@ -59,6 +64,7 @@ const ProjectIssues = () => {
     onSuccess: ({ data }) => {
       const count = data?.message?.metadata?.totalCount;
       setIssueList(data?.message?.issues || []);
+      setIssueCounts(data?.message?.issueCounts);
       setTotalCount(count);
     },
     onError: (error) => {
@@ -82,9 +88,10 @@ const ProjectIssues = () => {
             </div>
           ) : (
             <ShowIssues
+              totalCount={totalCount}
               refetch={refetch}
               issueList={issueList}
-              totalCount={totalCount}
+              issueCounts={issueCounts}
             />
           )}
         </div>
