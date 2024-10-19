@@ -9,7 +9,7 @@ const RecentAssignedTasks = ({ tasks }: { tasks: ProjectTask[] }) => {
   return (
     <div className="flex flex-col border rounded-md overflow-hidden w-full bg-turnary">
       <div className="p-2 flex items-center justify-between bg-white">
-        <h1 className="text-primary font-medium text-sm">
+        <h1 className="text-primary font-bold text-sm">
           Recently Assigned Tasks
         </h1>
         <Link
