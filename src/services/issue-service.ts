@@ -27,6 +27,15 @@ const issueService = {
       url: urls.issue.getIssues,
       authToken,
     }),
+
+  changeIssueStatus: ({ authToken, params, data }: RequestType) =>
+    request({
+      method: "POST",
+      params,
+      data,
+      url: urls.issue.changeIssueStatus,
+      authToken,
+    }),
 };
 
 export default issueService;
