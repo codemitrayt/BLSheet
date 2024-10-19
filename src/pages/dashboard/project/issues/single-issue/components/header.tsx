@@ -1,14 +1,15 @@
 import { VscIssues } from "react-icons/vsc";
 import { formatDistance } from "date-fns";
 
-import { Issue } from "../../../../../../types";
-import { capitalizeFirstLetter } from "../../../../../../utils";
+import { capitalizeFirstLetter, cn } from "../../../../../../utils";
+import { useIssueContext } from "../../../../../../providers/issue-provider";
+import { IssueStatus } from "../../../../../../types";
 
-interface IssueHeader {
-  issue: Issue;
-}
+const IssueHeader = () => {
+  const { issue } = useIssueContext();
 
-const IssueHeader = ({ issue }: IssueHeader) => {
+  if (!issue) return null;
+
   return (
     <div className="border-b pb-2 border-primary">
       <div className="flex items-center justify-between">
@@ -18,7 +19,14 @@ const IssueHeader = ({ issue }: IssueHeader) => {
       <div className="flex items-center space-y-2 mt-1">
         <div className="md:flex items-center justify-center space-x-2">
           <div className="flex items-center space-x-2">
-            <div className="flex items-center justify-center space-x-1 border rounded-full px-4 py-1 bg-emerald-700 text-white">
+            <div
+              className={cn(
+                "flex items-center justify-center space-x-1 border rounded-full px-4 py-1 text-white",
+                issue.status === IssueStatus.CLOSED
+                  ? "bg-red-500"
+                  : "bg-emerald-700"
+              )}
+            >
               <VscIssues />
               <span>{capitalizeFirstLetter(issue?.status)}</span>
             </div>

@@ -4,13 +4,20 @@ import { BiDotsHorizontal } from "react-icons/bi";
 import { Issue } from "../../../../../../types";
 import SendComment from "../components/send-comment";
 import { useProjectContext } from "../../../../../../providers/project-provider";
+import { useIssueContext } from "../../../../../../providers/issue-provider";
+import ChangeStatusIssue from "../components/change-status-issue";
+import DottedSeparator from "../../../../../../components/ui/dotted-separator";
 
 interface IssueInfoCard {
   issue: Issue;
+  refetchIssue: () => void;
 }
 
-const IssueInfoCard = ({ issue }: IssueInfoCard) => {
+const IssueInfoCard = () => {
+  const { issue } = useIssueContext();
   const { isAdmin } = useProjectContext();
+
+  if (!issue) return null;
 
   return (
     <div className="col-span-4">
@@ -46,7 +53,14 @@ const IssueInfoCard = ({ issue }: IssueInfoCard) => {
           />
         </div>
       </div>
-      <SendComment />
+      <div className="py-2">
+        <ChangeStatusIssue />
+      </div>
+      <DottedSeparator color="blue" />
+      <div className="mt-3">
+        <h1 className="text-sm font-medium text-primary">Disscussion</h1>
+        <SendComment />
+      </div>
     </div>
   );
 };

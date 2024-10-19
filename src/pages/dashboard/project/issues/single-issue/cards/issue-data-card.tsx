@@ -1,14 +1,14 @@
 import { Avatar, Tag } from "antd";
 
-import { Issue, IssueStatus } from "../../../../../../types";
+import { IssueStatus } from "../../../../../../types";
 import { useProjectContext } from "../../../../../../providers/project-provider";
+import { useIssueContext } from "../../../../../../providers/issue-provider";
 
-interface IssueDataCards {
-  issue: Issue;
-}
-
-const IssueDataCard = ({ issue }: IssueDataCards) => {
+const IssueDataCard = () => {
+  const { issue } = useIssueContext();
   const { project } = useProjectContext();
+
+  if (!issue) return null;
 
   return (
     <div className="space-y-3 w-full col-span-2">
