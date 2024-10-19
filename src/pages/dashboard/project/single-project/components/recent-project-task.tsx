@@ -87,9 +87,9 @@ const RecentProjectTask = () => {
           ].slice(0, 6)}
         />
 
-        <div className="border rounded-md h-[400px]">
+        <div className="border rounded-md h-[400px] bg-turnary">
           <ColumnChart
-            title="Task Progress Report"
+            title="Your Task Progress"
             data={[
               { type: "To Do", value: projectTaskList?.todo?.count || 0 },
               {
