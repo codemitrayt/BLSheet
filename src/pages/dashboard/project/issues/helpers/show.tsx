@@ -11,10 +11,16 @@ import useIssueFilters from "../../../../../hooks/useIssueFilters";
 interface ShowIssues {
   issueList: Issue[];
   refetch: () => void;
+  issueCounts: { closed: number; open: number };
   totalCount: number;
 }
 
-const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
+const ShowIssues = ({
+  issueList,
+  refetch,
+  issueCounts,
+  totalCount,
+}: ShowIssues) => {
   const {
     currentPage,
     setFilters,
@@ -48,7 +54,7 @@ const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
               <div className="hidden sm:block">
                 <VscIssues />
               </div>
-              <span>{totalCount} Open</span>
+              <span>{issueCounts.open} Open</span>
             </button>
 
             <button
@@ -69,7 +75,7 @@ const ShowIssues = ({ issueList, refetch, totalCount }: ShowIssues) => {
               <div className="hidden sm:block">
                 <IoCheckmark />
               </div>
-              <span>0 Closed</span>
+              <span>{issueCounts.closed} Closed</span>
             </button>
           </div>
           <IssueFilters />
