@@ -272,6 +272,10 @@ export interface Issue {
   isAuthor: boolean;
   isAssignee: boolean;
   commentCount: number;
+  closedBy: {
+    fullName: string;
+    email: string;
+  };
 }
 
 export interface IssueFilters {
