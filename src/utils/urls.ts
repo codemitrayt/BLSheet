@@ -58,6 +58,7 @@ const urls: URLType = {
     getIssue: "/issue/getIssue",
     getIssues: "/issue/getIssues",
     createIssue: "/issue/createIssue",
+    changeIssueStatus: "/issue/changeStatusIssue",
   },
 };
 
