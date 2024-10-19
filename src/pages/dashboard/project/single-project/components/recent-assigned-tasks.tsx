@@ -7,7 +7,7 @@ const RecentAssignedTasks = ({ tasks }: { tasks: ProjectTask[] }) => {
   const { projectId } = useParams();
 
   return (
-    <div className="flex flex-col border rounded-md overflow-hidden w-full">
+    <div className="flex flex-col border rounded-md overflow-hidden w-full bg-turnary">
       <div className="p-2 flex items-center justify-between bg-white">
         <h1 className="text-primary font-medium text-sm">
           Recently Assigned Tasks
