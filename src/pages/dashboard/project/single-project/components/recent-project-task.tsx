@@ -79,7 +79,7 @@ const RecentProjectTask = () => {
         </ScrollArea>
       </div>
 
-      <div className="lg:grid lg:grid-cols-2 gap-3 max-w-full space-y-2 lg:space-y-0">
+      <div className="md:grid md:grid-cols-2 gap-3 max-w-full space-y-2 md:space-y-0">
         <RecentAssignedTasks
           tasks={[
             ...(projectTaskList?.todo?.tasks || []),
@@ -87,7 +87,7 @@ const RecentProjectTask = () => {
           ].slice(0, 6)}
         />
 
-        <div className="border rounded-md h-[400px] bg-turnary">
+        <div className="border rounded-md bg-turnary">
           <ColumnChart
             title="Your Task Progress"
             data={[
