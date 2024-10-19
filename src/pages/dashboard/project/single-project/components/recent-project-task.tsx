@@ -14,6 +14,7 @@ import {
   ScrollArea,
   ScrollBar,
 } from "../../../../../components/ui/scroll-area";
+import ColumnChart from "../../../../../components/charts/column-chart";
 
 const RecentProjectTask = () => {
   const { authToken } = useAuth();
@@ -78,13 +79,34 @@ const RecentProjectTask = () => {
         </ScrollArea>
       </div>
 
-      <div className="grid lg:grid-cols-2">
+      <div className="lg:grid lg:grid-cols-2 gap-3 max-w-full space-y-2 lg:space-y-0">
         <RecentAssignedTasks
           tasks={[
             ...(projectTaskList?.todo?.tasks || []),
             ...(projectTaskList?.in_progress?.tasks || []),
           ].slice(0, 6)}
         />
+
+        <div className="border rounded-md h-[400px]">
+          <ColumnChart
+            title="Task Progress Report"
+            data={[
+              { type: "To Do", value: projectTaskList?.todo?.count || 0 },
+              {
+                type: "In Progress",
+                value: projectTaskList?.in_progress?.count || 0,
+              },
+              {
+                type: "Under Review",
+                value: projectTaskList?.under_review?.count || 0,
+              },
+              {
+                type: "Completed",
+                value: projectTaskList?.completed?.count || 0,
+              },
+            ]}
+          />
+        </div>
       </div>
     </div>
   );
