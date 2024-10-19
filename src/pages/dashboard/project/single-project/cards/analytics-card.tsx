@@ -37,7 +37,7 @@ const AnalyticsCard = ({
         </div>
         <div className="flex items-center justify-center">
           <h1 className="font-medium p-2 text-sm xl:text-3xl">
-            <CountUp end={count} duration={2} />
+            <CountUp end={count} duration={4} />
           </h1>
         </div>
       </div>
