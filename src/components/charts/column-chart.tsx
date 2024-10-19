@@ -12,7 +12,17 @@ const ColumnChart = ({ data, title }: ColumnChart) => {
     xField: "type",
     yField: "value",
     style: {
-      fill: () => "#2E667E",
+      fill: ({ type }: { type: string }) => {
+        return type === "To Do"
+          ? "#FF6666"
+          : type === "In Progress"
+          ? "#FFD280"
+          : type === "Under Review"
+          ? "#6699FF"
+          : type === "Completed"
+          ? "#66FF66"
+          : "#2E667E";
+      },
     },
     legend: false,
   };
