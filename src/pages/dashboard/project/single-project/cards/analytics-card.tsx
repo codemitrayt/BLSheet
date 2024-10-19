@@ -2,6 +2,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { RiTodoFill } from "react-icons/ri";
 import { MdAssignmentInd } from "react-icons/md";
 import { MdReviews } from "react-icons/md";
+import CountUp from "react-countup";
 
 import { cn } from "../../../../../utils";
 import { ProjectTaskStatus } from "../../../../../types";
@@ -35,7 +36,9 @@ const AnalyticsCard = ({
           {IconMap[status]}
         </div>
         <div className="flex items-center justify-center">
-          <h1 className="font-medium p-2 text-sm xl:text-3xl">{count}</h1>
+          <h1 className="font-medium p-2 text-sm xl:text-3xl">
+            <CountUp end={count} duration={2} />
+          </h1>
         </div>
       </div>
     </div>
