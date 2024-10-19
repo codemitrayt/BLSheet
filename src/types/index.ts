@@ -285,3 +285,8 @@ export interface IssueFilters {
   labels?: string[];
   perPage?: number;
 }
+
+export interface ColumnChartData {
+  type: string;
+  value: number;
+}
