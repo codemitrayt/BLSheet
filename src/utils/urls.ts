@@ -59,6 +59,16 @@ const urls: URLType = {
     getIssues: "/issue/getIssues",
     createIssue: "/issue/createIssue",
     changeIssueStatus: "/issue/changeStatusIssue",
+    updateIssue: "/issue/updateIssue",
+    deleteIssue: "/issue/deleteIssue",
+    assignUserToIssue: "/issue/assignUserToIssue",
+    removeAssignedUserFormIssue: "/issue/removeAssignedUserFormIssue",
+    createIssueComment: "/issue/createIssueComment",
+    updateIssueComment: "/issue/updateIssueComment",
+    getIssueComments: "/issue/getIssueComments",
+    replyToIssueComment: "/issue/replyToIssueComment",
+    getIssueCommentReplies: "/issue/getIssueCommentReplies",
+    deleteIssueComment: "/issue/deleteIssueComment",
   },
 };
 
