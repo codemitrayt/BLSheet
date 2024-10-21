@@ -1,6 +1,7 @@
 import { Avatar, Tag } from "antd";
 
 import { IssueStatus } from "../../../../../../types";
+import AssignUser from "../components/assign-user";
 import { useProjectContext } from "../../../../../../providers/project-provider";
 import { useIssueContext } from "../../../../../../providers/issue-provider";
 
@@ -13,9 +14,28 @@ const IssueDataCard = () => {
   return (
     <div className="space-y-3 w-full col-span-2">
       <div className="space-y-2 p-3 rounded-lg bg-gray-100 border border-gray-200 shadow-sm h-fit w-full">
-        <h1 className="text-primary text-sm font-medium">Assingees</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-primary text-sm font-bold">Assingees</h1>
+          <AssignUser />
+        </div>
         <div className="flex items-center">
-          <Avatar className="bg-primary">R</Avatar>
+          <Avatar.Group
+            className="!text-xs !border-primary"
+            max={{
+              count: 2,
+              style: { background: "#2F667F", border: "#2F667F" },
+            }}
+            size={25}
+          >
+            {issue.assignedMembers.map((member) => (
+              <Avatar
+                className="bg-primary !text-xs !border-primary"
+                key={member._id}
+              >
+                {member.memberEmailId[0].toUpperCase()}
+              </Avatar>
+            ))}
+          </Avatar.Group>
         </div>
       </div>
 
