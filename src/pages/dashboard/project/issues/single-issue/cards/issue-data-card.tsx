@@ -22,7 +22,7 @@ const IssueDataCard = () => {
           <Avatar.Group
             className="!text-xs !border-primary"
             max={{
-              count: 2,
+              count: 6,
               style: { background: "#2F667F", border: "#2F667F" },
             }}
             size={25}
