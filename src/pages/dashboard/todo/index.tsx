@@ -44,7 +44,7 @@ const DashboardTodoPage = () => {
         <TodoFilters />
         <CreateTodo refetchTodoList={refetchTodoList} />
       </div>
-      <DottedSeparator className="mt-4" />
+      <DottedSeparator className="my-4" />
 
       {isLoading ? (
         <div className="py-16 flex items-center justify-center">
