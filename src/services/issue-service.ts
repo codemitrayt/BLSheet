@@ -65,7 +65,7 @@ const issueService = {
 
   removeAssignedUserFormIssue: ({ authToken, params, data }: RequestType) =>
     request({
-      method: "POST",
+      method: "DELETE",
       params,
       data,
       url: urls.issue.removeAssignedUserFormIssue,
