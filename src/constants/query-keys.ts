@@ -1,6 +1,4 @@
 const queryKeys = {
-  auth: {},
-  project: {},
   blSheet: {
     get: "BL_SHEET_GET",
     create: "BL_SHEET_CREATE",
@@ -21,11 +19,12 @@ const queryKeys = {
     replyProjectTaskComment: "REPLY_PROJECT_TASK_COMMENT",
     getProjectTaskCommentReplies: "GET_PROJECT_TASK_COMMENT_REPLIES",
   },
-  todo: {},
   issue: {
     getIssue: "GET_ISSUE",
     getIssues: "GET_ISSUES",
     createIssue: "CREATE_ISSUE",
+    assignUser: "ASSIGN_USER_TO_ISSUE",
+    removeUser: "REMOVE_USER_TO_ISSUE",
   },
 };
 
