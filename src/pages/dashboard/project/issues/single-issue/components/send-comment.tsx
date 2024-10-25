@@ -53,7 +53,7 @@ const SendComment = ({ refetch }: SendComment) => {
 
   return (
     <div className="mt-3">
-      <ReactQuill value={value} onChange={(value) => setValue(value)} />
+      <ReactQuill value={value} onChange={(value) => setValue(value.trim())} />
       <div className="flex items-center justify-end mt-2">
         <button
           disabled={!value}

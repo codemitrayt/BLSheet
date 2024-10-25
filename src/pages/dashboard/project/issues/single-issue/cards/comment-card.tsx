@@ -10,9 +10,9 @@ interface CommentCard {
 const CommentCard = ({ comment }: CommentCard) => {
   return (
     <div className="">
-      <div className="h-10 flex space-x-2">
-        <Divider dashed type="vertical" className="h-full border-zinc-300" />
-        <div className="flex items-center justify-between w-full">
+      <Divider dashed type="vertical" className="border-zinc-300 h-5" />
+      <div className="border rounded-md py-3 md:py-6">
+        <div className="flex items-center justify-between w-full px-3">
           <div className="flex items-center justify-center space-x-1">
             <Avatar className="bg-primary !text-xs" size={22}>
               {comment.author.fullName[0].toUpperCase()}
@@ -25,9 +25,10 @@ const CommentCard = ({ comment }: CommentCard) => {
             {formatDistance(comment.createdAt, new Date())} ago
           </div>
         </div>
-      </div>
-      <div className="!text-xs border p-3 rounded-md">
-        <div dangerouslySetInnerHTML={{ __html: comment.content }} />
+
+        <div className="!text-xs mt-2 px-6 md:px-8">
+          <div dangerouslySetInnerHTML={{ __html: comment.content }} />
+        </div>
       </div>
     </div>
   );
