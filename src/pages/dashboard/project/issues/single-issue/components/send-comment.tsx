@@ -59,13 +59,13 @@ const SendComment = ({ refetch }: SendComment) => {
           disabled={!value}
           onClick={handleOnClick}
           className={cn(
-            "ring-0 space-x-1 bg-emerald-600 text-white hover:bg-emerald-600/70 rounded-md px-3 py-1 w-fit",
+            "ring-0 space-x-1 bg-emerald-600 flex items-center justify-center text-white hover:bg-emerald-600/70 rounded-md px-3 py-1 w-fit",
             !value &&
               "bg-emerald-600/50 cursor-not-allowed hover:bg-emerald-600/50"
           )}
         >
           {isLoading && <LuLoader2 className="animate-spin" />}
-          <span>Commentc</span>
+          <span>Comment</span>
         </button>
       </div>
     </div>
