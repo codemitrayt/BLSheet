@@ -25,6 +25,7 @@ const queryKeys = {
     createIssue: "CREATE_ISSUE",
     assignUser: "ASSIGN_USER_TO_ISSUE",
     removeUser: "REMOVE_USER_TO_ISSUE",
+    getComments: "GET_COMMENTS",
   },
 };
 
