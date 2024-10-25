@@ -2,11 +2,11 @@ import { Avatar, Tag } from "antd";
 import { BiDotsHorizontal } from "react-icons/bi";
 
 import { Issue } from "../../../../../../types";
-import SendComment from "../components/send-comment";
-import { useProjectContext } from "../../../../../../providers/project-provider";
-import { useIssueContext } from "../../../../../../providers/issue-provider";
+import Comments from "../components/comments";
 import ChangeStatusIssue from "../components/change-status-issue";
 import DottedSeparator from "../../../../../../components/ui/dotted-separator";
+import { useProjectContext } from "../../../../../../providers/project-provider";
+import { useIssueContext } from "../../../../../../providers/issue-provider";
 
 interface IssueInfoCard {
   issue: Issue;
@@ -58,8 +58,8 @@ const IssueInfoCard = () => {
       </div>
       <DottedSeparator color="blue" />
       <div className="mt-3">
-        <h1 className="text-sm font-medium text-primary">Disscussion</h1>
-        <SendComment />
+        <h1 className="text-sm font-medium text-primary">Disscussions</h1>
+        <Comments />
       </div>
     </div>
   );
