@@ -14,7 +14,7 @@
 
 <h2>Website</h2>
 
-<p>Check out the live version of BL Sheet at <a target="__blank" href="https://blsheet.com/">https://blsheet.codemitrayt.com/</a> for more details and features.</p>
+<p>Check out the live version of BL Sheet at <a target="__blank" href="https://blsheet.com/">https://blsheet.com/</a> for more details and features.</p>
 
 <h2>GitHub Repositories</h2>
 
