@@ -95,8 +95,12 @@ const UpdateProjectTaskForm = ({
 
         <Form.Item
           name="description"
-          label={<span className="text-primary font-medium">Description</span>}
-          rules={[{ required: true, message: "Description must be required" }]}
+          label={
+            <span className="text-primary font-medium">
+              Description (optional)
+            </span>
+          }
+          // rules={[{ required: true, message: "Description must be required" }]}
         >
           <Input.TextArea
             rows={3}
@@ -148,7 +152,9 @@ const UpdateProjectTaskForm = ({
         <Form.Item
           className="w-full"
           name="tags"
-          label={<span className="text-primary font-medium">Tags</span>}
+          label={
+            <span className="text-primary font-medium">Tags (optional)</span>
+          }
         >
           <Select
             className="w-full"

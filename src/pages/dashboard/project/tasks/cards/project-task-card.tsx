@@ -39,13 +39,17 @@ const ProjectTaskCard = ({
     <div className={cn("border w-[330px] rounded-lg h-fit shadow-sm bg-white")}>
       <div className="p-3 border-b">
         <div className="flex items-center justify-between">
-          <div>
-            {projectTask.tags.map((tag, ind) => (
-              <Tag key={ind} className="rounded-full px-3">
-                {capitalizeFirstLetter(tag)}
-              </Tag>
-            ))}
-          </div>
+          {projectTask?.tags?.length ? (
+            <div>
+              {(projectTask?.tags || []).map((tag, ind) => (
+                <Tag key={ind} className="rounded-full px-3">
+                  {capitalizeFirstLetter(tag)}
+                </Tag>
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
 
           {projectTask.isCreator || isAdmin ? (
             <div className="flex items-center space-x-2">
