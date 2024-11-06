@@ -6,6 +6,7 @@ import CountUp from "react-countup";
 
 import { cn } from "../../../../../utils";
 import { ProjectTaskStatus } from "../../../../../types";
+import GridEffect from "../../../../../components/effects/grid-effect";
 
 const IconMap = {
   todo: <RiTodoFill className="size-4 xl:size-6" />,
@@ -27,10 +28,11 @@ const AnalyticsCard = ({
   return (
     <div
       className={cn(
-        "xl:h-[100px] flex text-gray-600 border rounded-md shadow-sm"
+        "xl:h-[100px] flex text-gray-600 border rounded-md shadow-sm overflow-hidden"
       )}
     >
-      <div className="w-full p-2">
+      <div className="relative w-full p-2">
+        <GridEffect />
         <div className="flex items-center justify-between">
           <h1 className="font-medium text-sm xl:text-md">{title}</h1>
           {IconMap[status]}
