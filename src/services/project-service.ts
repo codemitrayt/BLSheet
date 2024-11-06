@@ -1,6 +1,6 @@
+import { RequestType } from "./../types";
 import urls from "../utils/urls";
 import request from "../api";
-import { RequestType } from "./../types";
 
 const projectService = () => {
   return {
@@ -76,6 +76,14 @@ const projectService = () => {
         params,
         url: urls.project.removeProjectMember,
         authToken,
+      }),
+
+    getProjectLabels: ({ authToken, params }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.project.getProjectLabels,
+        authToken,
+        params,
       }),
   };
 };
