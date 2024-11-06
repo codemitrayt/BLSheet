@@ -1,11 +1,12 @@
 import { Button, Dropdown } from "antd";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { useMutation } from "react-query";
 
 import { ProjectTask, ProjectTaskStatus } from "../../../../../types";
-import { useMutation } from "react-query";
 import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
+import { useProjectContext } from "../../../../../providers/project-provider";
 
 interface UpdateStatus {
   projectTask: ProjectTask;
@@ -22,6 +23,7 @@ const StatusMap = {
 const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
+  const { isAdmin } = useProjectContext();
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ["update-project-task"],
@@ -47,52 +49,61 @@ const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
     });
   };
 
-  const items = [
-    {
-      key: "1",
-      label: (
-        <button
-          className="w-full text-start"
-          onClick={() => handleUpdateStatus(ProjectTaskStatus.TODO)}
-        >
-          📋 TO DO
-        </button>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <button
-          className="w-full text-start"
-          onClick={() => handleUpdateStatus(ProjectTaskStatus.IN_PROGRESS)}
-        >
-          🧑🏻‍💻 Working In Progress
-        </button>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <button
-          className="w-full text-start"
-          onClick={() => handleUpdateStatus(ProjectTaskStatus.UNDER_REVIEW)}
-        >
-          👀 Under Review
-        </button>
-      ),
-    },
-    {
-      key: "4",
-      label: (
-        <button
-          className="w-full text-start"
-          onClick={() => handleUpdateStatus(ProjectTaskStatus.COMPLETED)}
-        >
-          ✅ Completed
-        </button>
-      ),
-    },
-  ];
+  const todo = {
+    key: "1",
+    label: (
+      <button
+        className="w-full text-start"
+        onClick={() => handleUpdateStatus(ProjectTaskStatus.TODO)}
+      >
+        📋 TO DO
+      </button>
+    ),
+  };
+
+  const inProgress = {
+    key: "2",
+    label: (
+      <button
+        className="w-full text-start"
+        onClick={() => handleUpdateStatus(ProjectTaskStatus.IN_PROGRESS)}
+      >
+        🧑🏻‍💻 Working In Progress
+      </button>
+    ),
+  };
+
+  const underReview = {
+    key: "3",
+    label: (
+      <button
+        className="w-full text-start"
+        onClick={() => handleUpdateStatus(ProjectTaskStatus.UNDER_REVIEW)}
+      >
+        👀 Under Review
+      </button>
+    ),
+  };
+
+  const completed = {
+    key: "4",
+    label: (
+      <button
+        className="w-full text-start"
+        onClick={() => handleUpdateStatus(ProjectTaskStatus.COMPLETED)}
+      >
+        ✅ Completed
+      </button>
+    ),
+  };
+
+  const items = isAdmin
+    ? [todo, inProgress, underReview, completed]
+    : projectTask.status === ProjectTaskStatus.TODO
+    ? [inProgress, underReview]
+    : projectTask.status === ProjectTaskStatus.IN_PROGRESS
+    ? [underReview]
+    : [];
 
   return (
     <Dropdown
