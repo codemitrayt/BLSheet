@@ -6,6 +6,9 @@ const queryKeys = {
     delete: "BL_SHEET_DELETE",
     getList: "BL_SHEET_LIST",
   },
+  project: {
+    getProjectLables: "GET_PROJECT_LABELS",
+  },
   projectMember: {
     getProjectMembers: "GET_PROJECT_MEMBERS",
   },
