@@ -27,7 +27,7 @@ const ColumnChart = ({ data, title }: ColumnChart) => {
     legend: false,
   };
 
-  return <Column {...config} title={title} />;
+  return <Column {...config} title={title} height={300} />;
 };
 
 export default ColumnChart;
