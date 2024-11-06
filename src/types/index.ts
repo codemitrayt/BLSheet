@@ -294,3 +294,10 @@ export interface ColumnChartData {
   type: string;
   value: number;
 }
+
+export interface Label {
+  name: string;
+  descirption: string;
+  isDelete: boolean;
+  color: string;
+}
