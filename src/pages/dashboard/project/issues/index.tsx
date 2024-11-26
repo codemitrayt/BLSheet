@@ -96,9 +96,7 @@ const ProjectIssues = () => {
           )}
         </div>
 
-        <div className="col-span-2 hidden sm:block p-3">
-          <h1>Analytics</h1>
-        </div>
+        <div className="col-span-2 hidden sm:block p-3"></div>
       </div>
     </div>
   );
