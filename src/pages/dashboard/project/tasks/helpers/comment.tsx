@@ -15,7 +15,6 @@ import useErrorHandler from "../../../../../hooks/useErrorHandler";
 
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
-import { useProjectContext } from "../../../../../providers/project-provider";
 
 interface ProjectTaskComment {
   projectTaskId: string;

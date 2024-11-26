@@ -11,7 +11,6 @@ import CommentCard from "../cards/comment-card";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import projectTaskService from "../../../../../services/project-task-service";
-import { useProjectContext } from "../../../../../providers/project-provider";
 
 interface ShowReplies {
   commentId: string;

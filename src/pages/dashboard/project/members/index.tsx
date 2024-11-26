@@ -2,13 +2,17 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "react-query";
 
-import { MemberRoles, ProjectMember } from "../../../../types";
-import projectService from "../../../../services/project-service";
+import { MemberRoles } from "../../../../types";
+
 import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
+
 import { useProjectContext } from "../../../../providers/project-provider";
+import projectService from "../../../../services/project-service";
+
 import TeamMembersTable from "./components/team-members-table";
 import InviteMemberPopup from "./components/invite-member-popup";
+
 import ProjectMemberFilters from "../../../../components/filters/project-member-filters";
 
 const Members = () => {
@@ -17,9 +21,8 @@ const Members = () => {
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [totalMembers, setTotalMembers] = useState(0);
-  const [members, setMembers] = useState<ProjectMember[]>([]);
 
-  const { isLoading: loader, refetch: refetchProjectMembers } = useQuery({
+  const { refetch: refetchProjectMembers } = useQuery({
     queryKey: ["project-members"],
     queryFn: () =>
       projectService().getProjectMembers({
@@ -28,10 +31,8 @@ const Members = () => {
         params: { perPage: 2, status: "accepted" },
       }),
     onSuccess: ({ data }) => {
-      const members = data?.message?.projectMembers || [];
       const count = data?.message?.totalCount;
       setTotalMembers(count);
-      setMembers(members);
     },
     onError: (error) => {
       console.error("ERROR :: project members ::", error);
