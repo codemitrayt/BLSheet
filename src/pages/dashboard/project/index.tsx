@@ -38,7 +38,7 @@ const DashboardProjectPage = () => {
 
   const { isLoading, refetch: refetchProjectList } = useQuery({
     queryKey: ["get-project-list"],
-    queryFn: () => projectService().getProjectList({ authToken }),
+    queryFn: () => projectService().getProjectsWithRole({ authToken }),
     onSuccess: ({ data }) => {
       const projects = data?.message?.projects || [];
       setProjectList(projects);

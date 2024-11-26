@@ -11,10 +11,14 @@ import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import useProjectMemberFilters from "../../../../../hooks/useProjectMemberFilters";
 
 import {
+  MemberRoles,
   ProjectMember,
   ProjectMemberStatus,
   UserRole,
 } from "../../../../../types";
+import { useProjectContext } from "../../../../../providers/project-provider";
+import { RoleColorMap } from "../../../../../constants";
+import { capitalizeFirstLetter } from "../../../../../utils";
 
 const perPage = 6;
 
@@ -40,11 +44,15 @@ const columns: TableProps<ProjectMember>["columns"] = [
   {
     title: <span className="text-primary">Role</span>,
     key: "role",
-    render: (_, { isAdmin }) => {
-      return isAdmin ? (
-        <Tag color="orange">Admin</Tag>
-      ) : (
-        <Tag color="blue">Member</Tag>
+    dataIndex: "role",
+    render: (role: MemberRoles) => {
+      return (
+        <Tag
+          color={RoleColorMap[role ?? "member"]}
+          className="w-[100px] flex items-center justify-center"
+        >
+          {capitalizeFirstLetter(role ? role : "Member")}
+        </Tag>
       );
     },
   },
@@ -70,14 +78,8 @@ const columns: TableProps<ProjectMember>["columns"] = [
   },
 ];
 
-interface TeamMembersTableProps {
-  isAdmin: Boolean;
-  members: ProjectMember[];
-  isLoading: boolean;
-  refetchProjectMembers: () => {};
-}
-
-const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
+const TeamMembersTable = () => {
+  const { project } = useProjectContext();
   const { authToken, user } = useAuth();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
@@ -114,14 +116,16 @@ const TeamMembersTable = ({ isAdmin }: TeamMembersTableProps) => {
         dataSource={members}
         columns={[
           ...columns,
-          ...(isAdmin && user?.role !== UserRole.GUEST
+          ...(project?.role === MemberRoles.OWNER &&
+          user?.role !== UserRole.GUEST
             ? [
                 {
                   title: <span className="text-primary">Actions</span>,
                   dataIndex: "actions",
                   key: "actions",
                   render: (_: string, member: ProjectMember) => {
-                    if (member.isAdmin) return <span>-</span>;
+                    if (member.role === MemberRoles.OWNER)
+                      return <span>-</span>;
                     return (
                       <RemoveMember
                         projectMember={member}

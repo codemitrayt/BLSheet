@@ -1,12 +1,13 @@
 import { Badge, Tag, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
+import { CgEye } from "react-icons/cg";
 
-import { Project } from "../../../../types";
-import UpdateProject from "../helpers/update";
-import DeleteProject from "../helpers/delete";
+import { MemberRoles, Project } from "../../../../types";
+import { RoleColorMap } from "../../../../constants";
 import { capitalizeFirstLetter, strSlice } from "../../../../utils";
 
-import { CgEye } from "react-icons/cg";
+import UpdateProject from "../helpers/update";
+import DeleteProject from "../helpers/delete";
 
 interface ProjectCardProps {
   project: Project;
@@ -54,8 +55,11 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
 
       <div className="flex items-center justify-between px-3 py-2 mt-2 border-t">
         <div>
-          <Tag color={project.isAdmin ? "orange" : "blue"}>
-            {project.isAdmin ? "Admin" : "Member"}
+          <Tag
+            color={RoleColorMap[project.role ?? "member"]}
+            className="w-[100px] flex items-center justify-center"
+          >
+            {capitalizeFirstLetter(project.role ? project.role : "Member")}
           </Tag>
         </div>
         <div className="flex items-center justify-center space-x-3">
@@ -68,7 +72,7 @@ const ProjectCard = ({ project, refetchProjectList }: ProjectCardProps) => {
             </button>
           </Tooltip>
 
-          {project.isAdmin && (
+          {project.role === MemberRoles.OWNER && (
             <>
               <UpdateProject
                 project={project}

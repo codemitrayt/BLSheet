@@ -15,7 +15,7 @@ import { useSocketProvider } from "../providers/socket-provider";
 
 const ProjectLayout = () => {
   const { projectId } = useParams();
-  const { authToken, user } = useAuth();
+  const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const socket = useSocketProvider();
   const [project, setProject] = useState<Project | null>(null);
@@ -23,12 +23,12 @@ const ProjectLayout = () => {
   const { isLoading, refetch: refetchProject } = useQuery({
     queryKey: ["get-product", projectId],
     queryFn: () =>
-      projectService().getProject({
-        params: { objectId: projectId },
+      projectService().getProjectWithMember({
+        params: { projectId },
         authToken,
       }),
     onSuccess: ({ data }) => {
-      setProject(data?.message?.project);
+      setProject(data?.message?.projectDetails);
     },
     onError: (error) => {
       console.log("Error :: get product ::", error);
@@ -63,9 +63,7 @@ const ProjectLayout = () => {
     );
 
   return (
-    <ProjectContext.Provider
-      value={{ project, isAdmin: project.userId === user?._id, refetchProject }}
-    >
+    <ProjectContext.Provider value={{ project, refetchProject }}>
       <ProjectNavbar projectId={projectId} />
       <Outlet />
     </ProjectContext.Provider>

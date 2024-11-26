@@ -20,7 +20,6 @@ interface ShowReplies {
 }
 
 const ShowReplies = ({ commentId, replyCount, projectTaskId }: ShowReplies) => {
-  const { isAdmin } = useProjectContext();
   const { authToken } = useAuth();
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
@@ -69,7 +68,6 @@ const ShowReplies = ({ commentId, replyCount, projectTaskId }: ShowReplies) => {
               isReply={true}
               projectId={projectId as string}
               projectTaskId={projectTaskId}
-              isAdmin={isAdmin}
               comment={reply}
               refetchComments={() => mutate({ data: { commentId } })}
               parentCommentId={commentId}

@@ -26,7 +26,6 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
   const { projectId } = useParams();
-  const { isAdmin } = useProjectContext();
 
   const [comments, setComments] = useState<Comment[]>([]);
   const [drawerState, setDrawerState] = useState(false);
@@ -82,7 +81,6 @@ const ProjectTaskComment = ({ projectTaskId, count }: ProjectTaskComment) => {
             <div className="space-y-4 h-[calc(100vh_-270px)] overflow-auto border rounded-lg p-4 bg-turnary">
               {comments.map((comment) => (
                 <CommentCard
-                  isAdmin={isAdmin}
                   comment={comment}
                   key={comment._id}
                   projectId={projectId!}

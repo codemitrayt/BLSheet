@@ -5,9 +5,9 @@ import { CgEye } from "react-icons/cg";
 import UpdateProject from "../helpers/update";
 import DeleteProject from "../helpers/delete";
 
-import useAuth from "../../../../hooks/useAuth";
-import { Project } from "../../../../types";
+import { MemberRoles, Project } from "../../../../types";
 import { capitalizeFirstLetter } from "../../../../utils";
+import { RoleColorMap } from "../../../../constants";
 
 interface ProjectsTableViewProps {
   projects: Project[];
@@ -63,10 +63,13 @@ const columns: TableProps<Project>["columns"] = [
   {
     title: <span className="text-primary font-medium">Role</span>,
     key: "role",
-    dataIndex: "isAdmin",
-    render: (isAdmin) => (
-      <Tag color={isAdmin ? "orange" : "blue"}>
-        {isAdmin ? "Admin" : "Member"}
+    dataIndex: "role",
+    render: (role: MemberRoles) => (
+      <Tag
+        color={RoleColorMap[role ?? "member"]}
+        className="w-[100px] flex items-center justify-center"
+      >
+        {capitalizeFirstLetter(role ? role : "Member")}
       </Tag>
     ),
   },
@@ -76,7 +79,6 @@ const ProjectsTableView = ({
   projects,
   refetchProjectList,
 }: ProjectsTableViewProps) => {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const handleRedirect = (projectId: string) => {
     const url = `/dashboard/projects/${projectId}/details`;
@@ -104,7 +106,7 @@ const ProjectsTableView = ({
                 </button>
               </Tooltip>
 
-              {user?._id === project.userId && (
+              {project.role === MemberRoles.OWNER && (
                 <>
                   <UpdateProject
                     project={project}

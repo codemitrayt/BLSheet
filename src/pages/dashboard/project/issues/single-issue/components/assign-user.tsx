@@ -5,14 +5,15 @@ import { MdOutlineAddCircle } from "react-icons/md";
 
 import { useProjectContext } from "../../../../../../providers/project-provider";
 import AssignUserForm from "../forms/assign-user-form";
+import { MemberRoles } from "../../../../../../types";
 
 const AssignUser = () => {
-  const { isAdmin } = useProjectContext();
+  const { project } = useProjectContext();
   const [drawerState, setDrawerState] = useState(false);
   const openDrawer = () => setDrawerState(true);
   const closeDrawer = () => setDrawerState(false);
 
-  if (!isAdmin) return null;
+  if (project?.role === MemberRoles.MEMBER) return null;
 
   return (
     <div className="relative">

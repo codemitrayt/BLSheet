@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "react-query";
 
-import { ProjectMember } from "../../../../types";
+import { MemberRoles, ProjectMember } from "../../../../types";
 import projectService from "../../../../services/project-service";
 import useAuth from "../../../../hooks/useAuth";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
@@ -53,7 +53,7 @@ const Members = () => {
         </h1>
         <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap lg:justify-center lg:flex-row">
           <ProjectMemberFilters />
-          {project.isAdmin && (
+          {project.role !== MemberRoles.MEMBER && (
             <InviteMemberPopup
               projectName={project?.name}
               projectId={project?._id}
@@ -63,12 +63,7 @@ const Members = () => {
         </div>
       </div>
 
-      <TeamMembersTable
-        isAdmin={project!.isAdmin}
-        members={members}
-        isLoading={loader}
-        refetchProjectMembers={refetchProjectMembers}
-      />
+      <TeamMembersTable />
     </div>
   );
 };

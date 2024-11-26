@@ -1,10 +1,12 @@
 import { Avatar, Tag } from "antd";
 import { BiDotsHorizontal } from "react-icons/bi";
 
-import { Issue } from "../../../../../../types";
+import { Issue, MemberRoles } from "../../../../../../types";
+
 import Comments from "../components/comments";
 import ChangeStatusIssue from "../components/change-status-issue";
 import DottedSeparator from "../../../../../../components/ui/dotted-separator";
+
 import { useProjectContext } from "../../../../../../providers/project-provider";
 import { useIssueContext } from "../../../../../../providers/issue-provider";
 
@@ -15,7 +17,7 @@ interface IssueInfoCard {
 
 const IssueInfoCard = () => {
   const { issue } = useIssueContext();
-  const { isAdmin } = useProjectContext();
+  const { project } = useProjectContext();
 
   if (!issue) return null;
 
@@ -35,12 +37,9 @@ const IssueInfoCard = () => {
 
             <div className="flex items-center justify-between sm:justify-center">
               <div className="flex items-center">
-                {isAdmin && <Tag className="px-2 rounded-full">Owner</Tag>}
-                {issue.isAuthor && (
-                  <Tag className="px-2 rounded-full">Author</Tag>
-                )}
+                {<Tag className="px-2 rounded-full">{project?.role}</Tag>}
               </div>
-              {(isAdmin || issue.author) && (
+              {(project?.role !== MemberRoles.MEMBER || issue.author) && (
                 <button>
                   <BiDotsHorizontal />
                 </button>

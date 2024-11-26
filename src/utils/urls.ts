@@ -35,6 +35,8 @@ const urls: URLType = {
     getProjectMembers: "/project/getProjectMembers",
     removeProjectMember: "/project/removeProjectMember",
     getProjectLabels: "/project/getProjectLabels",
+    getProjectWithMember: "/project/getProjectWithMember",
+    getProjectsWithRole: "/project/getProjectsWithRole",
   },
   projectTask: {
     createProjectTask: "/projectTask/createProjectTask",
@@ -54,7 +56,6 @@ const urls: URLType = {
     replyToProjectTaskComment: "/projectTask/replyToProjectTaskComment",
     getProjectTaskCommentReplies: "/projectTask/getProjectTaskCommentReplies",
   },
-
   issue: {
     getIssue: "/issue/getIssue",
     getIssues: "/issue/getIssues",

@@ -116,6 +116,11 @@ export interface TodoFilter {
 
 // Project Types //
 
+export enum MemberRoles {
+  ADMIN = "admin",
+  MEMBER = "member",
+  OWNER = "owner",
+}
 export interface Project {
   _id: string;
   name: string;
@@ -124,7 +129,7 @@ export interface Project {
   tags: string[];
   img: string;
   user: User;
-  isAdmin: boolean;
+  role?: MemberRoles;
 }
 
 export enum ProjectMemberStatus {
@@ -143,10 +148,10 @@ export interface ProjectMember {
   _id: string;
   memberEmailId: string;
   status: ProjectMemberStatus;
-  isAdmin?: string;
   user: {
     fullName: string;
   };
+  role: MemberRoles;
 }
 
 export enum ProjectTaskStatus {

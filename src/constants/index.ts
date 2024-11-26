@@ -1,3 +1,5 @@
+import { MemberRoles } from "../types";
+
 export const HTTP_METHODS = {
   delete: "DELETE",
   get: "GET",
@@ -84,4 +86,10 @@ export const TASK_STATUS_DOT_COLOR = {
   in_progress: "orange",
   under_review: "blue",
   completed: "green",
+};
+
+export const RoleColorMap = {
+  [MemberRoles.ADMIN]: "red",
+  [MemberRoles.OWNER]: "orange",
+  [MemberRoles.MEMBER]: "blue",
 };

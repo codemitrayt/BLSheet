@@ -85,6 +85,21 @@ const projectService = () => {
         authToken,
         params,
       }),
+
+    getProjectsWithRole: ({ authToken }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.project.getProjectsWithRole,
+        authToken,
+      }),
+
+    getProjectWithMember: ({ authToken, params }: RequestType) =>
+      request({
+        method: "GET",
+        url: urls.project.getProjectWithMember,
+        authToken,
+        params,
+      }),
   };
 };
 

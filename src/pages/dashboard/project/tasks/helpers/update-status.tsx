@@ -2,7 +2,11 @@ import { Button, Dropdown } from "antd";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useMutation } from "react-query";
 
-import { ProjectTask, ProjectTaskStatus } from "../../../../../types";
+import {
+  MemberRoles,
+  ProjectTask,
+  ProjectTaskStatus,
+} from "../../../../../types";
 import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
@@ -23,7 +27,7 @@ const StatusMap = {
 const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
   const { authToken } = useAuth();
   const { handleError } = useErrorHandler();
-  const { isAdmin } = useProjectContext();
+  const { project } = useProjectContext();
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ["update-project-task"],
@@ -97,13 +101,14 @@ const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
     ),
   };
 
-  const items = isAdmin
-    ? [todo, inProgress, underReview, completed]
-    : projectTask.status === ProjectTaskStatus.TODO
-    ? [inProgress, underReview]
-    : projectTask.status === ProjectTaskStatus.IN_PROGRESS
-    ? [underReview]
-    : [];
+  const items =
+    project?.role !== MemberRoles.MEMBER
+      ? [todo, inProgress, underReview, completed]
+      : projectTask.status === ProjectTaskStatus.TODO
+      ? [inProgress, underReview]
+      : projectTask.status === ProjectTaskStatus.IN_PROGRESS
+      ? [underReview]
+      : [];
 
   return (
     <Dropdown

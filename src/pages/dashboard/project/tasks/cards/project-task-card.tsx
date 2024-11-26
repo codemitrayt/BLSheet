@@ -1,7 +1,7 @@
 import { Avatar, Tag } from "antd";
 import dateformat from "dateformat";
 
-import { ProjectTask } from "../../../../../types";
+import { MemberRoles, ProjectTask } from "../../../../../types";
 import {
   capitalizeFirstLetter,
   cn,
@@ -32,7 +32,7 @@ const ProjectTaskCard = ({
   projectTask,
   refetchProjectTask,
 }: ProjectTaskCardProps) => {
-  const { isAdmin } = useProjectContext();
+  const { project } = useProjectContext();
   const { user } = useAuth();
 
   return (
@@ -51,7 +51,7 @@ const ProjectTaskCard = ({
             <div></div>
           )}
 
-          {projectTask.isCreator || isAdmin ? (
+          {projectTask.isCreator || project?.role !== MemberRoles.MEMBER ? (
             <div className="flex items-center space-x-2">
               <UpdateProjectTask
                 projectTask={projectTask}
@@ -94,7 +94,9 @@ const ProjectTaskCard = ({
           </div>
         </div>
 
-        {(projectTask.isCreator || projectTask.isMember || isAdmin) && (
+        {(projectTask.isCreator ||
+          projectTask.isMember ||
+          project?.role !== MemberRoles.MEMBER) && (
           <div className="flex items-center justify-between mt-4">
             <UpdateStatus
               projectTask={projectTask}
@@ -124,7 +126,7 @@ const ProjectTaskCard = ({
             ))}
           </Avatar.Group>
 
-          {(projectTask.userId === user?._id || isAdmin) && (
+          {project?.role !== MemberRoles.MEMBER && (
             <AssignUserToProjectTask
               projectTask={projectTask}
               refetchProjectTasks={refetchProjectTask}

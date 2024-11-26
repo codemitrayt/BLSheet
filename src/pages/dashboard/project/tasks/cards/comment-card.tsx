@@ -1,16 +1,16 @@
 import { Avatar } from "antd";
 
-import { Comment } from "../../../../../types";
+import { Comment, MemberRoles } from "../../../../../types";
 import { cn, getTimeDifference } from "../../../../../utils";
 
 import DeleteComment from "../helpers/delete-comment";
 import UpdateComment from "../helpers/update-comment";
 import ReplyComment from "../helpers/reply-comment";
 import ShowReplies from "../helpers/show-replies";
+import { useProjectContext } from "../../../../../providers/project-provider";
 
 interface CommentCard {
   comment: Comment;
-  isAdmin: boolean;
   projectId: string;
   projectTaskId: string;
   refetchComments: () => void;
@@ -20,13 +20,14 @@ interface CommentCard {
 
 const CommentCard = ({
   comment,
-  isAdmin,
   projectId,
   projectTaskId,
   refetchComments,
   isReply = false,
   parentCommentId,
 }: CommentCard) => {
+  const { project } = useProjectContext();
+
   return (
     <div
       className={cn(
@@ -59,22 +60,19 @@ const CommentCard = ({
             commentId={comment._id}
             replyCount={comment.replyCount}
           />
-          {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
 
           <ReplyComment
             commentId={comment._id}
             refecthComments={refetchComments}
           />
 
-          {(comment.isCreator || isAdmin) && (
+          {(comment.isCreator || project?.role !== MemberRoles.MEMBER) && (
             <>
-              {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
               <UpdateComment
                 comment={comment}
                 projectTaskId={projectTaskId}
                 refetchProjectComment={refetchComments}
               />
-              {/* <div className="h-[15px] w-[1px] bg-gray-500" /> */}
               <DeleteComment
                 projectId={projectId}
                 commentId={comment._id}
