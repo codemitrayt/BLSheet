@@ -4,7 +4,7 @@ import dateFormat from "dateformat";
 
 import Delete from "./delete";
 import Edit from "./edit";
-import SetNotification from "./set-notification";
+// import SetNotification from "./set-notification";
 
 import { BLSheet, SheetType, UserRole } from "../../../../types";
 import { cn, currencyFormate } from "../../../../utils";
@@ -134,7 +134,7 @@ const Show = ({
                       objectId={sheet._id!}
                       refetchBLSheets={refetchBLSheets}
                     />
-                    <SetNotification />
+                    {/* <SetNotification /> */}
                   </div>
                 ),
               },
