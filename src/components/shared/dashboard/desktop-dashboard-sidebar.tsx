@@ -2,14 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Logo from "../../ui/logo";
-import { cn } from "../../../utils";
+import { capitalizeFirstLetter, cn } from "../../../utils";
 
 import dashboardLinks from "../../../configs/dashboard-links";
 import { logout } from "../../../store/slices/auth-slice";
 
 import { AiOutlineLogout } from "react-icons/ai";
+import useAuth from "../../../hooks/useAuth";
+import { PricingModel } from "../../../types";
 
 const DesktopDashboardSidebar = () => {
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const handleLogout = () => dispatch(logout());
 
@@ -42,16 +45,42 @@ const DesktopDashboardSidebar = () => {
           ))}
         </div>
 
-        <div className="border-t pt-2">
-          <button
-            className="flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full"
-            onClick={handleLogout}
-          >
-            <AiOutlineLogout className="size-6 text-white" />
-            <span className="text-lg text-white pl-4 font-light tracking-wider">
-              Logout
-            </span>
-          </button>
+        <div>
+          <div className="bg-secondary rounded-md px-2 py-3">
+            <h1 className="font-semibold text-white">
+              {capitalizeFirstLetter(user?.pricingModel as string)} Plan
+            </h1>
+            <ul className="ml-6 list-disc text-sm text-gray-100 mt-2">
+              <li>
+                {user?.pricingModel === PricingModel.FREE
+                  ? 1
+                  : user?.pricingModel === PricingModel.PREMIUM
+                  ? 10
+                  : 25}{" "}
+                Project
+              </li>
+              <li>
+                {user?.pricingModel === PricingModel.FREE
+                  ? 5
+                  : user?.pricingModel === PricingModel.PREMIUM
+                  ? 30
+                  : 150}{" "}
+                Members
+              </li>
+            </ul>
+          </div>
+
+          <div className="border-t pt-2 mt-4">
+            <button
+              className="flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full"
+              onClick={handleLogout}
+            >
+              <AiOutlineLogout className="size-6 text-white" />
+              <span className="text-lg text-white pl-4 font-light tracking-wider">
+                Logout
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

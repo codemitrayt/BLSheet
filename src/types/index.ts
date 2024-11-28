@@ -50,11 +50,18 @@ export interface RequestType {
   url?: string;
 }
 
+export enum PricingModel {
+  FREE = "free",
+  PREMIUM = "premium",
+  ENTERPRISE = "enterprise",
+}
+
 export interface User {
   _id: string;
   fullName: string;
   email: string;
   role: string;
+  pricingModel: PricingModel;
 }
 
 export interface BLSheet {
