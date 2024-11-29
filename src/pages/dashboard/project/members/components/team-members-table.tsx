@@ -19,6 +19,7 @@ import {
 import { useProjectContext } from "../../../../../providers/project-provider";
 import { RoleColorMap } from "../../../../../constants";
 import { capitalizeFirstLetter } from "../../../../../utils";
+import UpdateMember from "./update-member";
 
 const perPage = 6;
 
@@ -63,6 +64,7 @@ const columns: TableProps<ProjectMember>["columns"] = [
     render: (status) => (
       <>
         <Tag
+          className="w-[100px] flex items-center justify-center"
           color={
             status === ProjectMemberStatus.ACCEPTED
               ? "green"
@@ -125,12 +127,23 @@ const TeamMembersTable = () => {
                   key: "actions",
                   render: (_: string, member: ProjectMember) => {
                     if (member.role === MemberRoles.OWNER)
-                      return <span>-</span>;
+                      return (
+                        <div className="flex items-center justify-center">
+                          -
+                        </div>
+                      );
                     return (
-                      <RemoveMember
-                        projectMember={member}
-                        refetchProjectMembers={refetchProjectMembers}
-                      />
+                      <div className="space-x-4 flex">
+                        <UpdateMember
+                          member={member}
+                          refetch={refetchProjectMembers}
+                        />
+
+                        <RemoveMember
+                          projectMember={member}
+                          refetchProjectMembers={refetchProjectMembers}
+                        />
+                      </div>
                     );
                   },
                 },

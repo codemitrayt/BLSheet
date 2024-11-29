@@ -100,6 +100,14 @@ const projectService = () => {
         authToken,
         params,
       }),
+
+    updateProjectMemberRole: ({ authToken, data }: RequestType) =>
+      request({
+        method: "PUT",
+        url: urls.project.updateProjectMemberRole,
+        authToken,
+        data,
+      }),
   };
 };
 

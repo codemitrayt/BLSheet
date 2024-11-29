@@ -4,17 +4,20 @@ const urls: URLType = {
   auth: {
     login: "/auth/login",
     self: "/auth/self",
+
     createPassword: "/auth/createPassword",
     forgotPassword: "/auth/forgotPassword",
     resetPassword: "/auth/resetPassword",
+
     sendVerificationEmailForRegistration:
       "/auth/sendVerificationEmailForRegistration",
   },
   blSheet: {
-    createBlSheet: "blSheet/createBLSheet",
     getBlSheets: "/blSheet/getBLSheets",
-    deleteBlSheet: "/blSheet/deleteBLSheet",
     editBlSheet: "/blSheet/editBLSheet",
+    createBlSheet: "blSheet/createBLSheet",
+    deleteBlSheet: "/blSheet/deleteBLSheet",
+
     totalMoneyDistributedAnalytics: "/blSheet/totalMoneyDistributedAnalytics",
     dailyAnalytics: "/blSheet/dailyAnalytics",
   },
@@ -25,24 +28,28 @@ const urls: URLType = {
     deleteTodo: "/todo/deleteTodo",
   },
   project: {
+    getProject: "/project/getProject",
     getProjectList: "/project/getProjectList",
     createProject: "/project/createProject",
     updateProject: "/project/updateProject",
     deleteProject: "/project/deleteProject",
-    getProject: "/project/getProject",
+
+    getProjectMembers: "/project/getProjectMembers",
     inviteTeamMember: "/project/inviteTeamMember",
     updateProjectMember: "/project/updateProjectMember",
-    getProjectMembers: "/project/getProjectMembers",
     removeProjectMember: "/project/removeProjectMember",
+    updateProjectMemberRole: "/project/updateProjectMemberRole",
+
     getProjectLabels: "/project/getProjectLabels",
     getProjectWithMember: "/project/getProjectWithMember",
     getProjectsWithRole: "/project/getProjectsWithRole",
   },
   projectTask: {
-    createProjectTask: "/projectTask/createProjectTask",
     getProjectTasks: "/projectTask/getProjectTasks",
-    deleteProjectTask: "/projectTask/deleteProjectTask",
+    createProjectTask: "/projectTask/createProjectTask",
     updateProjectTask: "/projectTask/updateProjectTask",
+    deleteProjectTask: "/projectTask/deleteProjectTask",
+
     getProjectTaskForUser: "/projectTask/getProjectTaskForUser",
 
     assignUserToProjectTask: "/projectTask/assignUserToProjectTask",
@@ -60,11 +67,13 @@ const urls: URLType = {
     getIssue: "/issue/getIssue",
     getIssues: "/issue/getIssues",
     createIssue: "/issue/createIssue",
-    changeIssueStatus: "/issue/changeStatusIssue",
     updateIssue: "/issue/updateIssue",
     deleteIssue: "/issue/deleteIssue",
+
+    changeIssueStatus: "/issue/changeStatusIssue",
     assignUserToIssue: "/issue/assignUserToIssue",
     removeAssignedUserFormIssue: "/issue/removeAssignedUserFormIssue",
+
     createIssueComment: "/issue/createIssueComment",
     updateIssueComment: "/issue/updateIssueComment",
     getIssueComments: "/issue/getIssueComments",

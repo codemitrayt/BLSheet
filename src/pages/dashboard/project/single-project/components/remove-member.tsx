@@ -1,3 +1,4 @@
+import { Tooltip } from "antd";
 import { useMutation } from "react-query";
 import { LuLoader2 } from "react-icons/lu";
 import { IoRemoveCircleOutline } from "react-icons/io5";
@@ -50,14 +51,15 @@ const RemoveMember = ({
           </div>
         }
       >
-        <button className="text-xs border px-3 py-1 rounded-full space-x-1 border-red-500 flex items-center justify-center text-red-500 transition-all hover:bg-red-500 hover:text-white">
-          {isLoading ? (
-            <LuLoader2 className="animate-spin" />
-          ) : (
-            <IoRemoveCircleOutline />
-          )}
-          <span>Remove</span>
-        </button>
+        <Tooltip color="#2E667E" title="Remove Member">
+          <button className="text-xs flex items-center justify-center text-red-500 transition-all">
+            {isLoading ? (
+              <LuLoader2 className="animate-spin size-4" />
+            ) : (
+              <IoRemoveCircleOutline className="size-4" />
+            )}
+          </button>
+        </Tooltip>
       </ConfirmationPopUp>
     </div>
   );
