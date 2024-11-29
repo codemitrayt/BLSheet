@@ -8,6 +8,7 @@ const queryKeys = {
   },
   project: {
     getProjectLables: "GET_PROJECT_LABELS",
+    updateProjectMemberRole: "UPDATE_PROJECT_MEMBER_ROLE",
   },
   projectMember: {
     getProjectMembers: "GET_PROJECT_MEMBERS",
