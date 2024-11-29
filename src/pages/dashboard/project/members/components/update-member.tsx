@@ -1,23 +1,13 @@
-import { TbEdit } from "react-icons/tb";
-import { MemberRoles, ProjectMember } from "../../../../../types";
-import {
-  Badge,
-  Button,
-  Divider,
-  Drawer,
-  Input,
-  message,
-  Select,
-  Tag,
-  Tooltip,
-} from "antd";
 import { useState } from "react";
 import { useMutation } from "react-query";
+import { TbEdit } from "react-icons/tb";
+import { Badge, Button, Input, message, Select, Tooltip } from "antd";
+
 import queryKeys from "../../../../../constants/query-keys";
 import projectService from "../../../../../services/project-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
-import { LuLoader } from "react-icons/lu";
+import { MemberRoles, ProjectMember } from "../../../../../types";
 
 interface UpdateMemberProps {
   member: ProjectMember;
