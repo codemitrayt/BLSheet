@@ -83,7 +83,7 @@ const CreateProjectTaskForm = ({
           <Input.TextArea
             placeholder="Description"
             showCount
-            count={{ max: 150 }}
+            count={{ max: 250 }}
             rows={3}
           />
         </Form.Item>

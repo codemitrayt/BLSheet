@@ -106,7 +106,7 @@ const UpdateProjectTaskForm = ({
             rows={3}
             placeholder="Description"
             showCount
-            count={{ max: 150 }}
+            count={{ max: 250 }}
           />
         </Form.Item>
         <div className="flex items-center space-x-8">
