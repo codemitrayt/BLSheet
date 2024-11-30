@@ -193,6 +193,8 @@ export interface ProjectTask {
   isCreator: boolean;
   isMember: boolean;
   subtasks: { title: string; weightage: number }[];
+  taskNumber: number;
+  taskType: string;
 }
 
 export interface ProjectMemberFilters {

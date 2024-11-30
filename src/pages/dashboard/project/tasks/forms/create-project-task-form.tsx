@@ -10,6 +10,7 @@ import projectTaskService from "../../../../../services/project-task-service";
 
 import { ProjectTask } from "../../../../../types";
 import { TASK_PRIORITY, TASK_STATUS } from "../../../../../constants";
+import TASK_TYPE from "../../../../../constants/task-type";
 
 interface CreateProjectTaskFormProps {
   onCloseDrawer: () => void;
@@ -119,17 +120,16 @@ const CreateProjectTaskForm = ({
         </div>
         <Form.Item
           className="w-full"
-          name="tags"
-          label={
-            <span className="text-primary font-medium">Tags (optional)</span>
-          }
+          name="taskType"
+          label={<span className="text-primary font-medium">Task Type</span>}
+          rules={[{ required: true, message: "Task type is required" }]}
         >
           <Select
             className="w-full"
-            mode="tags"
             placeholder="Tags"
             suffixIcon={null}
             maxCount={3}
+            options={TASK_TYPE}
           />
         </Form.Item>
 

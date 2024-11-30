@@ -65,7 +65,8 @@ const SingleTask = () => {
             title={task.title}
             dueDate={task.endDate}
             status={task.status}
-            tags={task.tags}
+            taskType={task.taskType}
+            taskNumber={task.taskNumber}
           />
           <div className="space-y-5 md:grid grid-cols-6 md:space-x-8">
             <TaskInfo task={task} refetch={refetch} />

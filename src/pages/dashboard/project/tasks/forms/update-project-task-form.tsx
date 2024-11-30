@@ -12,6 +12,7 @@ import projectTaskService from "../../../../../services/project-task-service";
 import { ProjectTask, UserRole } from "../../../../../types";
 import { TASK_PRIORITY, TASK_STATUS } from "../../../../../constants";
 import SubtaskForm from "./subtask-form";
+import TASK_TYPE from "../../../../../constants/task-type";
 
 dayjs.extend(customParseFormat);
 const dateFormat = "DD/MM/YYYY";
@@ -151,17 +152,16 @@ const UpdateProjectTaskForm = ({
         </div>
         <Form.Item
           className="w-full"
-          name="tags"
-          label={
-            <span className="text-primary font-medium">Tags (optional)</span>
-          }
+          name="taskType"
+          label={<span className="text-primary font-medium">Task Type</span>}
+          rules={[{ required: true, message: "Task type is required" }]}
         >
           <Select
             className="w-full"
-            mode="tags"
             placeholder="Tags"
             suffixIcon={null}
             maxCount={3}
+            options={TASK_TYPE}
           />
         </Form.Item>
         <SubtaskForm />

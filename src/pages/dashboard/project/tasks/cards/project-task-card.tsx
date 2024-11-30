@@ -1,14 +1,11 @@
 import { Avatar, Tag } from "antd";
 import dateformat from "dateformat";
+import { Link } from "react-router-dom";
 
 import { MemberRoles, ProjectTask } from "../../../../../types";
-import {
-  capitalizeFirstLetter,
-  cn,
-  getDueDateColor,
-  strSlice,
-} from "../../../../../utils";
+import { cn, getDueDateColor, strSlice } from "../../../../../utils";
 import { useProjectContext } from "../../../../../providers/project-provider";
+import { TASK_TYPE_COLOR } from "../../../../../constants/task-type";
 
 import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
@@ -16,7 +13,6 @@ import ProjectTaskComment from "../helpers/comment";
 import PorjectTaskAttachment from "../helpers/attachment";
 import AssignUserToProjectTask from "../helpers/assign-user";
 import UpdateStatus from "../helpers/update-status";
-import { Link } from "react-router-dom";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
@@ -41,17 +37,17 @@ const ProjectTaskCard = ({
     <div className={cn("border w-[330px] rounded-lg h-fit shadow-sm bg-white")}>
       <div className="p-3 border-b">
         <div className="flex items-center justify-between">
-          {projectTask?.tags?.length ? (
-            <div>
-              {(projectTask?.tags || []).map((tag, ind) => (
-                <Tag key={ind} className="rounded-full px-3">
-                  {capitalizeFirstLetter(tag)}
-                </Tag>
-              ))}
-            </div>
-          ) : (
-            <div></div>
-          )}
+          <div className="space-x-2">
+            <Tag
+              className="rounded-full px-3"
+              color={TASK_TYPE_COLOR[projectTask.taskType]}
+            >
+              {projectTask.taskType}
+            </Tag>
+            <Tag className="rounded-full px-3">
+              Task #{projectTask.taskNumber}
+            </Tag>
+          </div>
 
           {projectTask.isCreator || project?.role !== MemberRoles.MEMBER ? (
             <div className="flex items-center space-x-2">
@@ -70,12 +66,14 @@ const ProjectTaskCard = ({
           )}
         </div>
 
-        <Link
-          to={`/dashboard/projects/${project?._id}/tasks/${projectTask._id}`}
-          className="text-sm font-medium py-1 text-primary hover:text-primary/80 transition-all"
-        >
-          {isHide ? strSlice(projectTask.title, 30) : projectTask.title}
-        </Link>
+        <div className="mt-1">
+          <Link
+            to={`/dashboard/projects/${project?._id}/tasks/${projectTask._id}`}
+            className="text-sm font-medium text-primary hover:text-primary/80 transition-all"
+          >
+            {isHide ? strSlice(projectTask.title, 30) : projectTask.title}
+          </Link>
+        </div>
 
         {!isHide && (
           <>

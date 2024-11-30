@@ -4,12 +4,14 @@ import { Tag } from "antd";
 
 import { cn, getDueDateColor } from "../../../../../../utils";
 import { ProjectTaskStatus } from "../../../../../../types";
+import { TASK_TYPE_COLOR } from "../../../../../../constants/task-type";
 
 interface TaskHeaderProps {
   title: string;
   dueDate: Date;
   status: ProjectTaskStatus;
-  tags: string[];
+  taskType: string;
+  taskNumber: number;
 }
 
 const ProjectTaskStatusColor = {
@@ -26,14 +28,22 @@ const StatusMap = {
   [ProjectTaskStatus.COMPLETED]: "Completed",
 };
 
-const TaskHeader = ({ tags, title, dueDate, status }: TaskHeaderProps) => {
+const TaskHeader = ({
+  taskNumber,
+  taskType,
+  title,
+  dueDate,
+  status,
+}: TaskHeaderProps) => {
   return (
     <div className="border-b pb-2 border-primary">
       <div className="flex space-y-1 sm:space-y-0 sm:items-center sm:justify-between flex-col sm:flex-row">
         <div className="flex items-center space-x-2">
-          {tags.map((tag, index) => (
-            <Tag key={index}>{tag}</Tag>
-          ))}
+          <Tag className="rounded-full px-3" color={TASK_TYPE_COLOR[taskType]}>
+            {taskType}
+          </Tag>
+
+          <Tag className="rounded-full px-3">Task #{taskNumber}</Tag>
         </div>
 
         <div
