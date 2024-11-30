@@ -4,6 +4,14 @@ import request from "../api";
 
 const projectTaskService = () => {
   return {
+    getProjectTask: ({ params, authToken }: RequestType) =>
+      request({
+        method: "GET",
+        params,
+        url: urls.projectTask.getProjectTask,
+        authToken,
+      }),
+
     createProjectTask: ({ data, authToken }: RequestType) =>
       request({
         method: "POST",
