@@ -6,6 +6,7 @@ import {
   capitalizeFirstLetter,
   cn,
   getDueDateColor,
+  strSlice,
 } from "../../../../../utils";
 import { useProjectContext } from "../../../../../providers/project-provider";
 
@@ -15,10 +16,12 @@ import ProjectTaskComment from "../helpers/comment";
 import PorjectTaskAttachment from "../helpers/attachment";
 import AssignUserToProjectTask from "../helpers/assign-user";
 import UpdateStatus from "../helpers/update-status";
+import { Link } from "react-router-dom";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
   refetchProjectTask: () => void;
+  isHide?: boolean;
 }
 
 const PROJECT_TASK_PRIORITY_BG_COLOR = {
@@ -30,6 +33,7 @@ const PROJECT_TASK_PRIORITY_BG_COLOR = {
 const ProjectTaskCard = ({
   projectTask,
   refetchProjectTask,
+  isHide = false,
 }: ProjectTaskCardProps) => {
   const { project } = useProjectContext();
 
@@ -65,23 +69,36 @@ const ProjectTaskCard = ({
             <div></div>
           )}
         </div>
-        <h1 className="text-sm font-medium py-1">{projectTask.title}</h1>
-        <p className="text-xs">{projectTask?.description}</p>
-        {!!projectTask.subtasks?.length && (
-          <div className="mt-1">
-            <div className="text-xs pl-2 prose list-disc">
-              {projectTask.subtasks.map((subtask, i) => (
-                <li key={i}>{subtask.title}</li>
-              ))}
-            </div>
-          </div>
+
+        <Link
+          to={`/dashboard/projects/${project?._id}/tasks/${projectTask._id}`}
+          className="text-sm font-medium py-1 text-primary hover:text-primary/80 transition-all"
+        >
+          {isHide ? strSlice(projectTask.title, 30) : projectTask.title}
+        </Link>
+
+        {!isHide && (
+          <>
+            <p className="text-xs">{projectTask?.description}</p>
+            {!!projectTask.subtasks?.length && (
+              <div className="mt-1">
+                <div className="text-xs pl-2 prose list-disc">
+                  {projectTask.subtasks.map((subtask, i) => (
+                    <li key={i}>{subtask.title}</li>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
+
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center">
             <Tag color={PROJECT_TASK_PRIORITY_BG_COLOR[projectTask.priority]}>
               {projectTask.priority.toUpperCase()}
             </Tag>
           </div>
+
           <div className="space-x-1">
             <Avatar className="bg-primary !text-sm" size={25}>
               {projectTask?.user?.fullName[0].toUpperCase()}
