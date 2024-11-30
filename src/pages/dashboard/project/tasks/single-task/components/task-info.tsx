@@ -1,11 +1,13 @@
-import { Avatar, Tag } from "antd";
+import { Avatar, Tag, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { MemberRoles, ProjectTask } from "../../../../../../types";
 import { useProjectContext } from "../../../../../../providers/project-provider";
+import { capitalizeFirstLetter } from "../../../../../../utils";
 
 import UpdateProjectTask from "../../helpers/update";
 import DeleteProjectTask from "../../helpers/delete";
+import TaskComment from "./task-comment";
 
 interface TaskInfoProps {
   task: ProjectTask;
@@ -32,7 +34,11 @@ const TaskInfo = ({ task, refetch }: TaskInfoProps) => {
 
             <div className="flex items-center justify-between sm:justify-center">
               <div className="flex items-center">
-                {<Tag className="px-2 rounded-full">{project?.role}</Tag>}
+                {
+                  <Tag className="px-2 rounded-full">
+                    {capitalizeFirstLetter(project?.role as string)}
+                  </Tag>
+                }
               </div>
               {(project?.role !== MemberRoles.MEMBER || task?.isCreator) && (
                 <div className="flex items-center justify-center space-x-2">
@@ -50,20 +56,36 @@ const TaskInfo = ({ task, refetch }: TaskInfoProps) => {
               )}
             </div>
           </div>
-          <div
-            className="px-5 pt-5"
-            dangerouslySetInnerHTML={{ __html: task.description }}
-          />
 
-          <div className="ml-10">
-            <h3 className="text-primary">Sub Tasks</h3>
-            <ul className="list-disc">
-              {task.subtasks.map(({ title }) => (
-                <li>{title}</li>
-              ))}
-            </ul>
-          </div>
+          {task.description ? (
+            <div
+              className="px-5 pt-5"
+              dangerouslySetInnerHTML={{ __html: task.description }}
+            />
+          ) : (
+            <div className="px-5 pt-5">No Description</div>
+          )}
+
+          {!!task.subtasks.length ? (
+            <div className="ml-10">
+              <h3 className="text-primary">Sub Tasks</h3>
+              <ul className="list-disc">
+                {task.subtasks.map(({ title }) => (
+                  <li>{title}</li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="my-3 px-5">No Sub Tasks</div>
+          )}
         </div>
+      </div>
+
+      <Divider className="border-primary" dashed />
+
+      <div className="mt-3">
+        <h1 className="text-sm font-medium text-primary">Disscussions</h1>
+        <TaskComment />
       </div>
     </div>
   );

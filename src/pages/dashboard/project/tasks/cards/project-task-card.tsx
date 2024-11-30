@@ -9,10 +9,11 @@ import { TASK_TYPE_COLOR } from "../../../../../constants/task-type";
 
 import DeleteProjectTask from "../helpers/delete";
 import UpdateProjectTask from "../helpers/update";
-import ProjectTaskComment from "../helpers/comment";
-import PorjectTaskAttachment from "../helpers/attachment";
+// import ProjectTaskComment from "../helpers/comment";
+// import PorjectTaskAttachment from "../helpers/attachment";
 import AssignUserToProjectTask from "../helpers/assign-user";
 import UpdateStatus from "../helpers/update-status";
+import { BiCommentDots } from "react-icons/bi";
 
 interface ProjectTaskCardProps {
   projectTask: ProjectTask;
@@ -160,11 +161,11 @@ const ProjectTaskCard = ({
               {dateformat(projectTask.endDate, "dd/mm/yyyy")}
             </span>
           </div>
-          <PorjectTaskAttachment />
-          <ProjectTaskComment
-            projectTaskId={projectTask._id}
-            count={projectTask.commentCount}
-          />
+          {/* <PorjectTaskAttachment /> */}
+          <div className="text-gray-500 flex items-center justify-center space-x-[2px]">
+            <BiCommentDots className="size-4" />
+            <span className="text-sm">{projectTask.commentCount}</span>
+          </div>
         </div>
       </div>
     </div>

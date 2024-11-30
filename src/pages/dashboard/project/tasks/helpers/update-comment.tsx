@@ -1,15 +1,17 @@
-import { Button, Input } from "antd";
+import { Button, Drawer } from "antd";
 import { useMutation } from "react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactQuill from "react-quill";
 
 import { TbEdit } from "react-icons/tb";
+import { LuChevronLeftCircle } from "react-icons/lu";
 
-import queryKeys from "../../../../../constants/query-keys";
-import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
-import useErrorHandler from "../../../../../hooks/useErrorHandler";
 import { Comment, UserRole } from "../../../../../types";
+import useErrorHandler from "../../../../../hooks/useErrorHandler";
+import projectTaskService from "../../../../../services/project-task-service";
+import queryKeys from "../../../../../constants/query-keys";
 
 interface RequestData {
   data: {
@@ -81,41 +83,34 @@ const UpdateComment = ({
     <>
       <button
         onClick={() => setIsEdit(true)}
-        className="text-emerald-500 top-0 hover:text-emerald-500/80 flex items-center justify-center space-x-1 absolute right-[28px]"
+        className="text-emerald-500 top-0 hover:text-emerald-500/80 flex items-center justify-center space-x-1"
       >
         <TbEdit />
         <span className="text-xs">Edit</span>
       </button>
 
-      {isEdit && (
-        <div className="w-full space-y-2 pt-8">
-          <Input.TextArea
-            placeholder="Update comment"
-            rows={2}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <div className="flex items-center justify-end space-x-2">
-            <Button
-              size="small"
-              className="px-6 rounded-full ring-0 text-xs"
-              onClick={() => setIsEdit(false)}
-            >
-              Close
-            </Button>
-            <Button
-              size="small"
-              className="px-6 rounded-full ring-0 text-xs"
-              disabled={!value}
-              type="primary"
-              onClick={handleOnClick}
-              loading={isLoading}
-            >
-              Update
-            </Button>
-          </div>
+      <Drawer
+        width={500}
+        open={isEdit}
+        onClose={() => setIsEdit(false)}
+        title={<span className="text-primary">Update Comment</span>}
+        closeIcon={<LuChevronLeftCircle className="size-6 text-primary" />}
+      >
+        <ReactQuill value={value} onChange={(value) => setValue(value)} />
+
+        <div className="flex items-center justify-end mt-4">
+          <Button
+            size="small"
+            className="px-6 rounded-full ring-0 text-xs"
+            disabled={!value}
+            type="primary"
+            onClick={handleOnClick}
+            loading={isLoading}
+          >
+            Update
+          </Button>
         </div>
-      )}
+      </Drawer>
     </>
   );
 };

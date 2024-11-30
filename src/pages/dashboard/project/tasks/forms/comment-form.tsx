@@ -1,12 +1,14 @@
-import { Button, Input } from "antd";
 import { useState } from "react";
 import { useMutation } from "react-query";
+import { useParams } from "react-router-dom";
+import ReactQuill from "react-quill";
+import { LuLoader2 } from "react-icons/lu";
 
 import queryKeys from "../../../../../constants/query-keys";
 import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
 import useErrorHandler from "../../../../../hooks/useErrorHandler";
-import { useParams } from "react-router-dom";
+import { cn } from "../../../../../utils";
 
 interface CommentForm {
   projectTaskId: string;
@@ -58,23 +60,21 @@ const CommentForm = ({ projectTaskId, refetch }: CommentForm) => {
   };
 
   return (
-    <div className="w-full space-y-2 bg-turnary p-3 rounded-lg border shadow-sm">
-      <Input.TextArea
-        placeholder="Add comment here"
-        rows={3}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <div className="flex items-center justify-end">
-        <Button
-          className="px-6 ring-0 rounded-full"
+    <div className="w-full space-y-2">
+      <ReactQuill value={value} onChange={(value) => setValue(value.trim())} />
+      <div className="flex items-center justify-end mt-2">
+        <button
           disabled={!value}
-          type="primary"
           onClick={handleOnClick}
-          loading={isLoading}
+          className={cn(
+            "ring-0 space-x-1 bg-emerald-600 flex items-center justify-center text-white hover:bg-emerald-600/70 rounded-md px-3 py-1 w-fit",
+            !value &&
+              "bg-emerald-600/50 cursor-not-allowed hover:bg-emerald-600/50"
+          )}
         >
-          Post
-        </Button>
+          {isLoading && <LuLoader2 className="animate-spin" />}
+          <span>Comment</span>
+        </button>
       </div>
     </div>
   );

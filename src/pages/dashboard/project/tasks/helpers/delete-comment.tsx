@@ -49,7 +49,7 @@ const DeleteComment = ({
   const handleOnDelete = () => mutate();
 
   return (
-    <div className="absolute right-[0] top-0">
+    <div className="relative">
       <ConfirmationPopUp
         title="Delete Comment"
         description="Are you sure to delete comment?"
