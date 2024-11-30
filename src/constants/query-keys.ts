@@ -14,6 +14,7 @@ const queryKeys = {
     getProjectMembers: "GET_PROJECT_MEMBERS",
   },
   projectTask: {
+    getProjectTask: "GET_PROJECT_TASK",
     assignUserToProjectTask: "ASSIGN_USER_TO_PROJECT_TASK",
     removeAssignUserFromProjectTask: "REMOVE_ASSIGN_USER_TO_PROJECT_TASK",
     createProjectTaskComment: "CREATE_PROJECT_TASK_COMMENT",
