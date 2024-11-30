@@ -109,14 +109,15 @@ const ProjectTaskCard = ({
 
         {(projectTask.isCreator ||
           projectTask.isMember ||
-          project?.role !== MemberRoles.MEMBER) && (
-          <div className="flex items-center justify-between mt-4">
-            <UpdateStatus
-              projectTask={projectTask}
-              refetchProjectTask={refetchProjectTask}
-            />
-          </div>
-        )}
+          project?.role !== MemberRoles.MEMBER) &&
+          !isHide && (
+            <div className="flex items-center justify-between mt-4">
+              <UpdateStatus
+                projectTask={projectTask}
+                refetchProjectTask={refetchProjectTask}
+              />
+            </div>
+          )}
       </div>
 
       <div className="flex items-center justify-between p-3">
