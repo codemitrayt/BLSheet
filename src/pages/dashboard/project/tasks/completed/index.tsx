@@ -95,6 +95,7 @@ const CompletedTaks = () => {
                 key={task._id}
                 projectTask={task}
                 refetchProjectTask={refetch}
+                isHide={true}
               />
             ))}
           </div>
