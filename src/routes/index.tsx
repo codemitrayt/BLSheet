@@ -29,15 +29,16 @@ import DashboardTodoPage from "../pages/dashboard/todo";
 
 import DashboardProjectPage from "../pages/dashboard/project";
 import SingleProjectPage from "../pages/dashboard/project/single-project";
+import Members from "../pages/dashboard/project/members";
 import ProjectTasks from "../pages/dashboard/project/tasks";
 import ProjectTimeline from "../pages/dashboard/project/timeline";
 import ProjectChats from "../pages/dashboard/project/chats";
 import ProjectIssues from "../pages/dashboard/project/issues";
 import ProjectIdeas from "../pages/dashboard/project/ideas";
+
 import SingleIssue from "../pages/dashboard/project/issues/single-issue";
 import CompletedTaks from "../pages/dashboard/project/tasks/completed";
 import SingleTask from "../pages/dashboard/project/tasks/single-task";
-import Members from "../pages/dashboard/project/members";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,8 +55,10 @@ const Router = createBrowserRouter(
           <Route path="home" element={<DashboardHomePage />} />
           <Route path="sheet" element={<DashboardSheetPage />} />
           <Route path="todo" element={<DashboardTodoPage />} />
+
           <Route path="projects">
             <Route index element={<DashboardProjectPage />} />
+
             <Route path=":projectId" element={<ProjectLayout />}>
               <Route path="details" element={<SingleProjectPage />} />
               <Route path="members" element={<Members />} />
@@ -66,6 +69,7 @@ const Router = createBrowserRouter(
                   <Route index element={<SingleTask />} />
                 </Route>
               </Route>
+
               <Route path="timeline" element={<ProjectTimeline />} />
               <Route path="chats" element={<ProjectChats />} />
               <Route path="issues">
