@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Spin } from "antd";
 
 import blSheetService from "../../../services/bl-sheet-service";
@@ -34,6 +34,10 @@ const DashboardHomePage = () => {
     },
     retry: false,
   });
+
+  useEffect(() => {
+    document.title = "Home - BL Sheet";
+  }, []);
 
   if (isLoading) {
     return (

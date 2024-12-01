@@ -2,9 +2,8 @@ import { NavLink } from "react-router-dom";
 
 import { cn } from "../../utils";
 
-import { TbBulb, TbListDetails } from "react-icons/tb";
-import { RiTaskLine, RiTimeLine } from "react-icons/ri";
-import { PiChatsLight } from "react-icons/pi";
+import { TbListDetails } from "react-icons/tb";
+import { RiTaskLine } from "react-icons/ri";
 import { GoProject } from "react-icons/go";
 import { VscIssues } from "react-icons/vsc";
 import { LuUsers2 } from "react-icons/lu";
@@ -86,7 +85,7 @@ const ProjectNavbar = ({ projectId }: ProjectNavbarProps) => {
         </div>
       </NavLink>
 
-      <NavLink
+      {/* <NavLink
         to={`/dashboard/projects/${projectId}/ideas`}
         className={({ isActive }) =>
           cn(
@@ -129,7 +128,7 @@ const ProjectNavbar = ({ projectId }: ProjectNavbarProps) => {
           <PiChatsLight />
           <span className="hidden lg:block">Chats</span>
         </div>
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 };

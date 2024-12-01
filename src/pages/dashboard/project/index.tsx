@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Spin } from "antd";
 
@@ -27,6 +27,10 @@ const DashboardProjectPage = () => {
 
   const _view = searchParams.get("view") || "table";
   const [view, setView] = useState(_view);
+
+  useEffect(() => {
+    document.title = "Projects - BL Sheet";
+  }, []);
 
   const handleView = (view: string) => {
     setView(view);

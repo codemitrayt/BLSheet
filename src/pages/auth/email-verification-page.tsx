@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MdKeyboardBackspace } from "react-icons/md";
 
@@ -9,6 +10,10 @@ const EmailVerificationPage = () => {
   const email = params.get("email") || null;
   const navigate = useNavigate();
   const backToSignIn = () => navigate(URLS.signInPageUrl);
+
+  useEffect(() => {
+    document.title = "BL Sheet Email Verification";
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

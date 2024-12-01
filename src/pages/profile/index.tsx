@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { Avatar } from "antd";
 import useAuth from "../../hooks/useAuth";
 
 const ProfilePage = () => {
   const { user } = useAuth();
+
+  useEffect(() => {
+    document.title = "Profile - BL Sheet";
+  }, []);
+
   return (
     <div className="mx-auto container w-[90%]">
       <div className="p-3 md:p-8 border rounded-lg shadow-sm w-full mt-6 bg-turnary">

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
+import { useEffect } from "react";
 
 import siteConfig from "../../configs/site-config";
 import Logo from "../../components/ui/logo";
@@ -12,6 +13,10 @@ const SignUpPage = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const { handleError } = useErrorHandler();
+
+  useEffect(() => {
+    document.title = "BL Sheet Sign Up";
+  }, []);
 
   const { mutate, isLoading } = useMutation({
     mutationKey: ["send-verification-email-for-registration"],

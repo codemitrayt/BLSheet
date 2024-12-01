@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 import siteConfig from "../../configs/site-config";
 import Logo from "../../components/ui/logo";
@@ -16,6 +17,10 @@ const SignInPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
+
+  useEffect(() => {
+    document.title = "BL Sheet Sign In";
+  }, []);
 
   const { mutate, isLoading } = useMutation({
     mutationKey: ["login"],

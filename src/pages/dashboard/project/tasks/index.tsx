@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Views from "./views";
 import CreateProjectTask from "./helpers/create";
@@ -11,6 +11,10 @@ import { MdFilterList, MdFilterListOff } from "react-icons/md";
 const ProjectTasks = () => {
   const { project } = useProjectContext();
   const [hideFilters, setHideFilters] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.title = `Tasks - BL Sheet`;
+  }, []);
 
   return (
     <div className="relative mt-3">

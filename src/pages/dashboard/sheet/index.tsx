@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import Show from "./helpers/show";
@@ -51,6 +51,10 @@ const DashboardSheetPage = () => {
     },
     retry: false,
   });
+
+  useEffect(() => {
+    document.title = "Sheets - BL Sheet";
+  }, []);
 
   return (
     <div className="relative overflow-y-auto h-full">

@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Spin } from "antd";
 
 import CreateTodo from "./helpers/create";
@@ -22,6 +22,10 @@ const DashboardTodoPage = () => {
   const { handleError } = useErrorHandler();
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const { date } = useTodoFilters();
+
+  useEffect(() => {
+    document.title = "Todos - BL Sheet";
+  }, []);
 
   const { refetch: refetchTodoList, isLoading } = useQuery({
     queryKey: ["todo-list", date],

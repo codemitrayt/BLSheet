@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import { MemberRoles } from "../../../../types";
@@ -21,6 +21,10 @@ const Members = () => {
   const { projectId } = useParams();
   const { handleError } = useErrorHandler();
   const [totalMembers, setTotalMembers] = useState(0);
+
+  useEffect(() => {
+    document.title = `Members - BL Sheet`;
+  }, []);
 
   const { refetch: refetchProjectMembers } = useQuery({
     queryKey: ["project-members"],

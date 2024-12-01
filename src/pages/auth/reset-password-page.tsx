@@ -2,6 +2,7 @@ import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 import authService from "../../services/auth-service";
 import useErrorHandler from "../../hooks/useErrorHandler";
@@ -18,6 +19,10 @@ const ResetPasswordPage = () => {
   const { handleError } = useErrorHandler();
   const [search] = useSearchParams();
   const token = search.get("token");
+
+  useEffect(() => {
+    document.title = "BL Sheet Reset Password";
+  }, []);
 
   const backToSignIn = () => navigate(URLS.signInPageUrl);
 

@@ -2,6 +2,7 @@ import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 import authService from "../../services/auth-service";
 import useErrorHandler from "../../hooks/useErrorHandler";
@@ -15,6 +16,10 @@ const CreatePasswordPage = () => {
   const { handleError } = useErrorHandler();
   const [search] = useSearchParams();
   const token = search.get("token");
+
+  useEffect(() => {
+    document.title = "BL Sheet Create Password";
+  }, []);
 
   const { mutate, isLoading } = useMutation({
     mutationKey: ["create-password"],

@@ -2,6 +2,7 @@ import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardBackspace } from "react-icons/md";
+import { useEffect } from "react";
 
 import { URLS } from "../../constants";
 import authService from "../../services/auth-service";
@@ -15,6 +16,10 @@ const ForgotPasswordPage = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const { handleError } = useErrorHandler();
+
+  useEffect(() => {
+    document.title = "BL Sheet Forgot Password";
+  }, []);
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ["forgotPassword"],

@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import CreateIssue from "./helpers/create";
 
@@ -34,6 +34,10 @@ const ProjectIssues = () => {
     createdByMe,
     currentPage,
   } = useIssueFilters();
+
+  useEffect(() => {
+    document.title = `Issues - BL Sheet`;
+  }, []);
 
   const { isLoading, refetch } = useQuery({
     queryKey: [
