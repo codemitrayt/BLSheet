@@ -93,7 +93,7 @@ const columns: TableProps<ProjectTask>["columns"] = [
       <div className="flex items-center justify-center">
         {" "}
         {projectTask.assignedMembers.length === 0 ? (
-          "Not Assigned"
+          "-"
         ) : (
           <Avatar.Group
             className="!text-xs !border-primary"
