@@ -72,7 +72,11 @@ const columns: TableProps<ProjectTask>["columns"] = [
     title: <div className="text-primary !w-[200px]">Creator</div>,
     render: (_, task: ProjectTask) => (
       <div className="text-sm text-primary font-medium space-x-1">
-        <Avatar className="bg-primary !text-xs" size={25}>
+        <Avatar
+          className="bg-primary !text-xs"
+          size={25}
+          src={task.user?.avatar?.url}
+        >
           {task.user?.fullName[0].toUpperCase()}
         </Avatar>
         <span>{task?.user?.fullName}</span>
