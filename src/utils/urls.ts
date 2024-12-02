@@ -8,6 +8,7 @@ const urls: URLType = {
     createPassword: "/auth/createPassword",
     forgotPassword: "/auth/forgotPassword",
     resetPassword: "/auth/resetPassword",
+    uploadProfilePicture: "/auth/uploadProfilePicture",
 
     sendVerificationEmailForRegistration:
       "/auth/sendVerificationEmailForRegistration",

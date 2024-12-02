@@ -46,6 +46,15 @@ const authService = () => {
         data,
         url: urls.auth.resetPassword,
       }),
+
+    uploadProfilePicture: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.auth.uploadProfilePicture,
+        isFormData: true,
+        authToken,
+      }),
   };
 };
 

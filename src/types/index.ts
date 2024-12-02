@@ -48,6 +48,7 @@ export interface RequestType {
   data?: any;
   params?: any;
   url?: string;
+  isFormData?: boolean;
 }
 
 export enum PricingModel {
@@ -62,6 +63,9 @@ export interface User {
   email: string;
   role: string;
   pricingModel: PricingModel;
+  avatar?: {
+    url: string;
+  };
 }
 
 export interface BLSheet {

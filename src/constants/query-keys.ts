@@ -1,4 +1,7 @@
 const queryKeys = {
+  auth: {
+    uploadProfilePicture: "UPLOAD_PROFILE_PICTURE",
+  },
   blSheet: {
     get: "BL_SHEET_GET",
     create: "BL_SHEET_CREATE",

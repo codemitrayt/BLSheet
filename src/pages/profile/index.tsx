@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Avatar } from "antd";
 import useAuth from "../../hooks/useAuth";
+import UploadProfilePicture from "./components/upload-profile-picture";
 
 const ProfilePage = () => {
   const { user } = useAuth();
@@ -13,13 +14,20 @@ const ProfilePage = () => {
     <div className="mx-auto container w-[90%]">
       <div className="p-3 md:p-8 border rounded-lg shadow-sm w-full mt-6 bg-turnary">
         <div className="flex items-center space-x-3 md:space-x-10">
-          <div>
-            <Avatar className="bg-primary size-[50px] sm:size-[100px]  md:size-[200px]">
+          <div className="relative">
+            <Avatar
+              src={user?.avatar?.url}
+              className="bg-primary size-[50px] sm:size-[100px]  md:size-[200px]"
+            >
               <span className="text-[20px] md:text-[40px]">
                 {user?.fullName[0].toUpperCase()}
               </span>
             </Avatar>
+            <div className="absolute bottom-0 left-0">
+              <UploadProfilePicture />
+            </div>
           </div>
+
           <div className="flex flex-col space-y-6">
             <h1 className="text-primary font-medium text-xl md:text-3xl">
               {user?.fullName}
