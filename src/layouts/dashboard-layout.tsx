@@ -47,7 +47,7 @@ const DashboardLayout = () => {
                 )}
               </button>
               <div className="flex items-center justify-center space-x-1">
-                <Avatar className="bg-primary">
+                <Avatar className="bg-primary" src={user?.avatar?.url}>
                   {user?.fullName[0].toUpperCase()}
                 </Avatar>
                 <span className="text-primary text-sm font-medium hidden md:block">

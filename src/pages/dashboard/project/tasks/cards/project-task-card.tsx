@@ -99,7 +99,11 @@ const ProjectTaskCard = ({
           </div>
 
           <div className="space-x-1">
-            <Avatar className="bg-primary !text-sm" size={25}>
+            <Avatar
+              className="bg-primary !text-sm"
+              size={25}
+              src={projectTask.user?.avatar?.url}
+            >
               {projectTask?.user?.fullName[0].toUpperCase()}
             </Avatar>
             <span className="text-sm text-primary">
