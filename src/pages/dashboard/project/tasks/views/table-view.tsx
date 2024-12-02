@@ -22,7 +22,7 @@ interface TableView {
 
 const columns: TableProps<ProjectTask>["columns"] = [
   {
-    title: <span className="text-primary">Title</span>,
+    title: <div className="text-primary !w-[200px]">Title</div>,
     dataIndex: "title",
     key: "title",
     render: (title, task) => (
@@ -35,17 +35,28 @@ const columns: TableProps<ProjectTask>["columns"] = [
     ),
   },
   {
-    title: <span className="text-primary">Description</span>,
+    title: (
+      <div className="text-primary flex items-center justify-center">
+        Task Type
+      </div>
+    ),
     dataIndex: "taskType",
     key: "taskType",
     render: (taskType) => (
-      <Tag className="rounded-full px-3" color={TASK_TYPE_COLOR[taskType]}>
+      <Tag
+        className="rounded-full px-3 w-[120px] flex items-center justify-center"
+        color={TASK_TYPE_COLOR[taskType]}
+      >
         {taskType}
       </Tag>
     ),
   },
   {
-    title: <span className="text-primary">Status</span>,
+    title: (
+      <div className="text-primary flex items-center justify-center">
+        Status
+      </div>
+    ),
     dataIndex: "status",
     key: "status",
     render: (status: ProjectTaskStatus) => (
@@ -58,57 +69,80 @@ const columns: TableProps<ProjectTask>["columns"] = [
     ),
   },
   {
-    title: <span className="text-primary w-[250px]">Creator</span>,
+    title: (
+      <div className="text-primary !w-[180px] flex items-center justify-center">
+        Creator
+      </div>
+    ),
     render: (_, task: ProjectTask) => (
-      <span className="text-sm text-primary font-medium">
-        {task?.user?.fullName}
-      </span>
+      <div className="text-sm text-primary font-medium space-x-1 flex items-center justify-center">
+        <Avatar className="bg-primary !text-xs" size={25}>
+          {task.user?.fullName[0].toUpperCase()}
+        </Avatar>
+        <span>{task?.user?.fullName}</span>
+      </div>
     ),
   },
   {
-    title: <span className="text-primary">Assignee</span>,
-    render: (_, projectTask) =>
-      projectTask.assignedMembers.length === 0 ? (
-        "Not Assigned"
-      ) : (
-        <Avatar.Group
-          className="!text-xs !border-primary"
-          max={{
-            count: 2,
-            style: { background: "#2F667F", border: "#2F667F" },
-          }}
-          size={25}
-        >
-          {projectTask.assignedMembers.map((member) => (
-            <Avatar
-              className="bg-primary !text-xs !border-primary"
-              key={member._id}
-            >
-              {member.memberEmailId[0].toUpperCase()}
-            </Avatar>
-          ))}
-        </Avatar.Group>
-      ),
+    title: (
+      <div className="text-primary flex items-center justify-center w-[100px]">
+        Assignee
+      </div>
+    ),
+    render: (_, projectTask) => (
+      <div className="flex items-center justify-center">
+        {" "}
+        {projectTask.assignedMembers.length === 0 ? (
+          "Not Assigned"
+        ) : (
+          <Avatar.Group
+            className="!text-xs !border-primary"
+            max={{
+              count: 2,
+              style: { background: "#2F667F", border: "#2F667F" },
+            }}
+            size={25}
+          >
+            {projectTask.assignedMembers.map((member) => (
+              <Avatar
+                className="bg-primary !text-xs !border-primary"
+                key={member._id}
+              >
+                {member.memberEmailId[0].toUpperCase()}
+              </Avatar>
+            ))}
+          </Avatar.Group>
+        )}
+      </div>
+    ),
   },
   {
-    title: <span className="text-primary">Priority</span>,
+    title: (
+      <div className="text-primary flex items-center justify-center">
+        Priority
+      </div>
+    ),
     dataIndex: "priority",
     key: "priority",
     render: (priority: ProjectTaskPriority) => (
-      <Tag
-        className="rounded-full w-[90px] flex items-center justify-center"
-        color={TASK_CARD_BG_COLOR[priority]}
-      >
-        {capitalizeFirstLetter(priority)}
-      </Tag>
+      <div className="flex items-center justify-center">
+        <Tag
+          className="rounded-full w-[90px] flex items-center justify-center"
+          color={TASK_CARD_BG_COLOR[priority]}
+        >
+          {capitalizeFirstLetter(priority)}
+        </Tag>
+      </div>
     ),
   },
 
   {
-    title: <span className="text-primary">Due Date</span>,
+    title: <div className="text-primary text-center">Due Date</div>,
     dataIndex: "endDate",
     key: "endDate",
-    render: (date) => <span>{dateFormat(date, "dd/mm/yyyy")}</span>,
+    render: (date) => (
+      <div className="text-center">{dateFormat(date, "dd/mm/yyyy")}</div>
+    ),
   },
 ];
 
