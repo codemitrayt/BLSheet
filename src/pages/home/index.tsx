@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import DemoImg from "./helpers/demo-img";
 import FeatureCards from "./helpers/feature-cards";
 import Hero from "./helpers/hero";
+import PricingModal from "./helpers/pricing-modal";
 
 const HomePage = () => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Hero />
       <DemoImg />
       <FeatureCards />
+      <PricingModal />
     </div>
   );
 };
