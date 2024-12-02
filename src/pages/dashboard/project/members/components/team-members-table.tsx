@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pagination, Table, TableProps, Tag } from "antd";
+import { Avatar, Pagination, Table, TableProps, Tag } from "antd";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +30,10 @@ const columns: TableProps<ProjectMember>["columns"] = [
     key: "fullName",
     render: (_, { user }) => (
       <div className="flex items-center space-x-2 text-xs md:text-sm w-[250px]">
-        {user.fullName}
+        <Avatar size={25} className="bg-primary" src={user.avatar?.url}>
+          {user.fullName[0].toUpperCase()}
+        </Avatar>{" "}
+        <span>{user.fullName}</span>
       </div>
     ),
   },

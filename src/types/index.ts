@@ -159,9 +159,7 @@ export interface ProjectMember {
   _id: string;
   memberEmailId: string;
   status: ProjectMemberStatus;
-  user: {
-    fullName: string;
-  };
+  user: User;
   role: MemberRoles;
 }
 
