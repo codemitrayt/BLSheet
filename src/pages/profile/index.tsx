@@ -3,6 +3,7 @@ import { Avatar } from "antd";
 import useAuth from "../../hooks/useAuth";
 import UploadProfilePicture from "./components/upload-profile-picture";
 import { capitalizeFirstLetter } from "../../utils";
+import UpdateFullName from "./components/update-fullname";
 
 const ProfilePage = () => {
   const { user } = useAuth();
@@ -27,9 +28,12 @@ const ProfilePage = () => {
           </div>
 
           <div className="flex flex-col space-y-6 mt-4 md:mt-0">
-            <h1 className="text-primary font-medium text-xl md:text-3xl">
-              {user?.fullName}
-            </h1>
+            <div className="space-x-2 flex items-center">
+              <h1 className="text-primary font-medium sm:text-xl md:text-3xl">
+                {user?.fullName}
+              </h1>
+              <UpdateFullName />
+            </div>
             <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
               <div className="flex flex-col">
                 <h1 className="text-primary font-medium text-sm">Role</h1>

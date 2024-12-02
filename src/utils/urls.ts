@@ -9,6 +9,7 @@ const urls: URLType = {
     forgotPassword: "/auth/forgotPassword",
     resetPassword: "/auth/resetPassword",
     uploadProfilePicture: "/auth/uploadProfilePicture",
+    updateFullName: "/auth/updateFullName",
 
     sendVerificationEmailForRegistration:
       "/auth/sendVerificationEmailForRegistration",

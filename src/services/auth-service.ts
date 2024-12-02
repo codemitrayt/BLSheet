@@ -55,6 +55,14 @@ const authService = () => {
         isFormData: true,
         authToken,
       }),
+
+    updateFullName: ({ authToken, data }: RequestType) =>
+      request({
+        method: "POST",
+        data,
+        url: urls.auth.updateFullName,
+        authToken,
+      }),
   };
 };
 
