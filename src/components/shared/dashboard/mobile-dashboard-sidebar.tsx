@@ -6,6 +6,7 @@ import { cn } from "../../../utils";
 import dashboardLinks from "../../../configs/dashboard-links";
 import { logout } from "../../../store/slices/auth-slice";
 import { AiOutlineLogout } from "react-icons/ai";
+import { BiUser } from "react-icons/bi";
 
 const MobilDashboardSidebar = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,19 @@ const MobilDashboardSidebar = () => {
           ))}
         </div>
 
-        <div className="border-t pt-2">
+        <div className="border-t pt-2 space-y-2">
+          <NavLink
+            to={"/dashboard/profile"}
+            className={({ isActive }) =>
+              cn(
+                "flex text-white items-center px-2 py-1 hover:bg-secondary transition-all rounded-lg w-full",
+                isActive && "bg-secondary"
+              )
+            }
+          >
+            <BiUser className="size-5 text-white" />
+          </NavLink>
+
           <button
             className="flex items-center px-2 py-1 hover:bg-secondary transition-all rounded-lg"
             onClick={handleLogout}

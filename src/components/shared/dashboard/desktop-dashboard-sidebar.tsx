@@ -10,6 +10,7 @@ import { logout } from "../../../store/slices/auth-slice";
 import { AiOutlineLogout } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import { PricingModel } from "../../../types";
+import { BiUser } from "react-icons/bi";
 
 const DesktopDashboardSidebar = () => {
   const { user } = useAuth();
@@ -71,6 +72,21 @@ const DesktopDashboardSidebar = () => {
           </div>
 
           <div className="border-t pt-2 mt-4">
+            <NavLink
+              to={"/dashboard/profile"}
+              className={({ isActive }) =>
+                cn(
+                  "flex text-white items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full",
+                  isActive && "bg-secondary"
+                )
+              }
+            >
+              <BiUser className="size-6 text-white" />
+              <span className="pl-4 text-lg text-white font-light tracking-wider">
+                Profile
+              </span>
+            </NavLink>
+
             <button
               className="flex items-center px-4 py-3 hover:bg-secondary transition-all rounded-lg w-full"
               onClick={handleLogout}

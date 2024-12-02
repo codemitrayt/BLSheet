@@ -48,10 +48,10 @@ const Router = createBrowserRouter(
       <Route element={<VerifyLayout />}>
         <Route element={<ProtectedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="home" element={<DashboardHomePage />} />
           <Route path="sheet" element={<DashboardSheetPage />} />
           <Route path="todo" element={<DashboardTodoPage />} />

@@ -15,7 +15,7 @@ const navbarLinks: NavLinkType[] = [
   {
     id: 2,
     title: "Profile",
-    path: "/profile",
+    path: "/dashboard/profile",
     icon: CgProfile,
     onyForDesktop: false,
   },
