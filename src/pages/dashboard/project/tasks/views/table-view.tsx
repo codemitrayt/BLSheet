@@ -69,13 +69,9 @@ const columns: TableProps<ProjectTask>["columns"] = [
     ),
   },
   {
-    title: (
-      <div className="text-primary !w-[180px] flex items-center justify-center">
-        Creator
-      </div>
-    ),
+    title: <div className="text-primary !w-[200px]">Creator</div>,
     render: (_, task: ProjectTask) => (
-      <div className="text-sm text-primary font-medium space-x-1 flex items-center justify-center">
+      <div className="text-sm text-primary font-medium space-x-1">
         <Avatar className="bg-primary !text-xs" size={25}>
           {task.user?.fullName[0].toUpperCase()}
         </Avatar>
