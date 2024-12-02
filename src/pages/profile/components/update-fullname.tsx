@@ -64,7 +64,7 @@ const UpdateFullName = () => {
         <div className="flex items-center justify-end mt-4">
           <Button
             loading={isLoading}
-            disabled={!fullName}
+            disabled={!fullName?.trim()}
             onClick={() => mutate({ data: { fullName } })}
             type="primary"
             className="px-6 ring-0 rounded-full"
