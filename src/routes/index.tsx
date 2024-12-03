@@ -6,7 +6,7 @@ import {
 
 import BaseLayout from "../layouts/base-layout";
 import AuthLayout from "../layouts/auth-layout";
-import ProtectedLayout from "../layouts/protected-layout";
+import GuestLayout from "../layouts/guest-layout";
 import DashboardLayout from "../layouts/dashboard-layout";
 import VerifyLayout from "../layouts/verify-layout";
 import ProjectLayout from "../layouts/project-layout";
@@ -44,12 +44,11 @@ const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<BaseLayout />}>
       <Route path="project-invitation" element={<ProjectInvitationPage />} />
+      <Route element={<GuestLayout />}>
+        <Route index element={<HomePage />} />
+      </Route>
 
       <Route element={<VerifyLayout />}>
-        <Route element={<ProtectedLayout />}>
-          <Route index element={<HomePage />} />
-        </Route>
-
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="home" element={<DashboardHomePage />} />

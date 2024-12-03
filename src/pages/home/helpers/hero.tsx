@@ -8,7 +8,7 @@ import GridEffect from "../../../components/effects/grid-effect";
 
 const Hero = () => {
   const { isAuth } = useAuth();
-  const getStartedUrl = isAuth ? "/dashboard/home" : "/auth/login";
+  const getStartedUrl = isAuth ? "/dashboard/projects" : "/auth/sign-up";
 
   return (
     <div className="relative">

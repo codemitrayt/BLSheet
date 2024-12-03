@@ -1,14 +1,9 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import SiteNavbar from "../components/shared/site-navbar";
 import SiteFooter from "../components/shared/site-footer";
-import useAuth from "../hooks/useAuth";
-import { URLS } from "../constants";
 
-const ProtectedLayout = () => {
-  const { isAuth } = useAuth();
-  if (!isAuth) return <Navigate to={URLS.signInPageUrl} />;
-
+const GuestLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SiteNavbar />
@@ -20,4 +15,4 @@ const ProtectedLayout = () => {
   );
 };
 
-export default ProtectedLayout;
+export default GuestLayout;

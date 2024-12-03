@@ -22,7 +22,7 @@ const navbarLinks: NavLinkType[] = [
   {
     id: 2,
     title: "Dashboard",
-    path: "/dashboard/home",
+    path: "/dashboard/projects",
     icon: MdOutlineSpaceDashboard,
     onyForDesktop: true,
   },
