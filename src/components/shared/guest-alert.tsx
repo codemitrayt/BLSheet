@@ -10,9 +10,9 @@ const GuestAlert = () => {
   return (
     <div className="relative pb-2">
       <Alert
+        showIcon
         type="warning"
-        message="Guest Account - View Only Access: Features You Cannot Create, Update, or Delete"
-        description="To Access All Features, Please Log In or Sign Up for Free"
+        message="Guest Account - View Only Access"
       />
     </div>
   );

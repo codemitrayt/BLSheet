@@ -30,7 +30,7 @@ const ShowProjectTask = ({
       className={cn(
         "w-full overflow-x-auto flex space-x-3",
         user?.role === UserRole.GUEST &&
-          "h-[calc(100vh_-510px)] xl:h-[calc(100vh_-350px)]",
+          "h-[calc(100vh_-300px)] xl:h-[calc(100vh_-250px)]",
         isHideFilters
           ? "h-[calc(100vh_-120px)] xl:h-[calc(100vh_-120px)]"
           : "h-[calc(100vh_-310px)] xl:h-[calc(100vh_-190px)]"
@@ -47,7 +47,7 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              ? "h-[calc(100vh_-450px)] xl:h-[calc(100vh_-300px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
             isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
@@ -73,7 +73,7 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              ? "h-[calc(100vh_-450px)] xl:h-[calc(100vh_-300px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
             isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
@@ -99,7 +99,7 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              ? "h-[calc(100vh_-450px)] xl:h-[calc(100vh_-300px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
             isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}
@@ -131,7 +131,7 @@ const ShowProjectTask = ({
           className={cn(
             "overflow-y-auto flex flex-col space-y-3",
             user?.role === UserRole.GUEST
-              ? "h-[calc(100vh_-550px)] xl:h-[calc(100vh_-400px)]"
+              ? "h-[calc(100vh_-450px)] xl:h-[calc(100vh_-300px)]"
               : "h-[calc(100vh_-370px)] xl:h-[calc(100vh_-250px)]",
             isHideFilters && "h-[calc(100vh_-180px)] xl:h-[calc(100vh_-180px)]"
           )}

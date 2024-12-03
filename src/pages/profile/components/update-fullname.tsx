@@ -26,7 +26,7 @@ const UpdateFullName = () => {
       message.open({
         content: "User fullname updated successfully",
         type: "success",
-        className: "absolute top-[55px] right-4",
+        className: "absolute top-[50px] right-4",
       });
       setModalState(false);
     },

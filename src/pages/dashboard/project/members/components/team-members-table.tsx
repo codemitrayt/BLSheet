@@ -99,7 +99,7 @@ const TeamMembersTable = () => {
       projectService().getProjectMembers({
         data: { objectId: projectId },
         authToken,
-        params: { memberEmail, status: memberStatus },
+        params: { perPage, memberEmail, status: memberStatus },
       }),
     onSuccess: ({ data }) => {
       const members = data?.message?.projectMembers || [];

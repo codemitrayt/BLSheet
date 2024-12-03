@@ -32,7 +32,7 @@ const Members = () => {
       projectService().getProjectMembers({
         data: { objectId: projectId },
         authToken,
-        params: { perPage: 2, status: "accepted" },
+        params: { perPage: 150, status: "all" },
       }),
     onSuccess: ({ data }) => {
       const count = data?.message?.totalCount;

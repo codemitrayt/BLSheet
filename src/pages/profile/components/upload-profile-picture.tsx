@@ -23,7 +23,7 @@ const UploadProfilePicture = () => {
       message.open({
         content: "Profile picture uploaded successfully",
         type: "success",
-        className: "absolute top-[55px] right-4",
+        className: "absolute top-[40px] right-4",
       });
     },
     onError: (error) => {
@@ -42,7 +42,7 @@ const UploadProfilePicture = () => {
       message.open({
         content: "No file selected",
         type: "error",
-        className: "absolute top-[55px] right-4",
+        className: "absolute top-[40px] right-4",
       });
     }
   };

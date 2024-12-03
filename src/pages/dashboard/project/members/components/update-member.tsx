@@ -31,7 +31,7 @@ const UpdateMember = ({ member, refetch }: UpdateMemberProps) => {
         content: "Member updated successfully",
         type: "success",
         duration: 2,
-        className: "absolute top-[55px] right-4",
+        className: "absolute top-[40px] right-4",
       });
     },
     onError: (error) => {

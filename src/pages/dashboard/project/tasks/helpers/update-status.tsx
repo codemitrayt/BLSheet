@@ -1,4 +1,4 @@
-import { Button, Dropdown } from "antd";
+import { Button, Dropdown, message } from "antd";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useMutation } from "react-query";
 
@@ -6,6 +6,7 @@ import {
   MemberRoles,
   ProjectTask,
   ProjectTaskStatus,
+  UserRole,
 } from "../../../../../types";
 import projectTaskService from "../../../../../services/project-task-service";
 import useAuth from "../../../../../hooks/useAuth";
@@ -25,7 +26,7 @@ const StatusMap = {
 };
 
 const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
-  const { authToken } = useAuth();
+  const { authToken, user } = useAuth();
   const { handleError } = useErrorHandler();
   const { project } = useProjectContext();
 
@@ -48,6 +49,16 @@ const UpdateStatus = ({ projectTask, refetchProjectTask }: UpdateStatus) => {
   });
 
   const handleUpdateStatus = (status: ProjectTaskStatus) => {
+    if (user?.role === UserRole.GUEST) {
+      message.open({
+        content:
+          "This is a Guest Account - You Do Not Have Access to Update Project Task Status",
+        type: "error",
+        className: "absolute top-[40px] right-8",
+      });
+
+      return;
+    }
     mutate({
       data: { ...projectTask, status },
     });

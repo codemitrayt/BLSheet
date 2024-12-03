@@ -6,7 +6,7 @@ const useErrorHandler = () => {
     message.open({
       content: err ? err : msg,
       type: "error",
-      className: "absolute top-[2px] right-[10px]",
+      className: "absolute top-[40px] right-4",
       duration: 3,
     });
   };
