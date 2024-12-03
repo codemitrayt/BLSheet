@@ -89,7 +89,7 @@ const UserDropdown = () => {
     {
       key: "profile",
       label: (
-        <Link to="profile" className="space-x-1 flex items-center">
+        <Link to="/dashboard/profile" className="space-x-1 flex items-center">
           <CgProfile />
           <span>Profile</span>
         </Link>
