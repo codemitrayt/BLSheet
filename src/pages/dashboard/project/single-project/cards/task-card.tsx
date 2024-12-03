@@ -23,7 +23,7 @@ const PROJECT_TASK_STATUS_BG_COLOR = {
 
 const TaskCard = ({ task }: { task: ProjectTask }) => {
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center  p-3 bg-turnary md:space-x-3 border-b border-gray-200 md:justify-between last:border-b-0">
+    <div className="w-full flex flex-col md:flex-row md:items-center  p-3 bg-white md:space-x-3 border-b border-gray-200 md:justify-between last:border-b-0">
       <div className="flex space-x-1 md:hidden">
         <Badge
           color={PROJECT_TASK_STATUS_BG_COLOR[task.status]}

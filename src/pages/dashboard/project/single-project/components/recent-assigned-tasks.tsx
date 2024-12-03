@@ -7,8 +7,8 @@ const RecentAssignedTasks = ({ tasks }: { tasks: ProjectTask[] }) => {
   const { projectId } = useParams();
 
   return (
-    <div className="flex flex-col border rounded-md overflow-hidden w-full bg-turnary">
-      <div className="p-2 flex items-center justify-between bg-white">
+    <div className="flex flex-col border rounded-md overflow-hidden w-full bg-white">
+      <div className="p-2 flex items-center justify-between bg-gray-100">
         <h1 className="text-primary font-bold text-sm">
           Recently Assigned Tasks
         </h1>
@@ -21,7 +21,7 @@ const RecentAssignedTasks = ({ tasks }: { tasks: ProjectTask[] }) => {
       </div>
 
       {tasks.length === 0 && (
-        <div className="bg-turnary flex items-center justify-center p-2 text-sm">
+        <div className="flex items-center justify-center p-2 text-sm">
           No tasks
         </div>
       )}

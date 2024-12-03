@@ -87,8 +87,8 @@ const RecentProjectTask = () => {
           ].slice(0, 6)}
         />
 
-        <div className="border rounded-md bg-turnary overflow-hidden">
-          <h1 className="bg-white border-b p-2 text-sm font-bold text-primary">
+        <div className="border rounded-md bg-white overflow-hidden">
+          <h1 className="bg-gray-100 border-b p-2 text-sm font-bold text-primary">
             Your Task Progress
           </h1>
           <ColumnChart
