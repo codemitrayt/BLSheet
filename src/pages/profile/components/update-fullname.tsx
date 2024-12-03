@@ -9,6 +9,7 @@ import queryKeys from "../../../constants/query-keys";
 import authService from "../../../services/auth-service";
 import useErrorHandler from "../../../hooks/useErrorHandler";
 import { setUser } from "../../../store/slices/auth-slice";
+import { UserRole } from "../../../types";
 
 const UpdateFullName = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const UpdateFullName = () => {
     },
     retry: false,
   });
+
+  if (user?.role === UserRole.GUEST) return null;
 
   return (
     <>
