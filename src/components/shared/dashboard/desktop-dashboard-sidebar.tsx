@@ -11,6 +11,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import { PricingModel } from "../../../types";
 import { BiUser } from "react-icons/bi";
+import ProductHunt from "../product-hunt";
 
 const DesktopDashboardSidebar = () => {
   const { user } = useAuth();
@@ -47,7 +48,9 @@ const DesktopDashboardSidebar = () => {
         </div>
 
         <div>
-          <div className="bg-secondary rounded-md px-2 py-3">
+          <ProductHunt />
+
+          <div className="bg-secondary rounded-md px-2 py-3 mt-2">
             <h1 className="font-semibold text-white">
               {capitalizeFirstLetter(user?.pricingModel as string)} Plan
             </h1>
