@@ -21,12 +21,11 @@ const Hero = () => {
           </p>
 
           <h1 className="text-center sm:text-start text-xl sm:text-2xl md:text-4xl xl:text-5xl font-bold mt-8 text-primary">
-            Manage Your Projects with BL Sheet
+            Simplifying Project Management
           </h1>
 
           <p className="text-sm mt-2 text-gray-600 text-center sm:text-start">
-            Welcome to Your All-in-One Project Management, Financial Management
-            and Productivity Tool
+            BL Sheet is your ultimate tool for managing projects effortlessly.
           </p>
 
           <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 mt-4">
@@ -39,14 +38,14 @@ const Hero = () => {
 
             <div className="flex items-center space-x-2 text-primary text-sm">
               <LuListTodo />
-              <span>Productivity Tools</span>
+              <span>Task Management</span>
             </div>
 
             <div className="border-l border-black h-[10px] hidden sm:block" />
 
             <div className="flex items-center space-x-2 text-primary text-sm">
               <RiMoneyRupeeCircleLine />
-              <span>Personal Finance Manager</span>
+              <span>Budget Management</span>
             </div>
           </div>
 

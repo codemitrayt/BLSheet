@@ -6,7 +6,7 @@ import Hero from "./helpers/hero";
 
 const HomePage = () => {
   useEffect(() => {
-    document.title = "BL Sheet Home";
+    document.title = "BL Sheet: Simplifying project management";
   }, []);
 
   return (
