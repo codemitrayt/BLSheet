@@ -1,6 +1,6 @@
 import { GoProject } from "react-icons/go";
+import { LuListTodo } from "react-icons/lu";
 // import { HiHome, HiTable } from "react-icons/hi";
-// import { LuListTodo } from "react-icons/lu";
 
 import { NavLinkType } from "../types";
 
@@ -12,7 +12,7 @@ const dashboardLinks: NavLinkType[] = [
   //   icon: HiHome,
   // },
   { id: 4, title: "Projects", path: "/dashboard/projects", icon: GoProject },
-  // { id: 3, title: "Todos", path: "/dashboard/todo", icon: LuListTodo },
+  { id: 3, title: "Todos", path: "/dashboard/todo", icon: LuListTodo },
   // {
   //   id: 2,
   //   title: "Sheets",
