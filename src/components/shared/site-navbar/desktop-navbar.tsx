@@ -15,7 +15,6 @@ import { AiOutlineLogout } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import { logout } from "../../../store/slices/auth-slice";
 import GithubStar from "../github-star";
-import ProductHunt from "../product-hunt";
 
 const DesktopNavbar = () => {
   const { isAuth } = useAuth();
@@ -56,7 +55,6 @@ const AuthorizedNavbar = () => {
       </div>
 
       <div className="flex items-center justify-center space-x-4">
-        <ProductHunt />
         <UserDropdown />
         <div className="h-12 w-[0.1px] border-l border-primary/20"></div>
         <GithubStar />
