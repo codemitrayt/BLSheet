@@ -38,7 +38,6 @@ const UploadProfilePicture = () => {
 
   const onChange = (data: any) => {
     if (data?.file) {
-      console.log(data?.file?.size, FILE_SIZE);
       if (data?.file.size > FILE_SIZE) {
         message.open({
           content: "File size exceeds 1MB",
