@@ -10,6 +10,8 @@ import useErrorHandler from "../../../hooks/useErrorHandler";
 import { setUser } from "../../../store/slices/auth-slice";
 import { UserRole } from "../../../types";
 
+const FILE_SIZE = 52428800;
+
 const UploadProfilePicture = () => {
   const dispatch = useDispatch();
   const { authToken, user } = useAuth();
@@ -36,6 +38,14 @@ const UploadProfilePicture = () => {
 
   const onChange = (data: any) => {
     if (data?.file) {
+      if (data?.file.size > FILE_SIZE) {
+        message.open({
+          content: "File size exceeds 50MB",
+          type: "error",
+          className: "absolute top-[40px] right-4",
+        });
+        return;
+      }
       const formData = new FormData();
       formData.append("avatar", data.file);
       mutate({ data: formData });
@@ -60,7 +70,12 @@ const UploadProfilePicture = () => {
 
   return (
     <ImgCrop rotationSlider>
-      <Upload maxCount={1} beforeUpload={() => false} onChange={onChange}>
+      <Upload
+        fileList={[]}
+        maxCount={1}
+        beforeUpload={() => false}
+        onChange={onChange}
+      >
         <button className="border border-primary px-6 py-1 rounded-full bg-primary text-white">
           {user?.avatar ? "Edit" : "Upload"}
         </button>
