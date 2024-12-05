@@ -10,7 +10,7 @@ import useErrorHandler from "../../../hooks/useErrorHandler";
 import { setUser } from "../../../store/slices/auth-slice";
 import { UserRole } from "../../../types";
 
-const FILE_SIZE = 52428800;
+const FILE_SIZE = 1048576;
 
 const UploadProfilePicture = () => {
   const dispatch = useDispatch();
@@ -38,9 +38,10 @@ const UploadProfilePicture = () => {
 
   const onChange = (data: any) => {
     if (data?.file) {
+      console.log(data?.file?.size, FILE_SIZE);
       if (data?.file.size > FILE_SIZE) {
         message.open({
-          content: "File size exceeds 50MB",
+          content: "File size exceeds 1MB",
           type: "error",
           className: "absolute top-[40px] right-4",
         });
